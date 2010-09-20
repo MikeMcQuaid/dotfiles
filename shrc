@@ -1,0 +1,73 @@
+# 077 would be more secure, but 022 is generally quite realistic
+umask 022
+
+# Colorful manpages
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+
+# Qt/KDE development
+export QTEST_COLORED=1
+export KDE_COLOR_DEBUG=1
+
+# KDAB development
+export KDABSVN='svn+ssh://mike@svn.kdab.com/home/SVN-klaralv'
+
+# Setup paths
+function addtopath {
+	if [[ -d $1 ]]
+	then
+		export PATH="$1:$PATH"
+	fi
+}
+
+addtopath $HOME/Documents/Scripts
+
+# Aliases
+alias su="/bin/su -"
+alias scp="scp -r"
+alias mkdir="mkdir -vp"
+alias df="df -H"
+alias rm="rm -iv"
+alias mv="mv -iv"
+alias cp="cp -irv"
+alias du="du -sh"
+alias less="less -r"
+alias wget="wget -c"
+alias watch="watch -n1"
+alias grep="grep --color=auto"
+alias hubc="hub cherry-pick -s"
+
+function aliasifexists {
+	if which $2 1>/dev/null
+	then
+		alias $1=$2
+	fi
+}
+
+aliasifexists ack ack-grep
+aliasifexists diff colordiff
+aliasifexists git hub
+
+# Platform-specific stuff
+export EDITOR="vim"
+
+case $(uname -s) in
+	Linux )
+		alias ls="ls -F --color=auto"
+		eval $(dircolors -b);;
+	Darwin )
+		if [ -n "${DISPLAY}" ]
+		then
+			export EDITOR="mate"
+			export GIT_EDITOR="mate -wl1"
+		fi
+		alias ls="ls -F -G";;
+esac
+
+# Aliases using variables
+alias ed="$EDITOR"

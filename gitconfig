@@ -1,0 +1,30 @@
+[user]
+	name = Mike McQuaid
+	email = mike@mikemcquaid.com
+[color]
+	ui = auto
+[github]
+	user = mikemcquaid
+[push]
+	default = current
+[core]
+	excludesfile = ~/.gitignore
+[help]
+	format = web
+[alias]
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	b = checkout -b
+	i = rebase -i HEAD~2
+	r = pull --rebase
+	c = cherry-pick -s
+	rmr = remote -v rm
+[instaweb]
+	httpd = webrick
+[diff]
+	tool = opendiff
+[merge]
+	tool = opendiff
+[difftool]
+	prompt = false
+[mergetool]
+	prompt = false
