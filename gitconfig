@@ -28,3 +28,5 @@
 	prompt = false
 [mergetool]
 	prompt = false
+[apply]
+	whitespace = fix
