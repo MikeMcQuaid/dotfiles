@@ -32,7 +32,7 @@ setopt no_hup
 # Expand parameters, commands and aritmatic in prompts
 setopt prompt_subst
 
-# Colorful prompt with git branc
+# Colorful prompt with git branch
 autoload -U colors && colors
 
 git_branch() {
