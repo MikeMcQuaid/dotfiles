@@ -30,3 +30,6 @@
 	prompt = false
 [apply]
 	whitespace = fix
+[branch]
+	autosetuprebase = always
+	autosetupmerge = always
