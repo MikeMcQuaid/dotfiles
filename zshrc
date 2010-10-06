@@ -56,6 +56,9 @@ export SAVEHIST=$HISTSIZE
 # use emacs bindings even with vim as EDITOR
 bindkey -e
 
+# fix backspace on Debian
+bindkey "^?" backward-delete-char
+
 # allow the use of the Delete/Insert keys
 bindkey "\e[3~" delete-char
 bindkey "\e[2~" quoted-insert
