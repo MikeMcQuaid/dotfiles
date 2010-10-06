@@ -53,6 +53,30 @@ aliasifexists ack ack-grep
 aliasifexists diff colordiff
 aliasifexists git hub
 
+# Upload files to various temporary locations
+function scptohttp {
+	SCP="$1@$2:$3/"
+	HTTP="http://$2/~$1/$4"
+	FILE="$4"
+	scp $FILE $SCP
+	if (( $? ))
+	then
+		echo "$FILE failed to upload to $SCP"
+	else
+		echo "$FILE uploaded to $HTTP"
+
+		if [ $(uname -s) = "Darwin" ]
+		then
+			echo $HTTP | pbcopy
+			echo "URL copied to clipboard."
+		fi
+	fi
+}
+
+alias upkdab="scptohttp mike lotsofcake.kdab.com public_html"
+alias upjoanna="scptohttp mike joanna.kdab.com public_html"
+alias upmike="scptohttp mike mikemcquaid.com Sites"
+
 # Platform-specific stuff
 export EDITOR="vim"
 
