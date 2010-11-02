@@ -55,15 +55,20 @@ aliasifexists git hub
 
 # Upload files to various temporary locations
 function scptohttp {
-	SCP="$1@$2:$3/"
-	HTTP="http://$2/~$1/$4"
-	FILE="$4"
-	scp $FILE $SCP
+	USER=$1
+	HOST=$2
+	WWWDIR=$3
+	FILEPATH=$4
+	FILENAME=$(basename $FILEPATH)
+
+	SCP="$USER@$HOST:$WWWDIR/"
+	HTTP="http://$HOST/~$USER/$FILENAME"
+	scp $FILEPATH $SCP
 	if (( $? ))
 	then
-		echo "$FILE failed to upload to $SCP"
+		echo "$FILEPATH failed to upload to $SCP"
 	else
-		echo "$FILE uploaded to $HTTP"
+		echo "$FILEPATH uploaded to $HTTP"
 
 		if [ $(uname -s) = "Darwin" ]
 		then
