@@ -20,14 +20,14 @@
 	rmr = remote -v rm
 [instaweb]
 	httpd = webrick
-[diff]
-	tool = opendiff
 [merge]
 	tool = opendiff
-[difftool]
-	prompt = false
 [mergetool]
 	prompt = false
+	keepBackup = false
+	keepTemporaries = false
+[mergetool "opendiff"]
+	path = git-mergetool-opendiff.sh
 [apply]
 	whitespace = fix
 [branch]
