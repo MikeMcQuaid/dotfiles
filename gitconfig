@@ -49,4 +49,4 @@
 	smtpencryption = tls
 	smtpserverport = 25
 	smtpuser = mike
-	from = mike@kdab.com
+	from = mike.mcquaid@kdab.com
