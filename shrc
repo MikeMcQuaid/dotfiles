@@ -40,7 +40,6 @@ alias less="less -r"
 alias wget="wget -c"
 alias watch="watch -n1"
 alias grep="grep --color=auto"
-alias hubc="hub cherry-pick -s"
 
 function aliasifexists {
 	if which $2 1>/dev/null
@@ -51,7 +50,6 @@ function aliasifexists {
 
 aliasifexists ack ack-grep
 aliasifexists diff colordiff
-aliasifexists git hub
 
 # Upload files to various temporary locations
 function scptohttp {
@@ -81,6 +79,15 @@ function scptohttp {
 alias upkdab="scptohttp mike lotsofcake.kdab.com public_html"
 alias upjoanna="scptohttp mike joanna.kdab.com public_html"
 alias upmike="scptohttp mike mikemcquaid.com Sites"
+
+function github-am {
+	URL="$1"
+	PATCH="$URL.patch"
+	echo Downloading: $URL.patch
+	curl -q $PATCH 2>/dev/null | git am
+}
+
+alias ghc="github-am"
 
 # Platform-specific stuff
 export EDITOR="vim"
