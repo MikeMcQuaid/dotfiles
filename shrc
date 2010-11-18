@@ -84,7 +84,7 @@ function github-am {
 	URL="$1"
 	PATCH="$URL.patch"
 	echo Downloading: $URL.patch
-	curl -q $PATCH 2>/dev/null | git am
+	curl -q $PATCH 2>/dev/null | git am -s
 }
 
 alias ghc="github-am"
