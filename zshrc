@@ -64,8 +64,8 @@ bindkey "\e[3~" delete-char
 bindkey "\e[2~" quoted-insert
 
 # alternate mappings for "page up" and "page down" to search the history
-bindkey "\e[5~" history-beginning-search-backward
-bindkey "\e[6~" history-beginning-search-forward
+bindkey "^u" history-beginning-search-backward
+bindkey "^v" history-beginning-search-forward
 
 # mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
 bindkey "\e[1;5C" forward-word
