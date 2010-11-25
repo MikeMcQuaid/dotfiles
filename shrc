@@ -55,13 +55,13 @@ aliasifexists diff colordiff
 # Upload files to various temporary locations
 function scptohttp {
 	USER=$1
-	HOST=$2
+	UPLOADHOST=$2
 	WWWDIR=$3
 	FILEPATH=$4
 	FILENAME=$(basename $FILEPATH)
 
-	SCP="$USER@$HOST:$WWWDIR/"
-	HTTP="http://$HOST/~$USER/$FILENAME"
+	SCP="$USER@$UPLOADHOST:$WWWDIR/"
+	HTTP="http://$UPLOADHOST/~$USER/$FILENAME"
 	scp $FILEPATH $SCP
 	if (( $? ))
 	then
