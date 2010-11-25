@@ -5,7 +5,7 @@
 	ui = auto
 [github]
 	user = mikemcquaid
-	token = !security 2>&1 >/dev/null find-generic-password -gs github.token | ruby -e 'print $1 if STDIN.gets =~ /^password: \\\"(.*)\\\"$/' # Need a " to fix TextMate
+	token = !security 2>&1 >/dev/null find-generic-password -gs github.token | ruby -e 'print $1 if STDIN.gets =~ /^password: \\\"(.*)\\\"$/' #"
 [gist]
 	browse = true
 [push]
