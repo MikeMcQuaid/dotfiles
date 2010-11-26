@@ -23,6 +23,10 @@
 	rmr = remote -v rm
 [instaweb]
 	httpd = webrick
+[diff]
+	tool = opendiff
+[difftool "opendiff"]
+	path = opendiff
 [merge]
 	tool = opendiff
 [mergetool]
