@@ -40,6 +40,8 @@ alias less="less -r"
 alias wget="wget -c"
 alias watch="watch -n1"
 alias grep="grep --color=auto"
+alias make="nice make"
+alias brew="nice brew"
 alias bpi="brew pull --install"
 
 function aliasifexists {
