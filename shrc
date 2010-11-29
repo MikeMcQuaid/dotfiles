@@ -43,6 +43,7 @@ alias grep="grep --color=auto"
 alias make="nice make"
 alias brew="nice brew"
 alias bpi="brew pull --install"
+alias mike="ssh mike@localhost"
 
 function aliasifexists {
 	if which $2 1>/dev/null
