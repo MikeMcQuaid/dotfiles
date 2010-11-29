@@ -43,6 +43,9 @@ git_branch() {
 if [[ $(whoami) == "root" ]]
 then
 	PROMPT='%{$fg_bold[magenta]%}%m %{$fg_bold[blue]%}# %b%f'
+elif [ -n "${SSH_CLIENT}" ]
+then
+	PROMPT='%{$fg_bold[cyan]%}%m %{$fg_bold[blue]%}# %b%f'
 else
 	PROMPT='%{$fg_bold[green]%}%m %{$fg_bold[blue]%}# %b%f'
 fi
