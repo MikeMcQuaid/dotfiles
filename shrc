@@ -26,6 +26,7 @@ function addtopath {
 }
 
 addtopath $HOME/Documents/Scripts
+addtopath /usr/local/sbin
 
 # Aliases
 alias su="/bin/su -"
