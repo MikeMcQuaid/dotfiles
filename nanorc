@@ -14,18 +14,16 @@ set smooth
 # 4 spaces to a tab
 set tabsize 4
 
-# Soft wrap very long lines
-set softwrap
-
 # Display whitespace characters (using unicode)
-set whitespace ▸·
+set whitespace "> "
 
 # Syntax highlighting from: http://svn.savannah.gnu.org/viewvc/trunk/nano/doc/syntax/?root=nano
+# "header" needs disabled on old versions of nano
 
 ## Ruby
 ##
 syntax "ruby" "\.rb$"
-header "^#!.*/ruby[-0-9._]*"
+#header "^#!.*/ruby[-0-9._]*"
 ## Asciibetical list of reserved words
 color yellow "\<(BEGIN|END|alias|and|begin|break|case|class|def|defined\?|do|else|elsif|end|ensure|false|for|if|in|module|next|nil|not|or|redo|rescue|retry|return|self|super|then|true|undef|unless|until|when|while|yield)\>"
 ## Constants
@@ -57,7 +55,7 @@ color brightcyan "(XXX|TODO|FIXME|\?\?\?)"
 ## Shell scripts
 ##
 syntax "sh" "\.sh$"
-header "^#!.*/(ba|k|pdk)?sh[-0-9_]*"
+#header "^#!.*/(ba|k|pdk)?sh[-0-9_]*"
 icolor brightgreen "^[0-9A-Z_]+\(\)"
 color green "\<(case|do|done|elif|else|esac|exit|fi|for|function|if|in|local|read|return|select|shift|then|time|until|while)\>"
 color green "(\{|\}|\(|\)|\;|\]|\[|`|\\|\$|<|>|!|=|&|\|)"

@@ -102,6 +102,13 @@ case $(uname -s) in
 		alias ls="ls -F -G";;
 esac
 
+# Support newer nano features if possible
+NANOHELP=$(nano --help)
+if [[ $NANOHELP == *softwrap* ]]
+then
+	alias nano="nano --softwrap"
+fi
+
 # Aliases using variables
 alias ed="$EDITOR"
 alias vim="echo ed"
