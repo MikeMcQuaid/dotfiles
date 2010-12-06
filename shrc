@@ -90,23 +90,27 @@ alias upmike="scptohttp mike mikemcquaid.com Sites"
 # Platform-specific stuff
 export EDITOR="nano"
 
-case $(uname -s) in
-	Linux )
-		eval $(dircolors -b);;
-	Darwin )
-		if [ -n "${DISPLAY}" ]
-		then
-			export EDITOR="mate"
-			export GIT_EDITOR="mate -wl1"
-		fi
-		alias ls="ls -F -G";;
-esac
+if [[ $(uname -s) == "Darwin" ]]
+then
+	if [ -n "${DISPLAY}" ]
+	then
+		export EDITOR="mate"
+		export GIT_EDITOR="mate -wl1"
+	fi
+	alias ls="ls -F -G"
+fi
 
 # Support newer nano features if possible
 NANOHELP=$(nano --help)
 if [[ $NANOHELP == *softwrap* ]]
 then
 	alias nano="nano --softwrap"
+fi
+
+# Run dircolors if it exists
+if which dircolors 1>/dev/null
+then
+	eval $(dircolors -b)
 fi
 
 # Aliases using variables
