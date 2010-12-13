@@ -20,7 +20,7 @@
 	i = rebase -i HEAD~2
 	r = pull --rebase
 	c = cherry-pick -s
-	rmr = remote -v rm
+	f = commit -a -m 'fix'
 [instaweb]
 	httpd = webrick
 [diff]
