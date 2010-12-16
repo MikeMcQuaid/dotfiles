@@ -90,7 +90,7 @@ alias upjoanna="scptohttp mike joanna.kdab.com public_html"
 alias upmike="scptohttp mike mikemcquaid.com Sites"
 
 # Platform-specific stuff
-export EDITOR="nano"
+export EDITOR="vim"
 
 if [[ $(uname -s) == "Darwin" ]]
 then
@@ -100,13 +100,6 @@ then
 		export GIT_EDITOR="mate -wl1"
 	fi
 	alias ls="ls -F -G"
-fi
-
-# Support newer nano features if possible
-NANOHELP=$(nano --help)
-if [[ $NANOHELP == *softwrap* ]]
-then
-	alias nano="nano --softwrap"
 fi
 
 # Run dircolors if it exists
