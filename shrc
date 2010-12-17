@@ -110,4 +110,3 @@ fi
 
 # Aliases using variables
 alias ed="$EDITOR"
-alias vim="echo ed"
