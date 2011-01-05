@@ -98,6 +98,7 @@ then
 	then
 		export EDITOR="mate"
 		export GIT_EDITOR="mate -wl1"
+		export SVN_EDITOR="mate -wl1"
 	fi
 	alias ls="ls -F -G"
 fi
