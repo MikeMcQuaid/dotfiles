@@ -18,7 +18,7 @@
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	b = checkout -b
 	i = rebase -i HEAD~2
-	r = up
+	r = !which git-up >/dev/null && git-up || git pull --rebase
 	c = cherry-pick -s
 	f = commit -a -m 'fix'
 [instaweb]
