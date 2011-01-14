@@ -41,7 +41,7 @@ then
 	export CPUCOUNT=$(getconf _NPROCESSORS_ONLN)
 fi
 
-if [ "$CPUCOUNT" -gt 2 ]
+if [ "$CPUCOUNT" -gt 1 ]
 then
 	export MAKEOPTS="-j$CPUCOUNT"
 fi
