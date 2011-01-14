@@ -43,7 +43,7 @@ fi
 
 if [ "$CPUCOUNT" -gt 1 ]
 then
-	export MAKEOPTS="-j$CPUCOUNT"
+	export MAKEFLAGS="-j$CPUCOUNT"
 fi
 
 # Aliases
