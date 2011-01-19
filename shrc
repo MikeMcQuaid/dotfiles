@@ -74,6 +74,7 @@ function aliasifexists {
 
 aliasifexists ack ack-grep
 aliasifexists diff colordiff
+aliasifexists open gnome-open
 
 # Upload files to various temporary locations
 function scptohttp {
