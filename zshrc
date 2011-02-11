@@ -4,6 +4,9 @@ source ~/.shrc
 # Enable advanced completion
 autoload -U compinit && compinit
 
+# Enable regex moving
+autoload -U zmv
+
 # Style ZSH output
 zstyle ':completion:*:descriptions' format '%U%B%F{red}%d%f%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
