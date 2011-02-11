@@ -35,12 +35,20 @@ setopt no_hup
 # Expand parameters, commands and aritmatic in prompts
 setopt prompt_subst
 
-# Colorful prompt with git branch
+# Colorful prompt with Git and Subversion branch
 autoload -U colors && colors
 
 git_branch() {
 	BRANCH_REFS=$(git symbolic-ref HEAD 2>/dev/null) || return
 	echo "(${BRANCH_REFS#refs/heads/}) "
+}
+
+svn_branch() {
+	[ -d .svn ] || return
+	SVN_INFO=$(svn info 2>/dev/null) || return
+	SVN_BRANCH=$(echo $SVN_INFO | grep URL: | grep -oe '\(trunk\|branches/[^/]\+\|tags/[^/]\+\)')
+	# Display tags intentionally so we don't write to them by mistake
+	echo "(${SVN_BRANCH#branches/}) "
 }
 
 if [[ $(whoami) == "root" ]]
@@ -52,7 +60,7 @@ then
 else
 	PROMPT='%{$fg_bold[green]%}%m %{$fg_bold[blue]%}# %b%f'
 fi
-RPROMPT='%{$fg_bold[red]%}$(git_branch)%b[%{$fg_bold[blue]%}%~%b%f]'
+RPROMPT='%{$fg_bold[red]%}$(git_branch)%{$fg_bold[yellow]%}$(svn_branch)%b[%{$fg_bold[blue]%}%~%b%f]'
 
 # History
 export HISTSIZE=2000
