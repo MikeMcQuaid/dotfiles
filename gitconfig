@@ -20,7 +20,7 @@
 	i = rebase -i origin/master
 	r = !which git-up >/dev/null && git-up || git pull --rebase
 	c = cherry-pick -s
-	f = commit -a -m 'fix'
+	f = !git commit -a -m 'fix' && git rebase -i HEAD~2
 	x = !gitx
 [instaweb]
 	httpd = webrick
