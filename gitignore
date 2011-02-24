@@ -13,3 +13,5 @@ ui_*.h
 CMakeLists.txt.user
 
 b/
+bdebug/
+brelease/
