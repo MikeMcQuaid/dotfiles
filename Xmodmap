@@ -1,0 +1,3 @@
+! Swap section and grave keys for Apple keyboards.
+keycode 94 = grave asciitilde grave asciitilde
+keycode 49 = section plusminus section plusminus
