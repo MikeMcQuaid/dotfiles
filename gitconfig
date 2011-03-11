@@ -65,3 +65,5 @@
 	pushInsteadOf = git://gitorious.org/
 [url "git@git.kde.org:"]
 	pushInsteadOf = git://anongit.kde.org/
+[url "git@codaset.com:"]
+	pushInsteadOf = git://codaset.com/
