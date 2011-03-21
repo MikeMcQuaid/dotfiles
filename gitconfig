@@ -18,7 +18,8 @@
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	b = checkout -b
 	i = rebase -i origin/master
-	r = !which git-up >/dev/null && git-up || git pull --rebase
+	r = pull --rebase
+	p = pull
 	c = cherry-pick -s
 	f = !git commit -a -m 'fix' && git rebase -i HEAD~2
 	x = !gitx
