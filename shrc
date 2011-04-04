@@ -18,6 +18,12 @@ export KDE_COLOR_DEBUG=1
 
 # KDAB development
 export KDABSVN='svn+ssh://mike@svn.kdab.com/home/SVN-klaralv'
+if [[ $USER == "kdab" ]]
+then
+	export EMAIL="mike.mcquaid@kdab.com"
+else
+	export EMAIL="mike@mikemcquaid.com"
+fi
 
 # Setup paths
 function addtopath {
