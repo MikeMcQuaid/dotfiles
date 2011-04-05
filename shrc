@@ -86,15 +86,16 @@ aliasifexists open gnome-open
 
 # Upload files to various temporary locations
 function scptohttp {
-	USER=$1
-	UPLOADHOST=$2
-	WWWDIR=$3
-	FILEPATH=$4
-	FILENAME=$(basename $FILEPATH)
+	USER="$1"
+	UPLOADHOST="$2"
+	WWWDIR="$3"
+	FILEPATH="$4"
+	FILENAME=$(basename "$FILEPATH")
+	HTTPFILE=${FILENAME//" "/"%20"}
 
 	SCP="$USER@$UPLOADHOST:$WWWDIR/"
-	HTTP="http://$UPLOADHOST/~$USER/$FILENAME"
-	scp $FILEPATH $SCP
+	HTTP="http://$UPLOADHOST/~$USER/$HTTPFILE"
+	scp "$FILEPATH" "$SCP"
 	if (( $? ))
 	then
 		echo "$FILEPATH failed to upload to $SCP"
