@@ -126,6 +126,9 @@ then
 		export SVN_EDITOR="mate -wl1"
 	fi
 	alias ls="ls -F -G"
+elif [[ $(uname -s) == MINGW* ]]
+then
+	unalias grep
 fi
 
 # Run dircolors if it exists
