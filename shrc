@@ -126,7 +126,8 @@ then
 		export SVN_EDITOR="mate -wl1"
 	fi
 	alias ls="ls -F -G"
-elif [[ $(uname -s) == MINGW* ]]
+# Matches Cygwin or MINGW
+elif [[ $(uname -s) == *_NT-* ]]
 then
 	unalias grep
 fi
