@@ -41,15 +41,15 @@ addtopath $HOME/Documents/Scripts
 addtopath $HOME/.gem/ruby/1.8/bin
 
 # Count CPUs on OS X and Linux
-if [ $(uname -s) = "Darwin" ]
+if [[ $(uname -s) == "Darwin" ]]
 then
 	export CPUCOUNT=$(sysctl -n hw.ncpu)
-elif  [ $(uname -s) = "Linux" ]
+elif [[ $(uname -s) = "Linux" ]]
 then
 	export CPUCOUNT=$(getconf _NPROCESSORS_ONLN)
 fi
 
-if [ "$CPUCOUNT" -gt 1 ]
+if [[ "$CPUCOUNT" -gt 1 ]]
 then
 	export MAKEFLAGS="-j$CPUCOUNT"
 fi
@@ -119,7 +119,7 @@ export EDITOR="vim"
 
 if [[ $(uname -s) == "Darwin" ]]
 then
-	if [ -n "${DISPLAY}" ]
+	if [[ -n "${DISPLAY}" ]]
 	then
 		export EDITOR="mate"
 		export GIT_EDITOR="mate -wl1"
