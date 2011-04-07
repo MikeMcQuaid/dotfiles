@@ -55,7 +55,7 @@ svn_branch() {
 if [[ $(whoami) == "root" ]]
 then
 	PROMPT='%{$fg_bold[magenta]%}%m %{$fg_bold[blue]%}# %b%f'
-elif [ -n "${SSH_CLIENT}" ]
+elif [ -n "${SSH_CONNECTION}" ]
 then
 	PROMPT='%{$fg_bold[cyan]%}%m %{$fg_bold[blue]%}# %b%f'
 else
