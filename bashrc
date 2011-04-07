@@ -1,5 +1,5 @@
 # load shared shell configuration
-source ~/.shrc
+[ -f ~/.shrc ] && source ~/.shrc
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
