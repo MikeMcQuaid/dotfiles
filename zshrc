@@ -78,7 +78,7 @@ bindkey "^?" backward-delete-char
 bindkey "\e[3~" delete-char
 bindkey "\e[2~" quoted-insert
 
-# alternate mappings for "page up" and "page down" to search the history
+# alternate mappings for Ctrl-U/V to search the history
 bindkey "^u" history-beginning-search-backward
 bindkey "^v" history-beginning-search-forward
 

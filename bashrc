@@ -17,12 +17,13 @@ shopt -s cdspell
 # Bash completion
 [ -f /etc/profile.d/bash-completion ] && source /etc/profile.d/bash-completion
 
-# Keypresses
-export INPUTRC=~/.inputrc
-
 # Colorful prompt
-if [[ ${EUID} == 0 ]] ; then
+if [[ $(whoami) == "root" ]]
+then
 	PS1='\[\033[01;35m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
+elif [ -n "${SSH_CLIENT}" ]
+then
+	PS1='\[\033[01;36m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
 else
 	PS1='\[\033[01;32m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
 fi
@@ -32,17 +33,13 @@ export HISTCONTROL=ignoredups
 export PROMPT_COMMAND='history -a'
 export HISTIGNORE="&:ls:[bf]g:exit"
 
-# allow the use of the Home/End keys
-bind '"\e[1~" beginning-of-line'
-bind '"\e[4~" end-of-line'
-
 # allow the use of the Delete/Insert keys
 bind '"\e[3~" delete-char'
 bind '"\e[2~" quoted-insert'
 
-# alternate mappings for "page up" and "page down" to search the history
-bind '"\e[5~" history-search-backward'
-bind '"\e[6~" history-search-forward'
+# alternate mappings for Ctrl-U/V to search the history
+bind '"^u" history-search-backward'
+bind '"^v" history-search-forward'
 
 # mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
 bind '"\e[1;5C" forward-word'
