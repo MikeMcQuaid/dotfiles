@@ -9,7 +9,7 @@
 [gist]
 	browse = true
 [push]
-	default = current
+	default = upstream
 [core]
 	excludesfile = ~/.gitignore
 [help]
@@ -41,8 +41,7 @@
 [apply]
 	whitespace = fix
 [branch]
-	autosetuprebase = always
-	autosetupmerge = always
+	autosetuprebase = remote
 [sendemail]
 	identity = gmail
 	thread = false

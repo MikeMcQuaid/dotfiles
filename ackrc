@@ -1,1 +1,2 @@
 --type-set=cmake=.txt,.cmake
+--type-set=txt=.txt
