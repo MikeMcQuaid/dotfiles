@@ -21,7 +21,7 @@
 	r = pull --rebase
 	p = pull
 	c = cherry-pick -s
-	f = !git commit -a -m 'fix' && git rebase -i HEAD~2
+	f = !git commit -am'fixup!' && git rebase -i --autosquash HEAD~2
 	x = !gitx
 	serve = !git daemon --reuseaddr --export-all --base-path=. --verbose ./.git
 [instaweb]
