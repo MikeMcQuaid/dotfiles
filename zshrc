@@ -52,7 +52,7 @@ svn_branch() {
 	echo "(${SVN_BRANCH#branches/}) "
 }
 
-if [[ $(whoami) == "root" ]]
+if [[ $USER == "root" ]]
 then
 	PROMPT='%{$fg_bold[magenta]%}%m %{$fg_bold[blue]%}# %b%f'
 elif [ -n "${SSH_CONNECTION}" ]

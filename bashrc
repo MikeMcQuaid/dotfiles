@@ -18,7 +18,7 @@ shopt -s cdspell
 [ -f /etc/profile.d/bash-completion ] && source /etc/profile.d/bash-completion
 
 # Colorful prompt
-if [[ $(whoami) == "root" ]]
+if [[ $USER == "root" ]]
 then
 	PS1='\[\033[01;35m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
 elif [ -n "${SSH_CONNECTION}" ]
