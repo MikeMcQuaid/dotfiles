@@ -37,6 +37,7 @@ function addtopath {
 addtopath /usr/local/bin
 addtopath /usr/local/sbin
 addtopath $HOME/Documents/Scripts
+addtopath $HOME/Scripts
 addtopath $HOME/.gem/ruby/1.8/bin
 
 # Count CPUs on OS X and Linux
