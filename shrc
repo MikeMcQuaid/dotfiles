@@ -121,9 +121,9 @@ if [[ $(uname -s) == "Darwin" ]]
 then
 	if [[ -n "${DISPLAY}" ]]
 	then
-		export EDITOR="mate"
-		export GIT_EDITOR="mate -wl1"
-		export SVN_EDITOR="mate -wl1"
+		export EDITOR="vicotool"
+		export GIT_EDITOR="vim"
+		export SVN_EDITOR=$GIT_EDITOR
 	fi
 	alias ls="ls -F -G"
 # Matches Cygwin or MINGW
