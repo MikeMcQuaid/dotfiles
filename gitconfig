@@ -17,11 +17,11 @@
 [alias]
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 	b = checkout -b
-	i = rebase -i origin/master
+	i = rebase --interactive origin/master
 	r = pull --rebase
 	p = pull
-	c = cherry-pick -s
-	f = !git commit -am'fixup!' && git rebase -i --autosquash HEAD~2
+	c = cherry-pick --signoff
+	f = commit --all --amend --reuse-message=HEAD
 	x = !gitx
 	serve = !git daemon --reuseaddr --export-all --base-path=. --verbose ./.git
 [instaweb]
