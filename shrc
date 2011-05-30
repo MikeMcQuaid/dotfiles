@@ -131,10 +131,11 @@ function ssh-agent {
 		fi
 	done
 
-	if [[ -n "$SSH_AUTH_SOCK" ]]
+	if [[ -z "$SSH_AUTH_SOCK" ]]
 	then
-		ssh-add
+		eval $(ssh-agent)
 	fi
+	ssh-add
 }
 
 # Platform-specific stuff
