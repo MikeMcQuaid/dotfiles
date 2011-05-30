@@ -116,24 +116,22 @@ alias upmike="scptohttp mike mikemcquaid.com Sites"
 
 # Connect to existing ssh agents when available
 function ssh-agent {
-	for SSH_AUTH_SOCK in $(find /tmp/ssh-???*[0-9]* -type s -user ${USER} -name "agent.[0-9]*" 2>/dev/null)
+	shopt -s nullglob
+	SSH_AGENTS_GLOB=/tmp/ssh-*/agent.*
+	for SSH_AUTH_SOCK in $SSH_AGENTS_GLOB
 	do
-		SSH_SOCK_PID=${SSH_AUTH_SOCK##*.}
-		SSH_AGENT_PID=$(ps -afu${USER}|awk '/ssh-agent/ && ( $2=='${SSH_SOCK_PID}' || $3=='${SSH_SOCK_PID}' || $2=='${SSH_SOCK_PID}' +1 ) {print $2}')
-
-		ssh-add -l | grep : > /dev/null
-		if [ $? = 0 ]
+		if [[ $(ssh-add -l) == "*:*" ]]
 		then
-			echo "Agent pid ${SSH_AGENT_PID}"
+			echo "Agent ${SSH_AUTH_SOCK}"
 			export SSH_AUTH_SOCK
-			export SSH_AGENT_PID
 			break
 		fi
 	done
 
-	if [[ -z "$SSH_AUTH_SOCK" ]]
+	if [[ "$SSH_AUTH_SOCK" == "$SSH_AGENTS_GLOB" || -z "$SSH_AUTH_SOCK" ]]
 	then
-		eval $(/usr/bin/ssh-agent)
+		SSH_AGENT=$(which ssh-agent)
+		eval $($SSH_AGENT)
 	fi
 	ssh-add
 }
