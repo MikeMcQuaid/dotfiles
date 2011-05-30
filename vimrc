@@ -1,9 +1,5 @@
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
+" Switch syntax highlighting on
+syntax on
 
 " always show ruler at bottom
 set ruler
@@ -11,11 +7,21 @@ set ruler
 " don't make foo~ files
 set nobackup
 
-" autoindent
-set ai
+" searching
+set ignorecase
+set smartcase
+set hlsearch
 
-" smart c indentation
-set cindent
+" indentation
+set autoindent
+set smartindent
+set smarttab
+set expandtab
+set tabstop=4
+set shiftwidth=4
+
+" whitespace
+set list listchars=tab:»·,trail:·
 
 " disable mouse integration
 set mouse=
@@ -41,9 +47,9 @@ function! AddQtSyntax()
 endfunction
 
 function! AddDoxygenSyntax()
-	if expand( "<amatch>" ) == "cpp"
-		syn keyword cTodo contained TODO FIXME XXX todo
-	endif
+    if expand( "<amatch>" ) == "cpp"
+        syn keyword cTodo contained TODO FIXME XXX todo
+    endif
 endfunction
 
 autocmd Syntax * call AddQtSyntax()
