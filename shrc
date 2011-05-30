@@ -114,6 +114,29 @@ alias upkdab="scptohttp mike swanson.kdab.com public_html"
 alias upjoanna="scptohttp mike joanna.kdab.com public_html"
 alias upmike="scptohttp mike mikemcquaid.com Sites"
 
+# Connect to existing ssh agents when available
+function ssh-agent {
+	for SSH_AUTH_SOCK in $(find /tmp/ssh-???*[0-9]* -type s -user ${USER} -name "agent.[0-9]*" 2>/dev/null)
+	do
+		SSH_SOCK_PID=${SSH_AUTH_SOCK##*.}
+		SSH_AGENT_PID=$(ps -afu${USER}|awk '/ssh-agent/ && ( $2=='${SSH_SOCK_PID}' || $3=='${SSH_SOCK_PID}' || $2=='${SSH_SOCK_PID}' +1 ) {print $2}')
+
+		ssh-add -l | grep : > /dev/null
+		if [ $? = 0 ]
+		then
+			echo "Agent pid ${SSH_AGENT_PID}"
+			export SSH_AUTH_SOCK
+			export SSH_AGENT_PID
+			break
+		fi
+	done
+
+	if [[ -n "$SSH_AUTH_SOCK" ]]
+	then
+		ssh-add
+	fi
+}
+
 # Platform-specific stuff
 export EDITOR="vim"
 
