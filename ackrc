@@ -1,4 +1,5 @@
 --type-set=cmake=.txt,.cmake
+--type-set=qmake=.pro
 --type-set=txt=.txt
 --ignore-dir=b
 --ignore-dir=brelease
