@@ -152,6 +152,9 @@ then
 elif [[ $(uname -s) == *_NT-* ]]
 then
 	unalias grep
+	function open {
+		cmd /C"$*"
+	}
 fi
 
 # Run dircolors if it exists
