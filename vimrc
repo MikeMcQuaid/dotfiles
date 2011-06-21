@@ -16,12 +16,16 @@ set hlsearch
 set autoindent
 set smartindent
 set smarttab
-set expandtab
 set tabstop=4
 set shiftwidth=4
 
 " whitespace
-set list listchars=tab:»·,trail:·
+if has("multi_byte")
+	set encoding=utf-8
+	set list listchars=tab:»·,trail:·
+else
+	set list listchars=tab:>-,trail:.
+endif
 
 " disable mouse integration
 set mouse=
