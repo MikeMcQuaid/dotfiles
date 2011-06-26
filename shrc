@@ -113,6 +113,7 @@ function scptohttp {
 alias upkdab="scptohttp mike swanson.kdab.com public_html"
 alias upjoanna="scptohttp mike joanna.kdab.com public_html"
 alias upmike="scptohttp mike mikemcquaid.com Sites"
+alias upbrew="scptohttp mikemcquaid,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles"
 
 # Connect to existing ssh agents when available
 function ssh-agent {
