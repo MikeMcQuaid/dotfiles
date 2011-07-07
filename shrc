@@ -17,7 +17,7 @@ export QTEST_COLORED=1
 
 # KDAB development
 export KDABSVN='svn+ssh://mike@svn.kdab.com/home/SVN-klaralv'
-if [[ $USER == "kdab" ]]
+if [[ $(whoami) == *kdab* ]]
 then
 	export EMAIL="mike.mcquaid@kdab.com"
 else
@@ -121,7 +121,7 @@ function ssh-agent {
 	SSH_AGENTS_GLOB=/tmp/ssh-*/agent.*
 	for SSH_AUTH_SOCK in $SSH_AGENTS_GLOB
 	do
-		if [[ $(ssh-add -l) == "*:*" ]]
+		if [[ $(ssh-add -l) == *:* ]]
 		then
 			echo "Agent ${SSH_AUTH_SOCK}"
 			export SSH_AUTH_SOCK
