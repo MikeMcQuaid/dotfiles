@@ -59,11 +59,9 @@
 	smtpserverport = 25
 	smtpuser = mike
 	from = mike.mcquaid@kdab.com
-[url "git@github.com:"]
+[url "https://mikemcquaid@github.com/"]
 	pushInsteadOf = git://github.com/
-[url "git@gitorious.org:"]
+[url "https://git.gitorious.org:"]
 	pushInsteadOf = git://gitorious.org/
 [url "git@git.kde.org:"]
 	pushInsteadOf = git://anongit.kde.org/
-[url "git@codaset.com:"]
-	pushInsteadOf = git://codaset.com/
