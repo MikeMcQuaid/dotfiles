@@ -145,7 +145,7 @@ then
 	if [[ -n "${DISPLAY}" ]]
 	then
 		export EDITOR="vicotool"
-		export GIT_EDITOR="vim"
+		export GIT_EDITOR="vicotool -w"
 		export SVN_EDITOR=$GIT_EDITOR
 	fi
 	alias ls="ls -F -G"
