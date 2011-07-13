@@ -39,6 +39,8 @@ addtopath /usr/local/sbin
 addtopath $HOME/Documents/Scripts
 addtopath $HOME/Scripts
 addtopath $HOME/.gem/ruby/1.8/bin
+addtopath $HOME/Applications/SenchaSDKTools-1.2.2
+addtopath $HOME/Applications/SenchaSDKTools-1.2.2/command
 
 # Count CPUs on OS X and Linux
 if [[ $(uname -s) == "Darwin" ]]
