@@ -1,0 +1,3 @@
+Host www
+	Hostname mikemcquaid.com
+	ForwardAgent yes
