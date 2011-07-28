@@ -1,3 +1,16 @@
 Host www
-	Hostname mikemcquaid.com
+	HostName mikemcquaid.com
 	ForwardAgent yes
+
+Host *kdab.com
+	ForwardAgent yes
+
+Host bottles
+	HostName frs.sourceforge.net
+	User mikemcquaid,machomebrew
+
+Host *
+	User mike
+	StrictHostKeyChecking ask
+	VerifyHostKeyDNS ask
+	NoHostAuthenticationForLocalhost yes

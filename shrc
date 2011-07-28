@@ -86,17 +86,30 @@ aliasifexists ack ack-grep
 aliasifexists diff colordiff
 aliasifexists open gnome-open
 
-# Upload files to various temporary locations
+# Upload files to various locations
 function scptohttp {
 	USER="$1"
 	UPLOADHOST="$2"
 	WWWDIR="$3"
-	FILEPATH="$4"
+	if [[ -z "$5" ]]
+	then
+		FILEPATH="$4"
+	else
+		HTTPPATH="$4"
+		FILEPATH="$5"
+	fi
+
 	FILENAME=$(basename "$FILEPATH")
 	HTTPFILE=${FILENAME//" "/"%20"}
 
+	if [[ -z "$HTTPPATH" ]]
+	then
+		HTTP="http://$UPLOADHOST/~$USER/$HTTPFILE"
+	else
+		HTTP="$HTTPPATH/$HTTPFILE"
+	fi
+
 	SCP="$USER@$UPLOADHOST:$WWWDIR/"
-	HTTP="http://$UPLOADHOST/~$USER/$HTTPFILE"
 	scp "$FILEPATH" "$SCP"
 	if (( $? ))
 	then
@@ -115,7 +128,7 @@ function scptohttp {
 alias upkdab="scptohttp mike swanson.kdab.com public_html"
 alias upjoanna="scptohttp mike joanna.kdab.com public_html"
 alias upmike="scptohttp mike mikemcquaid.com Sites"
-alias upbrew="scptohttp mikemcquaid,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles"
+alias upbrew="scptohttp mikemcquaid,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles https://downloads.sourceforge.net/project/machomebrew/Bottles"
 
 # Connect to existing ssh agents when available
 function ssh-agent {
