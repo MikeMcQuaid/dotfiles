@@ -152,6 +152,70 @@ function ssh-agent {
 	ssh-add
 }
 
+git_branch() {
+	BRANCH_REFS=$(git symbolic-ref HEAD 2>/dev/null) || return
+	echo "${BRANCH_REFS#refs/heads/}"
+}
+
+svn_branch() {
+	[ -d .svn ] || return
+	SVN_INFO=$(svn info 2>/dev/null) || return
+	SVN_BRANCH=$(echo $SVN_INFO | grep URL: | grep -oe '\(trunk\|branches/[^/]\+\|tags/[^/]\+\)')
+	[ -n "$SVN_BRANCH" ] && echo "$SVN_BRANCH"
+}
+
+# Makes changing branches in Subversion more like Git
+svn_change() {
+	NEW_BRANCH="$1"
+	[ -n "$NEW_BRANCH" ] || (echo "No branch specified" && return)
+	[ -d .svn ] || (echo "No .svn directory found" && return)
+
+	OLDPWD=$PWD
+	while [ -d ../.svn ]
+	do
+		cd ..
+	done
+
+	SVN_URL=$(svn info 2>/dev/null | grep URL: | sed -e 's/URL: //')
+	CURRENT_BRANCH=$(svn_branch)
+	SVN_ROOT=${SVN_URL%$CURRENT_BRANCH}
+
+	if [ $NEW_BRANCH != "trunk" ]
+	then
+		echo "Searching branches for $NEW_BRANCH"
+		for BRANCH in $(svn ls ${SVN_ROOT}/branches)
+		do
+			[ "$NEW_BRANCH/" != $BRANCH ] && continue
+			FOUND_BRANCH="branches/$BRANCH"
+			break
+		done
+
+		if [ -z "$FOUND_BRANCH" ]
+		then
+			echo "Searching branches for $NEW_BRANCH"
+			for TAG in $(svn ls ${SVN_ROOT}/tags)
+			do
+				[ "$NEW_BRANCH/" != $TAG ] && continue
+				FOUND_BRANCH="tags/$TAG"
+				break
+			done
+		fi
+
+		if [ -z "$FOUND_BRANCH" ]
+		then
+			echo "Could not find a branch or tag named $NEW_BRANCH"
+			cd $OLDPWD
+			return
+		else
+			NEW_BRANCH="$FOUND_BRANCH"
+		fi
+	fi
+
+	echo svn switch "$SVN_ROOT$NEW_BRANCH"
+	svn switch "$SVN_ROOT$NEW_BRANCH"
+	cd $OLDPWD
+}
+
 # Platform-specific stuff
 export EDITOR="vim"
 
