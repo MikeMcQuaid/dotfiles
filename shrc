@@ -192,7 +192,7 @@ svn_change() {
 
 		if [ -z "$FOUND_BRANCH" ]
 		then
-			echo "Searching branches for $NEW_BRANCH"
+			echo "Searching tags for $NEW_BRANCH"
 			for TAG in $(svn ls ${SVN_ROOT}/tags)
 			do
 				[ "$NEW_BRANCH/" != $TAG ] && continue
