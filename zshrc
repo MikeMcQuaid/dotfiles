@@ -1,5 +1,5 @@
 # load shared shell configuration
-source ~/.shrc
+. ~/.shrc
 
 # Enable advanced completion
 autoload -U compinit && compinit
@@ -50,7 +50,7 @@ svn_branch_zsh() {
 	echo "(${SVN_BRANCH#branches/}) "
 }
 
-if [[ $USER == "root" ]]
+if [ $USER = "root" ]
 then
 	PROMPT='%{$fg_bold[magenta]%}%m %{$fg_bold[blue]%}# %b%f'
 elif [ -n "${SSH_CONNECTION}" ]

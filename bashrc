@@ -1,5 +1,5 @@
 # load shared shell configuration
-[ -f ~/.shrc ] && source ~/.shrc
+[ -f ~/.shrc ] && . ~/.shrc
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -15,10 +15,10 @@ shopt -s cmdhist
 shopt -s cdspell
 
 # Bash completion
-[ -f /etc/profile.d/bash-completion ] && source /etc/profile.d/bash-completion
+[ -f /etc/profile.d/bash-completion ] && . /etc/profile.d/bash-completion
 
 # Colorful prompt
-if [[ $USER == "root" ]]
+if [ $USER = "root" ]
 then
 	PS1='\[\033[01;35m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
 elif [ -n "${SSH_CONNECTION}" ]
@@ -29,9 +29,12 @@ else
 fi
 
 # History
-export HISTCONTROL=ignoredups
-export PROMPT_COMMAND='history -a'
-export HISTIGNORE="&:ls:[bf]g:exit"
+HISTCONTROL=ignoredups
+PROMPT_COMMAND='history -a'
+HISTIGNORE="&:ls:[bf]g:exit"
+export HISTCONTROL
+export PROMPT_COMMAND
+export HISTIGNORE
 
 # allow the use of the Delete/Insert keys
 bind '"\e[3~" delete-char'
