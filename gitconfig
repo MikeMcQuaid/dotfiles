@@ -24,6 +24,7 @@
 	f = commit --all --amend --reuse-message=HEAD
 	x = !gitx
 	serve = !git daemon --reuseaddr --export-all --base-path=. --verbose ./.git
+	kdab = !git config --local --get user.email || git config --local --add user.email mike.mcquaid@kdab.com
 [instaweb]
 	httpd = webrick
 [diff]
