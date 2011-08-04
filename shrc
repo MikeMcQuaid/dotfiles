@@ -164,10 +164,7 @@ svn_branch() {
 	[ -n "$SVN_BRANCH" ] && echo "$SVN_BRANCH"
 }
 
-# Makes changing branches in Subversion more like Git
-svn_change() {
-	NEW_BRANCH="$1"
-	[ -n "$NEW_BRANCH" ] || (echo "No branch specified" && return)
+svn_root() {
 	[ -d .svn ] || (echo "No .svn directory found" && return)
 
 	OLDPWD=$PWD
@@ -179,6 +176,17 @@ svn_change() {
 	SVN_URL=$(svn info 2>/dev/null | grep URL: | sed -e 's/URL: //')
 	CURRENT_BRANCH=$(svn_branch)
 	SVN_ROOT=${SVN_URL%$CURRENT_BRANCH}
+	echo "$SVN_ROOT"
+	cd $OLDPWD
+}
+
+# Makes changing branches in Subversion more like Git
+svn_change() {
+	NEW_BRANCH="$1"
+	[ -n "$NEW_BRANCH" ] || (echo "No branch specified" && return)
+	[ -d .svn ] || (echo "No .svn directory found" && return)
+
+	SVN_ROOT=$(svn_root)
 
 	if [ $NEW_BRANCH != "trunk" ]
 	then
@@ -211,10 +219,37 @@ svn_change() {
 		fi
 	fi
 
+	OLDPWD=$PWD
+	while [ -d ../.svn ]
+	do
+		cd ..
+	done
+
 	echo svn switch "$SVN_ROOT$NEW_BRANCH"
 	svn switch "$SVN_ROOT$NEW_BRANCH"
 	cd $OLDPWD
 }
+
+unalias svn 2>/dev/null
+svn_git_emulation() {
+	case "$1" in
+		log)
+			svn $@|less
+			;;
+		branch)
+			SVN_ROOT=$(svn_root)
+			echo "Branches:"
+			svn ls ${SVN_ROOT}/branches
+			echo
+			echo "Tags:"
+			svn ls ${SVN_ROOT}/tags
+			;;
+		*)
+			svn $@
+			;;
+	esac
+}
+alias svn="svn_git_emulation"
 
 # Platform-specific stuff
 export EDITOR="vim"
