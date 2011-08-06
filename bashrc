@@ -29,12 +29,9 @@ else
 fi
 
 # History
-HISTCONTROL=ignoredups
-PROMPT_COMMAND='history -a'
-HISTIGNORE="&:ls:[bf]g:exit"
-export HISTCONTROL
-export PROMPT_COMMAND
-export HISTIGNORE
+export HISTCONTROL=ignoredups
+export PROMPT_COMMAND='history -a'
+export HISTIGNORE="&:ls:[bf]g:exit"
 
 # allow the use of the Delete/Insert keys
 bind '"\e[3~" delete-char'
