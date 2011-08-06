@@ -9,6 +9,9 @@ Host bottles
 	HostName frs.sourceforge.net
 	User mikemcquaid,machomebrew
 
+Host buildbot
+	HostName 188.111.54.51
+
 Host *
 	User mike
 	StrictHostKeyChecking ask
