@@ -9,6 +9,7 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
+
 # Set to avoid `env` output from changing console colour
 export LESS_TERMEND=$'\E[0m'
 
@@ -20,31 +21,31 @@ export KDABSVN='svn+ssh://mike@svn.kdab.com/home/SVN-klaralv'
 export KDABGIT='gitolite@git.kdab.com'
 
 # Setup paths
-function addtopath {
-	if [[ -d $1 ]]
+add_to_path() {
+	if [ -d $1 ]
 	then
 		export PATH="$1:$PATH"
 	fi
 }
 
-addtopath /usr/local/bin
-addtopath /usr/local/sbin
-addtopath $HOME/Documents/Scripts
-addtopath $HOME/Scripts
-addtopath $HOME/.gem/ruby/1.8/bin
-addtopath $HOME/Applications/SenchaSDKTools-1.2.2
-addtopath $HOME/Applications/SenchaSDKTools-1.2.2/command
+add_to_path /usr/local/bin
+add_to_path /usr/local/sbin
+add_to_path $HOME/Documents/Scripts
+add_to_path $HOME/Scripts
+add_to_path $HOME/.gem/ruby/1.8/bin
+add_to_path $HOME/Applications/SenchaSDKTools-1.2.2
+add_to_path $HOME/Applications/SenchaSDKTools-1.2.2/command
 
 # Count CPUs on OS X and Linux
-if [[ $(uname -s) == "Darwin" ]]
+if [ $(uname -s) = "Darwin" ]
 then
 	export CPUCOUNT=$(sysctl -n hw.ncpu)
-elif [[ $(uname -s) = "Linux" ]]
+elif [ $(uname -s) = "Linux" ]
 then
 	export CPUCOUNT=$(getconf _NPROCESSORS_ONLN)
 fi
 
-if [[ "$CPUCOUNT" -gt 1 ]]
+if [ "$CPUCOUNT" -gt 1 ]
 then
 	export MAKEFLAGS="-j$CPUCOUNT"
 fi
@@ -68,23 +69,23 @@ alias brew="nice brew"
 alias bpi="brew pull --install"
 alias mike="ssh mike@localhost"
 
-function aliasifexists {
+alias_if_exists() {
 	if which $2 1>/dev/null
 	then
 		alias $1=$2
 	fi
 }
 
-aliasifexists ack ack-grep
-aliasifexists diff colordiff
-aliasifexists open gnome-open
+alias_if_exists ack ack-grep
+alias_if_exists diff colordiff
+alias_if_exists open gnome-open
 
 # Upload files to various locations
-function scptohttp {
+scp_to_http() {
 	USER="$1"
 	UPLOADHOST="$2"
 	WWWDIR="$3"
-	if [[ -z "$5" ]]
+	if [ -z "$5" ]
 	then
 		FILEPATH="$4"
 	else
@@ -95,7 +96,7 @@ function scptohttp {
 	FILENAME=$(basename "$FILEPATH")
 	HTTPFILE=${FILENAME//" "/"%20"}
 
-	if [[ -z "$HTTPPATH" ]]
+	if [ -z "$HTTPPATH" ]
 	then
 		HTTP="http://$UPLOADHOST/~$USER/$HTTPFILE"
 	else
@@ -104,7 +105,7 @@ function scptohttp {
 
 	SCP="$USER@$UPLOADHOST:$WWWDIR/"
 	scp "$FILEPATH" "$SCP"
-	if (( $? ))
+	if [ $? -ne 0 ]
 	then
 		echo "$FILEPATH failed to upload to $SCP"
 	else
@@ -118,32 +119,22 @@ function scptohttp {
 	fi
 }
 
-alias upkdab="scptohttp mike swanson.kdab.com public_html"
-alias upjoanna="scptohttp mike joanna.kdab.com public_html"
-alias upmike="scptohttp mike mikemcquaid.com Sites"
-alias upbrew="scptohttp mikemcquaid,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles https://downloads.sourceforge.net/project/machomebrew/Bottles"
+alias upkdab="scp_to_http mike swanson.kdab.com public_html"
+alias upjoanna="scp_to_http mike joanna.kdab.com public_html"
+alias upmike="scp_to_http mike mikemcquaid.com Sites"
+alias upbrew="scp_to_http mikemcquaid,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles https://downloads.sourceforge.net/project/machomebrew/Bottles"
 
 # Connect to existing ssh agents when available
-function ssh-agent {
-	shopt -s nullglob
-	SSH_AGENTS_GLOB=/tmp/ssh-*/agent.*
-	for SSH_AUTH_SOCK in $SSH_AGENTS_GLOB
-	do
-		if [[ $(ssh-add -l) == *:* ]]
-		then
-			echo "Agent ${SSH_AUTH_SOCK}"
-			export SSH_AUTH_SOCK
-			break
-		fi
-	done
-
-	if [[ "$SSH_AUTH_SOCK" == "$SSH_AGENTS_GLOB" || -z "$SSH_AUTH_SOCK" ]]
+unalias ssh 2>/dev/null
+ssh_with_agent() {
+	if [ -z "$SSH_AUTH_SOCK" ]
 	then
-		SSH_AGENT=$(which ssh-agent)
-		eval $($SSH_AGENT)
+		eval $(ssh-agent)
+		ssh-add
 	fi
-	ssh-add
+    ssh $@
 }
+alias ssh="ssh_with_agent"
 
 git_branch() {
 	BRANCH_REFS=$(git symbolic-ref HEAD 2>/dev/null) || return
@@ -247,9 +238,9 @@ alias svn="svn_git_emulation"
 # Platform-specific stuff
 export EDITOR="vim"
 
-if [[ $(uname -s) == "Darwin" ]]
+if [ $(uname -s) = "Darwin" ]
 then
-	if [[ -n "${DISPLAY}" ]]
+	if [ -n "${DISPLAY}" ]
 	then
 		export EDITOR="vicotool"
 		export GIT_EDITOR="vicotool -w"
@@ -257,10 +248,10 @@ then
 	fi
 	alias ls="ls -F -G"
 # Matches Cygwin or MINGW
-elif [[ $(uname -s) == *_NT-* ]]
+elif [ $(uname -s) = *_NT-* ]
 then
 	unalias grep
-	function open {
+	open() {
 		cmd /C"$*"
 	}
 fi
