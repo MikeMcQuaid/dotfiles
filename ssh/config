@@ -17,3 +17,5 @@ Host *
 	StrictHostKeyChecking ask
 	VerifyHostKeyDNS ask
 	NoHostAuthenticationForLocalhost yes
+	ControlMaster auto
+	ControlPath /tmp/sshmux-%r@%h:%p
