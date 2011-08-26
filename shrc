@@ -70,7 +70,7 @@ alias bpi="brew pull --install"
 alias mike="ssh mike@localhost"
 
 alias_if_exists() {
-	if which $2 1>/dev/null
+	if which $2 1>/dev/null 2>/dev/null
 	then
 		alias $1=$2
 	fi
@@ -248,7 +248,7 @@ then
 	fi
 	alias ls="ls -F -G"
 # Matches Cygwin or MINGW
-elif [ $(uname -s) = *_NT-* ]
+elif uname -s | grep -q "_NT-"
 then
 	unalias grep
 	open() {
