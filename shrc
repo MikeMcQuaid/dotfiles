@@ -43,6 +43,8 @@ then
 elif [ $(uname -s) = "Linux" ]
 then
 	export CPUCOUNT=$(getconf _NPROCESSORS_ONLN)
+else
+	export CPUCOUNT="1"
 fi
 
 if [ "$CPUCOUNT" -gt 1 ]
