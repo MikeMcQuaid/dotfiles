@@ -64,12 +64,7 @@ alias du="du -sh"
 alias less="less -r"
 alias wget="wget -c"
 alias watch="watch -n1"
-alias grep="grep --color=auto"
-alias ls="ls -F --color=auto"
 alias make="nice make"
-alias brew="nice brew"
-alias bpi="brew pull --install"
-alias mike="ssh mike@localhost"
 
 alias_if_exists() {
 	if which $2 1>/dev/null 2>/dev/null
@@ -80,7 +75,6 @@ alias_if_exists() {
 
 alias_if_exists ack ack-grep
 alias_if_exists diff colordiff
-alias_if_exists open gnome-open
 
 # Upload files to various locations
 scp_to_http() {
@@ -248,11 +242,13 @@ then
 		export GIT_EDITOR="vicotool -w"
 		export SVN_EDITOR=$GIT_EDITOR
 	fi
+	alias grep="grep --color=auto"
 	alias ls="ls -F -G"
+	alias brew="nice brew"
+	alias bpi="brew pull --install"
 # Matches Cygwin or MINGW
 elif uname -s | grep -q "_NT-"
 then
-	unalias grep
 	open() {
 		cmd /C"$*"
 	}
