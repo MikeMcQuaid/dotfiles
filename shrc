@@ -122,15 +122,28 @@ alias upbrew="scp_to_http mikemcquaid,machomebrew frs.sourceforge.net /home/frs/
 
 # Connect to existing ssh agents when available
 unalias ssh 2>/dev/null
-ssh_with_agent() {
+unalias scp 2>/dev/null
+
+check_agent() {
 	if [ -z "$SSH_AUTH_SOCK" ]
 	then
 		eval $(ssh-agent)
 		ssh-add
 	fi
-    ssh $@
 }
+
+ssh_with_agent() {
+	check_agent
+	ssh $@
+}
+
+scp_with_agent() {
+	check_agent
+	scp $@
+}
+
 alias ssh="ssh_with_agent"
+alias scp="scp_with_agent"
 
 git_branch() {
 	BRANCH_REFS=$(git symbolic-ref HEAD 2>/dev/null) || return
