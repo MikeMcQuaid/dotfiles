@@ -65,6 +65,7 @@ alias less="less -r"
 alias wget="wget -c"
 alias watch="watch -n1"
 alias make="nice make"
+alias ps="ps aux"
 
 alias_if_exists() {
 	which $2 1>/dev/null 2>/dev/null && alias $1=$2
