@@ -1,6 +1,11 @@
 # 077 would be more secure, but 022 is generally quite realistic
 umask 022
 
+# OS variables
+[ $(uname -s) = "Darwin" ] && export OSX=1
+[ $(uname -s) = "Linux" ] && export LINUX=1
+uname -s | grep -q "_NT-" && export WINDOWS=1
+
 # Colorful manpages
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -22,10 +27,7 @@ export KDABGIT='gitolite@git.kdab.com'
 
 # Setup paths
 add_to_path() {
-	if [ -d $1 ]
-	then
-		export PATH="$1:$PATH"
-	fi
+	[ -d $1 ] && export PATH="$1:$PATH"
 }
 
 add_to_path /usr/local/bin
@@ -34,11 +36,11 @@ add_to_path $HOME/Documents/Scripts
 add_to_path $HOME/Scripts
 add_to_path $HOME/.gem/ruby/1.8/bin
 
-# Count CPUs on OS X and Linux
-if [ $(uname -s) = "Darwin" ]
+# Count CPUs for Make jobs
+if [ $OSX ]
 then
 	export CPUCOUNT=$(sysctl -n hw.ncpu)
-elif [ $(uname -s) = "Linux" ]
+elif [ $LINUX ]
 then
 	export CPUCOUNT=$(getconf _NPROCESSORS_ONLN)
 else
@@ -65,10 +67,7 @@ alias watch="watch -n1"
 alias make="nice make"
 
 alias_if_exists() {
-	if which $2 1>/dev/null 2>/dev/null
-	then
-		alias $1=$2
-	fi
+	which $2 1>/dev/null 2>/dev/null && alias $1=$2
 }
 
 alias_if_exists ack ack-grep
@@ -105,7 +104,7 @@ scp_to_http() {
 	else
 		echo "$FILEPATH uploaded to $HTTP"
 
-		if [ $(uname -s) = "Darwin" ]
+		if [ $OSX ]
 		then
 			echo $HTTP | pbcopy
 			echo "URL copied to clipboard."
@@ -122,21 +121,17 @@ alias upbrew="scp_to_http mikemcquaid,machomebrew frs.sourceforge.net /home/frs/
 unalias ssh 2>/dev/null
 unalias scp 2>/dev/null
 
-check_agent() {
-	if [ -z "$SSH_AUTH_SOCK" ]
-	then
-		eval $(ssh-agent)
-		ssh-add
-	fi
+check_ssh_agent() {
+	[ -z "$SSH_AUTH_SOCK" ] && eval $(ssh-agent) && ssh-add
 }
 
 ssh_with_agent() {
-	check_agent
+	check_ssh_agent
 	ssh $@
 }
 
 scp_with_agent() {
-	check_agent
+	check_ssh_agent
 	scp $@
 }
 
@@ -245,10 +240,11 @@ alias svn="svn_git_emulation"
 # Platform-specific stuff
 export EDITOR="vim"
 
-if [ $(uname -s) = "Darwin" ]
+if [ $OSX ]
 then
 	if [ -n "${DISPLAY}" ]
 	then
+		alias vim="vicotool"
 		export EDITOR="vicotool"
 		export GIT_EDITOR="vicotool -w"
 		export SVN_EDITOR=$GIT_EDITOR
@@ -258,7 +254,7 @@ then
 	alias brew="nice brew"
 	alias bpi="brew pull --install"
 # Matches Cygwin or MINGW
-elif uname -s | grep -q "_NT-"
+elif [ $WINDOWS ]
 then
 	open() {
 		cmd /C"$*"
@@ -266,10 +262,7 @@ then
 fi
 
 # Run dircolors if it exists
-if which dircolors 1>/dev/null
-then
-	eval $(dircolors -b)
-fi
+which dircolors 1>/dev/null && eval $(dircolors -b)
 
 # Aliases using variables
 alias ed="$EDITOR"
