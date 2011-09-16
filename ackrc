@@ -2,4 +2,5 @@
 --type-set=qmake=.pro
 --type-set=txt=.txt
 --ignore-dir=b
+--ignore-dir=bdebug
 --ignore-dir=brelease
