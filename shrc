@@ -6,7 +6,7 @@ umask 022
 [ $(uname -s) = "Linux" ] && export LINUX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
 
-# Colorful manpages
+# Colourful manpages
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -14,6 +14,9 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
+
+# Print control characters (i.e. colours) and ignore case when searching
+export LESS="ir"
 
 # Set to avoid `env` output from changing console colour
 export LESS_TERMEND=$'\E[0m'
@@ -61,9 +64,6 @@ alias rm="rm -iv"
 alias mv="mv -iv"
 alias cp="cp -irv"
 alias du="du -sh"
-alias less="less -r"
-alias wget="wget -c"
-alias watch="watch -n1"
 alias make="nice make"
 alias ps="ps aux"
 
@@ -250,8 +250,9 @@ then
 		export GIT_EDITOR="vicotool -w"
 		export SVN_EDITOR=$GIT_EDITOR
 	fi
-	alias grep="grep --color=auto"
-	alias ls="ls -F -G"
+	export GREP_OPTIONS="--color=auto"
+	export CLICOLOR
+	alias ls="ls -F"
 	alias brew="nice brew"
 	alias bpi="brew pull --install"
 # Matches Cygwin or MINGW
