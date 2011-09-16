@@ -15,12 +15,14 @@
 [help]
 	format = web
 [alias]
-	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	l = log --graph --oneline --decorate
+	d = diff --word-diff
 	b = checkout -b
 	i = rebase --interactive origin/master
 	r = pull --rebase
 	p = pull
 	c = cherry-pick --signoff
+	s = status -sb
 	f = commit --all --amend --reuse-message=HEAD
 	x = !gitx
 	svn-externals = !git svn show-externals | grep -x \\"[^#].*\\"
