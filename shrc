@@ -255,7 +255,9 @@ then
 	alias ls="ls -F"
 	alias brew="nice brew"
 	alias bpi="brew pull --install"
-# Matches Cygwin or MINGW
+elif [ $LINUX ]
+then
+	alias ls="ls --color=auto"
 elif [ $WINDOWS ]
 then
 	open() {
