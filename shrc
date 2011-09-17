@@ -15,9 +15,6 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-# Print control characters (i.e. colours) and ignore case when searching
-export LESS="ir"
-
 # Set to avoid `env` output from changing console colour
 export LESS_TERMEND=$'\E[0m'
 
@@ -66,6 +63,7 @@ alias cp="cp -irv"
 alias du="du -sh"
 alias make="nice make"
 alias ps="ps aux"
+alias less="less -ir"
 
 alias_if_exists() {
 	which $2 1>/dev/null 2>/dev/null && alias $1=$2
