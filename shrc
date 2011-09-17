@@ -257,7 +257,7 @@ then
 	alias bpi="brew pull --install"
 elif [ $LINUX ]
 then
-	alias ls="ls --color=auto"
+	alias ls="ls -F --color=auto"
 elif [ $WINDOWS ]
 then
 	open() {
