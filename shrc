@@ -65,12 +65,18 @@ alias make="nice make"
 alias ps="ps aux"
 alias less="less -ir"
 
-alias_if_exists() {
-	which $2 1>/dev/null 2>/dev/null && alias $1=$2
+quiet_which() {
+	which $@ 1>/dev/null 2>/dev/null
 }
 
-alias_if_exists ack ack-grep
-alias_if_exists diff colordiff
+quiet_which ack-grep && alias ack=ack-grep
+if quiet_which colordiff
+then
+	export DIFF=colordiff
+	alias diff=colordiff
+else
+	export DIFF=diff
+fi
 
 # Upload files to various locations
 scp_to_http() {
@@ -229,6 +235,9 @@ svn_git_emulation() {
 			echo "Tags:"
 			svn ls ${SVN_ROOT}/tags
 			;;
+		diff)
+			svn --diff-cmd=$DIFF -x -p $@|less
+			;;
 		*)
 			svn $@
 			;;
@@ -264,7 +273,7 @@ then
 fi
 
 # Run dircolors if it exists
-which dircolors 1>/dev/null && eval $(dircolors -b)
+quiet_which dircolors && eval $(dircolors -b)
 
 # Aliases using variables
 alias ed="$EDITOR"
