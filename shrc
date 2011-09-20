@@ -236,7 +236,7 @@ svn_git_emulation() {
 			svn ls ${SVN_ROOT}/tags
 			;;
 		diff)
-			svn --diff-cmd=$DIFF -x -p $@|less
+			svn --diff-cmd=$DIFF $@|less
 			;;
 		*)
 			svn $@
