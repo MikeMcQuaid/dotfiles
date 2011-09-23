@@ -32,6 +32,7 @@ add_to_path() {
 
 add_to_path /usr/local/bin
 add_to_path /usr/local/sbin
+add_to_path $HOME/Documents/KDAB/Scripts
 add_to_path $HOME/Documents/Scripts
 add_to_path $HOME/Scripts
 add_to_path $HOME/.gem/ruby/1.8/bin
