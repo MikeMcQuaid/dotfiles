@@ -263,6 +263,8 @@ then
 	alias ls="ls -F"
 	alias brew="nice brew"
 	alias bpi="brew pull --install"
+	alias ql="qlmanage -p 1>/dev/null"
+	alias locate="mdfind -name"
 elif [ $LINUX ]
 then
 	alias ls="ls -F --color=auto"
