@@ -11,7 +11,7 @@ Host bottles
 
 Host buildbot
 	HostName 188.111.54.51
-	LocalForward 3389 192.168.4.4:3389
+	LocalForward 3389 192.168.4.5:3389
 
 Host *
 	User mike
