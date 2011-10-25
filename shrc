@@ -55,7 +55,6 @@ fi
 
 # Aliases
 alias su="/bin/su -"
-alias scp="scp -r"
 alias mkdir="mkdir -vp"
 alias df="df -H"
 alias rm="rm -iv"
@@ -79,172 +78,15 @@ else
 	export DIFF=diff
 fi
 
-# Upload files to various locations
-scp_to_http() {
-	USER="$1"
-	UPLOADHOST="$2"
-	WWWDIR="$3"
-	if [ -z "$5" ]
-	then
-		FILEPATH="$4"
-	else
-		HTTPPATH="$4"
-		FILEPATH="$5"
-	fi
+alias upkdab="scp-to-http.sh mike swanson.kdab.com public_html"
+alias upjoanna="scp-to-http.sh mike www.kdab.com public_html"
+alias upmike="scp-to-http.sh mike mikemcquaid.com Sites"
+alias upbrew="scp-to-http.sh mikemcquaid,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles https://downloads.sourceforge.net/project/machomebrew/Bottles"
 
-	FILENAME=$(basename "$FILEPATH")
-	HTTPFILE=${FILENAME//" "/"%20"}
+alias ssh="ssh-with-agent.sh"
+alias scp="SSH_COMMAND=scp ssh-with-agent.sh -r"
 
-	if [ -z "$HTTPPATH" ]
-	then
-		HTTP="http://$UPLOADHOST/~$USER/$HTTPFILE"
-	else
-		HTTP="$HTTPPATH/$HTTPFILE"
-	fi
-
-	SCP="$USER@$UPLOADHOST:$WWWDIR/"
-	scp "$FILEPATH" "$SCP"
-	if [ $? -ne 0 ]
-	then
-		echo "$FILEPATH failed to upload to $SCP"
-	else
-		echo "$FILEPATH uploaded to $HTTP"
-
-		if [ $OSX ]
-		then
-			echo $HTTP | pbcopy
-			echo "URL copied to clipboard."
-		fi
-	fi
-}
-
-alias upkdab="scp_to_http mike swanson.kdab.com public_html"
-alias upjoanna="scp_to_http mike joanna.kdab.com public_html"
-alias upmike="scp_to_http mike mikemcquaid.com Sites"
-alias upbrew="scp_to_http mikemcquaid,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles https://downloads.sourceforge.net/project/machomebrew/Bottles"
-
-# Connect to existing ssh agents when available
-unalias ssh 2>/dev/null
-unalias scp 2>/dev/null
-
-check_ssh_agent() {
-	[ -z "$SSH_AUTH_SOCK" ] && eval $(ssh-agent) && ssh-add
-}
-
-ssh_with_agent() {
-	check_ssh_agent
-	ssh $@
-}
-
-scp_with_agent() {
-	check_ssh_agent
-	scp $@
-}
-
-alias ssh="ssh_with_agent"
-alias scp="scp_with_agent"
-
-git_branch() {
-	BRANCH_REFS=$(git symbolic-ref HEAD 2>/dev/null) || return
-	echo "${BRANCH_REFS#refs/heads/}"
-}
-
-svn_branch() {
-	[ -d .svn ] || return
-	SVN_INFO=$(svn info 2>/dev/null) || return
-	SVN_BRANCH=$(echo $SVN_INFO | grep URL: | grep -oe '\(trunk\|branches/[^/]\+\|tags/[^/]\+\)')
-	[ -n "$SVN_BRANCH" ] && echo "$SVN_BRANCH"
-}
-
-svn_root() {
-	[ -d .svn ] || (echo "No .svn directory found" && return)
-
-	OLDPWD=$PWD
-	while [ -d ../.svn ]
-	do
-		cd ..
-	done
-
-	SVN_URL=$(svn info 2>/dev/null | grep URL: | sed -e 's/URL: //')
-	CURRENT_BRANCH=$(svn_branch)
-	SVN_ROOT=${SVN_URL%$CURRENT_BRANCH}
-	echo "$SVN_ROOT"
-	cd $OLDPWD
-}
-
-# Makes changing branches in Subversion more like Git
-svn_change() {
-	NEW_BRANCH="$1"
-	[ -n "$NEW_BRANCH" ] || (echo "No branch specified" && return)
-	[ -d .svn ] || (echo "No .svn directory found" && return)
-
-	SVN_ROOT=$(svn_root)
-
-	if [ $NEW_BRANCH != "trunk" ]
-	then
-		echo "Searching branches for $NEW_BRANCH"
-		for BRANCH in $(svn ls ${SVN_ROOT}/branches)
-		do
-			[ "$NEW_BRANCH/" != $BRANCH ] && continue
-			FOUND_BRANCH="branches/$BRANCH"
-			break
-		done
-
-		if [ -z "$FOUND_BRANCH" ]
-		then
-			echo "Searching tags for $NEW_BRANCH"
-			for TAG in $(svn ls ${SVN_ROOT}/tags)
-			do
-				[ "$NEW_BRANCH/" != $TAG ] && continue
-				FOUND_BRANCH="tags/$TAG"
-				break
-			done
-		fi
-
-		if [ -z "$FOUND_BRANCH" ]
-		then
-			echo "Could not find a branch or tag named $NEW_BRANCH"
-			cd $OLDPWD
-			return
-		else
-			NEW_BRANCH="$FOUND_BRANCH"
-		fi
-	fi
-
-	OLDPWD=$PWD
-	while [ -d ../.svn ]
-	do
-		cd ..
-	done
-
-	echo svn switch "$SVN_ROOT$NEW_BRANCH"
-	svn switch "$SVN_ROOT$NEW_BRANCH"
-	cd $OLDPWD
-}
-
-unalias svn 2>/dev/null
-svn_git_emulation() {
-	case "$1" in
-		log)
-			svn $@|less
-			;;
-		branch)
-			SVN_ROOT=$(svn_root)
-			echo "Branches:"
-			svn ls ${SVN_ROOT}/branches
-			echo
-			echo "Tags:"
-			svn ls ${SVN_ROOT}/tags
-			;;
-		diff)
-			svn --diff-cmd=$DIFF $@|less
-			;;
-		*)
-			svn $@
-			;;
-	esac
-}
-alias svn="svn_git_emulation"
+alias svn="svn-git.sh"
 
 # Platform-specific stuff
 export EDITOR="vim"
@@ -268,6 +110,7 @@ then
 elif [ $LINUX ]
 then
 	alias ls="ls -F --color=auto"
+    alias open="xdg-open"
 elif [ $WINDOWS ]
 then
 	open() {
