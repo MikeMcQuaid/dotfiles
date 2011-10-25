@@ -1,6 +1,12 @@
 Host www
 	HostName mikemcquaid.com
 	ForwardAgent yes
+	DynamicForward 1080
+
+Host iodine
+	HostName 10.254.254.1
+	ForwardAgent yes
+	DynamicForward 1080
 
 Host *kdab.com
 	ForwardAgent yes
@@ -12,6 +18,7 @@ Host bottles
 Host buildbot
 	HostName 188.111.54.51
 	LocalForward 3389 192.168.4.5:3389
+	ForwardAgent yes
 
 Host *
 	User mike
