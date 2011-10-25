@@ -6,6 +6,7 @@ ui_*.h
 *.o
 *.rej
 *.swp
+*.pyc
 
 *~
 
