@@ -8,6 +8,12 @@ Host iodine
 	ForwardAgent yes
 	DynamicForward 1080
 
+Host xray
+    HostName xray.kdab.com
+    LocalForward 5901 192.168.151.5:5900
+    LocalForward 5902 192.168.151.5:10963
+    ForwardAgent yes
+
 Host *kdab.com
 	ForwardAgent yes
 
