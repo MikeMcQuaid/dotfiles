@@ -25,6 +25,7 @@ Host linux64
 	HostName 192.168.4.5
 
 Host buildbot
+	User build
 	HostName 188.111.54.51
 	LocalForward 3389 192.168.4.4:3389
 	ForwardAgent yes
