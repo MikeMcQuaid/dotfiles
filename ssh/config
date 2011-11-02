@@ -21,9 +21,6 @@ Host bottles
 	HostName frs.sourceforge.net
 	User mikemcquaid,machomebrew
 
-Host linux64
-	HostName 192.168.4.5
-
 Host buildbot
 	User build
 	HostName 188.111.54.51
