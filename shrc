@@ -6,6 +6,9 @@ umask 022
 [ $(uname -s) = "Linux" ] && export LINUX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
 
+# Fix systems missing $USER
+[ -z "$USER" ] && export USER=$(whoami)
+
 # Colourful manpages
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
