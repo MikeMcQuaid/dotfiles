@@ -9,10 +9,13 @@ Host iodine
 	DynamicForward 1080
 
 Host xray
-    HostName xray.kdab.com
-    LocalForward 5901 192.168.151.5:5900
-    LocalForward 5902 192.168.151.5:10963
-    ForwardAgent yes
+	HostName xray.kdab.com
+	LocalForward 5901 bigmac:5900
+	LocalForward 5902 bigmac:10963
+	ForwardAgent yes
+
+Host bigmac
+	ProxyCommand ssh xray nc %h %p
 
 Host *kdab.com
 	ForwardAgent yes
@@ -21,11 +24,19 @@ Host bottles
 	HostName frs.sourceforge.net
 	User mikemcquaid,machomebrew
 
-Host buildbot
+Host ci
 	User build
-	HostName 188.111.54.51
+	HostName ci.kdab.com 
 	LocalForward 3389 192.168.4.4:3389
 	ForwardAgent yes
+
+Host linux64
+	HostName buildslave-linux64
+	ProxyCommand ssh ci nc %h %p
+
+Host linux32
+	HostName buildslave-linux32
+	ProxyCommand ssh ci nc %h %p
 
 Host *
 	User mike
@@ -34,3 +45,4 @@ Host *
 	NoHostAuthenticationForLocalhost yes
 	ControlMaster auto
 	ControlPath /tmp/sshmux-%r@%h:%p
+
