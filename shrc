@@ -98,9 +98,9 @@ if [ $OSX ]
 then
 	if [ -n "${DISPLAY}" ]
 	then
-		alias vim="vicotool"
-		export EDITOR="vicotool"
-		export GIT_EDITOR="vicotool -w"
+		alias vim="echo mate"
+		export EDITOR="mate"
+		export GIT_EDITOR="mate -w -l0"
 		export SVN_EDITOR=$GIT_EDITOR
 	fi
 	export GREP_OPTIONS="--color=auto"
