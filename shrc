@@ -98,7 +98,6 @@ if [ $OSX ]
 then
 	if [ -n "${DISPLAY}" ]
 	then
-		alias vim="echo mate"
 		export EDITOR="mate"
 		export GIT_EDITOR="mate -w -l0"
 		export SVN_EDITOR=$GIT_EDITOR
