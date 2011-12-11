@@ -91,6 +91,10 @@ alias scp="SSH_COMMAND=scp ssh-with-agent.sh -r"
 
 alias svn="svn-git.sh"
 
+field() {
+	awk {print\ \$$1}
+}
+
 # Platform-specific stuff
 export EDITOR="vim"
 
