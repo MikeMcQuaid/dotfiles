@@ -119,9 +119,11 @@ then
     alias open="xdg-open"
 elif [ $WINDOWS ]
 then
+	alias ls="ls -F --color=auto"
 	open() {
 		cmd /C"$*"
 	}
+
 fi
 
 # Run dircolors if it exists
