@@ -72,6 +72,8 @@ quiet_which() {
 	which $@ 1>/dev/null 2>/dev/null
 }
 
+quiet_which colormake && alias make=colormake
+
 quiet_which ack-grep && alias ack=ack-grep
 if quiet_which colordiff
 then
