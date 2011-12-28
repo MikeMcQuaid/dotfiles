@@ -26,8 +26,8 @@ Host bottles
 
 Host ci
 	User build
-	HostName ci.kdab.com 
-	LocalForward 3389 192.168.4.4:3389
+	HostName ci.kdab.com
+	LocalForward 3389 buildslavewin:3389
 	ForwardAgent yes
 
 Host linux64
