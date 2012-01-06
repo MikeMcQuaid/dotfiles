@@ -27,7 +27,6 @@
 	x = !gitx
 	svn-externals = !git svn show-externals | grep -x \\"[^#].*\\"
 	serve = !git daemon --reuseaddr --export-all --base-path=. --verbose ./.git
-	kdab = !git config --local --get user.email || git config --local --add user.email mike.mcquaid@kdab.com
 [instaweb]
 	httpd = webrick
 [diff]
