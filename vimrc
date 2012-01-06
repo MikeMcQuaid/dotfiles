@@ -11,13 +11,11 @@ set nobackup
 set ignorecase
 set smartcase
 set hlsearch
+set incsearch
 
 " indentation
 set autoindent
-set smartindent
 set smarttab
-set tabstop=4
-set shiftwidth=4
 
 " whitespace
 if has("multi_byte")
