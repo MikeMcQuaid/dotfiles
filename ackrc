@@ -1,6 +1,7 @@
 --type-set=cmake=.txt,.cmake
 --type-set=qmake=.pro
 --type-set=txt=.txt
+--type-set=lzz=.lzz
 --ignore-dir=b
 --ignore-dir=bdebug
 --ignore-dir=brelease
