@@ -1,6 +1,10 @@
 # 077 would be more secure, but 022 is generally quite realistic
 umask 022
 
+# Save more history
+export HISTSIZE=10000
+export SAVEHIST=10000
+
 # OS variables
 [ $(uname -s) = "Darwin" ] && export OSX=1
 [ $(uname -s) = "Linux" ] && export LINUX=1
