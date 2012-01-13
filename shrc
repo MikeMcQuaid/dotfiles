@@ -100,15 +100,15 @@ field() {
 }
 
 # Platform-specific stuff
-export EDITOR="vim"
+quiet_which vim && export EDITOR=`which vim`
 
 if [ $OSX ]
 then
 	if [ -n "${DISPLAY}" ]
 	then
 		export EDITOR="mate"
-		export GIT_EDITOR="mate -w -l0"
-		export SVN_EDITOR=$GIT_EDITOR
+		export GIT_EDITOR="mate --name 'Git Commit Message' -w -l1"
+		export SVN_EDITOR="mate --name 'Subversion Commit Message' -w -l1"
 	fi
 	export GREP_OPTIONS="--color=auto"
 	export CLICOLOR

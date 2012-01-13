@@ -2,6 +2,7 @@ Host www
 	HostName mikemcquaid.com
 	ForwardAgent yes
 	DynamicForward 1080
+	RemoteForward 52698 localhost:52698
 
 Host iodine
 	HostName 10.254.254.1
@@ -45,4 +46,3 @@ Host *
 	NoHostAuthenticationForLocalhost yes
 	ControlMaster auto
 	ControlPath ~/.ssh/%r@%h:%p.socket
-
