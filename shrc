@@ -43,6 +43,7 @@ add_to_path $HOME/Documents/KDAB/Scripts
 add_to_path $HOME/Documents/Scripts
 add_to_path $HOME/Scripts
 add_to_path $HOME/.gem/ruby/1.8/bin
+add_to_path $HOME/QtSDK/Desktop/Qt/474/gcc/bin
 
 # Count CPUs for Make jobs
 if [ $OSX ]
@@ -100,16 +101,26 @@ field() {
 }
 
 # Platform-specific stuff
-quiet_which vim && export EDITOR=`which vim`
+quiet_which vim && export EDITOR="vim"
+
+if quiet_which mate
+then
+	export EDITOR="mate"
+	export GIT_EDITOR="$EDITOR --name 'Git Commit Message' -w -l1"
+	export SVN_EDITOR="$EDITOR --name 'Subversion Commit Message' -w -l1"
+fi
+
+if [ -n "${SSH_CONNECTION}" ] && quiet_which rmate
+then
+	export EDITOR="rmate"
+	alias mate="$EDITOR"
+	export GIT_EDITOR="$EDITOR -w"
+	export SVN_EDITOR=$GIT_EDITOR
+	
+fi
 
 if [ $OSX ]
 then
-	if [ -n "${DISPLAY}" ]
-	then
-		export EDITOR="mate"
-		export GIT_EDITOR="mate --name 'Git Commit Message' -w -l1"
-		export SVN_EDITOR="mate --name 'Subversion Commit Message' -w -l1"
-	fi
 	export GREP_OPTIONS="--color=auto"
 	export CLICOLOR
 	alias ls="ls -F"
@@ -135,3 +146,6 @@ quiet_which dircolors && eval $(dircolors -b)
 
 # Aliases using variables
 alias ed="$EDITOR"
+
+# Load last directory
+[ -s ~/.lastpwd ] && cd `cat ~/.lastpwd`
