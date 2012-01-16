@@ -152,4 +152,4 @@ quiet_which dircolors && eval $(dircolors -b)
 alias ed="$EDITOR"
 
 # Load last directory
-[ -s ~/.lastpwd ] && cd `cat ~/.lastpwd`
+[ -s ~/.lastpwd ] && builtin cd `cat ~/.lastpwd`
