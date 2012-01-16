@@ -102,6 +102,7 @@ field() {
 
 cd() {
 	builtin cd "$*" && ls
+	pwd > ~/.lastpwd
 }
 
 # Platform-specific stuff
