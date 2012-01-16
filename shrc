@@ -100,6 +100,10 @@ field() {
 	awk {print\ \$$1}
 }
 
+cd() {
+	builtin cd "$*" && ls
+}
+
 # Platform-specific stuff
 quiet_which vim && export EDITOR="vim"
 
