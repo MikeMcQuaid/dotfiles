@@ -4,6 +4,11 @@ Host www
 	DynamicForward 1080
 	RemoteForward 52698 localhost:52698
 
+Host linuxvm
+	HostName mike-linux-vm.local
+	ForwardAgent yes
+	RemoteForward 52698 localhost:52698
+
 Host iodine
 	HostName 10.254.254.1
 	ForwardAgent yes
