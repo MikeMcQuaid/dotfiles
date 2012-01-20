@@ -74,7 +74,7 @@ alias ps="ps aux"
 alias less="less -ir"
 
 quiet_which() {
-	which $@ 1>/dev/null 2>/dev/null
+	which $1 1>/dev/null 2>/dev/null
 }
 
 quiet_which ack-grep && alias ack=ack-grep
@@ -101,7 +101,7 @@ field() {
 }
 
 cd() {
-	builtin cd "$*" && ls
+	builtin cd "$@" && ls
 	pwd > ~/.lastpwd
 }
 
@@ -141,7 +141,7 @@ elif [ $WINDOWS ]
 then
 	alias ls="ls -F --color=auto"
 	open() {
-		cmd /C"$*"
+		cmd /C"$@"
 	}
 
 fi
