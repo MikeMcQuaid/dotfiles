@@ -32,6 +32,8 @@ export QTEST_COLORED=1
 export KDABSVN='svn+ssh://mike@svn.kdab.com/home/SVN-klaralv'
 export KDABGIT='gitolite@git.kdab.com'
 
+[ -s ~/.github.token ] && export GITHUB_TOKEN=$(cat ~/.github.token)
+
 # Setup paths
 add_to_path() {
 	[ -d $1 ] && export PATH="$1:$PATH"
