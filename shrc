@@ -135,6 +135,10 @@ then
 	alias bpi="brew pull --install"
 	alias ql="qlmanage -p 1>/dev/null"
 	alias locate="mdfind -name"
+	brew-clean() {
+		[ -s ~/.homebrew.kept ] || return
+		comm -13 ~/.homebrew.kept <(brew list) | xargs brew uninstall
+	}
 elif [ $LINUX ]
 then
 	alias ls="ls -F --color=auto"
