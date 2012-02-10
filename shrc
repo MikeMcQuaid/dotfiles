@@ -105,7 +105,8 @@ field() {
 }
 
 cd() {
-	builtin cd "$@" && ls
+	builtin cd "$@" || return
+	ls
 	pwd > ~/.lastpwd
 }
 
