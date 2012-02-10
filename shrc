@@ -39,13 +39,15 @@ add_to_path() {
 	[ -d $1 ] && export PATH="$1:$PATH"
 }
 
+export GEM_HOME=$HOME/.gem
+
 add_to_path /usr/local/bin
 add_to_path /usr/local/sbin
 add_to_path $HOME/Documents/KDAB/Scripts
 add_to_path $HOME/Documents/Scripts
 add_to_path $HOME/Scripts
-add_to_path $HOME/.gem/ruby/1.8/bin
-add_to_path $HOME/QtSDK/Desktop/Qt/474/gcc/bin
+add_to_path $GEM_HOME/bin
+add_to_path $HOME/QtSDK/Desktop/Qt/480/gcc/bin
 
 # Count CPUs for Make jobs
 if [ $OSX ]
