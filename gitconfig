@@ -14,18 +14,20 @@
 [help]
 	format = web
 [alias]
-	l = log --graph --oneline --decorate
-	d = diff --word-diff
+	stage = add -u
+	unstage = reset HEAD --
+	switch = checkout
+	word = diff --word-diff
+	sign = cherry-pick --signoff
+	externals = !git svn show-externals | grep -x \\"[^#].*\\"
+	serve = !git daemon --reuseaddr --export-all --base-path=. --verbose ./.git
+	upstream = push --set-upstream
 	b = checkout -b
 	i = rebase --interactive origin/master
 	r = pull --rebase
-	p = pull
-	c = cherry-pick --signoff
-	s = status -sb
-	f = !git commit --all --amend --reuse-message=HEAD --date=\"$(date)\"
+	l = log --graph --oneline --decorate
+	f = !git commit --all --amend --reuse-message=HEAD --date=\"$(date)\" #"
 	x = !gitx
-	svn-externals = !git svn show-externals | grep -x \\"[^#].*\\"
-	serve = !git daemon --reuseaddr --export-all --base-path=. --verbose ./.git
 [instaweb]
 	httpd = webrick
 [diff]
