@@ -2,7 +2,6 @@ showInvisibles = true
 tabSize = 4
 softTabs = false
 softWrap = true
-projectDirectory = "$CWD"
 spellingLanguage = en_GB
 
 [ text ]
