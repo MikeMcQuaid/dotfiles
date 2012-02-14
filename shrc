@@ -47,7 +47,7 @@ add_to_path $HOME/Documents/KDAB/Scripts
 add_to_path $HOME/Documents/Scripts
 add_to_path $HOME/Scripts
 add_to_path $GEM_HOME/bin
-add_to_path $HOME/QtSDK/Desktop/Qt/480/gcc/bin
+add_to_path $HOME/QtSDK/Desktop/Qt/4.8.0/gcc/bin
 
 # Count CPUs for Make jobs
 if [ $OSX ]
