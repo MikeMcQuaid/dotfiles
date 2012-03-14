@@ -39,15 +39,16 @@ add_to_path() {
 	[ -d $1 ] && export PATH="$1:$PATH"
 }
 
-export GEM_HOME=$HOME/.gem
-
 add_to_path /usr/local/bin
 add_to_path /usr/local/sbin
 add_to_path $HOME/Documents/KDAB/Scripts
 add_to_path $HOME/Documents/Scripts
 add_to_path $HOME/Scripts
-add_to_path $GEM_HOME/bin
+add_to_path $HOME/.gem/ruby/1.8/bin
 add_to_path $HOME/QtSDK/Desktop/Qt/4.8.0/gcc/bin
+add_to_path $HOME/.rvm/bin
+#add_to_path /Applications/Xcode.app/Contents/Developer/usr/bin
+#add_to_path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 
 # Count CPUs for Make jobs
 if [ $OSX ]
@@ -93,7 +94,7 @@ fi
 alias upkdab="scp-to-http.sh mike swanson.kdab.com public_html"
 alias upjoanna="scp-to-http.sh mike www.kdab.com public_html"
 alias upmike="scp-to-http.sh mike mikemcquaid.com Sites"
-alias upbrew="scp-to-http.sh mikemcquaid,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles https://downloads.sourceforge.net/project/machomebrew/Bottles"
+alias upbrew="scp-to-http.sh mikemcquaid,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles https://downloads.sf.net/project/machomebrew/Bottles"
 
 alias ssh="ssh-with-agent.sh"
 alias scp="SSH_COMMAND=scp ssh-with-agent.sh -r"
@@ -102,12 +103,6 @@ alias svn="svn-git.sh"
 
 field() {
 	awk {print\ \$$1}
-}
-
-cd() {
-	builtin cd "$@" || return
-	ls
-	pwd > ~/.lastpwd
 }
 
 # Platform-specific stuff
@@ -133,6 +128,8 @@ if [ $OSX ]
 then
 	export GREP_OPTIONS="--color=auto"
 	export CLICOLOR
+	export CC="clang"
+	export CXX="clang++"
 	alias ls="ls -F"
 	alias brew="nice brew"
 	alias bpi="brew pull --install"
@@ -162,4 +159,10 @@ quiet_which dircolors && eval $(dircolors -b)
 alias ed="$EDITOR"
 
 # Load last directory
-[ -s ~/.lastpwd ] && builtin cd `cat ~/.lastpwd`
+cd() {
+	builtin cd "$@" || return
+	ls
+	pwd > ~/.lastpwd
+}
+
+[ -s ~/.lastpwd ] && builtin cd `cat ~/.lastpwd` 2>/dev/null
