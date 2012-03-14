@@ -15,6 +15,7 @@
 	format = web
 [alias]
 	stage = add -u
+	staged = diff --cached
 	unstage = reset HEAD --
 	switch = checkout
 	word = diff --word-diff
