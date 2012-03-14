@@ -10,6 +10,12 @@ Host linuxvm
 	RemoteForward 52698 localhost:52698
 	AddressFamily inet
 
+Host osxvm
+	HostName snow-leopard-vm.local
+	ForwardAgent yes
+	RemoteForward 52698 localhost:52698
+	AddressFamily inet
+
 Host iodine
 	HostName 10.254.254.1
 	ForwardAgent yes
