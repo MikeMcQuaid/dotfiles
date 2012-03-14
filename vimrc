@@ -16,6 +16,11 @@ set incsearch
 " indentation
 set autoindent
 set smarttab
+if has("autocmd")
+    filetype on
+    filetype indent on
+    filetype plugin on
+endif
 
 " whitespace
 if has("multi_byte")
