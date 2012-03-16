@@ -50,6 +50,9 @@ add_to_path $HOME/.rvm/bin
 #add_to_path /Applications/Xcode.app/Contents/Developer/usr/bin
 #add_to_path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 
+# Load RVM as a function
+[ -s $HOME/.rvm/scripts/rvm ] && source $HOME/.rvm/scripts/rvm
+
 # Count CPUs for Make jobs
 if [ $OSX ]
 then
