@@ -96,9 +96,6 @@ alias upjoanna="scp-to-http.sh mike www.kdab.com public_html"
 alias upmike="scp-to-http.sh mike mikemcquaid.com Sites"
 alias upbrew="scp-to-http.sh mikemcquaid,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles https://downloads.sf.net/project/machomebrew/Bottles"
 
-alias ssh="ssh-with-agent.sh"
-alias scp="SSH_COMMAND=scp ssh-with-agent.sh -r"
-
 alias svn="svn-git.sh"
 
 field() {
@@ -142,7 +139,8 @@ then
 elif [ $LINUX ]
 then
 	alias ls="ls -F --color=auto"
-    alias open="xdg-open"
+	alias open="xdg-open"
+	quiet_which keychain && eval `keychain -q --eval --agents ssh id_rsa`
 elif [ $WINDOWS ]
 then
 	alias ls="ls -F --color=auto"
