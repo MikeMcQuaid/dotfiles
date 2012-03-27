@@ -8,16 +8,15 @@
 [gist]
 	browse = true
 [push]
-	default = tracking
+	default = upstream
 [core]
 	excludesfile = ~/.gitignore
 [help]
 	format = web
 [alias]
-	stage = add -u
+	stage = !git add -u
 	staged = diff --cached
 	unstage = reset HEAD --
-	switch = checkout
 	word = diff --word-diff
 	sign = cherry-pick --signoff
 	externals = !git svn show-externals | grep -x \\"[^#].*\\"
