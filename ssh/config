@@ -1,7 +1,7 @@
 Host www
-	HostName mikemcquaid.com
+	HostName 91.197.32.157
 	ForwardAgent yes
-	DynamicForward 1080
+	DynamicForward *:1080
 	RemoteForward 52698 localhost:52698
 
 Host linuxvm
@@ -19,7 +19,7 @@ Host osxvm
 Host iodine
 	HostName 10.254.254.1
 	ForwardAgent yes
-	DynamicForward 1080
+	DynamicForward *:1080
 
 Host xray
 	HostName xray.kdab.com
