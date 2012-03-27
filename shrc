@@ -44,9 +44,10 @@ add_to_path /usr/local/sbin
 add_to_path $HOME/Documents/KDAB/Scripts
 add_to_path $HOME/Documents/Scripts
 add_to_path $HOME/Scripts
-add_to_path $HOME/.gem/ruby/1.8/bin
 add_to_path $HOME/QtSDK/Desktop/Qt/4.8.0/gcc/bin
+add_to_path $HOME/.gem/ruby/1.8/bin
 add_to_path $HOME/.rvm/bin
+add_to_path $HOME/Library/Python/2.7/bin
 #add_to_path /Applications/Xcode.app/Contents/Developer/usr/bin
 #add_to_path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 
@@ -135,6 +136,7 @@ then
 	alias bpi="brew pull --install"
 	alias ql="qlmanage -p 1>/dev/null"
 	alias locate="mdfind -name"
+	alias jekyll="rvm 1.9.3 do jekyll"
 	brew-clean() {
 		[ -s ~/.homebrew.kept ] || return
 		comm -13 ~/.homebrew.kept <(brew list) | xargs brew uninstall
