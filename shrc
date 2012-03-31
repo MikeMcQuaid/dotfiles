@@ -148,6 +148,7 @@ then
 	quiet_which keychain && eval `keychain -q --eval --agents ssh id_rsa`
 elif [ $WINDOWS ]
 then
+	quiet_which plink && alias ssh="plink -l mike"
 	alias ls="ls -F --color=auto"
 	open() {
 		cmd /C"$@"
