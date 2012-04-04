@@ -146,6 +146,7 @@ then
 	alias ls="ls -F --color=auto"
 	alias open="xdg-open"
 	quiet_which keychain && eval `keychain -q --eval --agents ssh id_rsa`
+	alias agdu="sudo apt-get dist-upgrade"
 elif [ $WINDOWS ]
 then
 	quiet_which plink && alias ssh="plink -l mike"
