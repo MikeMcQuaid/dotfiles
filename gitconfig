@@ -8,7 +8,7 @@
 [gist]
 	browse = true
 [push]
-	default = upstream
+	default = tracking
 [core]
 	excludesfile = ~/.gitignore
 [help]
