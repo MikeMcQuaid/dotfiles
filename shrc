@@ -43,7 +43,11 @@ add_to_path /usr/local/bin
 add_to_path /usr/local/sbin
 add_to_path $HOME/Documents/KDAB/Scripts
 add_to_path $HOME/Documents/Scripts
+add_to_path $HOME/Documents/Scripts/ignored
+add_to_path $HOME/Documents/Scripts/thirdparty
 add_to_path $HOME/Scripts
+add_to_path $HOME/Scripts/ignored
+add_to_path $HOME/Scripts/thirdparty
 add_to_path $HOME/QtSDK/Desktop/Qt/4.8.0/gcc/bin
 add_to_path $HOME/.gem/ruby/1.8/bin
 add_to_path $HOME/.rvm/bin
@@ -119,10 +123,8 @@ fi
 if [ -n "${SSH_CONNECTION}" ] && quiet_which rmate
 then
 	export EDITOR="rmate"
-	alias mate="$EDITOR"
 	export GIT_EDITOR="$EDITOR -w"
 	export SVN_EDITOR=$GIT_EDITOR
-	
 fi
 
 if [ $OSX ]
@@ -147,10 +149,12 @@ then
 	alias open="xdg-open"
 	quiet_which keychain && eval `keychain -q --eval --agents ssh id_rsa`
 	alias agdu="sudo apt-get dist-upgrade"
+	alias mate="$EDITOR"
 elif [ $WINDOWS ]
 then
 	quiet_which plink && alias ssh="plink -l mike"
 	alias ls="ls -F --color=auto"
+	alias mate="$EDITOR"
 	open() {
 		cmd /C"$@"
 	}
