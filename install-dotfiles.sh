@@ -7,6 +7,8 @@ DOTFILESDIR=$(pwd -P)
 SCRIPTNAME=$(basename $0)
 for DOTFILE in *; do
 	[ "$DOTFILE" = "$SCRIPTNAME" ] && continue
+	[ "$DOTFILE" = "README.md" ] && continue
+	[ "$DOTFILE" = "LICENSE.txt" ] && continue
 	HOMEFILE="$HOME/.$DOTFILE"
 	[ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
 	DIRFILE="$DOTFILESDIR/$DOTFILE"
