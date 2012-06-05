@@ -48,7 +48,7 @@ add_to_path $HOME/Documents/Scripts/thirdparty
 add_to_path $HOME/Scripts
 add_to_path $HOME/Scripts/ignored
 add_to_path $HOME/Scripts/thirdparty
-add_to_path $HOME/QtSDK/Desktop/Qt/4.8.0/gcc/bin
+add_to_path $HOME/QtSDK/Desktop/Qt/4.8.1/gcc/bin
 add_to_path $HOME/.gem/ruby/1.8/bin
 add_to_path $HOME/.rvm/bin
 add_to_path $HOME/Library/Python/2.7/bin
