@@ -28,6 +28,9 @@ export LESS_TERMEND=$'\E[0m'
 # Qt development
 export QTEST_COLORED=1
 
+# Android development
+export ANDROID_SDK_ROOT=$(brew --prefix android-sdk)
+
 # KDAB development
 export KDABSVN='svn+ssh://mike@svn.kdab.com/home/SVN-klaralv'
 export KDABGIT='gitolite@git.kdab.com'
@@ -48,10 +51,12 @@ add_to_path $HOME/Documents/Scripts/thirdparty
 add_to_path $HOME/Scripts
 add_to_path $HOME/Scripts/ignored
 add_to_path $HOME/Scripts/thirdparty
-add_to_path $HOME/QtSDK/Desktop/Qt/4.8.1/gcc/bin
 add_to_path $HOME/.gem/ruby/1.8/bin
 add_to_path $HOME/.rvm/bin
 add_to_path $HOME/Library/Python/2.7/bin
+
+[ $LINUX ] && add_to_path $HOME/QtSDK/Desktop/Qt/4.8.1/gcc/bin
+[ $OSX ] && add_to_path $HOME/Documents/Scripts/thirdparty/osx
 #add_to_path /Applications/Xcode.app/Contents/Developer/usr/bin
 #add_to_path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 
@@ -139,6 +144,7 @@ then
 	alias ql="qlmanage -p 1>/dev/null"
 	alias locate="mdfind -name"
 	alias jekyll="rvm 1.9.3 do jekyll"
+	alias rails="rvm 1.9.3 do rails"
 	brew-clean() {
 		[ -s ~/.homebrew.kept ] || return
 		comm -13 ~/.homebrew.kept <(brew list) | xargs brew uninstall
