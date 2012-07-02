@@ -29,7 +29,7 @@ export LESS_TERMEND=$'\E[0m'
 export QTEST_COLORED=1
 
 # Android development
-export ANDROID_SDK_ROOT=$(brew --prefix android-sdk)
+[ $OSX ] && export ANDROID_SDK_ROOT=$(brew --prefix android-sdk)
 
 # KDAB development
 export KDABSVN='svn+ssh://mike@svn.kdab.com/home/SVN-klaralv'
