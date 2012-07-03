@@ -17,17 +17,16 @@
 	stage = !git add -u
 	staged = diff --cached
 	unstage = reset HEAD --
-	word = diff --word-diff
 	sign = cherry-pick --signoff
 	externals = !git svn show-externals | grep -x \\"[^#].*\\"
 	serve = !git daemon --reuseaddr --export-all --base-path=. --verbose ./.git
-	upstream = push --set-upstream
+	w = diff --word-diff
+	u = push --set-upstream
 	b = checkout -b
 	i = rebase --interactive origin/master
 	r = pull --rebase
 	l = log --graph --oneline --decorate
 	f = !git commit --all --amend --reuse-message=HEAD --date=\"$(date)\" #"
-	x = !gitx
 [instaweb]
 	httpd = webrick
 [diff]
