@@ -6,3 +6,5 @@
 --ignore-dir=b
 --ignore-dir=bdebug
 --ignore-dir=brelease
+--ignore-dir=_site
+--ignore-dir=_site.min
