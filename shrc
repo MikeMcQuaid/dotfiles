@@ -28,14 +28,36 @@ export LESS_TERMEND=$'\E[0m'
 # Qt development
 export QTEST_COLORED=1
 
-# Android development
-[ $OSX ] && export ANDROID_SDK_ROOT=$(brew --prefix android-sdk)
-
 # KDAB development
 export KDABSVN='svn+ssh://mike@svn.kdab.com/home/SVN-klaralv'
 export KDABGIT='gitolite@git.kdab.com'
 
+# Count CPUs for Make jobs
+if [ $OSX ]
+then
+	export CPUCOUNT=$(sysctl -n hw.ncpu)
+elif [ $LINUX ]
+then
+	export CPUCOUNT=$(getconf _NPROCESSORS_ONLN)
+else
+	export CPUCOUNT="1"
+fi
+
+if [ "$CPUCOUNT" -gt 1 ]
+then
+	export MAKEFLAGS="-j$CPUCOUNT"
+fi
+
+# Load GitHub token
 [ -s ~/.github.token ] && export GITHUB_TOKEN=$(cat ~/.github.token)
+
+# Load RVM as a function
+[ -s $HOME/.rvm/scripts/rvm ] && source $HOME/.rvm/scripts/rvm
+
+# Print field by number
+field() {
+	awk {print\ \$$1}
+}
 
 # Setup paths
 add_to_path() {
@@ -55,28 +77,25 @@ add_to_path $HOME/.gem/ruby/1.8/bin
 add_to_path $HOME/.rvm/bin
 add_to_path $HOME/Library/Python/2.7/bin
 
-[ $LINUX ] && add_to_path $HOME/QtSDK/Desktop/Qt/4.8.1/gcc/bin
-[ $OSX ] && add_to_path $HOME/Documents/Scripts/thirdparty/osx
-#add_to_path /Applications/Xcode.app/Contents/Developer/usr/bin
-#add_to_path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+quiet_which() {
+	which $1 1>/dev/null 2>/dev/null
+}
 
-# Load RVM as a function
-[ -s $HOME/.rvm/scripts/rvm ] && source $HOME/.rvm/scripts/rvm
-
-# Count CPUs for Make jobs
-if [ $OSX ]
+quiet_which ack-grep && alias ack=ack-grep
+export DIFF=diff
+if quiet_which colordiff
 then
-	export CPUCOUNT=$(sysctl -n hw.ncpu)
-elif [ $LINUX ]
-then
-	export CPUCOUNT=$(getconf _NPROCESSORS_ONLN)
-else
-	export CPUCOUNT="1"
+	export DIFF=colordiff
+	alias diff=colordiff
 fi
 
-if [ "$CPUCOUNT" -gt 1 ]
+quiet_which vim && export EDITOR="vim"
+
+if quiet_which mate
 then
-	export MAKEFLAGS="-j$CPUCOUNT"
+	export EDITOR="mate"
+	export GIT_EDITOR="$EDITOR --name 'Git Commit Message' -w -l1"
+	export SVN_EDITOR="$EDITOR --name 'Subversion Commit Message' -w -l1"
 fi
 
 # Aliases
@@ -91,19 +110,6 @@ alias make="nice make"
 alias ps="ps aux"
 alias less="less -ir"
 
-quiet_which() {
-	which $1 1>/dev/null 2>/dev/null
-}
-
-quiet_which ack-grep && alias ack=ack-grep
-if quiet_which colordiff
-then
-	export DIFF=colordiff
-	alias diff=colordiff
-else
-	export DIFF=diff
-fi
-
 alias upkdab="scp-to-http.sh mike swanson.kdab.com public_html"
 alias upjoanna="scp-to-http.sh mike www.kdab.com public_html"
 alias upmike="scp-to-http.sh mike mikemcquaid.com Sites"
@@ -111,20 +117,7 @@ alias upbrew="scp-to-http.sh mikemcquaid,machomebrew frs.sourceforge.net /home/f
 
 alias svn="svn-git.sh"
 
-field() {
-	awk {print\ \$$1}
-}
-
 # Platform-specific stuff
-quiet_which vim && export EDITOR="vim"
-
-if quiet_which mate
-then
-	export EDITOR="mate"
-	export GIT_EDITOR="$EDITOR --name 'Git Commit Message' -w -l1"
-	export SVN_EDITOR="$EDITOR --name 'Subversion Commit Message' -w -l1"
-fi
-
 if [ -n "${SSH_CONNECTION}" ] && quiet_which rmate
 then
 	export EDITOR="rmate"
@@ -138,6 +131,12 @@ then
 	export CLICOLOR
 	export CC="clang"
 	export CXX="clang++"
+	export ANDROID_SDK_ROOT=$(brew --prefix android-sdk)
+
+	add_to_path $HOME/Documents/Scripts/thirdparty/osx
+	#add_to_path /Applications/Xcode.app/Contents/Developer/usr/bin
+	#add_to_path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
 	alias ls="ls -F"
 	alias brew="nice brew"
 	alias bpi="brew pull --install"
@@ -145,26 +144,26 @@ then
 	alias locate="mdfind -name"
 	alias jekyll="rvm 1.9.3 do jekyll"
 	alias rails="rvm 1.9.3 do rails"
-	brew-clean() {
-		[ -s ~/.homebrew.kept ] || return
-		comm -13 ~/.homebrew.kept <(brew list) | xargs brew uninstall
-	}
+
 elif [ $LINUX ]
 then
+	add_to_path $HOME/QtSDK/Desktop/Qt/4.8.1/gcc/bin
+	quiet_which keychain && eval `keychain -q --eval --agents ssh id_rsa`
+
 	alias ls="ls -F --color=auto"
 	alias open="xdg-open"
-	quiet_which keychain && eval `keychain -q --eval --agents ssh id_rsa`
 	alias agdu="sudo apt-get dist-upgrade"
 	alias mate="$EDITOR"
 elif [ $WINDOWS ]
 then
 	quiet_which plink && alias ssh="plink -l mike"
+
 	alias ls="ls -F --color=auto"
 	alias mate="$EDITOR"
+
 	open() {
 		cmd /C"$@"
 	}
-
 fi
 
 # Run dircolors if it exists
