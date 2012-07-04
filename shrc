@@ -142,8 +142,6 @@ then
 	alias bpi="brew pull --install"
 	alias ql="qlmanage -p 1>/dev/null"
 	alias locate="mdfind -name"
-	alias jekyll="rvm 1.9.3 do jekyll"
-	alias rails="rvm 1.9.3 do rails"
 
 elif [ $LINUX ]
 then
