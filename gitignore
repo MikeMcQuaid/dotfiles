@@ -19,6 +19,9 @@ CMakeCache.txt
 cmake_install.cmake
 install_manifest.txt
 
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+
 b/
 bdebug/
 brelease/
