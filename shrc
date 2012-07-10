@@ -131,7 +131,7 @@ then
 	export CLICOLOR
 	export CC="clang"
 	export CXX="clang++"
-	export ANDROID_SDK_ROOT=$(brew --prefix android-sdk)
+	quiet_which brew && export ANDROID_SDK_ROOT=$(brew --prefix android-sdk)
 
 	add_to_path $HOME/Documents/Scripts/thirdparty/osx
 	#add_to_path /Applications/Xcode.app/Contents/Developer/usr/bin
