@@ -60,12 +60,16 @@ field() {
 }
 
 # Setup paths
-add_to_path() {
+add_to_path_start() {
 	[ -d $1 ] && export PATH="$1:$PATH"
 }
 
-add_to_path /usr/local/bin
-add_to_path /usr/local/sbin
+add_to_path() {
+	[ -d $1 ] && export PATH="$PATH:$1"
+}
+
+add_to_path_start /usr/local/bin
+add_to_path_start /usr/local/sbin
 add_to_path $HOME/Documents/KDAB/Scripts
 add_to_path $HOME/Documents/Scripts
 add_to_path $HOME/Documents/Scripts/ignored
