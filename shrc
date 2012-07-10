@@ -134,7 +134,7 @@ then
 	quiet_which brew && export ANDROID_SDK_ROOT=$(brew --prefix android-sdk)
 
 	add_to_path $HOME/Documents/Scripts/thirdparty/osx
-	#add_to_path /Applications/Xcode.app/Contents/Developer/usr/bin
+	add_to_path /Applications/Xcode.app/Contents/Developer/usr/bin
 	#add_to_path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 
 	alias ls="ls -F"
