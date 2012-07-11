@@ -64,7 +64,7 @@ else
 fi
 RPROMPT='%{$fg_bold[red]%}$(git_branch)%{$fg_bold[yellow]%}$(svn_branch)%b[%{$fg_bold[blue]%}%~%b%f]'
 
-[ $OSX ] && export FPATH="$(brew --prefix)/share/zsh/functions:$FPATH"
+[ $OSX ] && quiet_which brew && export FPATH="$(brew --prefix)/share/zsh/functions:$FPATH"
 
 # History
 export HISTSIZE=2000
