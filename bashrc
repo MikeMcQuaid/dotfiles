@@ -1,5 +1,5 @@
 # load shared shell configuration
-[ -f ~/.shrc ] && . ~/.shrc
+source ~/.shrc
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -15,7 +15,13 @@ shopt -s cmdhist
 shopt -s cdspell
 
 # Bash completion
-[ -f /etc/profile.d/bash-completion ] && . /etc/profile.d/bash-completion
+[ -f /etc/profile.d/bash-completion ] && source /etc/profile.d/bash-completion
+
+if quiet_which brew
+then
+	source $BREW_PREFIX/Library/Contributions/brew_bash_completion.sh
+	[ -f $BREW_PREFIX/etc/bash_completion.d/git-completion.bash ] && source $BREW_PREFIX/etc/bash_completion.d/git-completion.bash
+fi
 
 # Colorful prompt
 if [ $USER = "root" ]

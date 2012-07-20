@@ -123,6 +123,14 @@ then
 	export SVN_EDITOR=$GIT_EDITOR
 fi
 
+if quiet_which brew
+then
+	export BREW_PREFIX=$(brew --prefix)
+	export ANDROID_SDK_ROOT=$(brew --prefix android-sdk)
+	alias brew="nice brew"
+	alias bpi="brew pull --install"
+fi
+
 if [ $OSX ]
 then
 	export GREP_OPTIONS="--color=auto"
@@ -130,14 +138,10 @@ then
 	export CC="clang"
 	export CXX="clang++"
 
-	quiet_which brew && export ANDROID_SDK_ROOT=$(brew --prefix android-sdk)
-	quiet_which brew && alias brew="nice brew"
-
 	add_to_path $HOME/Documents/Scripts/thirdparty/osx
 	add_to_path /Applications/Xcode.app/Contents/Developer/usr/bin
 
 	alias ls="ls -F"
-	alias bpi="brew pull --install"
 	alias ql="qlmanage -p 1>/dev/null"
 	alias locate="mdfind -name"
 

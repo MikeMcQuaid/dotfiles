@@ -1,8 +1,14 @@
 # load shared shell configuration
-. ~/.shrc
+source ~/.shrc
 
-# Enable advanced completion
+# Enable completions
 autoload -U compinit && compinit
+
+if quiet_which brew
+then
+	[ ! -f $BREW_PREFIX/share/zsh/site-functions/_brew ] && ln -s $BREW_PREFIX/Library/Contributions/brew_zsh_completion.zsh $BREW_PREFIX/share/zsh/site-functions/_brew
+	export FPATH="$BREW_PREFIX/share/zsh/site-functions:$FPATH"
+fi
 
 # Enable regex moving
 autoload -U zmv
@@ -63,8 +69,6 @@ else
 	PROMPT='%{$fg_bold[green]%}%m %{$fg_bold[blue]%}# %b%f'
 fi
 RPROMPT='%{$fg_bold[red]%}$(git_branch)%{$fg_bold[yellow]%}$(svn_branch)%b[%{$fg_bold[blue]%}%~%b%f]'
-
-[ $OSX ] && quiet_which brew && export FPATH="$(brew --prefix)/share/zsh/functions:$FPATH"
 
 # History
 export HISTSIZE=2000
