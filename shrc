@@ -47,15 +47,14 @@ fi
 # Load GitHub token
 [ -s ~/.github.token ] && export GITHUB_TOKEN=$(cat ~/.github.token)
 
-# Load RVM as a function
-[ -s $HOME/.rvm/scripts/rvm ] && source $HOME/.rvm/scripts/rvm
-
 # Print field by number
 field() {
 	awk {print\ \$$1}
 }
 
 # Setup paths
+export PATH=$PATH:vendor/ruby/bin
+
 add_to_path_start() {
 	[ -d $1 ] && export PATH="$1:$PATH"
 }
@@ -72,8 +71,6 @@ add_to_path $HOME/Documents/Scripts/thirdparty
 add_to_path $HOME/Scripts
 add_to_path $HOME/Scripts/ignored
 add_to_path $HOME/Scripts/thirdparty
-add_to_path $HOME/.gem/ruby/1.8/bin
-add_to_path $HOME/.rvm/bin
 add_to_path $HOME/Library/Python/2.7/bin
 
 quiet_which() {
@@ -106,7 +103,7 @@ alias mv="mv -iv"
 alias cp="cp -irv"
 alias du="du -sh"
 alias make="nice make"
-alias ps="ps -aux"
+alias ps="ps aux"
 alias less="less --ignore-case --raw-control-chars"
 alias rsync="rsync --partial --progress --human-readable --compress"
 
@@ -114,6 +111,8 @@ alias upmike="scp-to-http.sh mike mikemcquaid.com Sites"
 alias upbrew="scp-to-http.sh mikemcquaid,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles https://downloads.sf.net/project/machomebrew/Bottles"
 
 alias svn="svn-git.sh"
+
+alias be="bundle exec"
 
 # Platform-specific stuff
 if [ -n "${SSH_CONNECTION}" ] && quiet_which rmate
@@ -168,6 +167,9 @@ fi
 
 # Run dircolors if it exists
 quiet_which dircolors && eval $(dircolors -b)
+
+# Run rbenv if it exists
+quiet_which rbenv && eval "$(rbenv init -)"
 
 # Aliases using variables
 alias ed="$EDITOR"
