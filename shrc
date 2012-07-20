@@ -72,6 +72,7 @@ add_to_path $HOME/Scripts
 add_to_path $HOME/Scripts/ignored
 add_to_path $HOME/Scripts/thirdparty
 add_to_path $HOME/Library/Python/2.7/bin
+add_to_path $HOME/.gem/ruby/1.8/bin
 
 quiet_which() {
 	which $1 1>/dev/null 2>/dev/null
