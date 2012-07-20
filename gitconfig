@@ -45,23 +45,6 @@
 	whitespace = fix
 [branch]
 	autosetuprebase = remote
-[sendemail]
-	identity = gmail
-	thread = false
-	chainreplyto = false
-	suppresscc = all
-[sendemail "gmail"]
-	smtpserver = smtp.gmail.com
-	smtpencryption = tls
-	smtpserverport = 587
-	smtpuser = mkmcqd
-	from = mike@mikemcquaid.com
-[sendemail "kdab"]
-	smtpserver = mail.kdab.com
-	smtpencryption = tls
-	smtpserverport = 25
-	smtpuser = mike
-	from = mike.mcquaid@kdab.com
 [url "git@github.com:"]
 	pushInsteadOf = git://github.com/
 [url "https://github.com/"]

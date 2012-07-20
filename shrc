@@ -28,10 +28,6 @@ export LESS_TERMEND=$'\E[0m'
 # Qt development
 export QTEST_COLORED=1
 
-# KDAB development
-export KDABSVN='svn+ssh://mike@svn.kdab.com/home/SVN-klaralv'
-export KDABGIT='gitolite@git.kdab.com'
-
 # Count CPUs for Make jobs
 if [ $OSX ]
 then
@@ -70,7 +66,6 @@ add_to_path() {
 
 add_to_path_start /usr/local/bin
 add_to_path_start /usr/local/sbin
-add_to_path $HOME/Documents/KDAB/Scripts
 add_to_path $HOME/Documents/Scripts
 add_to_path $HOME/Documents/Scripts/ignored
 add_to_path $HOME/Documents/Scripts/thirdparty
@@ -115,8 +110,6 @@ alias ps="ps -aux"
 alias less="less --ignore-case --raw-control-chars"
 alias rsync="rsync --partial --progress --human-readable --compress"
 
-alias upkdab="scp-to-http.sh mike swanson.kdab.com public_html"
-alias upjoanna="scp-to-http.sh mike www.kdab.com public_html"
 alias upmike="scp-to-http.sh mike mikemcquaid.com Sites"
 alias upbrew="scp-to-http.sh mikemcquaid,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles https://downloads.sf.net/project/machomebrew/Bottles"
 

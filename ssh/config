@@ -30,9 +30,6 @@ Host xray
 Host bigmac
 	ProxyCommand ssh xray nc %h %p
 
-Host *kdab.com
-	ForwardAgent yes
-
 Host bottles
 	HostName frs.sourceforge.net
 	User mikemcquaid,machomebrew
