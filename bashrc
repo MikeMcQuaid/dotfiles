@@ -16,12 +16,7 @@ shopt -s cdspell
 
 # Bash completion
 [ -f /etc/profile.d/bash-completion ] && source /etc/profile.d/bash-completion
-
-if quiet_which brew
-then
-	source $BREW_PREFIX/Library/Contributions/brew_bash_completion.sh
-	[ -f $BREW_PREFIX/etc/bash_completion.d/git-completion.bash ] && source $BREW_PREFIX/etc/bash_completion.d/git-completion.bash
-fi
+quiet_which brew && source $BREW_PREFIX/etc/bash_completion >/dev/null
 
 # Colorful prompt
 if [ $USER = "root" ]
