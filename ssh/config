@@ -4,13 +4,19 @@ Host www
 	DynamicForward *:1080
 	RemoteForward 52698 localhost:52698
 
-Host linuxvm
-	HostName mike-linux-vm.local
+Host linux
+	HostName linux-vm.local
 	ForwardAgent yes
 	RemoteForward 52698 localhost:52698
 	AddressFamily inet
 
-Host osxvm
+Host lion
+	HostName lion-vm.local
+	ForwardAgent yes
+	RemoteForward 52698 localhost:52698
+	AddressFamily inet
+
+Host snow
 	HostName snow-leopard-vm.local
 	ForwardAgent yes
 	RemoteForward 52698 localhost:52698
@@ -20,34 +26,6 @@ Host iodine
 	HostName 10.254.254.1
 	ForwardAgent yes
 	DynamicForward *:1080
-
-Host xray
-	HostName xray.kdab.com
-	LocalForward 5901 bigmac:5900
-	LocalForward 5902 bigmac:10963
-	ForwardAgent yes
-
-Host bigmac
-	ProxyCommand ssh xray nc %h %p
-
-Host bottles
-	HostName frs.sourceforge.net
-	User mikemcquaid,machomebrew
-
-Host ci
-	User build
-	HostName ci.kdab.com
-	LocalForward 3389 buildslave:3389
-	RemoteForward 52698 localhost:52698
-	ForwardAgent yes
-
-Host linux64
-	HostName buildslave-linux64
-	ProxyCommand ssh ci nc %h %p
-
-Host linux32
-	HostName buildslave-linux32
-	ProxyCommand ssh ci nc %h %p
 
 Host *
 	User mike
