@@ -56,11 +56,21 @@ field() {
 export PATH=$PATH:vendor/ruby/bin
 
 add_to_path_start() {
-	[ -d $1 ] && export PATH="$1:$PATH"
+	[ -d $1 ] || return
+	case "$1" in
+		*"$PATH"*) return ;;
+	esac
+
+	export PATH="$1:$PATH"
 }
 
 add_to_path() {
-	[ -d $1 ] && export PATH="$PATH:$1"
+	[ -d $1 ] || return
+	case "$1" in
+		*"$PATH"*) return ;;
+	esac
+
+	export PATH="$PATH:$1"
 }
 
 add_to_path_start /usr/local/bin
