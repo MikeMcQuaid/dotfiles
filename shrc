@@ -144,7 +144,7 @@ fi
 if [ $OSX ]
 then
 	export GREP_OPTIONS="--color=auto"
-	export CLICOLOR
+	export CLICOLOR=1
 	export CC="clang"
 	export CXX="clang++"
 
