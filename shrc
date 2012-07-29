@@ -53,8 +53,6 @@ field() {
 }
 
 # Setup paths
-export PATH=$PATH:vendor/ruby/bin
-
 add_to_path_start() {
 	[ -d $1 ] || return
 	case "$1" in
