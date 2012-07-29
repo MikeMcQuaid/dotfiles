@@ -1,3 +1,4 @@
 ssh/id_rsa
 ssh/id_rsa.ppk
 ssh/known_hosts
+ssh/*.socket
