@@ -141,8 +141,6 @@ if [ $OSX ]
 then
 	export GREP_OPTIONS="--color=auto"
 	export CLICOLOR=1
-	export CC="clang"
-	export CXX="clang++"
 
 	add_to_path /Applications/Xcode.app/Contents/Developer/usr/bin
 	add_to_path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
