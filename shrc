@@ -94,11 +94,11 @@ fi
 
 quiet_which vim && export EDITOR="vim"
 
-if quiet_which mate
+if quiet_which subl
 then
-	export EDITOR="mate"
-	export GIT_EDITOR="$EDITOR --name 'Git Commit Message' -w -l1"
-	export SVN_EDITOR="$EDITOR --name 'Subversion Commit Message' -w -l1"
+	export EDITOR="subl"
+	export GIT_EDITOR="$EDITOR -w"
+	export SVN_EDITOR="$GIT_EDITOR"
 fi
 
 # Aliases
@@ -122,13 +122,6 @@ alias svn="svn-git.sh"
 alias be="bundle exec"
 
 # Platform-specific stuff
-if [ -n "${SSH_CONNECTION}" ] && quiet_which rmate
-then
-	export EDITOR="rmate"
-	export GIT_EDITOR="$EDITOR -w"
-	export SVN_EDITOR=$GIT_EDITOR
-fi
-
 if quiet_which brew
 then
 	export BREW_PREFIX=$(brew --prefix)
@@ -157,13 +150,13 @@ then
 	alias ls="ls -F --color=auto"
 	alias open="xdg-open"
 	alias agdu="sudo apt-get dist-upgrade"
-	alias mate="$EDITOR"
+	alias subl="$EDITOR"
 elif [ $WINDOWS ]
 then
 	quiet_which plink && alias ssh="plink -l mike"
 
 	alias ls="ls -F --color=auto"
-	alias mate="$EDITOR"
+	alias subl="$EDITOR"
 
 	open() {
 		cmd /C"$@"
