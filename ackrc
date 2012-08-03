@@ -8,3 +8,5 @@
 --ignore-dir=brelease
 --ignore-dir=_site
 --ignore-dir=_site.min
+--ignore-dir=log
+--ignore-dir=vendor
