@@ -63,7 +63,7 @@ add_to_path_start() {
 }
 
 add_to_path() {
-	[ -d $1 ] || return
+	[ -d "$1" ] || return
 	case "$1" in
 		*"$PATH"*) return ;;
 	esac
@@ -71,14 +71,14 @@ add_to_path() {
 	export PATH="$PATH:$1"
 }
 
-add_to_path_start /usr/local/bin
-add_to_path_start /usr/local/sbin
-add_to_path $HOME/Documents/Scripts
-add_to_path $HOME/Documents/Scripts/thirdparty
-add_to_path $HOME/Scripts
-add_to_path $HOME/Scripts/thirdparty
-add_to_path $HOME/Library/Python/2.7/bin
-add_to_path $HOME/.gem/ruby/1.8/bin
+add_to_path_start "/usr/local/bin"
+add_to_path_start "/usr/local/sbin"
+add_to_path "$HOME/Documents/Scripts"
+add_to_path "$HOME/Scripts"
+add_to_path "$HOME/Library/Python/2.7/bin"
+add_to_path "$HOME/.gem/ruby/1.8/bin"
+add_to_path "$HOME/Applications/Sublime Text 2"
+add_to_path "/c/Program Files/Sublime Text 2"
 
 quiet_which() {
 	which $1 1>/dev/null 2>/dev/null
@@ -86,20 +86,7 @@ quiet_which() {
 
 quiet_which ack-grep && alias ack=ack-grep
 export DIFF=diff
-if quiet_which colordiff
-then
-	export DIFF=colordiff
-	alias diff=colordiff
-fi
-
-quiet_which vim && export EDITOR="vim"
-
-if quiet_which subl
-then
-	export EDITOR="subl"
-	export GIT_EDITOR="$EDITOR -w"
-	export SVN_EDITOR="$GIT_EDITOR"
-fi
+quiet_which colordiff && export DIFF=colordiff && alias diff=colordiff
 
 # Aliases
 alias su="/bin/su -"
@@ -141,26 +128,35 @@ then
 	alias ls="ls -F"
 	alias ql="qlmanage -p 1>/dev/null"
 	alias locate="mdfind -name"
-
 elif [ $LINUX ]
 then
-	add_to_path $HOME/QtSDK/Desktop/Qt/4.8.1/gcc/bin
 	quiet_which keychain && eval `keychain -q --eval --agents ssh id_rsa`
 
 	alias ls="ls -F --color=auto"
 	alias open="xdg-open"
 	alias agdu="sudo apt-get dist-upgrade"
-	alias subl="$EDITOR"
 elif [ $WINDOWS ]
 then
 	quiet_which plink && alias ssh="plink -l mike"
 
 	alias ls="ls -F --color=auto"
-	alias subl="$EDITOR"
 
 	open() {
 		cmd /C"$@"
 	}
+fi
+
+# Set up editor
+quiet_which vim && export EDITOR="vim"
+
+if quiet_which subl || quiet_which sublime_text
+then
+	quiet_which subl && export EDITOR="subl"
+	quiet_which sublime_text && export EDITOR="sublime_text" \
+		&& alias subl="sublime_text"
+
+	export GIT_EDITOR="$EDITOR -w"
+	export SVN_EDITOR="$GIT_EDITOR"
 fi
 
 # Run dircolors if it exists
