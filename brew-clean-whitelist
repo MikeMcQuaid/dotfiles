@@ -2,6 +2,7 @@ ack
 autoconf
 automake
 cmake
+colordiff
 elasticsearch
 geoip
 gettext
