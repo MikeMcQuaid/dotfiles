@@ -6,8 +6,8 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 # OS variables
-[ $(uname -s) = "Darwin" ] && export OSX=1
-[ $(uname -s) = "Linux" ] && export LINUX=1
+[ $(uname -s) = "Darwin" ] && export OSX=1 && export UNIX=1
+[ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
 
 # Fix systems missing $USER
