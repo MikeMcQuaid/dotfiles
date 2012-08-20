@@ -20,6 +20,7 @@
 	sign = cherry-pick --signoff
 	externals = !git svn show-externals | grep -x \\"[^#].*\\"
 	serve = !git daemon --reuseaddr --export-all --base-path=. --verbose ./.git
+	noff = merge --no-ff
 	w = diff --word-diff
 	u = push --set-upstream
 	b = checkout -b
