@@ -24,8 +24,8 @@
 	w = diff --word-diff
 	u = push --set-upstream
 	b = checkout -b
+	p = pull
 	i = rebase --interactive origin/master
-	r = pull --rebase
 	l = log --graph --oneline --decorate
 	f = !git commit --all --amend --reuse-message=HEAD --date=\"$(date)\" #"
 [instaweb]
@@ -44,8 +44,6 @@
 	path = git-mergetool-opendiff.sh
 [apply]
 	whitespace = fix
-[branch]
-	autosetuprebase = remote
 [url "git@github.com:"]
 	pushInsteadOf = git://github.com/
 [url "https://github.com/"]
