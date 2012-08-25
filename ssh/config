@@ -1,25 +1,25 @@
 Host www
-	HostName 91.197.32.157
+	HostName 80.77.87.217
 	ForwardAgent yes
 	DynamicForward *:1080
-	RemoteForward 52698 localhost:52698
+
+Host oldwww
+	HostName 91.197.32.157
+	ForwardAgent yes
 
 Host linux
 	HostName linux-vm.local
 	ForwardAgent yes
-	RemoteForward 52698 localhost:52698
 	AddressFamily inet
 
 Host lion
 	HostName lion-vm.local
 	ForwardAgent yes
-	RemoteForward 52698 localhost:52698
 	AddressFamily inet
 
 Host snow
 	HostName snow-leopard-vm.local
 	ForwardAgent yes
-	RemoteForward 52698 localhost:52698
 	AddressFamily inet
 
 Host iodine
