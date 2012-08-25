@@ -45,7 +45,7 @@ then
 fi
 
 # Load GitHub token
-[ -s ~/.github.token ] && export GITHUB_TOKEN=$(cat ~/.github.token)
+[ -s ~/.github_password ] && export GITHUB_PASSWORD=$(cat ~/.github_password)
 
 # Print field by number
 field() {
