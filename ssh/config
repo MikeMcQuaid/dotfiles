@@ -27,6 +27,11 @@ Host iodine
 	ForwardAgent yes
 	DynamicForward *:1080
 
+Host utilmaster
+	HostName 184.169.199.243
+	ForwardAgent yes
+	User deploy
+
 Host *
 	User mike
 	StrictHostKeyChecking ask
