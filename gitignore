@@ -25,3 +25,5 @@ install_manifest.txt
 b/
 bdebug/
 brelease/
+
+vendor/cache/libv8-3.3.10.4.gem
