@@ -1,10 +1,10 @@
 Host www
-	HostName 80.77.87.217
+	HostName 6sync.mikemcquaid.com
 	ForwardAgent yes
 	DynamicForward *:1080
 
 Host oldwww
-	HostName 91.197.32.157
+	HostName devzero.mikemcquaid.com
 	ForwardAgent yes
 
 Host linux
@@ -29,8 +29,11 @@ Host iodine
 
 Host utilmaster
 	HostName 184.169.199.243
+
+Host utilmaster *.alltrails.com *.compute.amazonaws.com
 	ForwardAgent yes
 	User deploy
+	IdentityFile ~/Documents/AllTrails/Chef/.chef/deploy_user
 
 Host *
 	User mike
