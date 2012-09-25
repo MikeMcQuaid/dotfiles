@@ -2,6 +2,7 @@
 	"color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow.tmTheme",
 	"dictionary": "Packages/Language - English/en_GB.dic",
 	"draw_white_space": "all",
+	"word_wrap": true,
 	"folder_exclude_patterns":
 	[
 		"log",
