@@ -101,7 +101,6 @@ alias ps="ps aux"
 alias less="less --ignore-case --raw-control-chars"
 alias rsync="rsync --partial --progress --human-readable --compress"
 
-alias upmike="scp-to-http.sh mike mikemcquaid.com Sites"
 alias upbrew="scp-to-http.sh mikemcquaid,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles /Library/Caches/Homebrew/"
 
 alias svn="svn-git.sh"
