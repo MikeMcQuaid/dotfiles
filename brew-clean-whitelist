@@ -4,6 +4,7 @@ automake
 cmake
 colordiff
 elasticsearch
+freetype
 geoip
 gettext
 gist
