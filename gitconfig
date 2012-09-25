@@ -16,20 +16,37 @@
 [help]
 	format = web
 [alias]
+	# shortened existing commands
+	p = pull
+
+	# new commands
 	stage = !git add -u
 	staged = diff --cached
 	unstage = reset HEAD --
+	current-branch = !git symbolic-ref HEAD|sed -e 's/refs.heads.//'
 	sign = cherry-pick --signoff
 	externals = !git svn show-externals | grep -x \\"[^#].*\\"
 	serve = !git daemon --reuseaddr --export-all --base-path=. --verbose ./.git
 	noff = merge --no-ff
-	w = diff --word-diff
-	u = push --set-upstream
-	b = checkout -b
-	p = pull
-	i = rebase --interactive origin/master
-	l = log --graph --oneline --decorate
-	f = !git commit --all --amend --reuse-message=HEAD --date=\"$(date)\" #"
+	theirs = noff -Xtheirs
+	rebase-against-master = !git fetch --all && git rebase origin/master
+	upstream-and-pull-request = !git push --set-upstream origin $(git current-branch) && hub pull-request
+	word-diff = diff --word-diff
+	push-and-set-upstream = push --set-upstream
+	checkout-as-new-branch = checkout -b
+	interactively-rebase-against-master = rebase --interactive origin/master
+	pretty-one-line-log = log --graph --oneline --decorate
+	fix-up-previous-commit = !git commit --all --amend --reuse-message=HEAD --date=\"$(date)\" #"
+
+	# shortened new commands
+	rem = !git rebase-against-master
+	pr = !git upstream-and-pull-request
+	w = !git word-diff
+	u = !git push-and-set-upstream
+	b = !git checkout-as-new-branch
+	i = !git interactively-rebase-against-master
+	l = !git pretty-one-line-log
+	f = !git fix-up-previous-commit
 [instaweb]
 	httpd = webrick
 [diff]
@@ -52,5 +69,3 @@
 	#insteadOf = git://github.com/
 [url "git@gitorious.org:"]
 	pushInsteadOf = git://gitorious.org/
-[url "git@git.kde.org:"]
-	pushInsteadOf = git://anongit.kde.org/
