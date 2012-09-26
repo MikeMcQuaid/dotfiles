@@ -45,7 +45,7 @@
 	u = !git push-and-set-upstream
 	b = !git checkout-as-new-branch
 	i = !git interactively-rebase-against-master
-	l = !git pretty-one-line-log
+	l = !git pretty-one-line-log || true
 	f = !git fix-up-previous-commit
 [instaweb]
 	httpd = webrick
