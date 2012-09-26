@@ -27,6 +27,11 @@ Host iodine
 	ForwardAgent yes
 	DynamicForward *:1080
 
+Host alltrailsbot
+	HostName 70.36.138.104
+	ForwardAgent yes
+	Port 22222
+
 Host utilmaster
 	HostName 184.169.199.243
 

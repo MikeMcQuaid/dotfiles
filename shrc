@@ -112,6 +112,7 @@ if quiet_which brew
 then
 	export BREW_PREFIX=$(brew --prefix)
 	export ANDROID_SDK_ROOT=$(brew --prefix android-sdk)
+	export ANDROID_HOME=$ANDROID_SDK_ROOT
 	alias brew="nice brew"
 	alias bpi="brew pull --install"
 fi
