@@ -1,12 +1,3 @@
-Host www
-	HostName 6sync.mikemcquaid.com
-	ForwardAgent yes
-	DynamicForward *:1080
-
-Host oldwww
-	HostName devzero.mikemcquaid.com
-	ForwardAgent yes
-
 Host linux
 	HostName linux-vm.local
 	ForwardAgent yes
