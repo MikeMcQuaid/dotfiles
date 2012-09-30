@@ -28,7 +28,7 @@ Host iodine
 	DynamicForward *:1080
 
 Host alltrailsbot
-	HostName 70.36.138.104
+	HostName office.alltrails.com
 	ForwardAgent yes
 	Port 22222
 
