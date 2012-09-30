@@ -28,7 +28,7 @@
 	externals = !git svn show-externals | grep -x \\"[^#].*\\"
 	serve = !git daemon --reuseaddr --export-all --base-path=. --verbose ./.git
 	noff = merge --no-ff
-	theirs = noff -Xtheirs
+	theirs = !git noff -Xtheirs
 	rebase-against-master = !git fetch --all && git rebase origin/master
 	upstream-and-pull-request = !git push --set-upstream origin $(git current-branch) && hub pull-request
 	word-diff = diff --word-diff
