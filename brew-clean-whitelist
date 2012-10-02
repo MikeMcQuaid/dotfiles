@@ -12,6 +12,7 @@ git
 htmlcompressor
 hub
 imagemagick
+jenkins
 jpeg
 libpng
 libtool
