@@ -30,7 +30,9 @@
 	noff = merge --no-ff
 	theirs = !git noff -Xtheirs
 	rebase-against-master = !git fetch --all && git rebase origin/master
-	upstream-and-pull-request = !git push --set-upstream origin $(git current-branch) && hub pull-request
+	upstream-current-branch = !git push --set-upstream origin $(git current-branch)
+	pull-request = !hub pull-request
+	upstream-and-pull-request = !git upstream-current-branch && git pull-request
 	word-diff = diff --word-diff
 	push-and-set-upstream = push --set-upstream
 	checkout-as-new-branch = checkout -b
@@ -43,6 +45,7 @@
 	pr = !git upstream-and-pull-request
 	w = !git word-diff
 	u = !git push-and-set-upstream
+	up = !git upstream-current-branch
 	b = !git checkout-as-new-branch
 	i = !git interactively-rebase-against-master
 	l = !git pretty-one-line-log || true
