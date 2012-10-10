@@ -39,13 +39,17 @@
 	interactively-rebase-against-master = rebase --interactive origin/master
 	pretty-one-line-log = log --graph --oneline --decorate
 	fix-up-previous-commit = !git commit --all --amend --reuse-message=HEAD --date=\"$(date)\" #"
+	pull-staging = !git checkout staging && git pull
+	pull-master = !git checkout master && git pull
+	pull-master-staging-and-current-branch = !BRANCH=$(git current-branch) && git fetch --all && git pull-staging && git pull-master && git checkout $BRANCH && git pull
 
 	# shortened new commands
 	rem = !git rebase-against-master
 	pr = !git upstream-and-pull-request
+	up = !git upstream-current-branch
+	pm = !git pull-master-staging-and-current-branch
 	w = !git word-diff
 	u = !git push-and-set-upstream
-	up = !git upstream-current-branch
 	b = !git checkout-as-new-branch
 	i = !git interactively-rebase-against-master
 	l = !git pretty-one-line-log || true
