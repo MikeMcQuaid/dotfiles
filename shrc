@@ -128,6 +128,7 @@ then
 	alias ls="ls -F"
 	alias ql="qlmanage -p 1>/dev/null"
 	alias locate="mdfind -name"
+	alias vmware-shrink="sudo /Library/Application\ Support/VMware\ Tools/vmware-tools-cli disk shrinkonly"
 elif [ $LINUX ]
 then
 	quiet_which keychain && eval `keychain -q --eval --agents ssh id_rsa`
