@@ -42,6 +42,7 @@
 	pull-staging = !git checkout staging && git pull
 	pull-master = !git checkout master && git pull
 	pull-master-staging-and-current-branch = !BRANCH=$(git current-branch) && git fetch --all && git pull-staging && git pull-master && git checkout $BRANCH && git pull
+	mikebook = !git fetch mikebook && git reset --hard mikebook/master && git clean -xdf
 
 	# shortened new commands
 	rem = !git rebase-against-master
