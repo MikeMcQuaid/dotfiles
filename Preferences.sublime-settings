@@ -23,5 +23,6 @@
 	"rulers":
 	[
 		80
-	]
+	],
+	"detect_indentation": true,
 }
