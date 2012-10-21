@@ -25,7 +25,7 @@
 	# Open Git help pages in the browser as HTML.
 	format = web
 [alias]
-	# 'New' Commands
+	## 'New' Commands
 	# Stage the changes in a given file.
 	stage = !git add -u
 	# Unstage the changes in a given file.
@@ -80,7 +80,7 @@
 	# Reset the current repository to the state on mikebook and clean it.
 	mikebook = !git fetch mikebook && git reset --hard mikebook/master && git clean -xdf
 
-	# Shortened 'New' Commands
+	## Shortened 'New' Commands
 	rem = !git rebase-against-master
 	pr = !git upstream-and-pull-request
 	up = !git upstream-current-branch
@@ -89,10 +89,11 @@
 	u = !git push-and-set-upstream
 	b = !git checkout-as-new-branch
 	i = !git interactively-rebase-against-master
+	# `true` needed as the return status is wrong otherwise.
 	l = !git pretty-one-line-log || true
 	f = !git fix-up-previous-commit
 
-	# Shortened Existing Commands
+	## Shortened Existing Commands
 	p = pull
 [instaweb]
 	# Use the Ruby WEBRick library when creating a `git instaweb` HTTP server.
