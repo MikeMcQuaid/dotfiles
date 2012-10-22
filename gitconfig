@@ -134,3 +134,6 @@
 	# Allows use of git:// for public repositories with push access
 	# (which is often faster).
 	pushInsteadOf = git://gitorious.org/
+[credential]
+	# Use OSX Keychain to store HTTP passwords.
+	helper = osxkeychain
