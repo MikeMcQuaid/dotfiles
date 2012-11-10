@@ -24,5 +24,7 @@
 	[
 		80
 	],
-	"detect_indentation": true,
+	"ensure_newline_at_eof_on_save":true,
+	"trim_automatic_white_space":true,
+	"detect_indentation": true
 }
