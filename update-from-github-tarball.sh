@@ -4,6 +4,9 @@
 # Exit on any command failures
 set -e
 
+# Extract GitHub username from gitconfig-user
+GITHUB_USERNAME=$(grep "user =" gitconfig-user | sed -e 's/.*user = //')
+
 DOTFILESDIRREL=$(dirname $0)
 cd $DOTFILESDIRREL
 if [ -e .git ]
@@ -18,6 +21,6 @@ which curl &>/dev/null && DOWNLOAD="curl --progress-bar --location --output $OUT
 [ -z "$DOWNLOAD" ] && which wget &>/dev/null && DOWNLOAD="wget --output-document=$OUTFILE"
 [ -z "$DOWNLOAD" ] && echo "Could not find curl or wget" && exit 1
 
-$DOWNLOAD https://github.com/mikemcquaid/dotfiles/tarball/master
+$DOWNLOAD https://github.com/$GITHUB_USERNAME/dotfiles/archive/master.tar.gz
 tar --strip-components=1 -z -x -v -f dotfiles.tar.gz
 rm dotfiles.tar.gz

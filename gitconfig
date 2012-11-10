@@ -1,14 +1,8 @@
-[user]
-	# Name used in commit messages.
-	name = Mike McQuaid
-	# Email used in commit messages.
-	email = mike@mikemcquaid.com
+[include]
+	path = ~/.gitconfig-user
 [color]
 	# Colour terminal command output when possible.
 	ui = auto
-[github]
-	# Set my GitHub username for command-line tools.
-	user = mikemcquaid
 [gist]
 	# Open GitHub Gist in browser after submission.
 	browse = true
@@ -77,8 +71,7 @@
 	pull-master = !git checkout master && git pull
 	# Update the staging, master and current branches.
 	pull-master-staging-and-current-branch = !BRANCH=$(git current-branch) && git fetch --all && git pull-staging && git pull-master && git checkout $BRANCH && git pull
-	# Reset the current repository to the state on mikebook and clean it.
-	mikebook = !git fetch mikebook && git reset --hard mikebook/master && git clean -xdf
+
 	# Merge a branch with a merge commit and use the more time-consuming
 	# patience diff algorithm
 	patience = !git noff -Xpatience

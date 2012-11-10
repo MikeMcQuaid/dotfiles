@@ -1,0 +1,11 @@
+[user]
+	# Name used in commit messages.
+	name = Mike McQuaid
+	# Email used in commit messages.
+	email = mike@mikemcquaid.com
+[github]
+	# Set my GitHub username for command-line tools.
+	user = mikemcquaid
+[alias]
+	# Reset the current repository to the state on mikebook (my MacBook Pro) and clean it.
+	mikebook = !git fetch mikebook && git reset --hard mikebook/master && git clean -xdf

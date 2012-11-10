@@ -2,7 +2,11 @@
 My dot files shared between machines for ZSH, Bash, OSX, Linux, Cygwin and MSYS.
 
 ## Installation
-Run [`install-dotfiles.sh`](https://github.com/mikemcquaid/dotfiles/blob/master/install-dotfiles.sh) after checkout to symlink (or copy) everything in this directory to your home directory.
+Customise the contents of [`gitconfig-user`](https://github.com/mikemcquaid/dotfiles/blob/master/gitconfig-user).
+This is used for user-specific customisations of every other file.
+
+Run [`install-dotfiles.sh`](https://github.com/mikemcquaid/dotfiles/blob/master/install-dotfiles.sh)
+after checkout to symlink (or copy) everything in this directory to your home directory.
 
 ## Contact
 [Mike McQuaid](mailto:mike@mikemcquaid.com)
