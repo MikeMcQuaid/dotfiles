@@ -1,0 +1,9 @@
+[
+{ "keys": ["super+shift+h"], "command": "goto_documentation" },
+{ "keys": ["super+shift+r"], "command": "reveal_in_side_bar" },
+{ "keys": ["super+shift+["], "command": "reindent", "args": {"single_line": false}},
+{ "keys": ["ctrl+shift+t"], "command": "delete_trailing_spaces" },
+{ "keys": ["super+shift+v"], "command": "paste" },
+{ "keys": ["super+v"], "command": "paste_and_indent" },
+{}
+]
