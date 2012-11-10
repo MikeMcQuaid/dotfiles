@@ -28,7 +28,8 @@ for DOTFILE in *; do
 
 	echo $DOTFILE | grep -q '\.' && continue
 
-	echo $DOTFILE | grep -q 'sublime' && HOMEFILE="$SUBLIME"
+	echo $DOTFILE | grep -q 'sublime' && HOMEFILE="$SUBLIME" \
+		&& mkdir -p "$HOMEFILE"
 
 	if [ $UNIX ]
 	then
