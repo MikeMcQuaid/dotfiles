@@ -18,6 +18,17 @@ Host iodine
 	ForwardAgent yes
 	DynamicForward *:1080
 
+Host sharpie
+	HostName fe.sharpsteen.net
+	User dropbox
+	Port 22022
+	IdentityFile ~/.ssh/sharpie_dropbox.key
+
+Host brewtester
+	HostName brewtester.no-ip.org
+	User brew
+	Port 52222
+
 Host alltrailsbot
 	HostName office.alltrails.com
 	ForwardAgent yes
@@ -26,7 +37,7 @@ Host alltrailsbot
 Host utilmaster
 	HostName 184.169.199.243
 
-Host utilmaster *.alltrails.com *.compute.amazonaws.com
+Host utilmaster *.alltrails.com *.compute.amazonaws.com 184.* 50.* ec2-*
 	ForwardAgent yes
 	User deploy
 	IdentityFile ~/Documents/AllTrails/Chef/.chef/deploy_user
