@@ -44,7 +44,7 @@
 	serve = !git daemon --reuseaddr --export-all --base-path=. --verbose ./.git
 	# Merge a branch and commit a merge commit (even if one isn't needed)
 	noff = merge --no-ff
-	# Merge a branch with merge commit and resolve any conflicts always using
+	# Merge a branch with a merge commit and resolve any conflicts always using
 	# that branch's version rather than the current branch.
 	theirs = !git noff -Xtheirs
 	# Fetch all branches and rebase the current branch against origin/master.
@@ -79,6 +79,9 @@
 	pull-master-staging-and-current-branch = !BRANCH=$(git current-branch) && git fetch --all && git pull-staging && git pull-master && git checkout $BRANCH && git pull
 	# Reset the current repository to the state on mikebook and clean it.
 	mikebook = !git fetch mikebook && git reset --hard mikebook/master && git clean -xdf
+	# Merge a branch with a merge commit and use the more time-consuming
+	# patience diff algorithm
+	patience = !git noff -Xpatience
 
 	## Shortened 'New' Commands
 	rem = !git rebase-against-master
