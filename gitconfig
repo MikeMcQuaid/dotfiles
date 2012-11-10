@@ -71,13 +71,15 @@
 	pull-master = !git checkout master && git pull
 	# Update the staging, master and current branches.
 	pull-master-staging-and-current-branch = !BRANCH=$(git current-branch) && git fetch --all && git pull-staging && git pull-master && git checkout $BRANCH && git pull
-
+	# Commit a work-in-progress commit (to use with fix-up-previous-commit)
+	work-in-progress = commit -a -m 'WIP'
 	# Merge a branch with a merge commit and use the more time-consuming
 	# patience diff algorithm
 	patience = !git noff -Xpatience
 
 	## Shortened 'New' Commands
 	rem = !git rebase-against-master
+	wip = !git work-in-progress
 	pr = !git upstream-and-pull-request
 	up = !git upstream-current-branch
 	pm = !git pull-master-staging-and-current-branch
