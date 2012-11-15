@@ -114,7 +114,7 @@
 	keepTemporaries = false
 [mergetool "opendiff"]
 	# Use a script to setup opendiff correctly for Git merges.
-	path = git-mergetool-opendiff.sh
+	path = git-mergetool-opendiff
 [apply]
 	# Cleanup whitespace by default when apply patches.
 	whitespace = fix
