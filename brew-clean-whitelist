@@ -19,6 +19,7 @@ libtool
 mysql
 pkg-config
 rbenv
+rbenv-bundler
 redis
 ruby-build
 yuicompressor
