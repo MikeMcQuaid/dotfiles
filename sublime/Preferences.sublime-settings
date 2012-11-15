@@ -8,6 +8,7 @@
 		"log",
 		"vendor/cache",
 		"vendor/ruby",
+		"spec/vcr_cassettes",
 		"tmp",
 		".git",
 		"Cellar",
