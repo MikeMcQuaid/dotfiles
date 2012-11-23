@@ -25,7 +25,7 @@
 	[
 		80
 	],
-	"ensure_newline_at_eof_on_save":true,
-	"trim_automatic_white_space":true,
+	"ensure_newline_at_eof_on_save": true,
+	"trim_automatic_white_space": true,
 	"detect_indentation": true
 }
