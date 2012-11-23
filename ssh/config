@@ -27,6 +27,7 @@ Host sharpie
 Host brewtester
 	HostName brewtester.no-ip.org
 	User brew
+	LocalForward 28080 localhost:8080
 	Port 52222
 
 Host alltrailsbot
