@@ -27,11 +27,12 @@ Host sharpie
 Host brewtester
 	HostName brewtester.no-ip.org
 	User brew
-	LocalForward 28080 localhost:8080
+	LocalForward 22280 localhost:22280
 	Port 52222
 
 Host alltrailsbot
 	HostName office.alltrails.com
+	User buildbot
 	ForwardAgent yes
 	Port 22222
 
