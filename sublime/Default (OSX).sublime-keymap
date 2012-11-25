@@ -5,5 +5,6 @@
 { "keys": ["ctrl+shift+t"], "command": "delete_trailing_spaces" },
 { "keys": ["super+shift+v"], "command": "paste" },
 { "keys": ["super+v"], "command": "paste_and_indent" },
+{ "keys": ["alt+shift+p"], "command": "pomodoro", "args": {"workingMins": 25, "restingMins": 5} },
 {}
 ]
