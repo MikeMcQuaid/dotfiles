@@ -1,9 +1,9 @@
-# 077 would be more secure, but 022 is generally quite realistic
+# 077 would be more secure, but 022 is more useful.
 umask 022
 
 # Save more history
-export HISTSIZE=10000
-export SAVEHIST=10000
+export HISTSIZE=100000
+export SAVEHIST=100000
 
 # OS variables
 [ $(uname -s) = "Darwin" ] && export OSX=1 && export UNIX=1
@@ -24,9 +24,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 # Set to avoid `env` output from changing console colour
 export LESS_TERMEND=$'\E[0m'
-
-# Qt development
-export QTEST_COLORED=1
 
 # Count CPUs for Make jobs
 if [ $OSX ]
@@ -98,15 +95,12 @@ alias mv="mv -iv"
 alias cp="cp -irv"
 alias du="du -sh"
 alias make="nice make"
-alias ps="ps aux"
 alias less="less --ignore-case --raw-control-chars"
 alias rsync="rsync --partial --progress --human-readable --compress"
 
 alias upbrew="scp-to-http.sh mikemcquaid,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles /Library/Caches/Homebrew/"
 
 alias svn="svn-git.sh"
-
-alias be="bundle exec"
 
 # Platform-specific stuff
 if quiet_which brew
@@ -150,6 +144,7 @@ then
 fi
 
 # Set up editor
+quiet_which vi && export EDITOR="vi"
 quiet_which vim && export EDITOR="vim"
 
 if quiet_which subl || quiet_which sublime_text
@@ -171,7 +166,7 @@ quiet_which rbenv && eval "$(rbenv init -)"
 # Aliases using variables
 alias ed="$EDITOR"
 
-# Load last directory
+# Save directory changes
 cd() {
 	builtin cd "$@" || return
 	ls

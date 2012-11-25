@@ -13,7 +13,6 @@ ui_*.h
 .DS_Store
 .tm_properties
 
-CMakeLists.txt.user
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
@@ -23,5 +22,3 @@ install_manifest.txt
 *.xcodeproj/xcuserdata/
 
 b/
-bdebug/
-brelease/

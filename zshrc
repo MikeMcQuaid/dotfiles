@@ -23,9 +23,6 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 # Case insensitive globbing
 setopt no_case_glob
 
-# Change to directory by just entering name
-setopt auto_cd
-
 # Don't show duplicate history entires
 setopt hist_find_no_dups
 
@@ -71,9 +68,7 @@ fi
 RPROMPT='%{$fg_bold[red]%}$(git_branch)%{$fg_bold[yellow]%}$(svn_branch)%b[%{$fg_bold[blue]%}%~%b%f]'
 
 # History
-export HISTSIZE=2000
 export HISTFILE=~/.zsh_history
-export SAVEHIST=$HISTSIZE
 
 # use emacs bindings even with vim as EDITOR
 bindkey -e
