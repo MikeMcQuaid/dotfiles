@@ -15,6 +15,8 @@
 		".tags",
 		".tags_sorted_by_file",
 		".idea",
+		"Aliases",
+		"LinkedKegs",
 		".sass-cache"
 	],
 	"ignored_packages":
@@ -25,6 +27,7 @@
 	[
 		80
 	],
+	"bold_folder_labels": true,
 	"ensure_newline_at_eof_on_save": true,
 	"trim_automatic_white_space": true,
 	"detect_indentation": true
