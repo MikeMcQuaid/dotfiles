@@ -6,10 +6,8 @@ colordiff
 elasticsearch
 freetype
 geoip
-gettext
 gist
 git
-htmlcompressor
 hub
 imagemagick
 jenkins
@@ -22,4 +20,3 @@ rbenv
 rbenv-bundler
 redis
 ruby-build
-yuicompressor
