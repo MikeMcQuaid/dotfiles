@@ -1,8 +1,10 @@
 {
+	"bold_folder_labels": true,
 	"color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow.tmTheme",
+	"detect_indentation": true,
 	"dictionary": "Packages/Language - English/en_GB.dic",
 	"draw_white_space": "all",
-	"word_wrap": true,
+	"ensure_newline_at_eof_on_save": true,
 	"folder_exclude_patterns":
 	[
 		"log",
@@ -17,6 +19,8 @@
 		".idea",
 		"Aliases",
 		"LinkedKegs",
+		"spec/reports",
+		"coverage",
 		".sass-cache"
 	],
 	"ignored_packages":
@@ -27,8 +31,6 @@
 	[
 		80
 	],
-	"bold_folder_labels": true,
-	"ensure_newline_at_eof_on_save": true,
 	"trim_automatic_white_space": true,
-	"detect_indentation": true
+	"word_wrap": true
 }
