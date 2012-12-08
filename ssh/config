@@ -1,29 +1,3 @@
-Host linux
-	HostName linux-vm.local
-	ForwardAgent yes
-	AddressFamily inet
-
-Host lion
-	HostName lion-vm.local
-	ForwardAgent yes
-	AddressFamily inet
-
-Host snow
-	HostName snow-leopard-vm.local
-	ForwardAgent yes
-	AddressFamily inet
-
-Host iodine
-	HostName 10.254.254.1
-	ForwardAgent yes
-	DynamicForward *:1080
-
-Host sharpie
-	HostName fe.sharpsteen.net
-	User dropbox
-	Port 22022
-	IdentityFile ~/.ssh/sharpie_dropbox.key
-
 Host brewtester
 	HostName brewtester.no-ip.org
 	User brew
