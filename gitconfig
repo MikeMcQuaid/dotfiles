@@ -76,6 +76,8 @@
 	# Merge a branch with a merge commit and use the more time-consuming
 	# patience diff algorithm
 	patience = !git noff -Xpatience
+	# Hard reset branch to the upstream version.
+	hard-reset = !git reset --hard origin/$(git current-branch)
 
 	## Shortened 'New' Commands
 	rem = !git rebase-against-master
