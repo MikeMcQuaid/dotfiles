@@ -21,6 +21,6 @@ which curl &>/dev/null && DOWNLOAD="curl --progress-bar --location --output $OUT
 [ -z "$DOWNLOAD" ] && which wget &>/dev/null && DOWNLOAD="wget --output-document=$OUTFILE"
 [ -z "$DOWNLOAD" ] && echo "Could not find curl or wget" && exit 1
 
-$DOWNLOAD https://github.com/$GITHUB_USERNAME/dotfiles/archive/master.tar.gz
-tar --strip-components=1 -z -x -v -f dotfiles.tar.gz
-rm dotfiles.tar.gz
+$DOWNLOAD https://nodeload.github.com/$GITHUB_USERNAME/dotfiles/tar.gz/master
+tar --strip-components=1 -z -x -v -f $OUTFILE
+rm $OUTFILE
