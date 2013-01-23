@@ -109,6 +109,7 @@ then
 	export ANDROID_SDK_ROOT=$BREW_PREFIX/opt/android-sdk
 	export ANDROID_HOME=$ANDROID_SDK_ROOT
 	export RBENV_ROOT=$BREW_PREFIX/opt/rbenv
+	export HOMEBREW_DEVELOPER=1
 	alias brew="nice brew"
 	alias bpi="brew pull --install"
 fi
