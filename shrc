@@ -125,6 +125,7 @@ then
 	alias ls="ls -F"
 	alias ql="qlmanage -p 1>/dev/null"
 	alias locate="mdfind -name"
+	alias cpwd="pwd | tr -d '\n' | pbcopy"
 	alias vmware-shrink="sudo /Library/Application\ Support/VMware\ Tools/vmware-tools-cli disk shrinkonly"
 elif [ $LINUX ]
 then
