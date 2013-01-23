@@ -11,7 +11,7 @@ Host alltrailsbot
 	Port 22222
 
 Host utilmaster
-	HostName 184.169.199.243
+	HostName 204.236.164.92
 
 Host utilmaster *.alltrails.com *.compute.amazonaws.com 184.* 50.* ec2-*
 	ForwardAgent yes
