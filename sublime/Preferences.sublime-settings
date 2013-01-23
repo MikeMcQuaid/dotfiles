@@ -12,6 +12,7 @@
 		"vendor/ruby",
 		"spec/vcr_cassettes",
 		"tmp",
+		".bundle/bin",
 		".git",
 		"Cellar",
 		".tags",
