@@ -64,10 +64,12 @@ add_to_path_start() {
 
 add_to_path() {
 	[ -d "$1" ] || return
-	case "$1" in
-		*"$PATH"*) return ;;
-	esac
+	remove_from_path "$1"
+	export PATH="$PATH:$1"
+}
 
+force_add_to_path() {
+	remove_from_path "$1"
 	export PATH="$PATH:$1"
 }
 
@@ -80,7 +82,7 @@ add_to_path "$HOME/.gem/ruby/1.8/bin"
 add_to_path "$HOME/.rbenv/bin"
 add_to_path "$HOME/Applications/Sublime Text 2"
 add_to_path "/c/Program Files/Sublime Text 2"
-export PATH="$PATH:.bundle/bin"
+force_add_to_path ".bundle/bin"
 
 quiet_which() {
 	which $1 1>/dev/null 2>/dev/null
@@ -167,7 +169,12 @@ fi
 quiet_which dircolors && eval $(dircolors -b)
 
 # Run rbenv if it exists
-quiet_which rbenv && eval "$(rbenv init -)"
+if quiet_which rbenv
+then
+	# Don't duplicate my PATH
+	remove_from_path "$(rbenv root)/shims"
+	eval "$(rbenv init -)"
+fi
 
 # Aliases using variables
 alias ed="$EDITOR"

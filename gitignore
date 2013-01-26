@@ -13,6 +13,8 @@ ui_*.h
 .DS_Store
 .tm_properties
 
+.bundle/bin/
+
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
