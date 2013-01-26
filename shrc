@@ -185,3 +185,8 @@ cd() {
 	ls
 	pwd > ~/.lastpwd
 }
+
+# Provide quick access to Rails dump environment
+dump() {
+	RAILS_ENV=dump $@
+}
