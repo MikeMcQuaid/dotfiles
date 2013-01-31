@@ -32,5 +32,3 @@ endif
 
 " disable mouse integration
 set mouse=
-
-colorscheme Tomorrow
