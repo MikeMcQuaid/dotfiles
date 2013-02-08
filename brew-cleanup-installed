@@ -16,6 +16,7 @@ libtool
 mysql
 pkg-config
 rbenv
-rbenv-bundler
+rbenv-default-gems
+rbenv-gem-rehash
 redis
 ruby-build
