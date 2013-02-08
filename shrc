@@ -53,7 +53,7 @@ field() {
 remove_from_path() {
 	[ -d $1 ] || return
 	# Doesn't work for first item in the PATH but don't care.
-	export PATH=$(echo $PATH | awk "{gsub(\":$1\", \"\");print}")
+	export PATH=$(echo $PATH | sed -e "s|:$1||")
 }
 
 add_to_path_start() {
