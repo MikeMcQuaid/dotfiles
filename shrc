@@ -191,3 +191,14 @@ cd() {
 dump() {
 	RAILS_ENV=dump $@
 }
+
+# Remove multiple Git remote branches at once
+git-remove-remote-branches() {
+	REMOTE="$1"
+	for BRANCH in "$@"
+	do
+		[ "$BRANCH" = "$REMOTE" ] && continue
+		git push "$REMOTE" ":$BRANCH"
+	done
+}
+alias grrb="git-remove-remote-branches"
