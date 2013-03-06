@@ -26,6 +26,10 @@ for DOTFILE in *; do
 	[ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
 	DIRFILE="$DOTFILESDIR/$DOTFILE"
 
+	# Don't install gitconfig-user unless you're also called Mike.
+	echo $DOTFILE | grep -q 'gitconfig-user' \
+		&& echo $USER | grep -vq 'mike' && continue
+
 	echo $DOTFILE | grep -q 'dotfiles' && continue
 
 	echo $DOTFILE | grep -q 'sublime' && HOMEFILE="$SUBLIME" \

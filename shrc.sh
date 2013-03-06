@@ -105,7 +105,7 @@ alias less="less --ignore-case --raw-control-chars"
 alias rsync="rsync --partial --progress --human-readable --compress"
 alias be="bundle exec"
 
-export HOMEBREW_SOURCEFORGE_USERNAME="mikemcquaid"
+export HOMEBREW_SOURCEFORGE_USERNAME="$(git config sourceforge.username)"
 alias upbrew="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles /Library/Caches/Homebrew/"
 
 alias svn="svn-git.sh"
@@ -144,7 +144,7 @@ then
 	alias agdu="sudo apt-get dist-upgrade"
 elif [ $WINDOWS ]
 then
-	quiet_which plink && alias ssh="plink -l mike"
+	quiet_which plink && alias ssh="plink -l $(git config shell.username)"
 
 	alias ls="ls -F --color=auto"
 

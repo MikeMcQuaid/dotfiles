@@ -78,6 +78,8 @@
 	patience = !git noff -Xpatience
 	# Hard reset branch to the upstream version.
 	hard-reset = !git reset --hard origin/$(git current-branch)
+	# Reset the current repository to the state on mikebook (my MacBook Pro) and clean it.
+	mikebook = !git fetch mikebook && git reset --hard mikebook/master && git clean -xdf
 
 	## Shortened 'New' Commands
 	rem = !git rebase-against-master
