@@ -1,1 +1,1 @@
-. ~/.shprofile
+source ~/.shprofile

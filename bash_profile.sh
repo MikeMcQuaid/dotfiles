@@ -1,2 +1,2 @@
-. ~/.shprofile
-. ~/.bashrc
+source ~/.shprofile
+source ~/.bashrc
