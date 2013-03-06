@@ -67,7 +67,7 @@ else
 fi
 RPROMPT='%{$fg_bold[red]%}$(git_branch)%{$fg_bold[yellow]%}$(svn_branch)%b[%{$fg_bold[blue]%}%~%b%f]'
 
-# History
+# History file
 export HISTFILE=~/.zsh_history
 
 # use emacs bindings even with vim as EDITOR

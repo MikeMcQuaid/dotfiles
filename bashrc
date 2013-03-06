@@ -5,6 +5,9 @@ source ~/.shrc
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# History file
+export HISTFILE=~/.bash_history
+
 # Enable history appending instead of overwriting.
 shopt -s histappend
 
