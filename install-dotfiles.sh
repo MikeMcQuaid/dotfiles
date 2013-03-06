@@ -26,10 +26,13 @@ for DOTFILE in *; do
 	[ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
 	DIRFILE="$DOTFILESDIR/$DOTFILE"
 
-	echo $DOTFILE | grep -q '\.' && continue
+	echo $DOTFILE | grep -q 'dotfiles' && continue
 
 	echo $DOTFILE | grep -q 'sublime' && HOMEFILE="$SUBLIME" \
 		&& mkdir -p "$HOMEFILE"
+
+	echo $DOTFILE | grep -q '\.sh' \
+		&& HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
 
 	if [ $UNIX ]
 	then
