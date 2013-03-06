@@ -105,7 +105,8 @@ alias less="less --ignore-case --raw-control-chars"
 alias rsync="rsync --partial --progress --human-readable --compress"
 alias be="bundle exec"
 
-alias upbrew="scp-to-http.sh mikemcquaid,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles /Library/Caches/Homebrew/"
+export HOMEBREW_SOURCEFORGE_USERNAME="mikemcquaid"
+alias upbrew="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles /Library/Caches/Homebrew/"
 
 alias svn="svn-git.sh"
 
@@ -116,7 +117,6 @@ then
 	export ANDROID_SDK_ROOT=$BREW_PREFIX/opt/android-sdk
 	export ANDROID_HOME=$ANDROID_SDK_ROOT
 	export HOMEBREW_DEVELOPER=1
-	export HOMEBREW_SOURCEFORGE_USERNAME="mikemcquaid"
 	alias brew="nice brew"
 	alias bpi="brew pull --install"
 fi
