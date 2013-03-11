@@ -73,10 +73,10 @@ force_add_to_path() {
 	export PATH="$PATH:$1"
 }
 
+add_to_path_start "$HOME/.homebrew/bin"
+add_to_path_start "$HOME/.homebrew/sbin"
 add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
-add_to_path "$HOME/.homebrew/bin"
-add_to_path "$HOME/.homebrew/sbin"
 add_to_path "$HOME/Documents/Scripts"
 add_to_path "$HOME/Scripts"
 add_to_path "$HOME/Library/Python/2.7/bin"
