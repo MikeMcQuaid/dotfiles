@@ -1,19 +1,10 @@
-Host brewtester
-	HostName brewtester.no-ip.org
-	User brew
-	LocalForward 22280 localhost:22280
-	Port 52222
-
 Host alltrailsbot
 	HostName office.alltrails.com
 	User buildbot
 	ForwardAgent yes
 	Port 22222
 
-Host utilmaster
-	HostName 204.236.164.92
-
-Host utilmaster *.alltrails.com *.compute.amazonaws.com 184.* 50.* 54.*
+Host *.alltrails.com 184.* 50.* 54.*
 	ForwardAgent yes
 	User deploy
 	IdentityFile ~/Documents/AllTrails/Chef/.chef/deploy_user
