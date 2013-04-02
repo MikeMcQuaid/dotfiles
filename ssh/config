@@ -3,11 +3,13 @@ Host alltrailsbot
 	User buildbot
 	ForwardAgent yes
 	Port 22222
+	RemoteForward 52698 localhost:52698
 
 Host *.alltrails.com 184.* 50.* 54.*
 	ForwardAgent yes
 	User deploy
 	IdentityFile ~/Documents/AllTrails/Chef/.chef/deploy_user
+	RemoteForward 52698 localhost:52698
 
 Host *
 	StrictHostKeyChecking ask

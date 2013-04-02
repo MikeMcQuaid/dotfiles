@@ -160,7 +160,17 @@ then
 fi
 
 # Set up editor
-if quiet_which subl || quiet_which sublime_text
+if [ -n "${SSH_CONNECTION}" ] && quiet_which rmate
+then
+	export EDITOR="rmate"
+	export GIT_EDITOR="$EDITOR -w"
+	export SVN_EDITOR=$GIT_EDITOR
+elif quiet_which mate
+then
+	export EDITOR="mate"
+	export GIT_EDITOR="$EDITOR -w"
+	export SVN_EDITOR="$GIT_EDITOR"
+elif quiet_which subl || quiet_which sublime_text
 then
 	quiet_which subl && export EDITOR="subl"
 	quiet_which sublime_text && export EDITOR="sublime_text" \

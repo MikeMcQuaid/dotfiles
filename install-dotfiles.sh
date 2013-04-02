@@ -13,6 +13,7 @@ uname -s | grep -q "_NT-" && export WINDOWS=1
 if [ $OSX ]
 then
 	SUBLIME="$HOME/Library/Application Support/Sublime Text 2/Packages/User"
+	TEXTMATE="$HOME/Library/Application Support/Avian/Bundles"
 elif [ $LINUX ]
 then
 	SUBLIME="$HOME/.config/sublime-text-2/Packages/User"
@@ -34,6 +35,14 @@ for DOTFILE in *; do
 
 	echo $DOTFILE | grep -q 'sublime' && HOMEFILE="$SUBLIME" \
 		&& mkdir -p "$HOMEFILE"
+
+	if [ $OSX ]
+	then
+		echo $DOTFILE | grep -q 'textmate' && HOMEFILE="$TEXTMATE" \
+			&& mkdir -p "$HOMEFILE"
+	else
+		echo $DOTFILE | grep -q 'textmate' && continue
+	fi
 
 	echo $DOTFILE | grep -q '\.sh' \
 		&& HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
