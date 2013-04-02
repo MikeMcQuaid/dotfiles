@@ -160,9 +160,6 @@ then
 fi
 
 # Set up editor
-quiet_which vi && export EDITOR="vi"
-quiet_which vim && export EDITOR="vim"
-
 if quiet_which subl || quiet_which sublime_text
 then
 	quiet_which subl && export EDITOR="subl"
@@ -171,6 +168,12 @@ then
 
 	export GIT_EDITOR="$EDITOR -w"
 	export SVN_EDITOR="$GIT_EDITOR"
+elif quiet_which vim
+then
+	export EDITOR="vim"
+elif quiet_which vi
+then
+	export EDITOR="vi"
 fi
 
 # Run dircolors if it exists
