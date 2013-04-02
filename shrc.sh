@@ -105,7 +105,8 @@ alias du="du -sh"
 alias make="nice make"
 alias less="less --ignore-case --raw-control-chars"
 alias rsync="rsync --partial --progress --human-readable --compress"
-alias be="bundle exec"
+alias rake="noglob rake"
+alias be="noglob bundle exec"
 
 export HOMEBREW_SOURCEFORGE_USERNAME="$(git config sourceforge.username)"
 alias upbrew="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles /Library/Caches/Homebrew/"
@@ -193,9 +194,9 @@ cd() {
 	pwd > ~/.lastpwd
 }
 
-# Provide quick access to Rails dump environment
+# Provide quick access to Rails dump database
 dump() {
-	RAILS_ENV=dump $@
+	RAILS_DEVELOPMENT_DATABASE=dump $@
 }
 
 # Remove multiple Git remote branches at once

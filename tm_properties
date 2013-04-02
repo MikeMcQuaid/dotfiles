@@ -1,12 +1,11 @@
+TM_RUBY = "$HOME/.rbenv/shims/ruby"
+PATH = "$HOME/.rbenv/shims:/usr/local/bin:$PATH"
+
 showInvisibles = true
-tabSize = 4
-softTabs = false
+tabSize = 2
+softTabs = true
 softWrap = true
 spellingLanguage = en_GB
 
 [ text ]
 spellChecking = true
-
-[ source.ruby ]
-softTabs = true
-tabSize = 2
