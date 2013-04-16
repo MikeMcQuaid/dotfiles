@@ -95,7 +95,6 @@ export DIFF=diff
 quiet_which colordiff && export DIFF=colordiff && alias diff=colordiff
 
 # Aliases
-alias su="/bin/su -"
 alias mkdir="mkdir -vp"
 alias df="df -H"
 alias rm="rm -iv"
@@ -145,6 +144,7 @@ elif [ $LINUX ]
 then
 	quiet_which keychain && eval `keychain -q --eval --agents ssh id_rsa`
 
+	alias su="/bin/su -"
 	alias ls="ls -F --color=auto"
 	alias open="xdg-open"
 	alias agdu="sudo apt-get dist-upgrade"
