@@ -78,15 +78,24 @@
 	patience = !git noff -Xpatience
 	# Hard reset branch to the upstream version.
 	hard-reset = !git reset --hard origin/$(git current-branch)
+	# Assume the specified file is unchanged to stop changes being seen by Git
+	assume = update-index --assume-unchanged
+	# No longer assume a specified file remains unchanged
+	unassume = update-index --no-assume-unchaged
+	# List all files that are assumed to be unchanged
+	assumed = !git ls-files -v | grep ^h | cut -c 3-
+
 	# Reset the current repository to the state on mikebook (my MacBook Pro) and clean it.
 	mikebook = !git fetch mikebook && git reset --hard mikebook/master && git clean -xdf
 
 	## Shortened 'New' Commands
+	fahr = !git fetch --all && git hard-reset
 	rem = !git rebase-against-master
 	wip = !git work-in-progress
 	pr = !git upstream-and-pull-request
 	up = !git upstream-current-branch
 	pm = !git pull-master-staging-and-current-branch
+	fa = !git fetch --all
 	w = !git word-diff
 	u = !git push-and-set-upstream
 	b = !git checkout-as-new-branch
@@ -103,6 +112,8 @@
 [diff]
 	# Use the OS X graphical three-way merge tool for graphical diffs.
 	tool = opendiff
+	# Use the slower but better patience diff algorithm
+	algorithm = patience
 [difftool "opendiff"]
 	# Set the OS X opendiff command name.
 	path = opendiff
