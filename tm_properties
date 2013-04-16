@@ -1,5 +1,6 @@
 TM_RUBY = "$HOME/.rbenv/shims/ruby"
 PATH = "$HOME/.rbenv/shims:/usr/local/bin:$PATH"
+TM_STRIP_WHITESPACE_ON_SAVE = true
 
 showInvisibles = true
 tabSize = 2
