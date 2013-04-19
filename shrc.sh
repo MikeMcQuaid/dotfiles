@@ -203,8 +203,9 @@ alias ed="$EDITOR"
 # Save directory changes
 cd() {
 	builtin cd "$@" || return
-	ls
+	[ $TERMINALAPP ] && set_terminal_app_pwd
 	pwd > ~/.lastpwd
+	ls
 }
 
 # Provide quick access to Rails dump database
