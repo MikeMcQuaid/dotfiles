@@ -81,7 +81,7 @@
 	# Assume the specified file is unchanged to stop changes being seen by Git
 	assume = update-index --assume-unchanged
 	# No longer assume a specified file remains unchanged
-	unassume = update-index --no-assume-unchaged
+	unassume = update-index --no-assume-unchanged
 	# List all files that are assumed to be unchanged
 	assumed = !git ls-files -v | grep ^h | cut -c 3-
 
