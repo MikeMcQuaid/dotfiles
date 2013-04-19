@@ -29,9 +29,13 @@ for DOTFILE in *; do
 
 	echo $DOTFILE | egrep -q '(dotfiles|\.txt|\.md)' && continue
 
-	# Don't install gitconfig-user unless you're also called Mike.
-	echo $DOTFILE | grep -q 'gitconfig-user' \
-		&& echo $USER | grep -vq 'mike' && continue
+	# Don't install some files unless you're also called Mike.
+	if echo $USER | grep -vq 'mike'
+	then
+		echo $DOTFILE | grep -q 'gitconfig-user' && continue
+		echo $DOTFILE | grep -q 'ssh' && continue
+		echo $DOTFILE | grep -q 'brew-cleanup-installed' && continue
+	fi
 
 	echo $DOTFILE | grep -q 'sublime' && HOMEFILE="$SUBLIME" \
 		&& mkdir -p "$HOMEFILE"
