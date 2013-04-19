@@ -21,3 +21,4 @@ rbenv-default-gems
 rbenv-gem-rehash
 redis
 ruby-build
+ssh-copy-id
