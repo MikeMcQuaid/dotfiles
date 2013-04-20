@@ -5,6 +5,9 @@ Host alltrailsbot
 	Port 22222
 	RemoteForward 52698 localhost:52698
 
+Host *.brew.sh
+	ForwardAgent yes
+
 Host *.alltrails.com 184.* 50.* 54.*
 	ForwardAgent yes
 	User deploy
