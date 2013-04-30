@@ -19,4 +19,4 @@ Host *
 	VerifyHostKeyDNS ask
 	NoHostAuthenticationForLocalhost yes
 	ControlMaster auto
-	ControlPath ~/.ssh/%r@%h:%p.socket
+	ControlPath /tmp/ssh-%r@%h:%p.socket
