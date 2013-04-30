@@ -107,7 +107,7 @@ alias rsync="rsync --partial --progress --human-readable --compress"
 alias rake="noglob rake"
 alias be="noglob bundle exec"
 
-export HOMEBREW_SOURCEFORGE_USERNAME="$(git config sourceforge.username)"
+quiet_which git && export HOMEBREW_SOURCEFORGE_USERNAME="$(git config sourceforge.username)"
 alias upbrew="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles /Library/Caches/Homebrew/"
 
 alias svn="svn-git.sh"
