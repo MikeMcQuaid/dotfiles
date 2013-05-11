@@ -4,6 +4,7 @@ automake
 cmake
 colordiff
 elasticsearch
+fontconfig
 freetype
 geoip
 gist
@@ -16,6 +17,7 @@ libtool
 mysql
 phantomjs
 pkg-config
+poppler
 rbenv
 rbenv-default-gems
 rbenv-gem-rehash
