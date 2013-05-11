@@ -1,6 +1,6 @@
-ssh/id_rsa
-ssh/id_rsa.ppk
-ssh/known_hosts
-ssh/*.socket
-sublime/Package\ Control.*
-sublime/DetectSyntax.sublime-settings
+/ssh/*
+!/ssh/authorized_keys
+!/ssh/config
+!/ssh/id_rsa.pub
+/sublime/Package\ Control.*
+/sublime/DetectSyntax.sublime-settings
