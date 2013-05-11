@@ -68,11 +68,12 @@ add_to_path() {
 	export PATH="$PATH:$1"
 }
 
-force_add_to_path() {
+force_add_to_path_start() {
 	remove_from_path "$1"
-	export PATH="$PATH:$1"
+	export PATH="$1:$PATH"
 }
 
+force_add_to_path_start ".bundle/bin"
 add_to_path_start "$HOME/.homebrew/bin"
 add_to_path_start "$HOME/.homebrew/sbin"
 add_to_path_start "/usr/local/bin"
@@ -84,7 +85,6 @@ add_to_path "$HOME/.gem/ruby/1.8/bin"
 add_to_path "$HOME/.rbenv/bin"
 add_to_path "$HOME/Applications/Sublime Text 2"
 add_to_path "/c/Program Files/Sublime Text 2"
-force_add_to_path ".bundle/bin"
 
 quiet_which() {
 	which $1 1>/dev/null 2>/dev/null
