@@ -1,12 +1,56 @@
+PATH = "/usr/local/bin:$PATH"
 TM_RUBY = "$HOME/.rbenv/shims/ruby"
-PATH = "$HOME/.rbenv/shims:/usr/local/bin:$PATH"
 TM_STRIP_WHITESPACE_ON_SAVE = true
 
-showInvisibles = true
-tabSize = 2
-softTabs = true
-softWrap = true
+encoding = UTF-8
+fontName = "Menlo"
+fontSize = 12
+lineEndings = '\n'
 spellingLanguage = en_GB
+myExcludes = "log,vendor,tmp"
+excludeInFileChooser  = "{$excludeInFileChooser,$myExcludes}"
+excludeInFolderSearch = "{$excludeInFolderSearch,$myExcludes}"
+fileBrowserGlob  = "{*,.tm_properties}"
+
+showInvisibles = false
+softWrap = true
+tabSize = 2
 
 [ text ]
-spellChecking = true
+spellChecking    = true
+softWrap         = false
+wrapColumn       = "Use Window Frame"
+softTabs         = true
+tabSize          = 2
+
+[ text.plain ]
+spellChecking    = true
+softWrap         = true
+wrapColumn       = "Use Window Frame"
+softTabs         = false
+tabSize          = 4
+
+[ text.html.markdown ]
+showInvisibles   = true
+spellChecking    = true
+softWrap         = true
+wrapColumn       = "Use Window Frame"
+softTabs         = false
+tabSize          = 4
+
+[ source ]
+showInvisibles   = true
+softWrap         = true
+wrapColumn       = "Use Window Frame"
+softTabs         = true
+tabSize          = 2
+
+[ source.plist ]
+softTabs       = false
+tabSize        = 4
+
+[ source.tm-properties ]
+spellChecking  = false
+
+[ "{Gemfile,Gemfile.lock,Guardfile}" ]
+fileType         = source.ruby
