@@ -213,6 +213,10 @@ dump() {
 	RAILS_DEVELOPMENT_DATABASE=dump $@
 }
 
+pdf() {
+	RESQUE_NO_INLINE=1 QUEUE=high dump $@
+}
+
 # Remove multiple Git remote branches at once
 git-remove-remote-branches() {
 	REMOTE="$1"
