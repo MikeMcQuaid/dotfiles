@@ -13,8 +13,11 @@ hub
 imagemagick
 jpeg
 libpng
+little-cms2
+libtiff
 libtool
 mysql
+openjpeg
 phantomjs
 pkg-config
 poppler
