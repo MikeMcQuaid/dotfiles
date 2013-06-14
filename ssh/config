@@ -5,6 +5,18 @@ Host alltrailsbot
 	Port 22222
 	RemoteForward 52698 localhost:52698
 
+Host alltrailsci
+	HostName ec2-184-72-14-16.us-west-1.compute.amazonaws.com
+	User ec2-user
+	ForwardAgent yes
+	IdentityFile ~/Documents/AllTrails/Chef/.chef/alltrailsci.pem
+
+Host alltrailscislave
+	HostName ec2-54-215-66-8.us-west-1.compute.amazonaws.com
+	User ubuntu
+	ForwardAgent yes
+	IdentityFile ~/Documents/AllTrails/Chef/.chef/alltrailsci.pem
+
 Host *.brew.sh
 	ForwardAgent yes
 
