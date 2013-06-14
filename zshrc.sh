@@ -45,8 +45,7 @@ setopt prompt_subst
 autoload -U colors && colors
 
 git_branch() {
-	BRANCH_REFS=$(git symbolic-ref HEAD 2>/dev/null) || return
-	GIT_BRANCH="${BRANCH_REFS#refs/heads/}"
+	GIT_BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null) || return
 	[ -n "$GIT_BRANCH" ] && echo "($GIT_BRANCH) "
 }
 
