@@ -5,3 +5,4 @@
 --ignore-dir=b
 --ignore-dir=log
 --ignore-dir=vendor
+--ignore-dir=_vendor
