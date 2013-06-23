@@ -27,7 +27,7 @@
 	# View the current changes in the staging area.
 	staged = diff --cached
 	# Print the name of the current branch.
-	current-branch = !git symbolic-ref HEAD|sed -e 's/refs.heads.//'
+	current-branch = symbolic-ref --short HEAD
 	# Cherry-pick a commit with your signature.
 	sign = cherry-pick --signoff
 	# List all current SVN externals for this repository.
