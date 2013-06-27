@@ -13,9 +13,9 @@ hub
 imagemagick
 jpeg
 libpng
-little-cms2
 libtiff
 libtool
+little-cms2
 mysql
 openjpeg
 phantomjs
