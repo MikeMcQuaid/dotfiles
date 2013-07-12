@@ -84,6 +84,8 @@
 	unassume = update-index --no-assume-unchanged
 	# List all files that are assumed to be unchanged
 	assumed = !git ls-files -v | grep ^h | cut -c 3-
+	# Prune the remote branches on origin
+	prune = remote prune origin
 
 	# Reset the current repository to the state on mikebook (my MacBook Pro) and clean it.
 	mikebook = !git fetch mikebook && git reset --hard mikebook/master && git clean -xdf
