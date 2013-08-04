@@ -1,3 +1,4 @@
+#!/bin/sh
 # 077 would be more secure, but 022 is more useful.
 umask 022
 
@@ -220,7 +221,7 @@ pdf() {
 }
 
 # Remove multiple Git remote branches at once
-git-remove-remote-branches() {
+git_remove_remote_branches() {
 	REMOTE="$1"
 	for BRANCH in "$@"
 	do
@@ -228,4 +229,4 @@ git-remove-remote-branches() {
 		git push "$REMOTE" ":$BRANCH"
 	done
 }
-alias grrb="git-remove-remote-branches"
+alias grrb="git_remove_remote_branches"
