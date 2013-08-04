@@ -1,6 +1,7 @@
 ack
 autoconf
 automake
+checkbashisms
 cmake
 colordiff
 elasticsearch
@@ -29,3 +30,4 @@ rbenv-gem-rehash
 redis
 ruby-build
 ssh-copy-id
+xz
