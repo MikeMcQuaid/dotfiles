@@ -74,7 +74,6 @@ force_add_to_path_start() {
 	export PATH="$1:$PATH"
 }
 
-force_add_to_path_start ".bundle/bin"
 add_to_path_start "$HOME/.homebrew/bin"
 add_to_path_start "$HOME/.homebrew/sbin"
 add_to_path_start "/usr/local/bin"

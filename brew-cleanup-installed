@@ -25,6 +25,7 @@ phantomjs
 pkg-config
 poppler
 rbenv
+rbenv-binstubs
 rbenv-default-gems
 rbenv-gem-rehash
 redis
