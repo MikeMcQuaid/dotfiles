@@ -83,6 +83,7 @@ add_to_path "$HOME/Scripts"
 add_to_path "$HOME/Library/Python/2.7/bin"
 add_to_path "$HOME/.gem/ruby/1.8/bin"
 add_to_path "$HOME/.rbenv/bin"
+add_to_path "$HOME/.cabal/bin"
 add_to_path "$HOME/Applications/Sublime Text 2"
 add_to_path "/c/Program Files/Sublime Text 2"
 
