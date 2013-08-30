@@ -74,11 +74,23 @@ force_add_to_path_start() {
 	export PATH="$1:$PATH"
 }
 
-force_add_to_path_start ".bundle/bin"
+quiet_which() {
+	which $1 1>/dev/null 2>/dev/null
+}
+
+# Run rbenv if it exists
+if quiet_which rbenv
+then
+	# Don't duplicate my PATH
+	remove_from_path "$(rbenv root)/shims"
+	eval "$(rbenv init -)"
+fi
+
 add_to_path_start "$HOME/.homebrew/bin"
 add_to_path_start "$HOME/.homebrew/sbin"
 add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
+force_add_to_path_start ".bundle/bin"
 add_to_path "$HOME/Documents/Scripts"
 add_to_path "$HOME/Scripts"
 add_to_path "$HOME/Library/Python/2.7/bin"
@@ -87,10 +99,8 @@ add_to_path "$HOME/.rbenv/bin"
 add_to_path "$HOME/.cabal/bin"
 add_to_path "$HOME/Applications/Sublime Text 2"
 add_to_path "/c/Program Files/Sublime Text 2"
-
-quiet_which() {
-	which $1 1>/dev/null 2>/dev/null
-}
+add_to_path "/Applications/GitX.app/Contents/Resources"
+add_to_path "/Applications/TextMate.app/Contents/Resources"
 
 quiet_which ack-grep && alias ack=ack-grep
 export DIFF=diff
@@ -192,14 +202,6 @@ fi
 
 # Run dircolors if it exists
 quiet_which dircolors && eval $(dircolors -b)
-
-# Run rbenv if it exists
-if quiet_which rbenv
-then
-	# Don't duplicate my PATH
-	remove_from_path "$(rbenv root)/shims"
-	eval "$(rbenv init -)"
-fi
 
 # Aliases using variables
 alias ed="$EDITOR"
