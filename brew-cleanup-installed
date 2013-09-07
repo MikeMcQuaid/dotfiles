@@ -27,6 +27,7 @@ poppler
 rbenv
 rbenv-default-gems
 rbenv-gem-rehash
+readline
 redis
 ruby-build
 ssh-copy-id
