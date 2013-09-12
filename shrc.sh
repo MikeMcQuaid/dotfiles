@@ -130,7 +130,6 @@ alias svn="svn-git.sh"
 if quiet_which brew
 then
 	export BREW_PREFIX=$(brew --prefix)
-	export RUBY_CONFIGURE_OPTS=--with-readline-dir=$BREW_PREFIX/opt/readline
 	export ANDROID_SDK_ROOT=$BREW_PREFIX/opt/android-sdk
 	export ANDROID_HOME=$ANDROID_SDK_ROOT
 	export HOMEBREW_GIT_ETC=1

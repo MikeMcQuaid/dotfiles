@@ -18,9 +18,11 @@ jq
 libpng
 libtiff
 libtool
+libyaml
 little-cms2
 mysql
 openjpeg
+openssl
 phantomjs
 pkg-config
 poppler
@@ -29,6 +31,7 @@ rbenv-default-gems
 rbenv-gem-rehash
 readline
 redis
+ruby
 ruby-build
 ssh-copy-id
 xz
