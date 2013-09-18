@@ -63,7 +63,7 @@ add_to_path_start() {
 	export PATH="$1:$PATH"
 }
 
-add_to_path() {
+add_to_path_end() {
 	[ -d "$1" ] || return
 	remove_from_path "$1"
 	export PATH="$PATH:$1"
@@ -78,6 +78,21 @@ quiet_which() {
 	which $1 1>/dev/null 2>/dev/null
 }
 
+add_to_path_end "$HOME/Documents/Scripts"
+add_to_path_end "$HOME/Scripts"
+add_to_path_end "$HOME/Library/Python/2.7/bin"
+add_to_path_end "$HOME/.gem/ruby/1.8/bin"
+add_to_path_end "$HOME/.rbenv/bin"
+add_to_path_end "$HOME/.cabal/bin"
+add_to_path_end "$HOME/Applications/SublimeText2"
+add_to_path_end "/c/Program Files/Sublime Text 2"
+add_to_path_end "/Applications/GitX.app/Contents/Resources"
+add_to_path_end "/Applications/TextMate.app/Contents/Resources"
+add_to_path_start "$HOME/.homebrew/bin"
+add_to_path_start "$HOME/.homebrew/sbin"
+add_to_path_start "/usr/local/bin"
+add_to_path_start "/usr/local/sbin"
+
 # Run rbenv if it exists
 if quiet_which rbenv
 then
@@ -86,21 +101,7 @@ then
 	eval "$(rbenv init -)"
 fi
 
-add_to_path_start "$HOME/.homebrew/bin"
-add_to_path_start "$HOME/.homebrew/sbin"
-add_to_path_start "/usr/local/bin"
-add_to_path_start "/usr/local/sbin"
 force_add_to_path_start ".bundle/bin"
-add_to_path "$HOME/Documents/Scripts"
-add_to_path "$HOME/Scripts"
-add_to_path "$HOME/Library/Python/2.7/bin"
-add_to_path "$HOME/.gem/ruby/1.8/bin"
-add_to_path "$HOME/.rbenv/bin"
-add_to_path "$HOME/.cabal/bin"
-add_to_path "$HOME/Applications/SublimeText2"
-add_to_path "/c/Program Files/Sublime Text 2"
-add_to_path "/Applications/GitX.app/Contents/Resources"
-add_to_path "/Applications/TextMate.app/Contents/Resources"
 
 quiet_which ack-grep && alias ack=ack-grep
 export DIFF=diff
@@ -143,8 +144,8 @@ then
 	export GREP_OPTIONS="--color=auto"
 	export CLICOLOR=1
 
-	add_to_path /Applications/Xcode.app/Contents/Developer/usr/bin
-	add_to_path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+	add_to_path_end /Applications/Xcode.app/Contents/Developer/usr/bin
+	add_to_path_end /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 
 	alias ls="ls -F"
 	alias ql="qlmanage -p 1>/dev/null"
