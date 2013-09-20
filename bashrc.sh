@@ -37,18 +37,9 @@ export HISTCONTROL=ignoredups
 export PROMPT_COMMAND='history -a'
 export HISTIGNORE="&:ls:[bf]g:exit"
 
-# allow the use of the Delete/Insert keys
-bind '"\e[3~" delete-char'
-bind '"\e[2~" quoted-insert'
+# fix delete key on OSX
+[ $OSX ] && bind '"\e[3~" delete-char'
 
 # alternate mappings for Ctrl-U/V to search the history
 bind '"^u" history-search-backward'
 bind '"^v" history-search-forward'
-
-# mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
-bind '"\e[1;5C" forward-word'
-bind '"\e[1;5D" backward-word'
-bind '"\e[5C" forward-word'
-bind '"\e[5D" backward-word'
-bind '"\e\e[C" forward-word'
-bind '"\e\e[D" backward-word'

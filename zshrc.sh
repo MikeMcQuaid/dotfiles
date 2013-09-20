@@ -72,24 +72,18 @@ RPROMPT='%{$fg_bold[red]%}$(git_branch)%{$fg_bold[yellow]%}$(svn_branch)%b[%{$fg
 # History file
 export HISTFILE=~/.zsh_history
 
+# more OSX/Bash-like word jumps
+export WORDCHARS=''
+
 # use emacs bindings even with vim as EDITOR
 bindkey -e
 
 # fix backspace on Debian
-bindkey "^?" backward-delete-char
+[ $LINUX ] && bindkey "^?" backward-delete-char
 
-# allow the use of the Delete/Insert keys
-bindkey "\e[3~" delete-char
-bindkey "\e[2~" quoted-insert
+# fix delete key on OSX
+[ $OSX ] && bindkey "\e[3~" delete-char
 
 # alternate mappings for Ctrl-U/V to search the history
 bindkey "^u" history-beginning-search-backward
 bindkey "^v" history-beginning-search-forward
-
-# mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
-bindkey "\e[1;5C" forward-word
-bindkey "\e[1;5D" backward-word
-bindkey "\e[5C" forward-word
-bindkey "\e[5D" backward-word
-bindkey "\e\e[C" forward-word
-bindkey "\e\e[D" backward-word
