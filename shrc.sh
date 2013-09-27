@@ -124,6 +124,7 @@ alias z="zeus"
 
 quiet_which git && export HOMEBREW_SOURCEFORGE_USERNAME="$(git config sourceforge.username)"
 alias upbrew="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles /Library/Caches/Homebrew/"
+alias upmirror="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/mirror"
 
 alias svn="svn-git.sh"
 
