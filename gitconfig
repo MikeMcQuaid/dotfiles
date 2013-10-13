@@ -96,7 +96,7 @@
 	pr = !git upstream-and-pull-request
 	up = !git upstream-current-branch
 	pm = !git pull-master-staging-and-current-branch
-	fa = !git fetch --all
+	fa = !git fetch --all && git prune remote origin
 	w = !git word-diff
 	u = !git push-and-set-upstream
 	b = !git checkout-as-new-branch
