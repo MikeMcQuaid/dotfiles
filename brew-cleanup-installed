@@ -22,16 +22,15 @@ libyaml
 little-cms2
 mysql
 openjpeg
-openssl
 phantomjs
 pkg-config
 poppler
 rbenv
 rbenv-default-gems
 rbenv-gem-rehash
+rbenv-readline
 readline
 redis
-ruby
 ruby-build
 ssh-copy-id
 xz
