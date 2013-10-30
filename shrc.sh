@@ -136,7 +136,6 @@ then
 	export BREW_PREFIX=$(brew --prefix)
 	export ANDROID_SDK_ROOT=$BREW_PREFIX/opt/android-sdk
 	export ANDROID_HOME=$ANDROID_SDK_ROOT
-	export HOMEBREW_GIT_ETC=1
 	export HOMEBREW_DEVELOPER=1
 	alias brew="nice brew"
 	alias bpi="brew pull --install"
