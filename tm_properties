@@ -30,7 +30,23 @@ wrapColumn       = "Use Window Frame"
 softTabs         = false
 tabSize          = 4
 
+[ text.git-commit ]
+showInvisibles   = true
+spellChecking    = true
+softWrap         = true
+wrapColumn       = 72
+softTabs         = false
+tabSize          = 4
+
 [ text.html.markdown ]
+showInvisibles   = true
+spellChecking    = true
+softWrap         = true
+wrapColumn       = 80
+softTabs         = false
+tabSize          = 4
+
+[ text.html.asciidoc ]
 showInvisibles   = true
 spellChecking    = true
 softWrap         = true
