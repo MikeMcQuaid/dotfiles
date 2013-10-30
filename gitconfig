@@ -140,6 +140,7 @@
 	# Allows use of git:// for public repositories with push access
 	# (which is often faster).
 	pushInsteadOf = git://github.com/
+	pushInsteadOf = https://github.com/
 [url "https://github.com/"]
 	# Use HTTP for GitHub instead of git://
 	# Enable this in networks where git:// is blocked.
