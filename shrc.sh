@@ -81,6 +81,7 @@ quiet_which() {
 add_to_path_end "$HOME/Documents/Scripts"
 add_to_path_end "$HOME/Scripts"
 add_to_path_end "$HOME/Library/Python/2.7/bin"
+add_to_path_end "$HOME/.gem/ruby/2.0.0/bin"
 add_to_path_end "$HOME/.gem/ruby/1.8/bin"
 add_to_path_end "$HOME/.rbenv/bin"
 add_to_path_end "$HOME/.cabal/bin"
