@@ -8,7 +8,7 @@
 	browse = true
 [push]
 	# Push to the set upstream branch being tracked by default.
-	default = tracking
+	default = simple
 [rerere]
 	# Store and re-use manual conflict resolution changes.
 	enabled = 1
