@@ -46,7 +46,7 @@ wrapColumn       = 80
 softTabs         = false
 tabSize          = 4
 
-[ text.html.asciidoc ]
+[ text.asciidoc ]
 showInvisibles   = true
 spellChecking    = true
 softWrap         = true
