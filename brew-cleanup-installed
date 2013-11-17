@@ -22,6 +22,7 @@ libyaml
 little-cms2
 mysql
 openjpeg
+openssl
 phantomjs
 pkg-config
 poppler
