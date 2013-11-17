@@ -84,7 +84,6 @@ add_to_path_end "$HOME/Library/Python/2.7/bin"
 add_to_path_end "$HOME/.gem/ruby/2.0.0/bin"
 add_to_path_end "$HOME/.gem/ruby/1.8/bin"
 add_to_path_end "$HOME/.rbenv/bin"
-add_to_path_end "$HOME/.cabal/bin"
 add_to_path_end "$HOME/Applications/SublimeText2"
 add_to_path_end "/c/Program Files/Sublime Text 2"
 add_to_path_end "/Applications/GitX.app/Contents/Resources"
@@ -95,12 +94,7 @@ add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
 
 # Run rbenv if it exists
-if quiet_which rbenv
-then
-	# Don't duplicate my PATH
-	remove_from_path "$(rbenv root)/shims"
-	eval "$(rbenv init -)"
-fi
+quiet_which rbenv && add_to_path_start "$(rbenv root)/shims"
 
 force_add_to_path_start ".bundle/bin"
 
