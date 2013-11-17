@@ -138,13 +138,14 @@
 [url "git@github.com:"]
 	# Always use GitHub SSH protocol to push.
 	# Allows use of git:// for public repositories with push access
-	# (which is often faster).
+	insteadOf = https://github.com/
 	pushInsteadOf = git://github.com/
 	pushInsteadOf = https://github.com/
 [url "https://github.com/"]
-	# Use HTTP for GitHub instead of git://
-	# Enable this in networks where git:// is blocked.
+	# Use HTTP for GitHub instead of git:// or git@
+	# Enable this in networks where git:// or git@ are blocked.
 	#insteadOf = git://github.com/
+	#insteadOf = git@github.com:
 [url "git@gitorious.org:"]
 	# Always use Gitorious SSH protocol to push.
 	# Allows use of git:// for public repositories with push access
