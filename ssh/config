@@ -1,30 +1,5 @@
-Host alltrailsbot
-	HostName office.alltrails.com
-	User buildbot
-	ForwardAgent yes
-	Port 22222
-	RemoteForward 52698 localhost:52698
-
-Host alltrailsci
-	HostName ec2-184-72-14-16.us-west-1.compute.amazonaws.com
-	User ec2-user
-	ForwardAgent yes
-	IdentityFile ~/Documents/AllTrails/Chef/.chef/alltrailsci.pem
-
-Host alltrailscislave
-	HostName ec2-54-215-66-8.us-west-1.compute.amazonaws.com
-	User ubuntu
-	ForwardAgent yes
-	IdentityFile ~/Documents/AllTrails/Chef/.chef/alltrailsci.pem
-
 Host *.brew.sh
 	ForwardAgent yes
-
-Host *.alltrails.com 184.* 50.* 54.*
-	ForwardAgent yes
-	User deploy
-	IdentityFile ~/Documents/AllTrails/Chef/.chef/deploy_user
-	RemoteForward 52698 localhost:52698
 
 Host *
 	StrictHostKeyChecking ask
