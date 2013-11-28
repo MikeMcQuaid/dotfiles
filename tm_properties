@@ -51,7 +51,7 @@ showInvisibles   = true
 spellChecking    = true
 softWrap         = true
 wrapColumn       = 80
-softTabs         = false
+softTabs         = true
 tabSize          = 4
 
 [ source ]
