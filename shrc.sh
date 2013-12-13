@@ -50,6 +50,9 @@ field() {
 	awk {print\ \$$1}
 }
 
+# Setup Boxen
+[ -d /opt/boxen ] && source /opt/boxen/env.sh
+
 # Setup paths
 remove_from_path() {
 	[ -d $1 ] || return
