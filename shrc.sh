@@ -52,6 +52,10 @@ field() {
 
 # Setup Boxen
 [ -d /opt/boxen ] && source /opt/boxen/env.sh
+alias boxen-brew=$BOXEN_HOME/homebrew/bin/brew
+
+# Stop Boxen's hub alias to git breaking git's zsh completion
+unalias git
 
 # Setup paths
 remove_from_path() {
