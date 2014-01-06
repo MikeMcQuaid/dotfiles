@@ -2,5 +2,6 @@
 !/ssh/authorized_keys
 !/ssh/config
 !/ssh/id_rsa.pub
+!/ssh/github_rsa.pub
 /sublime/Package\ Control.*
 /sublime/DetectSyntax.sublime-settings
