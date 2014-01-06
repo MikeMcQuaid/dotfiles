@@ -54,9 +54,6 @@ field() {
 [ -d /opt/boxen ] && source /opt/boxen/env.sh
 alias boxen-brew=$BOXEN_HOME/homebrew/bin/brew
 
-# Stop Boxen's hub alias to git breaking git's zsh completion
-unalias git
-
 # Setup paths
 remove_from_path() {
 	[ -d $1 ] || return
@@ -103,7 +100,7 @@ add_to_path_start "/usr/local/sbin"
 # Run rbenv if it exists
 quiet_which rbenv && add_to_path_start "$(rbenv root)/shims"
 
-force_add_to_path_start ".bundle/bin"
+force_add_to_path_start "bin"
 
 quiet_which ack-grep && alias ack=ack-grep
 export DIFF=diff
