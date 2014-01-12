@@ -2,6 +2,6 @@ ack
 checkbashisms
 colordiff
 git
-jq
+hub
 ssh-copy-id
 xz
