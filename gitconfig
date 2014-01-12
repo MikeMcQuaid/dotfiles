@@ -9,6 +9,9 @@
 [push]
 	# Push to the set upstream branch being tracked by default.
 	default = simple
+[fetch]
+	# Always prune when fetching (and pulling).
+	prune = 1
 [rerere]
 	# Store and re-use manual conflict resolution changes.
 	enabled = 1
