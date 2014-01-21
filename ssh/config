@@ -2,8 +2,13 @@ Host *.brew.sh
 	ForwardAgent yes
 
 Host github.com *.github.com *.github.net *.githubapp.com
-	IdentityFile /Users/mike/github/ssh/id_github
+	IdentityFile /Users/mike/GitHub/ssh/id_github
 	User mikemcquaid
+	ForwardAgent yes
+
+Host 172.*
+	IdentityFile /Users/mike/GitHub/ssh/id_ghenterprise
+	User root
 	ForwardAgent yes
 
 Host *
