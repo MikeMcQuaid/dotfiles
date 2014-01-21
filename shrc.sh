@@ -42,8 +42,8 @@ then
 	export MAKEFLAGS="-j$CPUCOUNT"
 fi
 
-# Load GitHub token
-[ -s ~/.github_password ] && export GITHUB_PASSWORD=$(cat ~/.github_password)
+# Load Homebrew GitHub API key
+[ -s ~/.brew_github_api ] && export HOMEBREW_GITHUB_API_TOKEN=$(cat ~/.brew_github_api)
 
 # Print field by number
 field() {
