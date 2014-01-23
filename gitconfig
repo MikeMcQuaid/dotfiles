@@ -34,6 +34,8 @@
 	staged = diff --cached
 	# Print the name of the current branch.
 	current-branch = symbolic-ref --short HEAD
+	# Print the name of the current upstream tracking branch.
+	upstream = !git config --get branch.$(git current-branch).remote
 	# Cherry-pick a commit with your signature.
 	sign = cherry-pick --signoff
 	# List all current SVN externals for this repository.
@@ -47,8 +49,8 @@
 	# Merge a branch with a merge commit and resolve any conflicts always using
 	# that branch's version rather than the current branch.
 	theirs = !git noff -Xtheirs
-	# Fetch all branches and rebase the current branch against origin/master.
-	rebase-against-master = !git fetch --all && git rebase origin/master
+	# Fetch all branches and rebase the current branch against upstream/master.
+	rebase-against-master = !git fetch --all && git rebase $(git upstream)/master
 	# Push the current branch upstream to origin using the same branch name
 	# for the remote branch.
 	upstream-current-branch = !git push --set-upstream origin $(git current-branch)
@@ -63,9 +65,9 @@
 	push-and-set-upstream = push --set-upstream
 	# Create a new branch by checking out another branch.
 	checkout-as-new-branch = checkout -b
-	# Rebase against origin/master and prompt for what operations
+	# Rebase against upstream/master and prompt for what operations
 	# should be performed.
-	interactively-rebase-against-master = rebase --interactive origin/master
+	interactively-rebase-against-master = !git rebase --interactive $(git upstream)/master
 	# Show the commit log with a prettier, clearer history.
 	pretty-one-line-log = log --graph --oneline --decorate
 	# Commit any changes to files, squash them into the last commit
@@ -83,7 +85,7 @@
 	# patience diff algorithm
 	patience = !git noff -Xpatience
 	# Hard reset branch to the upstream version.
-	hard-reset = !git reset --hard origin/$(git current-branch)
+	hard-reset = !git reset --hard $(git upstream)/$(git current-branch)
 	# Assume the specified file is unchanged to stop changes being seen by Git
 	assume = update-index --assume-unchanged
 	# No longer assume a specified file remains unchanged
@@ -98,7 +100,7 @@
 	pr = !git upstream-and-pull-request
 	up = !git upstream-current-branch
 	pm = !git pull-master-staging-and-current-branch
-	fa = !git fetch --all && git remote prune origin
+	fa = !git fetch --all
 	w = !git word-diff
 	u = !git push-and-set-upstream
 	b = !git checkout-as-new-branch
