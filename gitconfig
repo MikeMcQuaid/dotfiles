@@ -35,7 +35,7 @@
 	# Print the name of the current branch.
 	current-branch = symbolic-ref --short HEAD
 	# Print the name of the current upstream tracking branch.
-	upstream = !git config --get branch.$(git current-branch).remote
+	upstream = !git config --get branch.$(git current-branch).remote || echo origin
 	# Cherry-pick a commit with your signature.
 	sign = cherry-pick --signoff
 	# List all current SVN externals for this repository.
