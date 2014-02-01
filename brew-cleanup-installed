@@ -3,5 +3,6 @@ checkbashisms
 colordiff
 git
 hub
+phantomjs
 ssh-copy-id
 xz
