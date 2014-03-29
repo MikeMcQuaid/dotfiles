@@ -144,6 +144,7 @@ if [ $OSX ]
 then
 	export GREP_OPTIONS="--color=auto"
 	export CLICOLOR=1
+	export GIT_PAGER='less -+$LESS -FRX'
 
 	add_to_path_end /Applications/Xcode.app/Contents/Developer/usr/bin
 	add_to_path_end /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
