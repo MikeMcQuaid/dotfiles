@@ -1,5 +1,5 @@
 PATH = "/usr/local/bin:$PATH"
-TM_RUBY = "$HOME/.rbenv/shims/ruby"
+TM_RUBY = "/opt/boxen/rbenv/shims/ruby"
 TM_STRIP_WHITESPACE_ON_SAVE = true
 
 encoding = UTF-8
