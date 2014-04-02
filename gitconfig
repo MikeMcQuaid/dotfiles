@@ -149,6 +149,10 @@
 	# Enable this in networks where git:// or git@ are blocked.
 	#insteadOf = git://github.com/
 	#insteadOf = git@github.com:
+[url "git@github.com:"]
+	# Use SSH for GitHub instead of https://
+	# Enable this in networks where https:// has issues.
+	#insteadOf = https://github.com/
 [url "git@gitorious.org:"]
 	# Always use Gitorious SSH protocol to push.
 	# Allows use of git:// for public repositories with push access
