@@ -65,9 +65,9 @@
 	push-and-set-upstream = push --set-upstream
 	# Create a new branch by checking out another branch.
 	checkout-as-new-branch = checkout -b
-	# Rebase against upstream/master and prompt for what operations
+	# Rebase against origin/master and prompt for what operations
 	# should be performed.
-	interactively-rebase-against-master = !git rebase --interactive $(git upstream)/master
+	interactively-rebase-against-origin-master = !git rebase --interactive origin/master
 	# Show the commit log with a prettier, clearer history.
 	pretty-one-line-log = log --graph --oneline --decorate
 	# Commit any changes to files, squash them into the last commit
@@ -104,7 +104,7 @@
 	w = !git word-diff
 	u = !git push-and-set-upstream
 	b = !git checkout-as-new-branch
-	i = !git interactively-rebase-against-master
+	i = !git interactively-rebase-against-origin-master
 	# `true` needed as the return status is wrong otherwise.
 	l = !git pretty-one-line-log || true
 	f = !git fix-up-previous-commit
