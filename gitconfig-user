@@ -13,6 +13,6 @@
 	# GitHub username for command-line tools.
 	user = mikemcquaid
 [alias]
-	# Push the current branch upstream to mikemcquaid using the same branch name
-	# for the remote branch.
+	# Push the current branch upstream to mikemcquaid using the same
+	# branch name for the remote branch.
 	um = !git push --set-upstream mikemcquaid $(git current-branch)

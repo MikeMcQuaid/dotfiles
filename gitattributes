@@ -1,1 +1,2 @@
+# Diff .t2d files as if they were XML (they are).
 *.t2d diff=xml
