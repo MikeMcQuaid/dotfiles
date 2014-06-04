@@ -213,7 +213,8 @@ alias ed="$EDITOR"
 # Save directory changes
 cd() {
 	builtin cd "$@" || return
-	[ $TERMINALAPP ] && set_terminal_app_pwd
+	[ $TERMINALAPP ] && which set_terminal_app_pwd &>/dev/null \
+		&& set_terminal_app_pwd
 	pwd > ~/.lastpwd
 	ls
 }
