@@ -155,6 +155,7 @@ then
 	alias cpwd="pwd | tr -d '\n' | pbcopy"
 	alias vmware-shrink="sudo /Library/Application\ Support/VMware\ Tools/vmware-tools-cli disk shrinkonly"
 	alias remove-open-with-duplicates="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"
+	alias finder-hide="setfile -a V"
 
 	# Old default Curl is broken for Git on Leopard.
 	[ "$OSTYPE" = "darwin9.0" ] && export GIT_SSL_NO_VERIFY=1
