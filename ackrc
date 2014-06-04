@@ -1,5 +1,5 @@
 --type-set=cmake=CMakeLists.txt,.cmake
---type-set=qmake=.pro
+--type-set=qmake=.pro,.pri
 --type-set=txt=.txt
 --type-set=markdown=.md,.markdown
 --type-set=sass=.scss
