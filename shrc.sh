@@ -220,13 +220,13 @@ cd() {
 	ls
 }
 
-# Provide quick access to Rails dump database
-dump() {
-	RAILS_DEVELOPMENT_DATABASE=dump $@
-}
-
-pdf() {
-	RESQUE_NO_INLINE=1 QUEUE=high dump $@
+# Output whether the dependencies for a Homebrew package are bottled.
+brew_bottled_deps() {
+	for DEP in "$@"; do
+		echo "$DEP deps:"
+		brew deps $DEP | xargs brew info | grep stable
+		[ "$#" -ne 1 ] && echo
+	done
 }
 
 # Remove multiple Git remote branches at once
