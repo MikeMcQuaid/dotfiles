@@ -6,7 +6,7 @@ Host github.com *.github.com *.github.net *.githubapp.com
 	User mikemcquaid
 	ForwardAgent yes
 
-Host 172.* 208.*
+Host 172.* 208.* ghe.io
 	IdentityFile /Users/mike/GitHub/ssh/id_ghenterprise
 	User root
 	ForwardAgent yes
