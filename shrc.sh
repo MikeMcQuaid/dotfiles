@@ -52,7 +52,6 @@ field() {
 
 # Setup Boxen
 [ -d /opt/boxen ] && source /opt/boxen/env.sh
-alias boxen-brew=$BOXEN_HOME/homebrew/bin/brew
 
 # Setup paths
 remove_from_path() {
@@ -239,3 +238,21 @@ git_remove_remote_branches() {
 	done
 }
 alias grrb="git_remove_remote_branches"
+
+# Stop Boxen and /usr/local Homebrew's from fighting.
+boxen-brew() {
+  OLDPATH="$PATH"
+  remove_from_path "/usr/local/bin"
+  remove_from_path "/usr/local/sbin"
+  $BOXEN_HOME/homebrew/bin/brew $@
+  export PATH="$OLDPATH"
+}
+
+brew() {
+  shift
+  OLDPATH="$PATH"
+  remove_from_path "/opt/boxen/bin"
+  remove_from_path "/opt/boxen/homebrew/bin"
+  /usr/local/bin/brew $@
+  export PATH="$OLDPATH"
+}
