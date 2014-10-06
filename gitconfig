@@ -26,8 +26,6 @@
 	autocorrect = 1
 [alias]
 	## 'New' Commands
-	# Stage the changes in a given file.
-	stage = !git add -u
 	# Unstage the changes in a given file.
 	unstage = reset HEAD --
 	# View the current changes in the staging area.
