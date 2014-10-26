@@ -1,4 +1,5 @@
 Host *.brew.sh
+	User brewadmin
 	ForwardAgent yes
 
 Host github.com *.github.com *.github.net *.githubapp.com
