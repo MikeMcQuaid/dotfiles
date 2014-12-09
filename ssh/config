@@ -22,3 +22,4 @@ Host *
 	NoHostAuthenticationForLocalhost yes
 	ControlMaster auto
 	ControlPath /tmp/ssh-%r@%h:%p.socket
+	RemoteForward 52698 localhost:52698
