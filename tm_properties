@@ -7,10 +7,15 @@ fontName = "Menlo"
 fontSize = 12
 lineEndings = '\n'
 spellingLanguage = en_GB
-myExcludes = "Cellar,cache,opt,log,vendor,tmp,_site"
+
+myExtraIncludes = ".tm_properties,.gitignore"
+fileBrowserGlob  = "{*,$myExtraIncludes}"
+include = "{$include,$myExtraIncludes}"
+
+myExcludes = "Cellar,cache,opt,log,vendor/gems,vendor/bundle,repos/github,tmp,_site"
+excludeInBrowser      = "{$excludeInBrowser,$myExcludes}"
 excludeInFileChooser  = "{$excludeInFileChooser,$myExcludes}"
 excludeInFolderSearch = "{$excludeInFolderSearch,$myExcludes}"
-fileBrowserGlob  = "{*,.tm_properties}"
 
 showInvisibles = true
 softWrap = true
