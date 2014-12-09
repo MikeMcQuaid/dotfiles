@@ -255,4 +255,7 @@ git_remove_remote_branches() {
 }
 alias grrb="git_remove_remote_branches"
 
+# Use ruby-prof to generate a call stack
+ruby-call-stack() {
+	ruby-prof --printer=call_stack --file=call_stack.html -- $@
 }
