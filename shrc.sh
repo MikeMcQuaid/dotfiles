@@ -42,9 +42,6 @@ then
 	export MAKEFLAGS="-j$CPUCOUNT"
 fi
 
-# Load Homebrew GitHub API key
-[ -s ~/.brew_github_api ] && export HOMEBREW_GITHUB_API_TOKEN=$(cat ~/.brew_github_api)
-
 # Print field by number
 field() {
 	awk {print\ \$$1}
@@ -122,20 +119,33 @@ alias be="noglob bundle exec"
 alias gist="gist --open --copy"
 alias z="zeus"
 
-quiet_which git && export HOMEBREW_SOURCEFORGE_USERNAME="$(git config sourceforge.username)"
-alias upbrew="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles $(brew --cache)"
-alias upmirror="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/mirror"
-
 alias svn="svn-git.sh"
 
 # Platform-specific stuff
 if quiet_which brew
 then
+	# Load Homebrew GitHub API key
+	[ -s ~/.brew_github_api ] && export HOMEBREW_GITHUB_API_TOKEN=$(cat ~/.brew_github_api)
+
+
+	export HOMEBREW_SOURCEFORGE_USERNAME="$(git config sourceforge.username)"
+	alias upbrew="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles $(brew --cache)"
+	alias upmirror="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/mirror"
+
 	export BREW_PREFIX=$(brew --prefix)
 	export ANDROID_SDK_ROOT=$BREW_PREFIX/opt/android-sdk
 	export ANDROID_HOME=$ANDROID_SDK_ROOT
 	export HOMEBREW_DEVELOPER=1
 	alias bpi="brew pull --install"
+
+	# Output whether the dependencies for a Homebrew package are bottled.
+	brew_bottled_deps() {
+		for DEP in "$@"; do
+			echo "$DEP deps:"
+			brew deps $DEP | xargs brew info | grep stable
+			[ "$#" -ne 1 ] && echo
+		done
+	}
 
 	# Stop Boxen and /usr/local Homebrew's from fighting.
 	boxen-brew() {
@@ -233,15 +243,6 @@ cd() {
 		&& set_terminal_app_pwd
 	pwd > ~/.lastpwd
 	ls
-}
-
-# Output whether the dependencies for a Homebrew package are bottled.
-brew_bottled_deps() {
-	for DEP in "$@"; do
-		echo "$DEP deps:"
-		brew deps $DEP | xargs brew info | grep stable
-		[ "$#" -ne 1 ] && echo
-	done
 }
 
 # Remove multiple Git remote branches at once
