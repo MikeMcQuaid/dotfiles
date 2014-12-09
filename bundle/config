@@ -1,2 +1,4 @@
+---
 BUNDLE_BIN: bin/
 BUNDLE_PATH: vendor/ruby
+BUNDLE_BUILD__CHARLOCK_HOLMES: "--with-icu-dir=/opt/boxen/homebrew/opt/icu4c"
