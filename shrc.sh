@@ -135,8 +135,24 @@ then
 	export ANDROID_SDK_ROOT=$BREW_PREFIX/opt/android-sdk
 	export ANDROID_HOME=$ANDROID_SDK_ROOT
 	export HOMEBREW_DEVELOPER=1
-	alias brew="nice brew"
 	alias bpi="brew pull --install"
+
+	# Stop Boxen and /usr/local Homebrew's from fighting.
+	boxen-brew() {
+		OLDPATH="$PATH"
+		remove_from_path "/usr/local/bin"
+		remove_from_path "/usr/local/sbin"
+		nice $BOXEN_HOME/homebrew/bin/brew $@
+		export PATH="$OLDPATH"
+	}
+
+	brew() {
+		OLDPATH="$PATH"
+		remove_from_path "/opt/boxen/bin"
+		remove_from_path "/opt/boxen/homebrew/bin"
+		nice brew $@
+		export PATH="$OLDPATH"
+	}
 fi
 
 if [ $OSX ]
@@ -239,20 +255,4 @@ git_remove_remote_branches() {
 }
 alias grrb="git_remove_remote_branches"
 
-# Stop Boxen and /usr/local Homebrew's from fighting.
-boxen-brew() {
-  OLDPATH="$PATH"
-  remove_from_path "/usr/local/bin"
-  remove_from_path "/usr/local/sbin"
-  $BOXEN_HOME/homebrew/bin/brew $@
-  export PATH="$OLDPATH"
-}
-
-brew() {
-  shift
-  OLDPATH="$PATH"
-  remove_from_path "/opt/boxen/bin"
-  remove_from_path "/opt/boxen/homebrew/bin"
-  /usr/local/bin/brew $@
-  export PATH="$OLDPATH"
 }
