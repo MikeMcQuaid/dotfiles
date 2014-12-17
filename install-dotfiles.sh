@@ -11,33 +11,33 @@ SCRIPTNAME=$(basename $0)
 uname -s | grep -q "_NT-" && export WINDOWS=1
 
 for DOTFILE in *; do
-	HOMEFILE="$HOME/.$DOTFILE"
-	[ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
-	DIRFILE="$DOTFILESDIR/$DOTFILE"
+  HOMEFILE="$HOME/.$DOTFILE"
+  [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
+  DIRFILE="$DOTFILESDIR/$DOTFILE"
 
-	echo $DOTFILE | egrep -q '(dotfiles|\.txt|\.md)' && continue
+  echo $DOTFILE | egrep -q '(dotfiles|\.txt|\.md)' && continue
 
-	# Don't install some files unless you're also called Mike.
-	if echo $USER | grep -vq 'mike'
-	then
-		echo $DOTFILE | grep -q 'gitconfig-user' && continue
-		echo $DOTFILE | grep -q 'ssh' && continue
-		echo $DOTFILE | grep -q 'brew-cleanup-installed' && continue
-	fi
+  # Don't install some files unless you're also called Mike.
+  if echo $USER | grep -vq 'mike'
+  then
+    echo $DOTFILE | grep -q 'gitconfig-user' && continue
+    echo $DOTFILE | grep -q 'ssh' && continue
+    echo $DOTFILE | grep -q 'brew-cleanup-installed' && continue
+  fi
 
-	echo $DOTFILE | grep -q '\.sh' \
-		&& HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
+  echo $DOTFILE | grep -q '\.sh' \
+    && HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
 
-	if [ $UNIX ]
-	then
-		if [ -L "$HOMEFILE" ] && ! [ -d $DOTFILE ]
-		then
-			ln -sfv "$DIRFILE" "$HOMEFILE"
-		else
-			rm -rv "$HOMEFILE"
-			ln -sv "$DIRFILE" "$HOMEFILE"
-		fi
-	else
-		cp -rv "$DIRFILE" "$HOMEFILE"
-	fi
+  if [ $UNIX ]
+  then
+    if [ -L "$HOMEFILE" ] && ! [ -d $DOTFILE ]
+    then
+      ln -sfv "$DIRFILE" "$HOMEFILE"
+    else
+      rm -rv "$HOMEFILE"
+      ln -sv "$DIRFILE" "$HOMEFILE"
+    fi
+  else
+    cp -rv "$DIRFILE" "$HOMEFILE"
+  fi
 done
