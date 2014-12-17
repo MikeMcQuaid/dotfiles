@@ -17,17 +17,17 @@ set incsearch
 set autoindent
 set smarttab
 if has("autocmd")
-    filetype on
-    filetype indent on
-    filetype plugin on
+  filetype on
+  filetype indent on
+  filetype plugin on
 endif
 
 " whitespace
 if has("multi_byte")
-	set encoding=utf-8
-	set list listchars=tab:»·,trail:·
+  set encoding=utf-8
+  set list listchars=tab:»·,trail:·
 else
-	set list listchars=tab:>-,trail:.
+  set list listchars=tab:>-,trail:.
 endif
 
 " disable mouse integration

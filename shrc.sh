@@ -29,22 +29,22 @@ export LESS_TERMEND=$'\E[0m'
 # Count CPUs for Make jobs
 if [ $OSX ]
 then
-	export CPUCOUNT=$(sysctl -n hw.ncpu)
+  export CPUCOUNT=$(sysctl -n hw.ncpu)
 elif [ $LINUX ]
 then
-	export CPUCOUNT=$(getconf _NPROCESSORS_ONLN)
+  export CPUCOUNT=$(getconf _NPROCESSORS_ONLN)
 else
-	export CPUCOUNT="1"
+  export CPUCOUNT="1"
 fi
 
 if [ "$CPUCOUNT" -gt 1 ]
 then
-	export MAKEFLAGS="-j$CPUCOUNT"
+  export MAKEFLAGS="-j$CPUCOUNT"
 fi
 
 # Print field by number
 field() {
-	awk {print\ \$$1}
+  awk {print\ \$$1}
 }
 
 # Setup Boxen
@@ -52,30 +52,30 @@ field() {
 
 # Setup paths
 remove_from_path() {
-	[ -d $1 ] || return
-	# Doesn't work for first item in the PATH but don't care.
-	export PATH=$(echo $PATH | sed -e "s|:$1||") 2>/dev/null
+  [ -d $1 ] || return
+  # Doesn't work for first item in the PATH but don't care.
+  export PATH=$(echo $PATH | sed -e "s|:$1||") 2>/dev/null
 }
 
 add_to_path_start() {
-	[ -d $1 ] || return
-	remove_from_path "$1"
-	export PATH="$1:$PATH"
+  [ -d $1 ] || return
+  remove_from_path "$1"
+  export PATH="$1:$PATH"
 }
 
 add_to_path_end() {
-	[ -d "$1" ] || return
-	remove_from_path "$1"
-	export PATH="$PATH:$1"
+  [ -d "$1" ] || return
+  remove_from_path "$1"
+  export PATH="$PATH:$1"
 }
 
 force_add_to_path_start() {
-	remove_from_path "$1"
-	export PATH="$1:$PATH"
+  remove_from_path "$1"
+  export PATH="$1:$PATH"
 }
 
 quiet_which() {
-	which $1 1>/dev/null 2>/dev/null
+  which $1 1>/dev/null 2>/dev/null
 }
 
 add_to_path_end "$HOME/Documents/Scripts"
@@ -124,110 +124,110 @@ alias svn="svn-git.sh"
 # Platform-specific stuff
 if quiet_which brew
 then
-	# Load Homebrew GitHub API key
-	[ -s ~/.brew_github_api ] && export HOMEBREW_GITHUB_API_TOKEN=$(cat ~/.brew_github_api)
+  # Load Homebrew GitHub API key
+  [ -s ~/.brew_github_api ] && export HOMEBREW_GITHUB_API_TOKEN=$(cat ~/.brew_github_api)
 
 
-	export HOMEBREW_SOURCEFORGE_USERNAME="$(git config sourceforge.username)"
-	alias upbrew="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles $(brew --cache)"
-	alias upmirror="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/mirror"
+  export HOMEBREW_SOURCEFORGE_USERNAME="$(git config sourceforge.username)"
+  alias upbrew="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles $(brew --cache)"
+  alias upmirror="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/mirror"
 
-	export BREW_PREFIX=$(brew --prefix)
-	export ANDROID_SDK_ROOT=$BREW_PREFIX/opt/android-sdk
-	export ANDROID_HOME=$ANDROID_SDK_ROOT
-	export HOMEBREW_DEVELOPER=1
-	alias bpi="brew pull --install"
+  export BREW_PREFIX=$(brew --prefix)
+  export ANDROID_SDK_ROOT=$BREW_PREFIX/opt/android-sdk
+  export ANDROID_HOME=$ANDROID_SDK_ROOT
+  export HOMEBREW_DEVELOPER=1
+  alias bpi="brew pull --install"
 
-	# Output whether the dependencies for a Homebrew package are bottled.
-	brew_bottled_deps() {
-		for DEP in "$@"; do
-			echo "$DEP deps:"
-			brew deps $DEP | xargs brew info | grep stable
-			[ "$#" -ne 1 ] && echo
-		done
-	}
+  # Output whether the dependencies for a Homebrew package are bottled.
+  brew_bottled_deps() {
+    for DEP in "$@"; do
+      echo "$DEP deps:"
+      brew deps $DEP | xargs brew info | grep stable
+      [ "$#" -ne 1 ] && echo
+    done
+  }
 
-	# Stop Boxen and /usr/local Homebrew's from fighting.
-	boxen-brew() {
-		OLDPATH="$PATH"
-		remove_from_path "/usr/local/bin"
-		remove_from_path "/usr/local/sbin"
-		nice $BOXEN_HOME/homebrew/bin/brew $@
-		export PATH="$OLDPATH"
-	}
+  # Stop Boxen and /usr/local Homebrew's from fighting.
+  boxen-brew() {
+    OLDPATH="$PATH"
+    remove_from_path "/usr/local/bin"
+    remove_from_path "/usr/local/sbin"
+    nice $BOXEN_HOME/homebrew/bin/brew $@
+    export PATH="$OLDPATH"
+  }
 
-	brew() {
-		OLDPATH="$PATH"
-		remove_from_path "/opt/boxen/bin"
-		remove_from_path "/opt/boxen/homebrew/bin"
-		nice brew $@
-		export PATH="$OLDPATH"
-	}
+  brew() {
+    OLDPATH="$PATH"
+    remove_from_path "/opt/boxen/bin"
+    remove_from_path "/opt/boxen/homebrew/bin"
+    nice brew $@
+    export PATH="$OLDPATH"
+  }
 fi
 
 if [ $OSX ]
 then
-	export GREP_OPTIONS="--color=auto"
-	export CLICOLOR=1
-	export GIT_PAGER='less -+$LESS -FRX'
+  export GREP_OPTIONS="--color=auto"
+  export CLICOLOR=1
+  export GIT_PAGER='less -+$LESS -FRX'
 
-	add_to_path_end /Applications/Xcode.app/Contents/Developer/usr/bin
-	add_to_path_end /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+  add_to_path_end /Applications/Xcode.app/Contents/Developer/usr/bin
+  add_to_path_end /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 
-	alias ls="ls -F"
-	alias ql="qlmanage -p 1>/dev/null"
-	alias locate="mdfind -name"
-	alias cpwd="pwd | tr -d '\n' | pbcopy"
-	alias vmware-shrink="sudo /Library/Application\ Support/VMware\ Tools/vmware-tools-cli disk shrinkonly"
-	alias remove-open-with-duplicates="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"
-	alias finder-hide="setfile -a V"
+  alias ls="ls -F"
+  alias ql="qlmanage -p 1>/dev/null"
+  alias locate="mdfind -name"
+  alias cpwd="pwd | tr -d '\n' | pbcopy"
+  alias vmware-shrink="sudo /Library/Application\ Support/VMware\ Tools/vmware-tools-cli disk shrinkonly"
+  alias remove-open-with-duplicates="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"
+  alias finder-hide="setfile -a V"
 
-	# Old default Curl is broken for Git on Leopard.
-	[ "$OSTYPE" = "darwin9.0" ] && export GIT_SSL_NO_VERIFY=1
+  # Old default Curl is broken for Git on Leopard.
+  [ "$OSTYPE" = "darwin9.0" ] && export GIT_SSL_NO_VERIFY=1
 elif [ $LINUX ]
 then
-	quiet_which keychain && eval `keychain -q --eval --agents ssh id_rsa`
+  quiet_which keychain && eval `keychain -q --eval --agents ssh id_rsa`
 
-	alias su="/bin/su -"
-	alias ls="ls -F --color=auto"
-	alias open="xdg-open"
-	alias agdu="sudo apt-get dist-upgrade"
+  alias su="/bin/su -"
+  alias ls="ls -F --color=auto"
+  alias open="xdg-open"
+  alias agdu="sudo apt-get dist-upgrade"
 elif [ $WINDOWS ]
 then
-	quiet_which plink && alias ssh="plink -l $(git config shell.username)"
+  quiet_which plink && alias ssh="plink -l $(git config shell.username)"
 
-	alias ls="ls -F --color=auto"
+  alias ls="ls -F --color=auto"
 
-	open() {
-		cmd /C"$@"
-	}
+  open() {
+    cmd /C"$@"
+  }
 fi
 
 # Set up editor
 if [ -n "${SSH_CONNECTION}" ] && quiet_which rmate
 then
-	export EDITOR="rmate"
-	export GIT_EDITOR="$EDITOR -w"
-	export SVN_EDITOR=$GIT_EDITOR
+  export EDITOR="rmate"
+  export GIT_EDITOR="$EDITOR -w"
+  export SVN_EDITOR=$GIT_EDITOR
 elif quiet_which mate
 then
-	export EDITOR="mate"
-	export GIT_EDITOR="$EDITOR -w"
-	export SVN_EDITOR="$GIT_EDITOR"
+  export EDITOR="mate"
+  export GIT_EDITOR="$EDITOR -w"
+  export SVN_EDITOR="$GIT_EDITOR"
 elif quiet_which subl || quiet_which sublime_text
 then
-	quiet_which subl && export EDITOR="subl"
-	quiet_which sublime_text && export EDITOR="sublime_text" \
-		&& alias subl="sublime_text"
+  quiet_which subl && export EDITOR="subl"
+  quiet_which sublime_text && export EDITOR="sublime_text" \
+    && alias subl="sublime_text"
 
-	export GIT_EDITOR="$EDITOR -w"
-	export SVN_EDITOR="$GIT_EDITOR"
+  export GIT_EDITOR="$EDITOR -w"
+  export SVN_EDITOR="$GIT_EDITOR"
 elif quiet_which vim
 then
-	export EDITOR="vim"
+  export EDITOR="vim"
 elif quiet_which vi
 then
-	export EDITOR="vi"
+  export EDITOR="vi"
 fi
 
 # Run dircolors if it exists
@@ -238,25 +238,25 @@ alias ed="$EDITOR"
 
 # Save directory changes
 cd() {
-	builtin cd "$@" || return
-	[ $TERMINALAPP ] && which set_terminal_app_pwd &>/dev/null \
-		&& set_terminal_app_pwd
-	pwd > ~/.lastpwd
-	ls
+  builtin cd "$@" || return
+  [ $TERMINALAPP ] && which set_terminal_app_pwd &>/dev/null \
+    && set_terminal_app_pwd
+  pwd > ~/.lastpwd
+  ls
 }
 
 # Remove multiple Git remote branches at once
 git_remove_remote_branches() {
-	REMOTE="$1"
-	for BRANCH in "$@"
-	do
-		[ "$BRANCH" = "$REMOTE" ] && continue
-		git push "$REMOTE" ":$BRANCH"
-	done
+  REMOTE="$1"
+  for BRANCH in "$@"
+  do
+    [ "$BRANCH" = "$REMOTE" ] && continue
+    git push "$REMOTE" ":$BRANCH"
+  done
 }
 alias grrb="git_remove_remote_branches"
 
 # Use ruby-prof to generate a call stack
 ruby-call-stack() {
-	ruby-prof --printer=call_stack --file=call_stack.html -- $@
+  ruby-prof --printer=call_stack --file=call_stack.html -- $@
 }

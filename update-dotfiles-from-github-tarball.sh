@@ -11,9 +11,9 @@ DOTFILESDIRREL=$(dirname $0)
 cd $DOTFILESDIRREL
 if [ -e .git ]
 then
-	echo "This dotfiles directory was checked out from Git so I won't update it."
-	echo "If you want it updated from a tarball anyway, please delete .git first."
-	exit 1
+  echo "This dotfiles directory was checked out from Git so I won't update it."
+  echo "If you want it updated from a tarball anyway, please delete .git first."
+  exit 1
 fi
 
 OUTFILE="dotfiles.tar.gz"

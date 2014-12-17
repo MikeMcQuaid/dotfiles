@@ -17,61 +17,39 @@ excludeInBrowser      = "{$excludeInBrowser,$myExcludes}"
 excludeInFileChooser  = "{$excludeInFileChooser,$myExcludes}"
 excludeInFolderSearch = "{$excludeInFolderSearch,$myExcludes}"
 
-showInvisibles = true
-softWrap = true
-tabSize = 2
-
-[ text ]
-spellChecking    = true
-softWrap         = false
-wrapColumn       = "Use Window Frame"
+showInvisibles   = true
+softWrap         = true
 softTabs         = true
 tabSize          = 2
 
-[ text.plain ]
+[ text ]
 spellChecking    = true
-softWrap         = true
 wrapColumn       = "Use Window Frame"
-softTabs         = false
-tabSize          = 4
 
 [ text.git-commit ]
 showInvisibles   = true
 spellChecking    = true
-softWrap         = true
+softWrap         = false
 wrapColumn       = 72
-softTabs         = false
-tabSize          = 4
 
-[ text.html.markdown ]
+[ text.html.markdown, text.asciidoc ]
 showInvisibles   = true
 spellChecking    = true
-softWrap         = true
 wrapColumn       = 80
-softTabs         = false
-tabSize          = 4
-
-[ text.asciidoc ]
-showInvisibles   = true
-spellChecking    = true
-softWrap         = true
-wrapColumn       = 80
-softTabs         = true
-tabSize          = 4
 
 [ source ]
 showInvisibles   = true
-softWrap         = true
 wrapColumn       = "Use Window Frame"
-softTabs         = true
-tabSize          = 2
 
 [ source.plist ]
-softTabs       = false
-tabSize        = 4
+softTabs         = false
+tabSize          = 4
 
 [ source.tm-properties ]
-spellChecking  = false
+spellChecking    = false
 
 [ "{Gemfile,Gemfile.lock,Guardfile}" ]
 fileType         = source.ruby
+
+[ "{gitconfig,gitconfig-user}" ]
+fileType         = source.git-config
