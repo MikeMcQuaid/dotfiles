@@ -1,8 +1,0 @@
-{
-	"sublimelinter_executable_map":
-	{
-	    "ruby": "/usr/local/opt/rbenv/shims/ruby"
-	},
-	"sublimelinter_gutter_marks": true,
-	"sublimelinter_notes": true
-}
