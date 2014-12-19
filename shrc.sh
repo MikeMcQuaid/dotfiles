@@ -49,6 +49,7 @@ field() {
 
 # Setup Boxen
 [ -d /opt/boxen ] && source /opt/boxen/env.sh
+alias git >/dev/null && unalias git
 
 # Setup paths
 remove_from_path() {
@@ -127,7 +128,6 @@ then
   # Load Homebrew GitHub API key
   [ -s ~/.brew_github_api ] && export HOMEBREW_GITHUB_API_TOKEN=$(cat ~/.brew_github_api)
 
-
   export HOMEBREW_SOURCEFORGE_USERNAME="$(git config sourceforge.username)"
   alias upbrew="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles $(brew --cache)"
   alias upmirror="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/mirror"
@@ -138,6 +138,10 @@ then
   export HOMEBREW_DEVELOPER=1
   alias bpi="brew pull --install"
 
+  export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+  alias boxen="boxen --srcdir $HOME/Documents"
+
   # Output whether the dependencies for a Homebrew package are bottled.
   brew_bottled_deps() {
     for DEP in "$@"; do
@@ -147,19 +151,11 @@ then
     done
   }
 
-  # Stop Boxen and /usr/local Homebrew's from fighting.
-  boxen-brew() {
-    OLDPATH="$PATH"
-    remove_from_path "/usr/local/bin"
-    remove_from_path "/usr/local/sbin"
-    nice $BOXEN_HOME/homebrew/bin/brew $@
-    export PATH="$OLDPATH"
-  }
-
+  # Stop Homebrew from complaining about boxen-my-config.
+  # Also, nice the Homebrew process.
   brew() {
     OLDPATH="$PATH"
     remove_from_path "/opt/boxen/bin"
-    remove_from_path "/opt/boxen/homebrew/bin"
     nice brew $@
     export PATH="$OLDPATH"
   }
