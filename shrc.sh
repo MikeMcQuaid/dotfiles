@@ -141,6 +141,7 @@ then
   export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
   alias boxen="boxen --srcdir $HOME/Documents"
+  export BOXEN_GIT_CREDENTIAL_FALLBACK="$(which git-credential-osxkeychain)"
 
   # Output whether the dependencies for a Homebrew package are bottled.
   brew_bottled_deps() {
