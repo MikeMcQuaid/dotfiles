@@ -156,11 +156,13 @@ then
   # Stop Homebrew from complaining about boxen-my-config.
   # Also, nice the Homebrew process.
   brew() {
-    OLDPATH="$PATH"
-    remove_from_path "/opt/boxen/bin"
-    remove_from_path "/opt/boxen/rbenv/shims"
-    nice brew $@
-    export PATH="$OLDPATH"
+    # Use a subshell to easily restore the PATH afterwards and return the
+    # correct exit code.
+    (
+      remove_from_path "/opt/boxen/bin"
+      remove_from_path "/opt/boxen/rbenv/shims"
+      nice brew $@
+    )
   }
 fi
 
