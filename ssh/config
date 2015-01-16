@@ -16,10 +16,12 @@ Host ghe.io
 	User admin
 	ForwardAgent yes
 
+Host * !heroku.com
+	RemoteForward 52698 localhost:52698
+
 Host *
 	StrictHostKeyChecking ask
 	VerifyHostKeyDNS ask
 	NoHostAuthenticationForLocalhost yes
 	ControlMaster auto
 	ControlPath /tmp/ssh-%r@%h:%p.socket
-	RemoteForward 52698 localhost:52698
