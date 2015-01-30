@@ -1,4 +1,5 @@
 ack
+augeas
 autoconf
 awscli
 brew-cask
@@ -8,6 +9,7 @@ colordiff
 dirmngr
 dnsmasq
 elasticsearch
+freetype
 geoip
 geos
 gettext
@@ -17,8 +19,10 @@ gnupg2
 gpg-agent
 gpgme
 icu4c
+imagemagick
 jansson
 jemalloc
+jpeg
 libassuan
 libevent
 libgcrypt
@@ -26,6 +30,7 @@ libgpg-error
 libksba
 libmagic
 libmaxminddb
+libpng
 libtool
 libusb
 libusb-compat
@@ -37,8 +42,8 @@ openssl
 pcre
 pinentry
 pkg-config
-pth
 postgresql
+pth
 readline
 redis
 ssh-copy-id
