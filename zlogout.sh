@@ -1,1 +1,1 @@
-logout
+source ~/.logout
