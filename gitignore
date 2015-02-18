@@ -45,7 +45,3 @@ b/
 
 # Ignore secrets files
 .env
-
-# Temporarily hide Boxen hooks.
-Library/Homebrew/boxen-*
-Library/Homebrew/cmd/boxen-*
