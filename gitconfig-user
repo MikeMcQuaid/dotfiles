@@ -6,6 +6,9 @@
 [shell]
   # Default SSH username.
   username = mike
+[bintray]
+  # Bintray username.
+  username = mikemcquaid
 [sourceforge]
   # SourceForge username.
   username = mikemcquaid
