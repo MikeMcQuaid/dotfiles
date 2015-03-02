@@ -49,7 +49,7 @@ field() {
 
 # Setup Boxen
 [ -d /opt/boxen ] && source /opt/boxen/env.sh
-alias git >/dev/null && unalias git
+alias git &>/dev/null && unalias git
 
 # Setup paths
 remove_from_path() {
