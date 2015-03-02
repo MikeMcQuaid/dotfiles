@@ -129,6 +129,8 @@ then
   # Load Homebrew GitHub API key
   [ -s ~/.brew_github_api ] && export HOMEBREW_GITHUB_API_TOKEN=$(cat ~/.brew_github_api)
 
+  export BINTRAY_USER="$(git config bintray.username)"
+  export BINTRAY_KEY="$(cat ~/.bintray.key)"
   export HOMEBREW_SOURCEFORGE_USERNAME="$(git config sourceforge.username)"
   alias upbrew="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles $(brew --cache)"
   alias upmirror="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/mirror"
