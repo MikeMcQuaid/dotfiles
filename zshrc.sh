@@ -6,7 +6,8 @@ autoload -U compinit && compinit
 
 if quiet_which brew
 then
-  [ ! -f $BREW_PREFIX/share/zsh/site-functions/_brew ] && \
+  [ -w $BREW_PREFIX/bin/brew ] && \
+    [ ! -f $BREW_PREFIX/share/zsh/site-functions/_brew ] && \
     mkdir -p $BREW_PREFIX/share/zsh/site-functions &>/dev/null && \
     ln -s $BREW_PREFIX/Library/Contributions/brew_zsh_completion.zsh \
           $BREW_PREFIX/share/zsh/site-functions/_brew
