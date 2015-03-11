@@ -2,6 +2,9 @@ PATH = "/usr/local/bin:$PATH"
 TM_RUBY = "/opt/boxen/rbenv/shims/ruby"
 TM_STRIP_WHITESPACE_ON_SAVE = true
 
+VOS_VALIDATOR_INFO = true
+VOS_ONLY_ON_ERROR = true
+
 encoding = UTF-8
 fontName = "Menlo"
 fontSize = 12
@@ -21,6 +24,7 @@ showInvisibles   = true
 softWrap         = true
 softTabs         = true
 tabSize          = 2
+saveOnBlur       = true
 
 [ text ]
 spellChecking    = true
