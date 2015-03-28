@@ -236,6 +236,9 @@ fi
 # Run dircolors if it exists
 quiet_which dircolors && eval $(dircolors -b)
 
+# More colours with grc
+[ -f "$BREW_PREFIX/etc/grc.bashrc" ] && source "$BREW_PREFIX/etc/grc.bashrc"
+
 # Aliases using variables
 alias ed="$EDITOR"
 
