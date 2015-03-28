@@ -91,6 +91,7 @@ add_to_path_end "$HOME/Applications/SublimeText2"
 add_to_path_end "/c/Program Files/Sublime Text 2"
 add_to_path_end "/Applications/GitX.app/Contents/Resources"
 add_to_path_end "/Applications/TextMate.app/Contents/Resources"
+add_to_path_end "/Applications/GitHub.app/Contents/MacOS"
 add_to_path_start "$HOME/.homebrew/bin"
 add_to_path_start "$HOME/.homebrew/sbin"
 add_to_path_start "/usr/local/bin"
@@ -122,6 +123,7 @@ alias gist="gist --open --copy"
 alias z="zeus"
 
 alias svn="svn-git.sh"
+alias github="github_cli"
 
 # Platform-specific stuff
 if quiet_which brew
