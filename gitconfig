@@ -177,9 +177,3 @@
 [credential]
   # Use OSX Keychain to store HTTP passwords.
   helper = osxkeychain
-[filter "media"]
-  clean = git media clean %f
-  smudge = git media smudge %f
-  required = true
-[hub]
-  protocol = https
