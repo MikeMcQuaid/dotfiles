@@ -33,10 +33,15 @@ wrapColumn       = "Use Window Frame"
 [ text.git-commit ]
 showInvisibles   = true
 spellChecking    = true
-softWrap         = false
 wrapColumn       = 72
+softWrap         = false
 
-[ text.html.markdown, text.asciidoc ]
+[ text.html.markdown ]
+showInvisibles   = true
+spellChecking    = true
+wrapColumn       = 80
+
+[ text.asciidoc ]
 showInvisibles   = true
 spellChecking    = true
 wrapColumn       = 80
