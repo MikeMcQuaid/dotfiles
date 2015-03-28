@@ -120,8 +120,6 @@ alias rsync="rsync --partial --progress --human-readable --compress"
 alias rake="noglob rake"
 alias be="noglob bundle exec"
 alias gist="gist --open --copy"
-alias z="zeus"
-
 alias svn="svn-git.sh"
 alias github="github_cli"
 
