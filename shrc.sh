@@ -92,15 +92,12 @@ add_to_path_end "/c/Program Files/Sublime Text 2"
 add_to_path_end "/Applications/GitX.app/Contents/Resources"
 add_to_path_end "/Applications/TextMate.app/Contents/Resources"
 add_to_path_end "/Applications/GitHub.app/Contents/MacOS"
-add_to_path_start "$HOME/.homebrew/bin"
-add_to_path_start "$HOME/.homebrew/sbin"
+add_to_path_end "/data/github/shell/bin"
 add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
 
 # Run rbenv if it exists
 quiet_which rbenv && add_to_path_start "$(rbenv root)/shims"
-
-force_add_to_path_start "bin"
 
 quiet_which ack-grep && alias ack=ack-grep
 export DIFF=diff
@@ -122,6 +119,12 @@ alias be="noglob bundle exec"
 alias gist="gist --open --copy"
 alias svn="svn-git.sh"
 alias github="github_cli"
+
+if [ "$USER" = "brewadmin" ]
+then
+  add_to_path_start "$HOME/Homebrew/bin"
+  add_to_path_start "$HOME/Homebrew/sbin"
+fi
 
 # Platform-specific stuff
 if quiet_which brew
@@ -176,6 +179,7 @@ then
 
   add_to_path_end /Applications/Xcode.app/Contents/Developer/usr/bin
   add_to_path_end /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+  add_to_path_end "$BREW_PREFIX/opt/git/share/git-core/contrib/diff-highlight"
 
   alias ls="ls -F"
   alias ql="qlmanage -p 1>/dev/null"
@@ -266,3 +270,6 @@ alias grrb="git_remove_remote_branches"
 ruby-call-stack() {
   ruby-prof --printer=call_stack --file=call_stack.html -- $@
 }
+
+# Look in ./bin but do it last to avoid weird `which` results.
+force_add_to_path_start "bin"
