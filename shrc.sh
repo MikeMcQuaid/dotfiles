@@ -145,6 +145,10 @@ then
   alias bpi="brew pull --install"
 
   export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+  if [ "$USER" = "brewadmin" ]
+  then
+    export HOMEBREW_CASK_OPTS="$HOMEBREW_CASK_OPTS --binarydir=$BREW_PREFIX/bin"
+  fi
 
   alias boxen="boxen --srcdir $HOME/Documents"
   export BOXEN_GIT_CREDENTIAL_FALLBACK="$(which git-credential-osxkeychain)"
