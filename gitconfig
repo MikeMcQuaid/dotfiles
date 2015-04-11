@@ -177,3 +177,9 @@
 [credential]
   # Use OSX Keychain to store HTTP passwords.
   helper = osxkeychain
+[hub]
+  protocol = https
+[filter "lfs"]
+  clean = git lfs clean %f
+  smudge = git lfs smudge %f
+  required = true
