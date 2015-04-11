@@ -130,7 +130,10 @@ fi
 if quiet_which brew
 then
   # Load Homebrew GitHub API key
-  [ -s ~/.brew_github_api ] && export HOMEBREW_GITHUB_API_TOKEN=$(cat ~/.brew_github_api)
+  if [ -s ~/.brew_github_api ]
+  then
+    export HOMEBREW_GITHUB_API_TOKEN=$(cat ~/.brew_github_api)
+  fi
 
   export BINTRAY_USER="$(git config bintray.username)"
   [ -s ~/.bintray.key ] && export BINTRAY_KEY="$(cat ~/.bintray.key)"
@@ -139,10 +142,7 @@ then
   alias upmirror="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/mirror"
 
   export BREW_PREFIX=$(brew --prefix)
-  export ANDROID_SDK_ROOT=$BREW_PREFIX/opt/android-sdk
-  export ANDROID_HOME=$ANDROID_SDK_ROOT
   export HOMEBREW_DEVELOPER=1
-  alias bpi="brew pull --install"
 
   export HOMEBREW_CASK_OPTS="--appdir=/Applications"
   if [ "$USER" = "brewadmin" ]
@@ -202,7 +202,6 @@ then
   alias su="/bin/su -"
   alias ls="ls -F --color=auto"
   alias open="xdg-open"
-  alias agdu="sudo apt-get dist-upgrade"
 elif [ $WINDOWS ]
 then
   quiet_which plink && alias ssh="plink -l $(git config shell.username)"
