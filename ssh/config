@@ -3,18 +3,13 @@ Host *.brew.sh
 	ForwardAgent yes
 
 Host github.com *.github.com *.github.net *.githubapp.com
-	IdentityFile /Users/mike/GitHub/ssh/id_github
 	User mikemcquaid
-	ForwardAgent yes
-
-Host 172.* 208.*
-	IdentityFile /Users/mike/GitHub/ssh/id_ghenterprise
-	User root
 	ForwardAgent yes
 
 Host ghe.io
 	User admin
 	ForwardAgent yes
+	Port 122
 
 Host * !heroku.com !github.com
 	RemoteForward 52698 localhost:52698
