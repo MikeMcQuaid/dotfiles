@@ -57,7 +57,7 @@ tabSize          = 4
 [ source.tm-properties ]
 spellChecking    = false
 
-[ "{Gemfile,Gemfile.lock,Guardfile}" ]
+[ "{Brewfile,Gemfile,Gemfile.lock,Guardfile}" ]
 fileType         = source.ruby
 
 [ "{gitconfig,gitconfig-user}" ]
