@@ -58,8 +58,8 @@
   # name for the remote branch.
   upstream-current-branch = !git push --set-upstream origin \
                            $(git current-branch)
-  # Create a pull request on GitHub using the `gh` command.
-  pull-request = !git upstream-current-branch && gh pull-request
+  # Create a pull request on GitHub using the `hub` command.
+  pull-request = !git upstream-current-branch && hub pull-request -o
   # Upstream the current branch to origin and create a pull request
   # on GitHub.
   upstream-and-pull-request = !git upstream-current-branch \
