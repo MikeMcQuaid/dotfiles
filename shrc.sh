@@ -179,6 +179,7 @@ if [ $OSX ]
 then
   export GREP_OPTIONS="--color=auto"
   export CLICOLOR=1
+  export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
   if quiet_which diff-highlight
   then
     export GIT_PAGER='diff-highlight | less -+$LESS -FRX'
