@@ -44,7 +44,7 @@ fi
 
 # Print field by number
 field() {
-  awk {print\ \$$1}
+  ruby -ane "puts \$F[$1]"
 }
 
 # Setup Boxen
