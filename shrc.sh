@@ -95,6 +95,8 @@ add_to_path_end "/Applications/GitHub.app/Contents/MacOS"
 add_to_path_end "/data/github/shell/bin"
 add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
+add_to_path_start "$HOME/Homebrew/bin"
+add_to_path_start "$HOME/Homebrew/sbin"
 
 # Run rbenv if it exists
 quiet_which rbenv && add_to_path_start "$(rbenv root)/shims"
@@ -120,12 +122,6 @@ alias gist="gist --open --copy"
 alias svn="svn-git.sh"
 alias github="github_cli"
 
-if [ "$USER" = "brewadmin" ]
-then
-  add_to_path_start "$HOME/Homebrew/bin"
-  add_to_path_start "$HOME/Homebrew/sbin"
-fi
-
 # Platform-specific stuff
 if quiet_which brew
 then
@@ -137,9 +133,6 @@ then
 
   export BINTRAY_USER="$(git config bintray.username)"
   [ -s ~/.bintray.key ] && export BINTRAY_KEY="$(cat ~/.bintray.key)"
-  export HOMEBREW_SOURCEFORGE_USERNAME="$(git config sourceforge.username)"
-  alias upbrew="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/Bottles $(brew --cache)"
-  alias upmirror="scp-to-http.sh $HOMEBREW_SOURCEFORGE_USERNAME,machomebrew frs.sourceforge.net /home/frs/project/m/ma/machomebrew/mirror"
 
   export BREW_PREFIX=$(brew --prefix)
   export HOMEBREW_DEVELOPER=1
@@ -152,6 +145,7 @@ then
 
   alias boxen="boxen --srcdir $HOME/Documents"
   export BOXEN_GIT_CREDENTIAL_FALLBACK="$(which git-credential-osxkeychain)"
+  export BOXEN_VAGRANT_NO_DESTROY=1
 
   # Output whether the dependencies for a Homebrew package are bottled.
   brew_bottled_deps() {
@@ -195,8 +189,6 @@ then
   alias ql="qlmanage -p 1>/dev/null"
   alias locate="mdfind -name"
   alias cpwd="pwd | tr -d '\n' | pbcopy"
-  alias vmware-shrink="sudo /Library/Application\ Support/VMware\ Tools/vmware-tools-cli disk shrinkonly"
-  alias remove-open-with-duplicates="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"
   alias finder-hide="setfile -a V"
 
   # Old default Curl is broken for Git on Leopard.
@@ -252,9 +244,6 @@ quiet_which dircolors && eval $(dircolors -b)
 # More colours with grc
 [ -f "$BREW_PREFIX/etc/grc.bashrc" ] && source "$BREW_PREFIX/etc/grc.bashrc"
 
-# Aliases using variables
-alias ed="$EDITOR"
-
 # Save directory changes
 cd() {
   builtin cd "$@" || return
@@ -263,17 +252,6 @@ cd() {
   pwd > ~/.lastpwd
   ls
 }
-
-# Remove multiple Git remote branches at once
-git_remove_remote_branches() {
-  REMOTE="$1"
-  for BRANCH in "$@"
-  do
-    [ "$BRANCH" = "$REMOTE" ] && continue
-    git push "$REMOTE" ":$BRANCH"
-  done
-}
-alias grrb="git_remove_remote_branches"
 
 # Use ruby-prof to generate a call stack
 ruby-call-stack() {

@@ -9,9 +9,6 @@
 [bintray]
   # Bintray username.
   username = mikemcquaid
-[sourceforge]
-  # SourceForge username.
-  username = mikemcquaid
 [github]
   # GitHub username for command-line tools.
   user = mikemcquaid
