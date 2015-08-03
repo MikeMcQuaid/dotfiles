@@ -105,6 +105,8 @@
   unassume = update-index --no-assume-unchanged
   # List all files that are assumed to be unchanged
   assumed = !git ls-files -v | grep '^[hsmrck?]' | cut -c 3-
+  # Delete all non-master branches
+  delete-merged = !git branch --merged | grep -v '*' | xargs -n 1 git branch -d
 
   ## Shortened 'New' Commands
   fahr = !git fetch --all && git hard-reset
