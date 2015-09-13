@@ -1,5 +1,5 @@
 PATH = "/usr/local/bin:$PATH"
-TM_RUBY = "/opt/boxen/rbenv/shims/ruby"
+TM_RUBY = "$HOME/.rbenv/shims/ruby"
 TM_STRIP_WHITESPACE_ON_SAVE = true
 
 VOS_VALIDATOR_INFO = true
@@ -11,7 +11,7 @@ fontSize = 12
 lineEndings = '\n'
 spellingLanguage = en_GB
 
-myExtraIncludes = ".tm_properties,.gitignore"
+myExtraIncludes = ".tm_properties,.gitignore,.ruby-version"
 fileBrowserGlob  = "{*,$myExtraIncludes}"
 include = "{$include,$myExtraIncludes}"
 

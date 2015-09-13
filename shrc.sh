@@ -47,10 +47,6 @@ field() {
   ruby -ane "puts \$F[$1]"
 }
 
-# Setup Boxen
-[ -d /opt/boxen ] && source /opt/boxen/env.sh
-alias git &>/dev/null && unalias git
-
 # Setup paths
 remove_from_path() {
   [ -d $1 ] || return
@@ -120,20 +116,11 @@ alias rake="noglob rake"
 alias be="noglob bundle exec"
 alias gist="gist --open --copy"
 alias svn="svn-git.sh"
-alias github="github_cli"
 
 # Platform-specific stuff
 if quiet_which brew
 then
-  # Load Homebrew GitHub API key
-  if [ -s ~/.brew_github_api ]
-  then
-    export HOMEBREW_GITHUB_API_TOKEN=$(cat ~/.brew_github_api)
-  fi
-
   export BINTRAY_USER="$(git config bintray.username)"
-  [ -s ~/.bintray.key ] && export BINTRAY_KEY="$(cat ~/.bintray.key)"
-
   export BREW_PREFIX=$(brew --prefix)
   export HOMEBREW_DEVELOPER=1
 
@@ -143,8 +130,6 @@ then
     export HOMEBREW_CASK_OPTS="$HOMEBREW_CASK_OPTS --binarydir=$BREW_PREFIX/bin"
   fi
 
-  alias boxen="boxen --srcdir $HOME/Documents"
-  export BOXEN_GIT_CREDENTIAL_FALLBACK="$(which git-credential-osxkeychain)"
   export BOXEN_VAGRANT_NO_DESTROY=1
 
   # Output whether the dependencies for a Homebrew package are bottled.
@@ -154,18 +139,6 @@ then
       brew deps $DEP | xargs brew info | grep stable
       [ "$#" -ne 1 ] && echo
     done
-  }
-
-  # Stop Homebrew from complaining about boxen-my-config.
-  # Also, nice the Homebrew process.
-  brew() {
-    # Use a subshell to easily restore the PATH afterwards and return the
-    # correct exit code.
-    (
-      remove_from_path "/opt/boxen/bin"
-      remove_from_path "/opt/boxen/rbenv/shims"
-      nice brew $@
-    )
   }
 fi
 
@@ -249,7 +222,7 @@ cd() {
   builtin cd "$@" || return
   [ $TERMINALAPP ] && which set_terminal_app_pwd &>/dev/null \
     && set_terminal_app_pwd
-  pwd > ~/.lastpwd
+  pwd > "$HOME/.lastpwd"
   ls
 }
 
@@ -260,3 +233,6 @@ ruby-call-stack() {
 
 # Look in ./bin but do it last to avoid weird `which` results.
 force_add_to_path_start "bin"
+
+# Load secrets
+[ -f "$HOME/.secrets" ] && source "$HOME/.secrets"
