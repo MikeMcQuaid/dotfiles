@@ -9,7 +9,7 @@ Run [`install-dotfiles.sh`](https://github.com/mikemcquaid/dotfiles/blob/master/
 after checkout to symlink (or copy) everything in this directory to your home directory.
 
 ## Status
-[![Build Status](https://travis-ci.org/mikemcquaid/DotFiles.svg?branch=master)](https://travis-ci.org/mikemcquaid/DotFiles)
+[![Build Status](https://travis-ci.org/mikemcquaid/dotfiles.svg?branch=master)](https://travis-ci.org/mikemcquaid/dotfiles)
 
 ## Contact
 [Mike McQuaid](mailto:mike@mikemcquaid.com)
