@@ -8,6 +8,9 @@ This is used for user-specific customisations of every other file.
 Run [`install-dotfiles.sh`](https://github.com/mikemcquaid/dotfiles/blob/master/install-dotfiles.sh)
 after checkout to symlink (or copy) everything in this directory to your home directory.
 
+## Status
+[![Build Status](https://travis-ci.org/mikemcquaid/DotFiles.svg?branch=master)](https://travis-ci.org/mikemcquaid/DotFiles)
+
 ## Contact
 [Mike McQuaid](mailto:mike@mikemcquaid.com)
 
