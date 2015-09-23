@@ -1,0 +1,12 @@
+language: objective-c
+os: osx
+matrix:
+  include:
+    - os: linux
+
+script:
+  - bash -n *.sh
+  - ./install-dotfiles.sh
+  - export PS1
+  - bash -c "source ~/.bashrc"
+  - zsh -c "source ~/.zshrc"
