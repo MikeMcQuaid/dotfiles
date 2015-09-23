@@ -116,6 +116,7 @@ alias rake="noglob rake"
 alias be="noglob bundle exec"
 alias gist="gist --open --copy"
 alias svn="svn-git.sh"
+alias sha256="shasum -a 256"
 
 # Platform-specific stuff
 if quiet_which brew
