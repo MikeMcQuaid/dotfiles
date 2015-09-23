@@ -15,4 +15,4 @@
 [alias]
   # Push the current branch upstream to mikemcquaid using the same
   # branch name for the remote branch.
-  um = !git push --set-upstream mikemcquaid $(git current-branch)
+  um = !(git remote -v | grep -q mikemcquaid || hub fork) && git push --set-upstream mikemcquaid $(git current-branch)
