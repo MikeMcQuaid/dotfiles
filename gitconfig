@@ -21,8 +21,7 @@
 	# Set attributes on files. Used for general diff improvements.
 	attributesfile = ~/.gitattributes
 [help]
-	# Open Git help pages in the browser as HTML.
-	format = web
+  # Autocorrect mistyped commands.
 	autocorrect = 1
 [alias]
 	## 'New' Commands
