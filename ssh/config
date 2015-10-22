@@ -6,11 +6,6 @@ Host github.com *.github.com *.github.net *.githubapp.com
 	User mikemcquaid
 	ForwardAgent yes
 
-Host ghe.io
-	User admin
-	ForwardAgent yes
-	Port 122
-
 Host * !heroku.com !github.com
 	RemoteForward 52698 localhost:52698
 
