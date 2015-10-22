@@ -150,9 +150,9 @@ then
   export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
   if quiet_which diff-highlight
   then
-    export GIT_PAGER='diff-highlight | less -+$LESS -FRX'
+    export GIT_PAGER='diff-highlight | less -+$LESS -RX'
   else
-    export GIT_PAGER='less -+$LESS -FRX'
+    export GIT_PAGER='less -+$LESS -RX'
   fi
 
   add_to_path_end /Applications/Xcode.app/Contents/Developer/usr/bin
