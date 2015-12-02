@@ -98,8 +98,6 @@ add_to_path_start "$HOME/Homebrew/sbin"
 quiet_which rbenv && add_to_path_start "$(rbenv root)/shims"
 
 quiet_which ack-grep && alias ack=ack-grep
-export DIFF=diff
-quiet_which colordiff && export DIFF=colordiff && alias diff=colordiff
 
 # Aliases
 alias mkdir="mkdir -vp"
