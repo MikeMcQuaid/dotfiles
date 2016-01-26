@@ -2,7 +2,6 @@ PATH = "$TM_PROJECT_DIRECTORY/bin:/usr/local/bin:$PATH"
 TM_RUBY = "$HOME/.rbenv/shims/ruby"
 TM_RAKE = "$HOME/.rbenv/shims/rake"
 TM_STRIP_WHITESPACE_ON_SAVE = true
-TM_MARKDOWN = "$HOME/.gem/ruby/2.0.0/bin/kramdown --input GFM"
 
 VOS_VALIDATOR_INFO = true
 VOS_ONLY_ON_ERROR = true
