@@ -42,6 +42,3 @@ install_manifest.txt
 
 # Ignore build directories.
 b/
-
-# Ignore secrets files
-.env
