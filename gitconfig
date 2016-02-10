@@ -33,7 +33,7 @@
 	current-branch = symbolic-ref --short HEAD
 	# Print the name of the current upstream tracking branch.
 	upstream = !git config --get branch.$(git current-branch).remote \
-						 || echo origin
+	         || echo origin
 	# Cherry-pick a commit with your signature.
 	sign = cherry-pick --signoff
 	# List all current SVN externals for this repository.
@@ -42,7 +42,7 @@
 	# WARNING: this gives all users read/write access
 	# without authentication (so only use on trusted networks).
 	serve = !git daemon --reuseaddr --export-all --base-path=. \
-											--verbose ./.git
+	                    --verbose ./.git
 	# Merge a branch and commit a merge commit (even if one
 	# isn't needed)
 	noff = merge --no-ff
@@ -52,17 +52,17 @@
 	# Fetch all branches and rebase the current branch against
 	# upstream/master.
 	rebase-against-master = !git fetch --all \
-												&& git rebase $(git upstream)/master
+	                      && git rebase $(git upstream)/master
 	# Push the current branch upstream to origin using the same branch
 	# name for the remote branch.
 	upstream-current-branch = !git push --set-upstream origin \
-													 $(git current-branch)
+	                         $(git current-branch)
 	# Create a pull request on GitHub using the `hub` command.
 	pull-request = !git upstream-current-branch && hub pull-request -o
 	# Upstream the current branch to origin and create a pull request
 	# on GitHub.
 	upstream-and-pull-request = !git upstream-current-branch \
-														&& git pull-request
+	                          && git pull-request
 	# Get the current diff but show differences between characters
 	# instead of just the differences between lines.
 	word-diff = diff --word-diff
@@ -73,22 +73,22 @@
 	# Rebase against origin/master and prompt for what operations
 	# should be performed.
 	interactively-rebase-against-origin-master = \
-		!git rebase --interactive origin/master
+	  !git rebase --interactive origin/master
 	# Show the commit log with a prettier, clearer history.
 	pretty-one-line-log = log --graph --oneline --decorate
 	# Commit any changes to files, squash them into the last commit
 	# and update its date.
 	fix-up-previous-commit = !git commit --all --amend \
-													 --reuse-message=HEAD --date=\"$(date)\" #"
+	                              --reuse-message=HEAD --date=\"$(date)\" #"
 	# Checkout the staging branch and update it.
 	pull-staging = !git checkout staging && git pull
 	# Checkout the master branch and update it.
 	pull-master = !git checkout master && git pull
 	# Update the staging, master and current branches.
 	pull-master-staging-and-current-branch = \
-		!BRANCH=$(git current-branch) && git fetch --all \
-		&& git pull-staging && git pull-master && \
-		git checkout $BRANCH && git pull
+	  !BRANCH=$(git current-branch) && git fetch --all \
+	    && git pull-staging && git pull-master && \
+	    git checkout $BRANCH && git pull
 	# Commit a work-in-progress commit (to use with
 	# fix-up-previous-commit)
 	work-in-progress = commit -a -m 'WIP'
