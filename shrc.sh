@@ -50,7 +50,7 @@ field() {
 # Setup paths
 remove_from_path() {
   [ -d $1 ] || return
-  # Doesn't work for first item in the PATH but don't care.
+  # Doesn't work for first item in the PATH but I don't care.
   export PATH=$(echo $PATH | sed -e "s|:$1||") 2>/dev/null
 }
 
@@ -97,8 +97,6 @@ add_to_path_start "$HOME/Homebrew/sbin"
 # Run rbenv if it exists
 quiet_which rbenv && add_to_path_start "$(rbenv root)/shims"
 
-quiet_which ack-grep && alias ack=ack-grep
-
 # Aliases
 alias mkdir="mkdir -vp"
 alias df="df -H"
@@ -115,6 +113,7 @@ alias be="noglob bundle exec"
 alias gist="gist --open --copy"
 alias svn="svn-git.sh"
 alias sha256="shasum -a 256"
+alias ack="ag"
 
 # Platform-specific stuff
 if quiet_which brew
