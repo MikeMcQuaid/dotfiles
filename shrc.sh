@@ -138,6 +138,20 @@ then
       [ "$#" -ne 1 ] && echo
     done
   }
+
+  # Output the most popular unbottled Homebrew packages
+  brew_popular_unbottled() {
+    brew deps --all |
+      awk '{ gsub(":? ", "\n") } 1' |
+      sort |
+      uniq -c |
+      sort |
+      tail -n 500 |
+      awk '{print $2}' |
+      xargs brew info |
+      grep stable |
+      grep -v bottled
+  }
 fi
 
 if [ $OSX ]
