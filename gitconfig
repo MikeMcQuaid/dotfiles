@@ -149,6 +149,11 @@
 [apply]
 	# Cleanup whitespace by default when apply patches.
 	whitespace = fix
+[rebase]
+	# Run `git stash` if needed before a `git rebase`
+	autoStash = true
+	# Auto-add `--autosquash` to `git rebase`
+	autoSquash = true
 [url "git@github.com:"]
 	# Always use GitHub SSH protocol to push.
 	# Allows use of git:// for public repositories with push access
