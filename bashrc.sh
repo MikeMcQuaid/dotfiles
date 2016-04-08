@@ -1,5 +1,5 @@
 # load shared shell configuration
-source ~/.bash_profile
+[ $(uname -s) = "Darwin" ] && source ~/.bash_profile
 source ~/.shrc
 
 # History
