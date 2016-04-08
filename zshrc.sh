@@ -1,4 +1,5 @@
 # load shared shell configuration
+source ~/.zprofile
 source ~/.shrc
 
 # History file
