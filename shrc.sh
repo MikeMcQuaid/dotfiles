@@ -1,19 +1,4 @@
 #!/bin/sh
-# 077 would be more secure, but 022 is more useful.
-umask 022
-
-# Save more history
-export HISTSIZE=100000
-export SAVEHIST=100000
-
-# OS variables
-[ $(uname -s) = "Darwin" ] && export OSX=1 && export UNIX=1
-[ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
-uname -s | grep -q "_NT-" && export WINDOWS=1
-
-# Fix systems missing $USER
-[ -z "$USER" ] && export USER=$(whoami)
-
 # Colourful manpages
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -25,22 +10,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 # Set to avoid `env` output from changing console colour
 export LESS_TERMEND=$'\E[0m'
-
-# Count CPUs for Make jobs
-if [ $OSX ]
-then
-  export CPUCOUNT=$(sysctl -n hw.ncpu)
-elif [ $LINUX ]
-then
-  export CPUCOUNT=$(getconf _NPROCESSORS_ONLN)
-else
-  export CPUCOUNT="1"
-fi
-
-if [ "$CPUCOUNT" -gt 1 ]
-then
-  export MAKEFLAGS="-j$CPUCOUNT"
-fi
 
 # Print field by number
 field() {
@@ -69,10 +38,6 @@ add_to_path_end() {
 force_add_to_path_start() {
   remove_from_path "$1"
   export PATH="$1:$PATH"
-}
-
-quiet_which() {
-  which $1 1>/dev/null 2>/dev/null
 }
 
 add_to_path_end "$HOME/Documents/Scripts"
@@ -114,6 +79,7 @@ alias gist="gist --open --copy"
 alias svn="svn-git.sh"
 alias sha256="shasum -a 256"
 alias ack="ag"
+alias z="zeus"
 
 # Platform-specific stuff
 if quiet_which brew
@@ -121,6 +87,7 @@ then
   export BINTRAY_USER="$(git config bintray.username)"
   export BREW_PREFIX=$(brew --prefix)
   export HOMEBREW_DEVELOPER=1
+  export HOMEBREW_ANALYTICS=1
 
   export HOMEBREW_CASK_OPTS="--appdir=/Applications"
   if [ "$USER" = "brewadmin" ]
@@ -245,6 +212,3 @@ ruby-call-stack() {
 
 # Look in ./bin but do it last to avoid weird `which` results.
 force_add_to_path_start "bin"
-
-# Load secrets
-[ -f "$HOME/.secrets" ] && source "$HOME/.secrets"

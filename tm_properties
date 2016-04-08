@@ -12,7 +12,7 @@ fontSize = 12
 lineEndings = '\n'
 spellingLanguage = en_GB
 
-myExtraIncludes = ".env*,.tm_properties,.gitignore,.ruby-version,.travis.yml"
+myExtraIncludes = ".env*,.tm_properties,.github,.gitignore,.ruby-version,.travis.yml"
 fileBrowserGlob  = "{*,$myExtraIncludes}"
 include = "{$include,$myExtraIncludes}"
 
