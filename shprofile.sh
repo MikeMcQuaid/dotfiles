@@ -42,9 +42,5 @@ fi
   builtin cd `cat ~/.lastpwd` 2>/dev/null
 [ $TERMINALAPP ] && set_terminal_app_pwd
 
-quiet_which() {
-  which $1 1>/dev/null 2>/dev/null
-}
-
 # Load secrets
 [ -f "$HOME/.secrets" ] && source "$HOME/.secrets"

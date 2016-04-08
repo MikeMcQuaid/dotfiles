@@ -1,6 +1,5 @@
 # load shared shell configuration
-export BASHRC_LOADED="1"
-[ $(uname -s) = "Darwin" ] && source ~/.bash_profile
+source ~/.bash_profile
 source ~/.shrc
 
 # History

@@ -40,6 +40,10 @@ force_add_to_path_start() {
   export PATH="$1:$PATH"
 }
 
+quiet_which() {
+  which $1 &>/dev/null
+}
+
 add_to_path_end "$HOME/Documents/Scripts"
 add_to_path_end "$HOME/Scripts"
 add_to_path_end "$HOME/Library/Python/2.7/bin"

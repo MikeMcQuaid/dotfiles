@@ -1,9 +1,6 @@
 # load shared shell configuration
 source ~/.shprofile
 
-# load bashrc if it wasn't already
-[ -z "$BASHRC_LOADED" ] && source ~/.bashrc
-
 # Set HOST for ZSH compatibility
 export HOST=$HOSTNAME
 

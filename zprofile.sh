@@ -4,7 +4,7 @@ source ~/.shprofile
 # Enable completions
 autoload -U compinit && compinit
 
-if quiet_which brew
+if which brew &>/dev/null
 then
   [ -w $BREW_PREFIX/bin/brew ] && \
     [ ! -f $BREW_PREFIX/share/zsh/site-functions/_brew ] && \
