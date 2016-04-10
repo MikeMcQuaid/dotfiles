@@ -92,6 +92,7 @@ then
   export BREW_PREFIX=$(brew --prefix)
   export HOMEBREW_DEVELOPER=1
   export HOMEBREW_ANALYTICS=1
+  export HOMEBREW_AUTO_UPDATE=1
 
   export HOMEBREW_CASK_OPTS="--appdir=/Applications"
   if [ "$USER" = "brewadmin" ]
