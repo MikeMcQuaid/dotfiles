@@ -45,7 +45,9 @@ quiet_which() {
 }
 
 add_to_path_end "$HOME/Documents/Scripts"
+add_to_path_end "$HOME/Documents/Scripts/thirdparty"
 add_to_path_end "$HOME/Scripts"
+add_to_path_end "$HOME/Scripts/thirdparty"
 add_to_path_end "$HOME/Library/Python/2.7/bin"
 add_to_path_end "$HOME/.gem/ruby/2.1.0/bin"
 add_to_path_end "$HOME/.gem/ruby/2.0.0/bin"
@@ -84,6 +86,7 @@ alias svn="svn-git.sh"
 alias sha256="shasum -a 256"
 alias ack="ag"
 alias z="zeus"
+alias zt="zeus test"
 
 # Platform-specific stuff
 if quiet_which brew
@@ -174,11 +177,12 @@ then
   export EDITOR="rmate"
   export GIT_EDITOR="$EDITOR -w"
   export SVN_EDITOR=$GIT_EDITOR
-elif quiet_which mate
+elif quiet_which atom
 then
-  export EDITOR="mate"
+  export EDITOR="atom"
   export GIT_EDITOR="$EDITOR -w"
   export SVN_EDITOR="$GIT_EDITOR"
+  alias mate="atom"
 elif quiet_which subl || quiet_which sublime_text
 then
   quiet_which subl && export EDITOR="subl"
