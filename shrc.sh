@@ -105,6 +105,8 @@ then
 
   export BOXEN_VAGRANT_NO_DESTROY=1
 
+  alias hbc="cd $BREW_PREFIX/Library/Taps/homebrew/homebrew-core"
+
   # Output whether the dependencies for a Homebrew package are bottled.
   brew_bottled_deps() {
     for DEP in "$@"; do
