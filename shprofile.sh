@@ -27,6 +27,7 @@ fi
 if [ "$CPUCOUNT" -gt 1 ]
 then
   export MAKEFLAGS="-j$CPUCOUNT"
+  export BUNDLE_JOBS="$CPUCOUNT"
 fi
 
 # Enable Terminal.app folder icons
