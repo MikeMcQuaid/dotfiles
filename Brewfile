@@ -18,7 +18,7 @@ brew 'pkg-config'
 brew 'libffi'
 brew 'glib'
 brew 'grc'
-brew 'heroku-toolbelt'
+brew 'heroku'
 brew 'hub'
 brew 'icu4c'
 brew 'libtool'
@@ -38,6 +38,7 @@ brew 'readline'
 brew 'sqlite'
 brew 'libgda'
 brew 'libgit2'
+brew 'mas'
 brew 'memcached'
 brew 'nginx'
 brew 'node'
@@ -49,8 +50,10 @@ brew 'redis'
 brew 'shellcheck'
 brew 'ssh-copy-id'
 brew 'the_silver_searcher'
+brew 'wget'
 brew 'homebrew/versions/elasticsearch17'
 brew 'homebrew/versions/mysql56'
+brew 'homebrew/versions/ruby187'
 cask 'appcleaner'
 cask 'cleartext'
 cask 'doxie'
@@ -66,3 +69,19 @@ cask 'transmission'
 cask 'vagrant'
 cask 'viscosity'
 cask 'vmware-fusion'
+mas 'Remote Desktop', id: 409907375
+mas 'Xcode', id: 497799835
+mas 'Keynote', id: 409183694
+mas 'Fantastical 2', id: 975937182
+mas 'Mactracker', id: 430255202
+mas 'Booster', id: 907023335
+mas '1Password', id: 443987910
+mas 'iMovie', id: 408981434
+mas 'OneDrive', id: 823766827
+mas 'Sketch', id: 402476602
+mas 'Slack', id: 803453959
+mas 'Pages', id: 409201541
+mas 'Pixelmator', id: 407963104
+mas 'Reeder', id: 880001334
+mas 'Veertu', id: 1024069033
+mas 'Numbers', id: 409203825
