@@ -55,7 +55,6 @@ brew 'homebrew/versions/elasticsearch17'
 brew 'homebrew/versions/mysql56'
 brew 'homebrew/versions/ruby187'
 cask 'appcleaner'
-cask 'cleartext'
 cask 'doxie'
 cask 'flux'
 cask 'github-desktop'
@@ -84,5 +83,4 @@ mas 'Slack', id: 803453959
 mas 'Pages', id: 409201541
 mas 'Pixelmator', id: 407963104
 mas 'Reeder', id: 880001334
-mas 'Veertu', id: 1024069033
 mas 'Numbers', id: 409203825
