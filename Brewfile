@@ -62,6 +62,7 @@ cask 'google-chrome'
 cask 'keepingyouawake'
 cask 'screenhero'
 cask 'sizeup'
+cask 'steam'
 cask 'subler'
 cask 'textexpander'
 cask 'textmate'
@@ -69,6 +70,7 @@ cask 'transmission'
 cask 'vagrant'
 cask 'viscosity'
 cask 'vmware-fusion'
+cask 'zoomus'
 mas 'Remote Desktop', id: 409907375
 mas 'Xcode', id: 497799835
 mas 'Keynote', id: 409183694
