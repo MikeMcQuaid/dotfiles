@@ -96,6 +96,7 @@ then
   export HOMEBREW_DEVELOPER=1
   export HOMEBREW_ANALYTICS=1
   export HOMEBREW_AUTO_UPDATE=1
+  export HOMEBREW_FORCE_VENDOR_RUBY=1
 
   export HOMEBREW_CASK_OPTS="--appdir=/Applications"
   if [ "$USER" = "brewadmin" ]
@@ -103,9 +104,8 @@ then
     export HOMEBREW_CASK_OPTS="$HOMEBREW_CASK_OPTS --binarydir=$BREW_PREFIX/bin"
   fi
 
-  export BOXEN_VAGRANT_NO_DESTROY=1
-
   alias hbc="cd $BREW_PREFIX/Library/Taps/homebrew/homebrew-core"
+  alias hbv="cd $BREW_PREFIX/Library/Taps/homebrew/homebrew-versions"
 
   # Output whether the dependencies for a Homebrew package are bottled.
   brew_bottled_deps() {
