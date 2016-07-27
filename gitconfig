@@ -98,7 +98,7 @@
 	# List all files that are assumed to be unchanged
 	assumed = !git ls-files -v | grep '^[hsmrck?]' | cut -c 3-
 	# Delete all non-master branches
-	delete-merged = !git branch --merged | grep -v 'master' | grep -v '*' | xargs -n 1 git branch -d
+	delete-merged = !git branch --merged | grep -v 'master' | grep -v '*' | xargs -n 1 git branch -D
 	# Diff against the current branch's merge-base
 	diff-merge-base = !git diff $(git merge-base origin/master HEAD)
 
