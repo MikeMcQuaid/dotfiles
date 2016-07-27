@@ -6,7 +6,7 @@ Host github.com *.github.com *.github.net *.githubapp.com
 	User mikemcquaid
 	ForwardAgent yes
 
-Host * !heroku.com !github.com
+Host * !heroku.com !github.com !github.net
 	RemoteForward 52698 localhost:52698
 
 Host *
