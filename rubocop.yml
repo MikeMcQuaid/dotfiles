@@ -1,0 +1,7 @@
+# ruby style guide favorite
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# consistency with above
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
