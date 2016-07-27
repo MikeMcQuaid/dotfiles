@@ -217,7 +217,7 @@ cd() {
 
 # Use ruby-prof to generate a call stack
 ruby-call-stack() {
-  ruby-prof --printer=call_stack --file=call_stack.html -- $@
+  ruby-prof --printer=call_stack --file=call_stack.html -- "$@"
 }
 
 # Look in ./bin but do it last to avoid weird `which` results.
