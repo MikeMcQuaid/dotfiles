@@ -1,7 +1,23 @@
-# ruby style guide favorite
+# To allow #/ or #: comments
+Style/LeadingCommentSpace:
+  Enabled: false
+
+# Don't see the need.
+Style/NumericLiterals:
+  Enabled: false
+
+# Too much noise.
+Metrics/LineLength:
+  Enabled: false
+
+# Don't see the need for these, too much noise.
+Style/PerlBackrefs:
+  Enabled: false
+
+# I prefer this approach.
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
-# consistency with above
+# Consistency with above
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
