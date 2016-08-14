@@ -31,8 +31,8 @@ brew 'jansson'
 brew 'jemalloc'
 brew 'oniguruma'
 brew 'jq'
-brew 'launch_socket_server'
-brew 'launchdns'
+brew 'launch_socket_server', service_restart: true
+brew 'launchdns', service_restart: true
 brew 'openssl'
 brew 'libevent'
 brew 'libgpg-error'
@@ -43,13 +43,13 @@ brew 'libgda'
 brew 'libssh2'
 brew 'libgit2'
 brew 'mas'
-brew 'memcached'
-brew 'nginx'
+brew 'memcached', service_restart: true
+brew 'nginx', service_restart: true
 brew 'ruby-build'
 brew 'rbenv'
 brew 'rbenv-default-gems'
 brew 'rbenv-readline'
-brew 'redis'
+brew 'redis', service_restart: true
 brew 'shellcheck'
 brew 'ssh-copy-id'
 brew 'the_silver_searcher'
@@ -92,4 +92,5 @@ mas 'Pages', id: 409201541
 mas 'Pixelmator', id: 407963104
 mas 'Reeder', id: 880001334
 mas 'Install 10.12 Developer Preview', id: 1073243506
+mas 'Textual', id: 896450579
 mas 'Numbers', id: 409203825
