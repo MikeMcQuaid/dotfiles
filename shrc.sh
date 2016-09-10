@@ -93,6 +93,7 @@ if quiet_which brew
 then
   export BINTRAY_USER="$(git config bintray.username)"
   export BREW_PREFIX=$(brew --prefix)
+  export BREW_REPO=$(brew --repo)
   export HOMEBREW_DEVELOPER=1
   export HOMEBREW_ANALYTICS=1
   export HOMEBREW_AUTO_UPDATE=1
@@ -104,8 +105,8 @@ then
     export HOMEBREW_CASK_OPTS="$HOMEBREW_CASK_OPTS --binarydir=$BREW_PREFIX/bin"
   fi
 
-  alias hbc="cd $BREW_PREFIX/Library/Taps/homebrew/homebrew-core"
-  alias hbv="cd $BREW_PREFIX/Library/Taps/homebrew/homebrew-versions"
+  alias hbc="cd $BREW_REPO/Library/Taps/homebrew/homebrew-core"
+  alias hbv="cd $BREW_REPO/Library/Taps/homebrew/homebrew-versions"
 
   # Output whether the dependencies for a Homebrew package are bottled.
   brew_bottled_deps() {
