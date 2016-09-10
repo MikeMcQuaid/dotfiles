@@ -20,6 +20,8 @@
 	excludesfile = ~/.gitignore
 	# Set attributes on files. Used for general diff improvements.
 	attributesfile = ~/.gitattributes
+	# Don't prompt for commit messages for merge commits.
+	mergeoptions = --no-edit
 [help]
   # Autocorrect mistyped commands.
 	autocorrect = 1
@@ -101,8 +103,6 @@
 	delete-merged = !git branch --merged | grep -v 'master' | grep -v '*' | xargs -n 1 git branch -D
 	# Diff against the current branch's merge-base
 	diff-merge-base = !git diff $(git merge-base origin/master HEAD)
-	# Commit all modified files in commits with one modified file per commit
-	commit-each = !git ls-files --modified | xargs -I% git commit % -m%
 
 	## Shortened 'New' Commands
 	fahr = !git fetch --all && git hard-reset
