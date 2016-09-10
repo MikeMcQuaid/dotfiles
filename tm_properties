@@ -1,7 +1,7 @@
-PATH = "$TM_PROJECT_DIRECTORY/bin:/usr/local/bin:$PATH"
-TM_RUBY = "$HOME/.rbenv/shims/ruby"
-TM_RUBOCOP = "$HOME/.gem/ruby/2.0.0/bin/rubocop"
-TM_SHELLCHECK = "/usr/local/bin/shellcheck"
+PATH = "$TM_PROJECT_DIRECTORY/bin:$HOME/.rbenv/shims:/usr/local/bin:$HOME/.gem/ruby/2.0.0/bin:$PATH"
+TM_RUBY = "ruby"
+TM_RUBOCOP = "rubocop"
+TM_SHELLCHECK = "shellcheck"
 
 VOS_VALIDATOR_INFO = true
 VOS_ONLY_ON_ERROR = true
@@ -15,14 +15,14 @@ fontSize = 12
 lineEndings = '\n'
 spellingLanguage = en_GB
 
-myExtraIncludes = ".env*,.tm_properties,.github,.gitignore,.ruby-version,.travis.yml"
+myExtraIncludes = ".env*,.tm_properties,.github,.gitignore,.ruby-version,.simplecov,.travis.yml"
 fileBrowserGlob  = "{*,$myExtraIncludes}"
 include = "{$include,$myExtraIncludes}"
 
-myExcludes = "Cellar,cache,coverage,node_modules,opt,prof,log,vendor/gems,vendor/ruby,vendor/bundle,repos/github,tmp,_site"
+myExcludes = "Caskroom,Cellar,cache,coverage,node_modules,opt,prof,log,vendor/gems,vendor/ruby,vendor/bundle,repos/github,tmp,_site"
 excludeInBrowser      = "{$excludeInBrowser,$myExcludes}"
 excludeInFileChooser  = "{$excludeInFileChooser,vendor,repositories,$myExcludes}"
-excludeInFolderSearch = "{$excludeInFolderSearch,vendor,repositories,test/fixtures,$myExcludes}"
+excludeInFolderSearch = "{$excludeInFolderSearch,vendor,repositories/development, repositories/test,test/fixtures,$myExcludes}"
 
 showInvisibles   = true
 softWrap         = true
