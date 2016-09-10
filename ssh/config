@@ -4,6 +4,7 @@ Host *.brew.sh
 
 Host github.com *.github.com *.github.net *.githubapp.com
 	User mikemcquaid
+	IdentityFile ~/.ssh/github_rsa
 	ForwardAgent yes
 
 Host * !heroku.com !github.com !github.net
