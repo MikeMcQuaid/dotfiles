@@ -101,8 +101,10 @@
 	assumed = !git ls-files -v | grep '^[hsmrck?]' | cut -c 3-
 	# Delete all non-master branches
 	delete-merged = !git branch --merged | grep -v 'master' | grep -v '*' | xargs -n 1 git branch -D
+	# Get the merge-base compared to origin/master
+	merge-base-master = merge-base origin/master HEAD
 	# Diff against the current branch's merge-base
-	diff-merge-base = !git diff $(git merge-base origin/master HEAD)
+	diff-merge-base = !git diff $(git merge-base-master)
 
 	## Shortened 'New' Commands
 	fahr = !git fetch --all && git hard-reset
@@ -113,6 +115,7 @@
 	fa = !git fetch --all
 	pf = !git push --force-with-lease
 	dm = !git diff-merge-base
+	mb = !git merge-base-master
 	w = !git word-diff
 	u = !git push-and-set-upstream
 	b = !git checkout-as-new-branch
