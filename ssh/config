@@ -2,10 +2,13 @@ Host *.brew.sh
 	User brewadmin
 	ForwardAgent yes
 
-Host github.com *.github.com *.github.net *.githubapp.com
-	User mikemcquaid
-	IdentityFile ~/.ssh/github_rsa
+Host remote.github.net remote.github.com
 	ForwardAgent yes
+	User mikemcquaid
+
+Host *.github.com *.github.net *.githubapp.com
+	ForwardAgent no
+	User mikemcquaid
 
 Host * !heroku.com !github.com !github.net
 	RemoteForward 52698 localhost:52698
@@ -14,5 +17,6 @@ Host *
 	StrictHostKeyChecking ask
 	VerifyHostKeyDNS ask
 	NoHostAuthenticationForLocalhost yes
+	IdentityFile ~/.ssh/id_ed25519
 	ControlMaster auto
 	ControlPath /tmp/ssh-%r@%h:%p.socket

@@ -1,8 +1,6 @@
-/ssh/*
-!/ssh/authorized_keys
-!/ssh/config
-!/ssh/id_rsa.pub
-!/ssh/github_rsa.pub
+/ssh/id_ed25519
+/ssh/id_rsa
+/ssh/known_hosts
 bundle/cache
 secrets
 rbenv/*/
