@@ -3,12 +3,13 @@ tap 'github/bootstrap'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'homebrew/services'
+tap 'homebrew/test-bot'
 tap 'homebrew/versions'
 cask 'java'
 brew 'ack'
 brew 'autoconf'
 brew 'cmake'
-brew 'xz'
+brew 'doxygen'
 brew 'pcre'
 brew 'git'
 brew 'grc'
@@ -17,22 +18,22 @@ brew 'hub'
 brew 'icu4c'
 brew 'oniguruma'
 brew 'jq'
-brew 'launch_socket_server', service_restart: true
-brew 'launchdns', service_restart: true
-brew 'pkg-config'
+brew 'launch_socket_server', restart_service: true
+brew 'launchdns', restart_service: true
 brew 'openssl'
+brew 'pkg-config'
 brew 'libevent'
 brew 'mas'
-brew 'memcached', service_restart: true
-brew 'nginx', service_restart: true
+brew 'memcached', restart_service: true
+brew 'nginx', restart_service: true
 brew 'ruby-build'
 brew 'rbenv'
 brew 'rbenv-default-gems'
 brew 'readline'
-brew 'redis', service_restart: true
+brew 'redis', restart_service: true
+brew 'ripgrep'
 brew 'shellcheck'
 brew 'ssh-copy-id'
-brew 'the_silver_searcher'
 brew 'wget'
 brew 'homebrew/versions/elasticsearch17'
 brew 'homebrew/versions/mysql56'
