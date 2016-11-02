@@ -21,7 +21,6 @@ for DOTFILE in *; do
   then
     echo $DOTFILE | grep -q 'gitconfig-user' && continue
     echo $DOTFILE | grep -q 'ssh' && continue
-    echo $DOTFILE | grep -q 'brew-cleanup-installed' && continue
   fi
 
   echo $DOTFILE | grep -q '\.sh' \
