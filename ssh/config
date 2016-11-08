@@ -6,6 +6,9 @@ Host remote.github.net remote.github.com
 	ForwardAgent yes
 	User mikemcquaid
 
+Host linux-vm
+	HostName 172.16.42.141
+
 Host *.github.com *.github.net *.githubapp.com
 	ForwardAgent no
 	User mikemcquaid
