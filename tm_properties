@@ -4,10 +4,11 @@ TM_RUBOCOP = "rubocop"
 TM_SHELLCHECK = "shellcheck"
 
 VOS_VALIDATOR_INFO = true
-VOS_ONLY_ON_ERROR = true
+VOS_ONLY_ON_ERROR = false
 VOS_TRIM_DOCUMENT = true
 VOS_BASH_SHELLCHECK = true
 VOS_RUBY_RUBOCOP = true
+VOS_HTML = true
 
 encoding = UTF-8
 fontName = "Menlo"
