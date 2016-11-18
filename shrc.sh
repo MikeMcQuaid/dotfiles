@@ -228,5 +228,11 @@ rails-clean-migrate-branch() {
     git checkout -f "$1" && rake db:migrate
 }
 
+# Pretty-print JSON files
+json() {
+  [ -n "$1" ] || return
+  jsonlint "$1" | jq .
+}
+
 # Look in ./bin but do it last to avoid weird `which` results.
 force_add_to_path_start "bin"
