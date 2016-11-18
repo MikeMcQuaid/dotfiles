@@ -22,8 +22,8 @@ include = "{$include,$myExtraIncludes}"
 
 myExcludes = "Caskroom,Cellar,cache,coverage,node_modules,opt,prof,log,vendor/gems,vendor/ruby,vendor/bundle,repos/github,tmp,_site"
 excludeInBrowser      = "{$excludeInBrowser,$myExcludes}"
-excludeInFileChooser  = "{$excludeInFileChooser,vendor,repositories,$myExcludes}"
-excludeInFolderSearch = "{$excludeInFolderSearch,vendor,repositories/development, repositories/test,test/fixtures,$myExcludes}"
+excludeInFileChooser  = "{$excludeInFileChooser,vendor,repositories/development,repositories/test,$myExcludes}"
+excludeInFolderSearch = "{$excludeInFolderSearch,vendor,repositories/development,repositories/test,test/fixtures,$myExcludes}"
 
 showInvisibles   = true
 softWrap         = true
