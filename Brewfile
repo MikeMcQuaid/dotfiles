@@ -44,6 +44,7 @@ cask 'flux'
 cask 'github-desktop'
 cask 'google-chrome'
 cask 'keepingyouawake'
+cask 'qbserve'
 cask 'quitter'
 cask 'screenhero'
 cask 'sizeup'
@@ -61,7 +62,6 @@ mas 'Xcode', id: 497799835
 mas 'Keynote', id: 409183694
 mas 'iMovie', id: 408981434
 mas 'Mactracker', id: 430255202
-mas 'Booster', id: 907023335
 mas '1Password', id: 443987910
 mas 'OneDrive', id: 823766827
 mas 'Sketch', id: 402476602
