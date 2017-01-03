@@ -1,4 +1,6 @@
 #!/bin/sh
+# shellcheck disable=SC2155
+
 # Colourful manpages
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -18,13 +20,13 @@ field() {
 
 # Setup paths
 remove_from_path() {
-  [ -d $1 ] || return
+  [ -d "$1" ] || return
   # Doesn't work for first item in the PATH but I don't care.
-  export PATH=$(echo $PATH | sed -e "s|:$1||") 2>/dev/null
+  export PATH=${PATH//:$1/}
 }
 
 add_to_path_start() {
-  [ -d $1 ] || return
+  [ -d "$1" ] || return
   remove_from_path "$1"
   export PATH="$1:$PATH"
 }
@@ -41,7 +43,7 @@ force_add_to_path_start() {
 }
 
 quiet_which() {
-  which $1 &>/dev/null
+  which "$1" &>/dev/null
 }
 
 add_to_path_end "$HOME/Documents/Scripts"
@@ -93,8 +95,8 @@ alias zt="zeus test"
 if quiet_which brew
 then
   export BINTRAY_USER="$(git config bintray.username)"
-  export BREW_PREFIX=$(brew --prefix)
-  export BREW_REPO=$(brew --repo)
+  export BREW_PREFIX="$(brew --prefix)"
+  export BREW_REPO="$(brew --repo)"
   export HOMEBREW_DEVELOPER=1
   export HOMEBREW_ANALYTICS=1
   export HOMEBREW_AUTO_UPDATE=1
@@ -106,14 +108,14 @@ then
     export HOMEBREW_CASK_OPTS="$HOMEBREW_CASK_OPTS --binarydir=$BREW_PREFIX/bin"
   fi
 
-  alias hbc="cd $BREW_REPO/Library/Taps/homebrew/homebrew-core"
-  alias hbv="cd $BREW_REPO/Library/Taps/homebrew/homebrew-versions"
+  alias hbc='cd $BREW_REPO/Library/Taps/homebrew/homebrew-core'
+  alias hbv='cd $BREW_REPO/Library/Taps/homebrew/homebrew-versions'
 
   # Output whether the dependencies for a Homebrew package are bottled.
   brew_bottled_deps() {
     for DEP in "$@"; do
       echo "$DEP deps:"
-      brew deps $DEP | xargs brew info | grep stable
+      brew deps "$DEP" | xargs brew info | grep stable
       [ "$#" -ne 1 ] && echo
     done
   }
@@ -133,15 +135,17 @@ then
   }
 fi
 
-if [ $OSX ]
+if [ "$OSX" ]
 then
   export GREP_OPTIONS="--color=auto"
   export CLICOLOR=1
   export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
   if quiet_which diff-highlight
   then
+    # shellcheck disable=SC2016
     export GIT_PAGER='diff-highlight | less -+$LESS -RX'
   else
+    # shellcheck disable=SC2016
     export GIT_PAGER='less -+$LESS -RX'
   fi
 
@@ -157,20 +161,21 @@ then
 
   # Old default Curl is broken for Git on Leopard.
   [ "$OSTYPE" = "darwin9.0" ] && export GIT_SSL_NO_VERIFY=1
-elif [ $LINUX ]
+elif [ "$LINUX" ]
 then
-  quiet_which keychain && eval `keychain -q --eval --agents ssh id_rsa`
+  quiet_which keychain && eval "$(keychain -q --eval --agents ssh id_rsa)"
 
   alias su="/bin/su -"
   alias ls="ls -F --color=auto"
   alias open="xdg-open"
-elif [ $WINDOWS ]
+elif [ "$WINDOWS" ]
 then
-  quiet_which plink && alias ssh="plink -l $(git config shell.username)"
+  quiet_which plink && alias ssh='plink -l $(git config shell.username)'
 
   alias ls="ls -F --color=auto"
 
   open() {
+    # shellcheck disable=SC2145
     cmd /C"$@"
   }
 fi
@@ -203,15 +208,16 @@ then
 fi
 
 # Run dircolors if it exists
-quiet_which dircolors && eval $(dircolors -b)
+quiet_which dircolors && eval "$(dircolors -b)"
 
 # More colours with grc
+# shellcheck disable=SC1090
 [ -f "$BREW_PREFIX/etc/grc.bashrc" ] && source "$BREW_PREFIX/etc/grc.bashrc"
 
 # Save directory changes
 cd() {
   builtin cd "$@" || return
-  [ $TERMINALAPP ] && which set_terminal_app_pwd &>/dev/null \
+  [ "$TERMINALAPP" ] && which set_terminal_app_pwd &>/dev/null \
     && set_terminal_app_pwd
   pwd > "$HOME/.lastpwd"
   ls

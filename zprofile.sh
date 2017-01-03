@@ -6,11 +6,11 @@ autoload -U compinit && compinit
 
 if which brew &>/dev/null
 then
-  [ -w $BREW_PREFIX/bin/brew ] && \
-    [ ! -f $BREW_PREFIX/share/zsh/site-functions/_brew ] && \
-    mkdir -p $BREW_PREFIX/share/zsh/site-functions &>/dev/null && \
-    ln -s $BREW_PREFIX/Library/Contributions/brew_zsh_completion.zsh \
-          $BREW_PREFIX/share/zsh/site-functions/_brew
+  [ -w "$BREW_PREFIX/bin/brew" ] && \
+    [ ! -f "$BREW_PREFIX/share/zsh/site-functions/_brew" ] && \
+    mkdir -p "$BREW_PREFIX/share/zsh/site-functions" &>/dev/null && \
+    ln -s "$BREW_PREFIX/Library/Contributions/brew_zsh_completion.zsh" \
+          "$BREW_PREFIX/share/zsh/site-functions/_brew"
   export FPATH="$BREW_PREFIX/share/zsh/site-functions:$FPATH"
 fi
 
@@ -41,13 +41,13 @@ git_branch() {
 svn_branch() {
   [ -d .svn ] || return
   SVN_INFO=$(svn info 2>/dev/null) || return
-  SVN_BRANCH=$(echo $SVN_INFO | grep URL: | grep -oe '\(trunk\|branches/[^/]\+\|tags/[^/]\+\)')
+  SVN_BRANCH=$(echo "$SVN_INFO" | grep URL: | grep -oe '\(trunk\|branches/[^/]\+\|tags/[^/]\+\)')
   [ -n "$SVN_BRANCH" ] || return
   # Display tags intentionally so we don't write to them by mistake
   echo "(${SVN_BRANCH#branches/}) "
 }
 
-if [ $USER = "root" ]
+if [ "$USER" = "root" ]
 then
   PROMPT='%{$fg_bold[magenta]%}%m %{$fg_bold[blue]%}# %b%f'
 elif [ -n "${SSH_CONNECTION}" ]

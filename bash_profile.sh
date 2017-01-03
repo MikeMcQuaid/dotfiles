@@ -19,10 +19,10 @@ shopt -s cdspell
 
 # Bash completion
 [ -f /etc/profile.d/bash-completion ] && source /etc/profile.d/bash-completion
-[ -f $BREW_PREFIX/etc/bash_completion ] && source $BREW_PREFIX/etc/bash_completion >/dev/null
+[ -f "$BREW_PREFIX/etc/bash_completion" ] && source "$BREW_PREFIX/etc/bash_completion" >/dev/null
 
 # Colorful prompt
-if [ $USER = "root" ]
+if [ "$USER" = "root" ]
 then
   PS1='\[\033[01;35m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
 elif [ -n "${SSH_CONNECTION}" ]
@@ -33,7 +33,7 @@ else
 fi
 
 # fix delete key on OSX
-[ $OSX ] && bind '"\e[3~" delete-char'
+[ "$OSX" ] && bind '"\e[3~" delete-char'
 
 # alternate mappings for Ctrl-U/V to search the history
 bind '"^u" history-search-backward'
