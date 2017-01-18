@@ -95,8 +95,8 @@ alias zt="zeus test"
 if quiet_which brew
 then
   export BINTRAY_USER="$(git config bintray.username)"
-  export BREW_PREFIX="$(brew --prefix)"
-  export BREW_REPO="$(brew --repo)"
+  export HOMEBREW_PREFIX="$(brew --prefix)"
+  export HOMEBREW_REPOSITORY="$(brew --repo)"
   export HOMEBREW_DEVELOPER=1
   export HOMEBREW_ANALYTICS=1
   export HOMEBREW_AUTO_UPDATE=1
@@ -105,11 +105,11 @@ then
   export HOMEBREW_CASK_OPTS="--appdir=/Applications"
   if [ "$USER" = "brewadmin" ]
   then
-    export HOMEBREW_CASK_OPTS="$HOMEBREW_CASK_OPTS --binarydir=$BREW_PREFIX/bin"
+    export HOMEBREW_CASK_OPTS="$HOMEBREW_CASK_OPTS --binarydir=$HOMEBREW_PREFIX/bin"
   fi
 
-  alias hbc='cd $BREW_REPO/Library/Taps/homebrew/homebrew-core'
-  alias hbv='cd $BREW_REPO/Library/Taps/homebrew/homebrew-versions'
+  alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
+  alias hbv='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-versions'
 
   # Output whether the dependencies for a Homebrew package are bottled.
   brew_bottled_deps() {
@@ -140,6 +140,7 @@ then
   export GREP_OPTIONS="--color=auto"
   export CLICOLOR=1
   export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
+  export RESQUE_REDIS_URL=redis://localhost:6379
   if quiet_which diff-highlight
   then
     # shellcheck disable=SC2016
@@ -151,7 +152,7 @@ then
 
   add_to_path_end /Applications/Xcode.app/Contents/Developer/usr/bin
   add_to_path_end /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
-  add_to_path_end "$BREW_PREFIX/opt/git/share/git-core/contrib/diff-highlight"
+  add_to_path_end "$HOMEBREW_PREFIX/opt/git/share/git-core/contrib/diff-highlight"
 
   alias ls="ls -F"
   alias ql="qlmanage -p 1>/dev/null"
@@ -212,7 +213,7 @@ quiet_which dircolors && eval "$(dircolors -b)"
 
 # More colours with grc
 # shellcheck disable=SC1090
-[ -f "$BREW_PREFIX/etc/grc.bashrc" ] && source "$BREW_PREFIX/etc/grc.bashrc"
+[ -f "$HOMEBREW_PREFIX/etc/grc.bashrc" ] && source "$HOMEBREW_PREFIX/etc/grc.bashrc"
 
 # Save directory changes
 cd() {
@@ -239,6 +240,12 @@ rails-clean-migrate-branch() {
 json() {
   [ -n "$1" ] || return
   jsonlint "$1" | jq .
+}
+
+# Pretty-print Homebrew install receipts
+receipt() {
+  [ -n "$1" ] || return
+  json "$HOMEBREW_PREFIX/opt/$1/INSTALL_RECEIPT.json"
 }
 
 # Look in ./bin but do it last to avoid weird `which` results.
