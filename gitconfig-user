@@ -13,7 +13,9 @@
 	# GitHub username for command-line tools.
 	user = MikeMcQuaid
 [alias]
-	# Push the current branch upstream to mikemcquaid using the same
+	# Push the current branch upstream to MikeMcQuaid using the same
 	# branch name for the remote branch.
 	um = !(git remote -v | grep -q MikeMcQuaid || hub fork) \
 	    && git push --set-upstream MikeMcQuaid $(git current-branch)
+	# Push the current branch to MikeMcQuaid and open a pull request.
+	umpr = !git um && hub pull-request -o
