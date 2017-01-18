@@ -59,6 +59,10 @@ wrapColumn       = "Use Window Frame"
 softTabs         = false
 tabSize          = 4
 
+[ source.ssh-config ]
+softTabs         = false
+tabSize          = 4
+
 [ source.tm-properties ]
 spellChecking    = false
 
