@@ -16,16 +16,23 @@ Host *.github.com *.github.net *.githubapp.com
 Host * !heroku.com !github.com !github.net
 	RemoteForward 52698 localhost:52698
 
+Host macstadium-debian
+	HostName 207.254.3.11
+	ForwardAgent yes
+	Port 55141
+	User brew
+
 Host macstadium-esx-1
 	HostName 10.88.172.131
-	User root
 
 Host macstadium-esx-2
 	HostName 10.88.172.132
-	User root
 
 Host macstadium-esx-3
 	HostName 10.88.172.133
+
+Host macstadium-esx-*
+	ProxyJump macstadium-debian
 	User root
 
 Host *
