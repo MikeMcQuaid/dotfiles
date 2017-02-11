@@ -1,5 +1,8 @@
 # load shared shell configuration
-[ "$(uname -s)" = "Darwin" ] && source ~/.bash_profile
+if [ "$(uname -s)" = "Darwin" ] || grep -q "Microsoft" /proc/version 2>/dev/null
+then
+  source ~/.bash_profile
+fi
 source ~/.shrc
 
 # History

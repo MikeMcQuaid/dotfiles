@@ -9,6 +9,7 @@ export SAVEHIST=100000
 [ "$(uname -s)" = "Darwin" ] && export OSX=1 && export UNIX=1
 [ "$(uname -s)" = "Linux" ] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
+grep -q "Microsoft" /proc/version 2>/dev/null && export UBUNTU_ON_WINDOWS=1
 
 # Fix systems missing $USER
 [ -z "$USER" ] && export USER="$(whoami)"
