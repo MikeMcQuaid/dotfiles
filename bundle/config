@@ -1,3 +1,2 @@
 ---
-BUNDLE_BIN: bin/
-BUNDLE_PATH: vendor/ruby
+BUNDLE_PATH: "vendor/ruby"
