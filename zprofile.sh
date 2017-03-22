@@ -6,12 +6,12 @@ autoload -U compinit && compinit
 
 if which brew &>/dev/null
 then
-  [ -w "$BREW_PREFIX/bin/brew" ] && \
-    [ ! -f "$BREW_PREFIX/share/zsh/site-functions/_brew" ] && \
-    mkdir -p "$BREW_PREFIX/share/zsh/site-functions" &>/dev/null && \
-    ln -s "$BREW_PREFIX/Library/Contributions/brew_zsh_completion.zsh" \
-          "$BREW_PREFIX/share/zsh/site-functions/_brew"
-  export FPATH="$BREW_PREFIX/share/zsh/site-functions:$FPATH"
+  [ -w "$HOMEBREW_PREFIX/bin/brew" ] && \
+    [ ! -f "$HOMEBREW_PREFIX/share/zsh/site-functions/_brew" ] && \
+    mkdir -p "$HOMEBREW_PREFIX/share/zsh/site-functions" &>/dev/null && \
+    ln -s "$HOMEBREW_PREFIX/Library/Contributions/brew_zsh_completion.zsh" \
+          "$HOMEBREW_PREFIX/share/zsh/site-functions/_brew"
+  export FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
 fi
 
 # Enable regex moving
