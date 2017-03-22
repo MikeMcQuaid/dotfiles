@@ -4,7 +4,7 @@ TM_RUBOCOP = "rubocop"
 TM_SHELLCHECK = "shellcheck"
 
 VOS_VALIDATOR_INFO = true
-VOS_ONLY_ON_ERROR = false
+VOS_ONLY_ON_ERROR = true
 VOS_TRIM_DOCUMENT = true
 VOS_BASH_SHELLCHECK = true
 VOS_RUBY_RUBOCOP = true
