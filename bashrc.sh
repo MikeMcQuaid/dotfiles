@@ -1,8 +1,10 @@
-# load shared shell configuration
-if [ "$(uname -s)" = "Darwin" ] || grep -q "Microsoft" /proc/version 2>/dev/null
+# run bash_profile if this is not a login shell
+if [ "$0" != "-bash" ]
 then
   source ~/.bash_profile
 fi
+
+# load shared shell configuration
 source ~/.shrc
 
 # History

@@ -1,5 +1,10 @@
+# run bash_profile if this is not a login shell
+if [ "$0" != "-zsh" ]
+then
+  source ~/.zprofile
+fi
+
 # load shared shell configuration
-source ~/.zprofile
 source ~/.shrc
 
 # History file
