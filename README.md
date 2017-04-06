@@ -1,5 +1,5 @@
 # Dot Files
-My dot files shared between machines for ZSH, Bash, OSX, Linux, Cygwin and MSYS.
+My dot files shared between machines for ZSH, Bash, macOS, Linux, Cygwin and MSYS.
 
 ## Installation
 Customise the contents of [`gitconfig-user`](https://github.com/MikeMcQuaid/dotfiles/blob/master/gitconfig-user).

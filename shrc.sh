@@ -135,7 +135,7 @@ then
   }
 fi
 
-if [ "$OSX" ]
+if [ "$MACOS" ]
 then
   export GREP_OPTIONS="--color=auto"
   export CLICOLOR=1

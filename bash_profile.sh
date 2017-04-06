@@ -1,8 +1,12 @@
 # load shared shell configuration
 source ~/.shprofile
 
+# check if this is a login and/or interactive shell
+[ "$0" = "-bash" ] && export LOGIN_BASH="1"
+echo "$-" | grep -q "i" && export INTERACTIVE_BASH="1"
+
 # run bashrc if this is a login, interactive shell
-if [ "$0" = "-bash" ] && echo "$-" | grep -q "i"
+if [ -n "$LOGIN_BASH" ] && [ -n "$INTERACTIVE_BASH" ]
 then
   source ~/.bashrc
 fi
@@ -36,4 +40,15 @@ then
   PS1='\[\033[01;36m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
 else
   PS1='\[\033[01;32m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
+fi
+
+# only set key bindings on interactive shell
+if [ -n "$INTERACTIVE_BASH" ]
+then
+  # fix delete key on macOS
+  [ "$MACOS" ] && bind '"\e[3~" delete-char'
+
+  # alternate mappings for Ctrl-U/V to search the history
+  bind '"^u" history-search-backward'
+  bind '"^v" history-search-forward'
 fi

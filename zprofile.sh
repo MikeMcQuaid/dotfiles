@@ -58,5 +58,5 @@ else
 fi
 RPROMPT='%{$fg_bold[red]%}$(git_branch)%{$fg_bold[yellow]%}$(svn_branch)%b[%{$fg_bold[blue]%}%~%b%f]'
 
-# more OS X/Bash-like word jumps
+# more macOS/Bash-like word jumps
 export WORDCHARS=''
