@@ -12,3 +12,10 @@ export HISTFILE=~/.bash_history
 export HISTCONTROL=ignoredups
 export PROMPT_COMMAND='history -a'
 export HISTIGNORE="&:ls:[bf]g:exit"
+
+# fix delete key on OSX
+[ "$OSX" ] && bind '"\e[3~" delete-char'
+
+# alternate mappings for Ctrl-U/V to search the history
+bind '"^u" history-search-backward'
+bind '"^v" history-search-forward'

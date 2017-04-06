@@ -37,10 +37,3 @@ then
 else
   PS1='\[\033[01;32m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
 fi
-
-# fix delete key on OSX
-[ "$OSX" ] && bind '"\e[3~" delete-char'
-
-# alternate mappings for Ctrl-U/V to search the history
-bind '"^u" history-search-backward'
-bind '"^v" history-search-forward'

@@ -60,16 +60,3 @@ RPROMPT='%{$fg_bold[red]%}$(git_branch)%{$fg_bold[yellow]%}$(svn_branch)%b[%{$fg
 
 # more OS X/Bash-like word jumps
 export WORDCHARS=''
-
-# use emacs bindings even with vim as EDITOR
-bindkey -e
-
-# fix backspace on Debian
-[ $LINUX ] && bindkey "^?" backward-delete-char
-
-# fix delete key on OSX
-[ $OSX ] && bindkey "\e[3~" delete-char
-
-# alternate mappings for Ctrl-U/V to search the history
-bindkey "^u" history-beginning-search-backward
-bindkey "^v" history-beginning-search-forward

@@ -21,3 +21,16 @@ setopt share_history
 
 # Don't hang up background jobs
 setopt no_hup
+
+# use emacs bindings even with vim as EDITOR
+bindkey -e
+
+# fix backspace on Debian
+[ $LINUX ] && bindkey "^?" backward-delete-char
+
+# fix delete key on OSX
+[ $OSX ] && bindkey "\e[3~" delete-char
+
+# alternate mappings for Ctrl-U/V to search the history
+bindkey "^u" history-beginning-search-backward
+bindkey "^v" history-beginning-search-forward
