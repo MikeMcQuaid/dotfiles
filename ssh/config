@@ -52,7 +52,7 @@ Host macstadium-esx-3
 	HostName 10.88.172.133
 
 Host macstadium-esx-*
-	ProxyJump macstadium-debian
+	ProxyJump macstadium-vm-debian
 	User root
 
 Host *
