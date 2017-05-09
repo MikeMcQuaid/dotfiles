@@ -87,9 +87,6 @@ alias be="noglob bundle exec"
 alias gist="gist --open --copy"
 alias svn="svn-git.sh"
 alias sha256="shasum -a 256"
-alias ack="ag"
-alias z="zeus"
-alias zt="zeus test"
 
 # Platform-specific stuff
 if quiet_which brew
@@ -107,7 +104,6 @@ then
   fi
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
-  alias hbv='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-versions'
 
   # Output whether the dependencies for a Homebrew package are bottled.
   brew_bottled_deps() {
@@ -157,6 +153,7 @@ then
   alias locate="mdfind -name"
   alias cpwd="pwd | tr -d '\n' | pbcopy"
   alias finder-hide="setfile -a V"
+  alias github="fork"
 
   # Old default Curl is broken for Git on Leopard.
   [ "$OSTYPE" = "darwin9.0" ] && export GIT_SSL_NO_VERIFY=1
@@ -225,13 +222,6 @@ cd() {
 # Use ruby-prof to generate a call stack
 ruby-call-stack() {
   ruby-prof --printer=call_stack --file=call_stack.html -- "$@"
-}
-
-# Use ruby-prof to generate a call stack
-rails-clean-migrate-branch() {
-  [ -n "$1" ] || return
-  git checkout master && git pull --rebase && rake db:setup db:migrate &&
-    git checkout -f "$1" && rake db:migrate
 }
 
 # Pretty-print JSON files
