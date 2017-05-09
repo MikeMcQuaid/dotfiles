@@ -25,6 +25,7 @@ brew 'launch_socket_server', restart_service: true
 brew 'launchdns', restart_service: true
 brew 'mas'
 brew 'memcached', restart_service: true
+brew 'mongodb@3.2', restart_service: true
 brew 'mysql@5.6', restart_service: true
 brew 'nginx', restart_service: true
 brew 'pkg-config'
@@ -38,11 +39,12 @@ brew 'redis', restart_service: true
 brew 'ripgrep'
 brew 'shellcheck'
 brew 'ssh-copy-id'
+brew 'wget'
 brew 'write-good'
 brew 'github/bootstrap/elasticsearch@1.7'
 cask 'appcleaner'
-cask 'cloudapp'
 cask 'doxie'
+cask 'dropbox'
 cask 'flux'
 cask 'github-desktop'
 cask 'google-chrome'
