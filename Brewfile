@@ -12,17 +12,17 @@ brew "alexjs"
 brew "jpeg"
 brew "analog"
 brew "angolmois"
-brew "git"
-brew "openssl"
-brew "pkg-config"
 brew "readline"
 brew "autoconf"
+brew "openssl"
 brew "certbot"
 brew "cmake"
+brew "git"
 brew "grc"
 brew "heroku"
 brew "hub"
 brew "imagemagick"
+brew "jansson"
 brew "oniguruma"
 brew "jq"
 brew "jsonlint"
@@ -34,6 +34,7 @@ brew "memcached", restart_service: true
 brew "mongodb@3.2", restart_service: true
 brew "mysql@5.6", restart_service: true
 brew "nginx", restart_service: true
+brew "pkg-config"
 brew "node-build"
 brew "nodenv"
 brew "postgresql", restart_service: true
