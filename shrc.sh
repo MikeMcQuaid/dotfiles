@@ -51,16 +51,13 @@ add_to_path_end "$HOME/Documents/Scripts/thirdparty"
 add_to_path_end "$HOME/Scripts"
 add_to_path_end "$HOME/Scripts/thirdparty"
 add_to_path_end "$HOME/Library/Python/2.7/bin"
-add_to_path_end "$HOME/.gem/ruby/2.1.0/bin"
+add_to_path_end "$HOME/.gem/ruby/2.3.0/bin"
 add_to_path_end "$HOME/.gem/ruby/2.0.0/bin"
 add_to_path_end "$HOME/.gem/ruby/1.8/bin"
 add_to_path_end "$HOME/.rbenv/bin"
 add_to_path_end "$HOME/.cabal/bin"
-add_to_path_end "$HOME/Applications/SublimeText2"
-add_to_path_end "/c/Program Files/Sublime Text 2"
-add_to_path_end "/Applications/GitX.app/Contents/Resources"
+add_to_path_end "/Applications/Fork.app/Contents/Resources"
 add_to_path_end "/Applications/TextMate.app/Contents/Resources"
-add_to_path_end "/Applications/GitHub.app/Contents/MacOS"
 add_to_path_end "/data/github/shell/bin"
 add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
@@ -153,6 +150,7 @@ then
   alias locate="mdfind -name"
   alias cpwd="pwd | tr -d '\n' | pbcopy"
   alias finder-hide="setfile -a V"
+  alias fork="fork_cli"
   alias github="fork"
 
   # Old default Curl is broken for Git on Leopard.
@@ -185,14 +183,6 @@ then
 elif quiet_which mate
 then
   export EDITOR="mate"
-  export GIT_EDITOR="$EDITOR -w"
-  export SVN_EDITOR="$GIT_EDITOR"
-elif quiet_which subl || quiet_which sublime_text
-then
-  quiet_which subl && export EDITOR="subl"
-  quiet_which sublime_text && export EDITOR="sublime_text" \
-    && alias subl="sublime_text"
-
   export GIT_EDITOR="$EDITOR -w"
   export SVN_EDITOR="$GIT_EDITOR"
 elif quiet_which vim
@@ -234,6 +224,11 @@ json() {
 receipt() {
   [ -n "$1" ] || return
   json "$HOMEBREW_PREFIX/opt/$1/INSTALL_RECEIPT.json"
+}
+
+# Move files to the Trash folder
+trash() {
+  mv "$@" "$HOME/.Trash/"
 }
 
 # Look in ./bin but do it last to avoid weird `which` results.
