@@ -1,14 +1,9 @@
-PATH = "$TM_PROJECT_DIRECTORY/bin:$HOME/.rbenv/shims:/usr/local/bin:$HOME/.gem/ruby/2.0.0/bin:$PATH"
-TM_RUBY = "ruby"
-TM_RUBOCOP = "rubocop"
-TM_SHELLCHECK = "shellcheck"
+PATH = "$TM_PROJECT_DIRECTORY/bin:$HOME/.rbenv/shims:/usr/local/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.gem/ruby/2.0.0/bin:$PATH"
 
-VOS_VALIDATOR_INFO = true
-VOS_ONLY_ON_ERROR = true
-VOS_TRIM_DOCUMENT = true
-VOS_BASH_SHELLCHECK = true
-VOS_RUBY_RUBOCOP = true
-VOS_HTML = true
+LINTER_LINT_ON_SAVE = true
+LINTER_STRIP_WHITESPACE_ON_SAVE = true
+LINTER_ENSURE_NEWLINE_ON_SAVE = true
+LINTER_FIX_ON_SAVE = true
 
 encoding = UTF-8
 fontName = "Menlo"
