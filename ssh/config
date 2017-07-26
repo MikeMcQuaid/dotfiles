@@ -1,5 +1,5 @@
-Host *.brew.sh
-	User brewadmin
+Host jenkins.brew.sh
+	User brew
 	ForwardAgent yes
 
 Host remote.github.net remote.github.com
