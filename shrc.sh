@@ -144,11 +144,17 @@ then
     export GIT_PAGER='less -+$LESS -RX'
   fi
 
+  if quiet_which exa
+  then
+    alias ls="exa -F"
+  else
+    alias ls="ls -F"
+  fi
+
   add_to_path_end /Applications/Xcode.app/Contents/Developer/usr/bin
   add_to_path_end /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
   add_to_path_end "$HOMEBREW_PREFIX/opt/git/share/git-core/contrib/diff-highlight"
 
-  alias ls="ls -F"
   alias ql="qlmanage -p 1>/dev/null"
   alias locate="mdfind -name"
   alias cpwd="pwd | tr -d '\n' | pbcopy"
