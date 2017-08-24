@@ -53,6 +53,8 @@ Host macstadium-esx-3
 
 Host macstadium-esx-*
 	ProxyJump macstadium-vm-debian
+
+Host *-esx-*
 	User root
 
 Host *
