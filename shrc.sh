@@ -46,6 +46,7 @@ quiet_which() {
   which "$1" &>/dev/null
 }
 
+add_to_path_end "/sbin"
 add_to_path_end "$HOME/Documents/Scripts"
 add_to_path_end "$HOME/Documents/Scripts/thirdparty"
 add_to_path_end "$HOME/Scripts"
