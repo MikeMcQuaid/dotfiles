@@ -1,5 +1,4 @@
 ---
 BUNDLE_PATH: "vendor/ruby"
-BUNDLE_BUILD__NOKOGIRI: "--use-system-libraries"
 BUNDLE_AUTO_INSTALL: "1"
 BUNDLE_JOBS: "8"
