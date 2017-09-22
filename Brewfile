@@ -50,18 +50,18 @@ brew "shellcheck"
 brew "ssh-copy-id"
 brew "wget"
 brew "write-good"
+cask "1password-cli"
 cask "appcleaner"
 cask "doxie"
 cask "dropbox"
-cask "flux"
 cask "fork"
 cask "google-chrome"
-cask "handbrake"
 cask "keepingyouawake"
 cask "qbserve"
 cask "quitter"
 cask "screenhero"
 cask "sizeup"
+cask "sketch"
 cask "steam"
 cask "subler"
 cask "textexpander"
@@ -70,10 +70,12 @@ cask "transmission"
 cask "vagrant"
 cask "viscosity"
 cask "vmware-fusion"
+cask "whatsapp"
 cask "zoomus"
 mas "1Password", id: 443987910
 mas "Fantastical 2", id: 975937182
 mas "GarageBand", id: 682658836
+mas "iA Writer", id: 775737590
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Mactracker", id: 430255202
@@ -82,7 +84,7 @@ mas "OneDrive", id: 823766827
 mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
 mas "Reeder", id: 880001334
-mas "Sketch", id: 402476602
 mas "Slack", id: 803453959
 mas "Textual", id: 896450579
+mas "Tweetbot", id: 557168941
 mas "Xcode", id: 497799835
