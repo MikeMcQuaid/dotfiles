@@ -89,17 +89,13 @@ alias sha256="shasum -a 256"
 # Platform-specific stuff
 if quiet_which brew
 then
-  export BINTRAY_USER="$(git config bintray.username)"
   export HOMEBREW_PREFIX="$(brew --prefix)"
   export HOMEBREW_REPOSITORY="$(brew --repo)"
+  export HOMEBREW_AUTO_UPDATE_SECS=3600
+  export HOMEBREW_BINTRAY_USER="$(git config bintray.username)"
+  #export HOMEBREW_CASK_OPTS="--appdir=/Applications"
   export HOMEBREW_DEVELOPER=1
   export HOMEBREW_ENV_FILTERING=1
-
-  export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-  if [ "$USER" = "brewadmin" ]
-  then
-    export HOMEBREW_CASK_OPTS="$HOMEBREW_CASK_OPTS --binarydir=$HOMEBREW_PREFIX/bin"
-  fi
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
 
@@ -146,7 +142,7 @@ then
 
   if quiet_which exa
   then
-    alias ls="exa -F"
+    alias ls="exa -Fg"
   else
     alias ls="ls -F"
   fi
@@ -161,6 +157,7 @@ then
   alias finder-hide="setfile -a V"
   alias fork="fork_cli"
   alias github="fork"
+  alias find="fd"
 
   # Old default Curl is broken for Git on Leopard.
   [ "$OSTYPE" = "darwin9.0" ] && export GIT_SSL_NO_VERIFY=1
@@ -239,6 +236,12 @@ receipt() {
 trash() {
   mv "$@" "$HOME/.Trash/"
 }
+
+# GitHub API shortcut
+github-api-curl() {
+  curl -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/$1"
+}
+alias github-api-curl="noglob github-api-curl"
 
 # Look in ./bin but do it last to avoid weird `which` results.
 force_add_to_path_start "bin"
