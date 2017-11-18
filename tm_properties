@@ -1,4 +1,4 @@
-PATH = "$TM_PROJECT_DIRECTORY/bin:$HOME/.rbenv/shims:/usr/local/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/.gem/ruby/2.0.0/bin:$PATH"
+PATH = "$TM_PROJECT_DIRECTORY/bin:$HOME/.rbenv/shims:$HOME/.gem/ruby/2.3.0/bin:/usr/local/bin:$PATH"
 
 LINTER_LINT_ON_SAVE = true
 LINTER_STRIP_WHITESPACE_ON_SAVE = true
