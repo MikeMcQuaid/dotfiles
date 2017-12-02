@@ -1,4 +1,4 @@
-# To allow #/ or #: comments
+# To allow #/ or #: comments.
 Layout/LeadingCommentSpace:
   Enabled: false
 
@@ -22,10 +22,14 @@ Style/PerlBackrefs:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
-# Consistency with above
+# Consistency with above.
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
 
 # I prefer this approach.
 Style/TrailingCommaInLiteral:
   EnforcedStyleForMultiline: consistent_comma
+
+# The autocorrect seems flaky.
+Lint/UnneededDisable:
+  AutoCorrect: false
