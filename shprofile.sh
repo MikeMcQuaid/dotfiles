@@ -48,5 +48,6 @@ fi
 [ -f "$HOME/.secrets" ] && source "$HOME/.secrets"
 
 # Some post-secret aliases
-export OCTOKIT_ACCESS_TOKEN="$GITHUB_TOKEN"
+export HOMEBREW_GITHUB_TOKEN="$GITHUB_TOKEN"
 export HUBOT_GITHUB_TOKEN="$GITHUB_TOKEN"
+export OCTOKIT_ACCESS_TOKEN="$GITHUB_TOKEN"
