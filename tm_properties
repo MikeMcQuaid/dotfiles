@@ -1,6 +1,6 @@
 PATH = "$TM_PROJECT_DIRECTORY/bin:$HOME/.rbenv/shims:$HOME/.gem/ruby/2.3.0/bin:/usr/local/bin:$PATH"
 
-scopeAttributes = "attr.linter.lint-on-save attr.linter.strip-whitespace-on-save attr.linter.ensure-newline-on-save attr.linter.fix-on-save"
+scopeAttributes = "bundle.linter.lint-on-save bundle.linter.strip-whitespace-on-save bundle.linter.ensure-newline-on-save bundle.linter.fix-on-save"
 
 encoding = UTF-8
 fontName = "Menlo"
