@@ -16,7 +16,6 @@ brew "elasticsearch@2.4", restart_service: true, link: true
 brew "exa"
 brew "fd"
 brew "git"
-brew "fzf"
 brew "get_iplayer"
 brew "git-imerge"
 brew "git-when-merged"
@@ -39,7 +38,7 @@ brew "lzip"
 brew "mas"
 brew "memcached", restart_service: true
 brew "mongodb@3.2", restart_service: true, link: true
-brew "mysql@5.6", restart_service: true, link: true
+brew "mysql", restart_service: true, link: true
 brew "nginx", restart_service: true
 brew "nodenv"
 brew "postgresql", restart_service: true
