@@ -93,9 +93,8 @@ then
   export HOMEBREW_REPOSITORY="$(brew --repo)"
   export HOMEBREW_AUTO_UPDATE_SECS=3600
   export HOMEBREW_BINTRAY_USER="$(git config bintray.username)"
-  #export HOMEBREW_CASK_OPTS="--appdir=/Applications"
   export HOMEBREW_DEVELOPER=1
-  export HOMEBREW_ENV_FILTERING=1
+  export HOMEBREW_PRY=1
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
 
@@ -156,8 +155,6 @@ then
   alias cpwd="pwd | tr -d '\n' | pbcopy"
   alias finder-hide="setfile -a V"
   alias fork="fork_cli"
-  alias github="fork"
-  alias find="fd"
 
   # Old default Curl is broken for Git on Leopard.
   [ "$OSTYPE" = "darwin9.0" ] && export GIT_SSL_NO_VERIFY=1
