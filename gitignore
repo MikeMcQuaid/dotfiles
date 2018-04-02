@@ -42,3 +42,6 @@ install_manifest.txt
 
 # Ignore build directories.
 b/
+
+# Ignore some testing files.
+test/js/functional/*.html
