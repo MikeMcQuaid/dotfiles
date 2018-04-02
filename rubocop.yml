@@ -27,9 +27,7 @@ Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
 
 # I prefer this approach.
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: consistent_comma
-
-# The autocorrect seems flaky.
-Lint/UnneededDisable:
-  AutoCorrect: false
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
