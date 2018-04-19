@@ -1,5 +1,5 @@
 # check if this is a login shell
-[ "$0" = "-zsh" ] && export LOGIN_ZSH="1"
+[ "$0" = "-zsh" ] && export LOGIN_ZSH=1
 
 # run zprofile if this is not a login shell
 [ -n "$LOGIN_ZSH" ] && source ~/.zprofile
@@ -26,10 +26,10 @@ setopt no_hup
 bindkey -e
 
 # fix backspace on Debian
-[ $LINUX ] && bindkey "^?" backward-delete-char
+[ -n "$LINUX" ] && bindkey "^?" backward-delete-char
 
 # fix delete key on macOS
-[ $MACOS ] && bindkey "\e[3~" delete-char
+[ -n "$MACOS" ] && bindkey '\e[3~' delete-char
 
 # alternate mappings for Ctrl-U/V to search the history
 bindkey "^u" history-beginning-search-backward

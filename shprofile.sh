@@ -2,8 +2,8 @@
 umask 022
 
 # Save more history
-export HISTSIZE=100000
-export SAVEHIST=100000
+export HISTSIZE="100000"
+export SAVEHIST="100000"
 
 # OS variables
 [ "$(uname -s)" = "Darwin" ] && export MACOS=1 && export UNIX=1
@@ -17,12 +17,12 @@ grep -q "Microsoft" /proc/version 2>/dev/null && export UBUNTU_ON_WINDOWS=1
 # Count CPUs for Make jobs
 if [ $MACOS ]
 then
-  export CPUCOUNT=$(sysctl -n hw.ncpu)
+  export CPUCOUNT="$(sysctl -n hw.ncpu)"
 elif [ $LINUX ]
 then
-  export CPUCOUNT=$(getconf _NPROCESSORS_ONLN)
+  export CPUCOUNT="$(getconf _NPROCESSORS_ONLN)"
 else
-  export CPUCOUNT="1"
+  export CPUCOUNT=1
 fi
 
 if [ "$CPUCOUNT" -gt 1 ]
