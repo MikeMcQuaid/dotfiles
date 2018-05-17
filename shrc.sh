@@ -59,6 +59,7 @@ add_to_path_end "$HOME/.rbenv/bin"
 add_to_path_end "$HOME/.cabal/bin"
 add_to_path_end "/Applications/Fork.app/Contents/Resources"
 add_to_path_end "/Applications/TextMate.app/Contents/Resources"
+add_to_path_end "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 add_to_path_end "/data/github/shell/bin"
 add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
@@ -183,9 +184,9 @@ then
   export EDITOR="rmate"
   export GIT_EDITOR="$EDITOR -w"
   export SVN_EDITOR=$GIT_EDITOR
-elif quiet_which mate
+elif quiet_which code
 then
-  export EDITOR="mate"
+  export EDITOR="code"
   export GIT_EDITOR="$EDITOR -w"
   export SVN_EDITOR="$GIT_EDITOR"
 elif quiet_which vim

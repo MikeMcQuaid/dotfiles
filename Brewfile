@@ -4,15 +4,17 @@ tap "homebrew/test-bot"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "github/bootstrap"
+tap "caskroom/versions"
 tap "caskroom/cask"
-cask "java"
+cask "caskroom/versions/java8"
 brew "alexjs"
 brew "analog"
-brew "autoconf"
+brew "atomicparsley"
 brew "cmake"
 brew "elasticsearch@2.4", restart_service: true, link: true
 brew "exa"
 brew "fd"
+brew "fork-cleaner"
 brew "get_iplayer"
 brew "git"
 brew "git-imerge"
@@ -38,7 +40,6 @@ brew "libyaml"
 brew "lzip"
 brew "mas"
 brew "memcached", restart_service: true
-brew "mongodb@3.2", restart_service: true, link: true
 brew "mysql", restart_service: true
 brew "nginx", restart_service: true
 brew "node-build"
@@ -66,11 +67,12 @@ cask "quitter"
 cask "sizeup"
 cask "sketch"
 cask "steam"
+cask "steermouse"
 cask "subler"
-cask "textmate"
 cask "transmission"
 cask "vagrant"
 cask "viscosity"
+cask "visual-studio-code"
 cask "vmware-fusion"
 cask "whatsapp"
 cask "zoomus"
@@ -84,9 +86,7 @@ mas "Mactracker", id: 430255202
 mas "Numbers", id: 409203825
 mas "OneDrive", id: 823766827
 mas "Pages", id: 409201541
-mas "Pixelmator", id: 407963104
 mas "Reeder", id: 880001334
 mas "Slack", id: 803453959
-mas "Textual", id: 896450579
 mas "Tweetbot", id: 557168941
 mas "Xcode", id: 497799835

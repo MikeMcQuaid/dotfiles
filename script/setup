@@ -9,6 +9,17 @@ DOTFILESDIR=$(pwd -P)
 [ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
 
+if [ $MACOS ]
+then
+  VSCODE="$HOME/Library/Application Support/Code/User"
+elif [ $LINUX ]
+then
+  VSCODE="$HOME/.config/Code/User"
+elif [ $WINDOWS ]
+then
+  VSCODE="$APPDATA/Code/User"
+fi
+
 for DOTFILE in *; do
   HOMEFILE="$HOME/.$DOTFILE"
   [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
@@ -23,8 +34,12 @@ for DOTFILE in *; do
     echo $DOTFILE | grep -q 'ssh' && continue
   fi
 
-  echo $DOTFILE | grep -q '\.sh' \
-    && HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
+  echo $DOTFILE | grep -q 'vscode-settings' &&
+       HOMEFILE="$VSCODE/settings.json" &&
+       mkdir -p "$VSCODE"
+
+  echo $DOTFILE | grep -q '\.sh' &&
+       HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
 
   if [ $UNIX ]
   then
