@@ -1,12 +1,12 @@
+tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/formula-analytics"
 tap "homebrew/test-bot"
+tap "homebrew/cask"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "github/bootstrap"
-tap "caskroom/versions"
-tap "caskroom/cask"
-cask "caskroom/versions/java8"
+cask "homebrew/cask-versions/java8"
 brew "alexjs"
 brew "analog"
 brew "atomicparsley"
@@ -67,7 +67,6 @@ cask "quitter"
 cask "sizeup"
 cask "sketch"
 cask "steam"
-cask "steermouse"
 cask "subler"
 cask "transmission"
 cask "vagrant"
@@ -76,7 +75,7 @@ cask "visual-studio-code"
 cask "vmware-fusion"
 cask "whatsapp"
 cask "zoomus"
-mas "1Password", id: 443987910
+mas "1Password 7", id: 1333542190
 mas "Fantastical 2", id: 975937182
 mas "GarageBand", id: 682658836
 mas "iA Writer", id: 775737590
