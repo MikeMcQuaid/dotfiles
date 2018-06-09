@@ -31,4 +31,5 @@
         "ruby-lint": true
     },
     "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
 }
