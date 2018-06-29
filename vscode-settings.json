@@ -32,4 +32,5 @@
     },
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
+    "window.zoomLevel": 0,
 }
