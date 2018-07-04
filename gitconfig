@@ -25,6 +25,7 @@
 	attributesfile = ~/.gitattributes
 	# Don't prompt for commit messages for merge commits.
 	mergeoptions = --no-edit
+	commitGraph = true
 [help]
   # Autocorrect mistyped commands.
 	autocorrect = 1
