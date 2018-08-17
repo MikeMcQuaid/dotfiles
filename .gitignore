@@ -1,7 +1,11 @@
-/ssh/id_ed25519
+/ssh/id_*
 /ssh/id_rsa
-/ssh/github_rsa*
+/ssh/*_rsa*
 /ssh/known_hosts
+/gnupg/*.d/
+/gnupg/*.db
+/gnupg/*.gpg
+/gnupg/*.kbx
 bundle/cache
 secrets
 rbenv/*/
