@@ -13,6 +13,7 @@ brew "cmake"
 brew "elasticsearch@2.4", restart_service: true, link: true
 brew "exa"
 brew "fd"
+brew "ffmpeg"
 brew "fork-cleaner"
 brew "get_iplayer"
 brew "git"
@@ -30,6 +31,7 @@ brew "hub"
 brew "hyperscan"
 brew "imagemagick"
 brew "jansson"
+brew "jemalloc"
 brew "oniguruma"
 brew "jq"
 brew "jsonlint"
@@ -39,8 +41,9 @@ brew "libyaml"
 brew "lzip"
 brew "mas"
 brew "memcached", restart_service: true
-brew "mysql", restart_service: true
+brew "mysql@5.7", restart_service: true
 brew "nginx", restart_service: true
+brew "pkg-config"
 brew "node-build"
 brew "nodenv"
 brew "postgresql", restart_service: true
@@ -56,6 +59,7 @@ brew "write-good"
 cask "appcleaner"
 cask "doxie"
 cask "dropbox"
+cask "firefox"
 cask "fork"
 cask "google-chrome"
 cask "java8"
@@ -70,7 +74,6 @@ cask "steam"
 cask "subler"
 cask "transmission"
 cask "vagrant"
-cask "viscosity"
 cask "visual-studio-code"
 cask "vmware-fusion"
 cask "whatsapp"
@@ -87,5 +90,5 @@ mas "OneDrive", id: 823766827
 mas "Pages", id: 409201541
 mas "Reeder", id: 880001334
 mas "Slack", id: 803453959
-mas "Tweetbot", id: 557168941
+mas "Tweetbot", id: 1384080005
 mas "Xcode", id: 497799835
