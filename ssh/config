@@ -2,9 +2,8 @@ Host jenkins.brew.sh
 	User brew
 	ForwardAgent yes
 
-Host remote.github.net remote.github.com
+Host bastion.githubapp.com
 	ForwardAgent yes
-	User mikemcquaid
 
 Host linux-vm
 	HostName 172.16.42.141
