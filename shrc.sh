@@ -105,14 +105,14 @@ then
   brew_bottled_deps() {
     for DEP in "$@"; do
       echo "$DEP deps:"
-      brew deps "$DEP" | xargs brew info | grep stable
+      brew deps --include-build "$DEP" | xargs brew info | grep stable
       [ "$#" -ne 1 ] && echo
     done
   }
 
   # Output the most popular unbottled Homebrew packages
   brew_popular_unbottled() {
-    brew deps --all |
+    brew deps --include-build --all |
       awk '{ gsub(":? ", "\n") } 1' |
       sort |
       uniq -c |
