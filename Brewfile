@@ -9,7 +9,10 @@ tap "homebrew/test-bot"
 brew "alexjs"
 brew "analog"
 brew "atomicparsley"
+brew "automake"
 brew "cmake"
+brew "docker"
+brew "docker-machine"
 brew "elasticsearch@2.4", restart_service: true, link: true
 brew "exa"
 brew "fd"
@@ -21,6 +24,7 @@ brew "git-imerge"
 brew "git-when-merged"
 brew "go"
 brew "glide"
+brew "gnupg"
 brew "openssl"
 brew "readline"
 brew "xz"
@@ -37,22 +41,29 @@ brew "jq"
 brew "jsonlint"
 brew "launch_socket_server", restart_service: true
 brew "launchdns", restart_service: true
+brew "lcov"
 brew "libyaml"
 brew "lzip"
 brew "mas"
+brew "md5sha1sum"
 brew "memcached", restart_service: true
 brew "mysql@5.7", restart_service: true
 brew "nginx", restart_service: true
 brew "pkg-config"
 brew "node-build"
 brew "nodenv"
+brew "pidof"
+brew "pinentry-mac"
 brew "postgresql", restart_service: true
+brew "protobuf"
 brew "ruby-build"
 brew "rbenv"
 brew "rbenv-default-gems"
 brew "redis", restart_service: true
 brew "ripgrep"
 brew "shellcheck"
+brew "socat"
+brew "softhsm"
 brew "ssh-copy-id"
 brew "wget"
 brew "write-good"
@@ -78,6 +89,7 @@ cask "visual-studio-code"
 cask "vmware-fusion"
 cask "whatsapp"
 cask "zoomus"
+mas "1Blocker", id: 1107421413
 mas "1Password 7", id: 1333542190
 mas "Fantastical 2", id: 975937182
 mas "GarageBand", id: 682658836
