@@ -23,6 +23,7 @@
     "editor.scrollBeyondLastLine": false,
     "editor.showUnused": false,
     "editor.tabSize": 2,
+    "editor.tabCompletion": "on",
     "workbench.editor.tabCloseButton": "left",
     "workbench.colorTheme": "macOS Classic",
     "workbench.iconTheme": "macos-classic-icons",
@@ -58,8 +59,14 @@
         "debride": true,
         "ruby-lint": true
     },
-    "spellright.language": "en-GB",
+    "spellright.language": "en_GB",
     "spellright.groupDictionaries": false,
     "spellright.addToSystemDictionary": true,
     "searchRipgrep.enable": true,
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext",
+        "git-commit"
+    ],
 }
