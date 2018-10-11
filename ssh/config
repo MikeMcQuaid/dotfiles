@@ -12,6 +12,11 @@ Host *.github.com *.github.net *.githubapp.com
 	ForwardAgent no
 	User mikemcquaid
 
+Host github-shell
+	User mikemcquaid
+	HostName shell.service.cp1-iad.github.net
+	ProxyJump bastion.githubapp.com
+
 Host * !heroku.com !github.com !github.net
 	RemoteForward 52698 localhost:52698
 
@@ -21,7 +26,7 @@ Host macstadium-vm-debian
 Host macstadium-vm-high-sierra-1
 	Port 55142
 
-Host macstadium-vm-el-capitan-1
+Host macstadium-vm-mojave-1
 	Port 55143
 
 Host macstadium-vm-sierra-1
@@ -30,7 +35,7 @@ Host macstadium-vm-sierra-1
 Host macstadium-vm-high-sierra-2
 	Port 55145
 
-Host macstadium-vm-el-capitan-2
+Host macstadium-vm-mojave-2
 	Port 55146
 
 Host macstadium-vm-sierra-2
@@ -44,11 +49,11 @@ Host macstadium-vm-*
 Host macstadium-esx-1
 	HostName 10.88.172.131
 
-Host macstadium-esx-2
-	HostName 10.88.172.132
-
 Host macstadium-esx-pro
 	HostName 10.88.172.133
+
+Host macstadium-esx-pro-2
+	HostName 10.88.172.132
 
 Host macstadium-esx-*
 	ProxyJump macstadium-vm-debian
