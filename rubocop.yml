@@ -2,6 +2,10 @@
 Layout/LeadingCommentSpace:
   Enabled: false
 
+# This is flaky.
+Layout/RescueEnsureAlignment:
+  Enabled: false
+
 # Too much noise.
 Metrics/LineLength:
   Enabled: false
