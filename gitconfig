@@ -201,3 +201,5 @@
 	# Show the diff as a comment in the commit message template.
 	verbose = true
 	gpgsign = true
+[tag]
+	sort = -version:refname
