@@ -16,6 +16,7 @@ brew "docker-machine"
 brew "elasticsearch@2.4", restart_service: true, link: true
 brew "exa"
 brew "fd"
+brew "xz"
 brew "ffmpeg"
 brew "fork-cleaner"
 brew "get_iplayer"
@@ -27,7 +28,6 @@ brew "glide"
 brew "gnupg"
 brew "openssl"
 brew "readline"
-brew "xz"
 brew "python"
 brew "grc"
 brew "heroku"
@@ -91,6 +91,7 @@ cask "whatsapp"
 cask "zoomus"
 mas "1Blocker", id: 1107421413
 mas "1Password 7", id: 1333542190
+mas "Canopy", id: 1419224245
 mas "Fantastical 2", id: 975937182
 mas "GarageBand", id: 682658836
 mas "iA Writer", id: 775737590
