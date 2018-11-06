@@ -100,8 +100,7 @@ then
   export HOMEBREW_BINTRAY_USER="$(git config bintray.username)"
   export HOMEBREW_DEVELOPER=1
   export HOMEBREW_PRY=1
-  export HOMEBREW_UPGRADE_CLEANUP=1
-  export HOMEBREW_LINKAGE_CACHE=1
+  export HOMEBREW_INSTALL_CLEANUP=1
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
 
