@@ -69,4 +69,13 @@
         "plaintext",
         "git-commit"
     ],
+    "go.gocodeAutoBuild": true,
+    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+    "githubPullRequests.hosts": [
+        {
+            "host": "https://github.com",
+            "username": "oauth",
+            "token": "system"
+        }
+    ],
 }
