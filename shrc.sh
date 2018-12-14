@@ -43,29 +43,16 @@ force_add_to_path_start() {
 }
 
 quiet_which() {
-  which "$1" &>/dev/null
+  command -v "$1" >/dev/null
 }
 
 add_to_path_end "/sbin"
-add_to_path_end "$HOME/Documents/Scripts"
-add_to_path_end "$HOME/Documents/Scripts/thirdparty"
-add_to_path_end "$HOME/Scripts"
-add_to_path_end "$HOME/Scripts/thirdparty"
-add_to_path_end "$HOME/Library/Python/2.7/bin"
 add_to_path_end "$HOME/.gem/ruby/2.3.0/bin"
-add_to_path_end "$HOME/.gem/ruby/2.0.0/bin"
-add_to_path_end "$HOME/.gem/ruby/1.8/bin"
 add_to_path_end "$HOME/.rbenv/bin"
 add_to_path_end "$HOME/.cabal/bin"
-add_to_path_end "/Applications/Fork.app/Contents/Resources"
-add_to_path_end "/Applications/TextMate.app/Contents/Resources"
-add_to_path_end "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-add_to_path_end "/data/github/shell/bin"
 add_to_path_end "$HOME/.dotfiles/bin"
 add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
-add_to_path_start "$HOME/Homebrew/bin"
-add_to_path_start "$HOME/Homebrew/sbin"
 
 # Setup Go development
 export GOPATH="$HOME/.gopath"
@@ -88,8 +75,6 @@ alias rsync="rsync --partial --progress --human-readable --compress"
 alias rake="noglob rake"
 alias rg="rg --colors 'match:style:nobold' --colors 'path:style:nobold'"
 alias be="noglob bundle exec"
-alias gist="gist --open --copy"
-alias svn="svn-git.sh"
 alias sha256="shasum -a 256"
 
 # Platform-specific stuff
@@ -153,9 +138,12 @@ then
     alias ls="ls -F"
   fi
 
-  add_to_path_end /Applications/Xcode.app/Contents/Developer/usr/bin
-  add_to_path_end /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
   add_to_path_end "$HOMEBREW_PREFIX/opt/git/share/git-core/contrib/diff-highlight"
+  add_to_path_end "$HOME/Library/Python/2.7/bin"
+  add_to_path_end "/Applications/Fork.app/Contents/Resources"
+  add_to_path_end "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+  add_to_path_end "/Applications/Xcode.app/Contents/Developer/usr/bin"
+  add_to_path_end "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
 
   alias ql="qlmanage -p 1>/dev/null"
   alias locate="mdfind -name"
@@ -170,13 +158,13 @@ elif [ "$LINUX" ]
 then
   quiet_which keychain && eval "$(keychain -q --eval --agents ssh id_rsa)"
 
+  add_to_path_end "/data/github/shell/bin"
+
   alias su="/bin/su -"
   alias ls="ls -F --color=auto"
   alias open="xdg-open"
 elif [ "$WINDOWS" ]
 then
-  quiet_which plink && alias ssh='plink -l $(git config shell.username)'
-
   alias ls="ls -F --color=auto"
 
   open() {
@@ -186,12 +174,7 @@ then
 fi
 
 # Set up editor
-if [ -n "${SSH_CONNECTION}" ] && quiet_which rmate
-then
-  export EDITOR="rmate"
-  export GIT_EDITOR="$EDITOR -w"
-  export SVN_EDITOR=$GIT_EDITOR
-elif quiet_which code
+if quiet_which code
 then
   export EDITOR="code"
   export GIT_EDITOR="$EDITOR -w"
@@ -214,7 +197,7 @@ quiet_which dircolors && eval "$(dircolors -b)"
 # Save directory changes
 cd() {
   builtin cd "$@" || return
-  [ "$TERMINALAPP" ] && which set_terminal_app_pwd &>/dev/null \
+  [ "$TERMINALAPP" ] && command -v set_terminal_app_pwd >/dev/null \
     && set_terminal_app_pwd
   pwd > "$HOME/.lastpwd"
   ls
