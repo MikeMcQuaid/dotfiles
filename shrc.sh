@@ -61,6 +61,7 @@ add_to_path_end "/Applications/Fork.app/Contents/Resources"
 add_to_path_end "/Applications/TextMate.app/Contents/Resources"
 add_to_path_end "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 add_to_path_end "/data/github/shell/bin"
+add_to_path_end "$HOME/.dotfiles/bin"
 add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
 add_to_path_start "$HOME/Homebrew/bin"
@@ -164,7 +165,7 @@ then
   # Old default Curl is broken for Git on Leopard.
   [ "$OSTYPE" = "darwin9.0" ] && export GIT_SSL_NO_VERIFY=1
 
-  rbenv-sync-homebrew-rubies.rb
+  rbenv-sync-homebrew-rubies
 elif [ "$LINUX" ]
 then
   quiet_which keychain && eval "$(keychain -q --eval --agents ssh id_rsa)"
