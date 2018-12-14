@@ -136,20 +136,12 @@
 	# HTTP server.
 	httpd = webrick
 [diff]
-	# Use the macOS graphical three-way merge tool for graphical diffs.
-	tool = opendiff
 	# Use the slower but better patience diff algorithm
 	algorithm = patience
 	# Use new diff algorithm to make e.g. function diffs look better.
 	compactionheuristic = true
 [diff "xml"]
 	textconv = xmllint --format --recover
-[difftool "opendiff"]
-	# Set the macOS opendiff command name.
-	path = opendiff
-[merge]
-	# Use the macOS graphical three-way merge tool for graphical merges.
-	tool = opendiff
 [mergetool]
 	# Don't prompt before opening the merge tool.
 	prompt = false
@@ -157,9 +149,6 @@
 	keepBackup = false
 	# Don't keep the merge tool temporary input/output files.
 	keepTemporaries = false
-[mergetool "opendiff"]
-	# Use a script to setup opendiff correctly for Git merges.
-	path = git-mergetool-opendiff
 [apply]
 	# Cleanup whitespace by default when apply patches.
 	whitespace = fix
