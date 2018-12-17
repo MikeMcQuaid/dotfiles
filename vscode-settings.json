@@ -1,7 +1,6 @@
 {
     "editor.fontFamily": "'SF Mono', Menlo, Monaco, Consolas, monospace",
     "editor.fontWeight": "500",
-    "editor.fontLigatures": true,
     "editor.renderWhitespace": "boundary",
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.wordWrap": "bounded",
