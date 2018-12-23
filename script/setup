@@ -49,6 +49,7 @@ done
 
 if [ $MACOS ]
 then
+  brew install git
   script/extract-onepassword-secrets
   script/install-vscode-extensions
   if [ "$SHELL" != "/bin/zsh" ]
