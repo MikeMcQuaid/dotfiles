@@ -13,6 +13,8 @@ brew "analog"
 brew "atomicparsley"
 brew "automake"
 brew "cmake"
+brew "go"
+brew "dep"
 brew "docker"
 brew "docker-machine"
 brew "elasticsearch@2.4", restart_service: true, link: true
@@ -25,9 +27,9 @@ brew "get_iplayer"
 brew "git"
 brew "git-imerge"
 brew "git-when-merged"
-brew "go"
 brew "glide"
 brew "gnupg"
+brew "go@1.10"
 brew "openssl"
 brew "readline"
 brew "python"
@@ -37,12 +39,13 @@ brew "hyperscan"
 brew "imagemagick"
 brew "jansson"
 brew "jemalloc"
-brew "oniguruma"
 brew "jq"
 brew "jsonlint"
+brew "kafka"
 brew "launch_socket_server", restart_service: true
 brew "launchdns", restart_service: true
 brew "lcov"
+brew "librdkafka"
 brew "libyaml"
 brew "lzip"
 brew "mas"
@@ -74,40 +77,26 @@ brew "write-good"
 brew "heroku/brew/heroku"
 cask "1password-cli"
 cask "appcleaner"
-cask "doxie"
-cask "dropbox"
 cask "firefox"
 cask "fork"
 cask "google-chrome"
-cask "haptickey"
 cask "keepingyouawake"
-cask "licecap"
-cask "muzzle"
-cask "qbserve"
-cask "quitter"
 cask "sizeup"
 cask "sketch"
-cask "steam"
 cask "subler"
 cask "transmission"
-cask "vagrant"
 cask "visual-studio-code"
 cask "vmware-fusion"
-cask "whatsapp"
 cask "zoomus"
 mas "1Blocker", id: 1107421413
 mas "1Password 7", id: 1333542190
-mas "Canopy", id: 1419224245
-mas "Fantastical 2", id: 975937182
 mas "GarageBand", id: 682658836
-mas "iA Writer", id: 775737590
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Mactracker", id: 430255202
 mas "Numbers", id: 409203825
 mas "OneDrive", id: 823766827
 mas "Pages", id: 409201541
-mas "Reeder", id: 880001334
+mas "Pixelmator Pro", id: 1289583905
 mas "Slack", id: 803453959
-mas "Tweetbot", id: 1384080005
 mas "Xcode", id: 497799835
