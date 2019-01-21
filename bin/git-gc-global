@@ -1,5 +1,6 @@
 #!/bin/sh
 # Garbage collect all Git repositories under the current directory.
+set -e
 
 CURRENT=$PWD
 # Set to newline to loop over find output correctly on spaced paths.

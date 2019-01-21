@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# Sync Homebrew's installed Rubies with rbenv
 
 require "pathname"
 require "fileutils"

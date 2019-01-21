@@ -1,6 +1,7 @@
 #!/bin/bash
-
 # Commit all modified files in commits with one modified file per commit
+set -e
+
 for FILENAME in $(git ls-files --modified --others)
 do
   MESSAGE="$(echo "$FILENAME" | sed -e 's|^Library/Homebrew/||' \
