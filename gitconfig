@@ -1,5 +1,11 @@
-[include]
-	path = ~/.gitconfig-user
+[user]
+	# Name used in commit messages.
+	name = Mike McQuaid
+	# Email used in commit messages.
+	email = mike@mikemcquaid.com
+[github]
+	# GitHub username for command-line tools.
+	user = MikeMcQuaid
 [color]
 	# Colour terminal command output when possible.
 	ui = auto
@@ -109,6 +115,13 @@
 	merge-base-master = merge-base origin/master HEAD
 	# Diff against the current branch's merge-base
 	diff-merge-base = !git diff $(git merge-base-master)
+
+	# Push the current branch upstream to MikeMcQuaid using the same
+	# branch name for the remote branch.
+	um = !(git remote -v | grep -q MikeMcQuaid || hub fork) \
+	    && git push --set-upstream MikeMcQuaid $(git current-branch)
+	# Push the current branch to MikeMcQuaid and open a pull request.
+	umpr = !git um && hub pull-request -o
 
 	## Shortened 'New' Commands
 	fahr = !git fetch --all && git hard-reset

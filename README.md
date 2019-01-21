@@ -2,9 +2,6 @@
 My dot files shared between machines for ZSH, Bash, macOS, Linux, Cygwin and MSYS.
 
 ## Installation
-Customise the contents of [`gitconfig-user`](https://github.com/MikeMcQuaid/dotfiles/blob/master/gitconfig-user).
-This is used for user-specific customisations of every other file.
-
 Run [`script/setup`](https://github.com/MikeMcQuaid/dotfiles/blob/master/script/setup)
 after checkout to symlink (or copy) everything in this directory to your home directory.
 

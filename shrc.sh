@@ -83,7 +83,7 @@ then
   export HOMEBREW_PREFIX="$(brew --prefix)"
   export HOMEBREW_REPOSITORY="$(brew --repo)"
   export HOMEBREW_AUTO_UPDATE_SECS=3600
-  export HOMEBREW_BINTRAY_USER="$(git config bintray.username)"
+  export HOMEBREW_BINTRAY_USER=mikemcquaid
   export HOMEBREW_DEVELOPER=1
   export HOMEBREW_PRY=1
   export HOMEBREW_INSTALL_CLEANUP=1
