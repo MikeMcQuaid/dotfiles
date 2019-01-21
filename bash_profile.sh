@@ -29,7 +29,7 @@ shopt -s cdspell
 
 # Bash completion
 [ -f /etc/profile.d/bash-completion ] && source /etc/profile.d/bash-completion
-[ -f "$HOMEBREW_PREFIX/etc/bash_completion" ] && source "$HOMEBREW_PREFIX/etc/bash_completion" >/dev/null
+[ -d "$HOMEBREW_PREFIX/etc/bash_completion.d" ] && source "$HOMEBREW_PREFIX/etc/bash_completion.d/*" >/dev/null
 
 # Colorful prompt
 if [ "$USER" = "root" ]
