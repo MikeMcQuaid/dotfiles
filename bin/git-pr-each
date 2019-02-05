@@ -38,5 +38,5 @@ do
   git add "$FILENAME"
   MESSAGE="$(echo "$NAME" | sed -e 's/$/: /')"
   git commit "$FILENAME" --message="${MESSAGE}${MESSAGE_HEAD_SUFFIX}" --message="${MESSAGE_CONTENT}"
-  git umpr
+  git umpr --no-edit
 done
