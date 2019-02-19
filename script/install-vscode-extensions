@@ -5,7 +5,7 @@ if ! command -v code >/dev/null
 then
   if [ $(uname -s) = "Darwin" ]
   then
-    brew cask install code
+    brew cask install visual-studio-code
   else
     echo "Install VS Code first!" >&2
     exit 1
