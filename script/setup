@@ -55,8 +55,8 @@ then
   script/defaults
   script/dock
   script/terminal
-  if [ "$SHELL" != "/bin/zsh" ]
+  if [ "$SHELL" != "/usr/local/bin/zsh" ]
   then
-    chsh -s /bin/zsh caycehouse
+    chsh -s /usr/local/bin/zsh
   fi
 fi
