@@ -55,6 +55,7 @@ add_to_path_start "/usr/local/sbin"
 quiet_which rbenv && add_to_path_start "$(rbenv root)/shims"
 
 # Aliases
+alias l="ls -al"
 alias mkdir="mkdir -vp"
 alias df="df -H"
 alias rm="rm -iv"
