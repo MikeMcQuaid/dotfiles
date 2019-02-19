@@ -55,8 +55,8 @@ then
   script/defaults
   script/dock
   script/terminal
-  if [ "$SHELL" != "/usr/local/bin/zsh" ]
+  if [ "$SHELL" != $(which zsh) ]
   then
-    chsh -s /usr/local/bin/zsh
+    sudo chsh -s $(which zsh) $USER
   fi
 fi
