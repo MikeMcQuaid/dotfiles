@@ -1,0 +1,26 @@
+#!/bin/sh
+# Setup Dock configuration
+set -e
+
+if ! command -v dockutil >/dev/null
+then
+  echo "--> Installing Dockutil..."
+  brew install dockutil
+fi
+
+echo "--> Removing all Dock items..."
+dockutil --remove all
+
+echo "--> Adding back Dock items..."
+dockutil --add /Applications/Launchpad.app
+dockutil --add /Applications/Safari.app
+dockutil --add /Applications/Messages.app
+dockutil --add /Applications/iTunes.app
+dockutil --add /Applications/App\ Store.app
+dockutil --add /Applications/Mail.app
+dockutil --add /Applications/Utilities/Terminal.app
+dockutil --add /Applications/System\ Preferences.app
+dockutil --add /Applications/Visual\ Studio\ Code.app
+dockutil --add /Applications/Sequel\ Pro.app
+dockutil --add /Applications/Steam.app
+dockutil --add '~/Downloads' --display stack

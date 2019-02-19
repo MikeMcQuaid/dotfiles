@@ -52,6 +52,9 @@ then
   brew install git
   script/extract-onepassword-secrets
   script/install-vscode-extensions
+  script/defaults
+  script/dock
+  script/terminal
   if [ "$SHELL" != "/bin/zsh" ]
   then
     chsh -s /bin/zsh caycehouse
