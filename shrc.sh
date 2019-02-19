@@ -216,5 +216,3 @@ alias github-api-curl="noglob github-api-curl"
 # Look in ./bin but do it last to avoid weird `which` results.
 force_add_to_path_start "bin"
 
-# Say a fortune
-fortune -s | cowsay
