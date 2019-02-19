@@ -1,7 +1,8 @@
 language: objective-c
-os:
-  - linux
-  - osx
+os: osx
+matrix:
+  include:
+    - os: linux
 
 script:
   - bash -n *.sh
