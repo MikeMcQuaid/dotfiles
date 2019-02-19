@@ -54,6 +54,6 @@ then
   script/install-vscode-extensions
   if [ "$SHELL" != "/bin/zsh" ]
   then
-    chsh -s /bin/zsh mike
+    chsh -s /bin/zsh caycehouse
   fi
 fi

@@ -1,11 +1,11 @@
 [user]
 	# Name used in commit messages.
-	name = Mike McQuaid
+	name = Cayce House
 	# Email used in commit messages.
-	email = mike@mikemcquaid.com
+	email = cayce@houseco.cc
 [github]
 	# GitHub username for command-line tools.
-	user = MikeMcQuaid
+	user = caycehouse
 [color]
 	# Colour terminal command output when possible.
 	ui = auto
@@ -116,11 +116,11 @@
 	# Diff against the current branch's merge-base
 	diff-merge-base = !git diff $(git merge-base-master)
 
-	# Push the current branch upstream to MikeMcQuaid using the same
+	# Push the current branch upstream to caycehouse using the same
 	# branch name for the remote branch.
-	um = !(git remote -v | grep -q MikeMcQuaid || hub fork) \
-	    && git push --set-upstream MikeMcQuaid $(git current-branch)
-	# Push the current branch to MikeMcQuaid and open a pull request.
+	um = !(git remote -v | grep -q caycehouse || hub fork) \
+	    && git push --set-upstream caycehouse $(git current-branch)
+	# Push the current branch to caycehouse and open a pull request.
 	umpr = !git um && hub pull-request -o
 
 	## Shortened 'New' Commands

@@ -7,6 +7,4 @@
 /gnupg/*.gpg
 /gnupg/*.kbx
 /gnupg/*.private.*
-bundle/cache
 secrets
-rbenv/*/

@@ -47,16 +47,9 @@ quiet_which() {
 }
 
 add_to_path_end "/sbin"
-add_to_path_end "$HOME/.gem/ruby/2.3.0/bin"
-add_to_path_end "$HOME/.rbenv/bin"
-add_to_path_end "$HOME/.cabal/bin"
 add_to_path_end "$HOME/.dotfiles/bin"
 add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
-
-# Setup Go development
-export GOPATH="$HOME/.gopath"
-add_to_path_end "$GOPATH/bin"
 
 # Run rbenv if it exists
 quiet_which rbenv && add_to_path_start "$(rbenv root)/shims"
@@ -83,8 +76,6 @@ then
   export HOMEBREW_PREFIX="$(brew --prefix)"
   export HOMEBREW_REPOSITORY="$(brew --repo)"
   export HOMEBREW_AUTO_UPDATE_SECS=3600
-  export HOMEBREW_BINTRAY_USER=mikemcquaid
-  export HOMEBREW_DEVELOPER=1
   export HOMEBREW_PRY=1
   export HOMEBREW_INSTALL_CLEANUP=1
 
@@ -118,9 +109,6 @@ if [ "$MACOS" ]
 then
   export GREP_OPTIONS="--color=auto"
   export CLICOLOR=1
-  export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
-  export RESQUE_REDIS_URL="redis://localhost:6379"
-  export HEROKU_ORGANIZATION="github-enterprise"
 
   if quiet_which diff-highlight
   then
@@ -201,11 +189,6 @@ cd() {
     && set_terminal_app_pwd
   pwd > "$HOME/.lastpwd"
   ls
-}
-
-# Use ruby-prof to generate a call stack
-ruby-call-stack() {
-  ruby-prof --printer=call_stack --file=call_stack.html -- "$@"
 }
 
 # Pretty-print JSON files
