@@ -20,7 +20,7 @@ brew cleanup
 
 log 'Updating Composer'
 composer self-update
-composer global update --no-dev --prefer-dist || true
+composer global update --no-dev --prefer-dist
 
 log 'Updating npm'
 npm install --global npm@latest

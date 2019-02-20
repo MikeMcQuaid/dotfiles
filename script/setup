@@ -36,6 +36,10 @@ script/extract-onepassword-secrets
 script/install-vscode-extensions
 script/terminal
 
+log 'Installing valet globally'
+brew install composer
+composer global require laravel/valet
+
 log 'Setting default shell to zsh'
 brew install zsh zplug
 if [ "$SHELL" != '/usr/local/bin/zsh' ]
