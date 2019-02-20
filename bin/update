@@ -22,6 +22,9 @@ log 'Updating Composer'
 composer self-update
 composer global update --no-dev --prefer-dist
 
+log 'Updating Valet'
+valet install
+
 log 'Updating npm'
 npm install --global npm@latest
 npm update --global
