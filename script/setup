@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -e
+#!/usr/bin/env bash
 
 log() { echo -e "\033[0;35m${1}\033[0m"; }
 
@@ -24,7 +24,7 @@ for DOTFILE in *; do
   then
     ln -sfv "$DIRFILE" "$HOMEFILE"
   else
-    rm -rv "$HOMEFILE" || true
+    rm -rv "$HOMEFILE"
     ln -sv "$DIRFILE" "$HOMEFILE"
   fi
 done
@@ -32,7 +32,7 @@ done
 log 'Running accessory scripts'
 script/defaults
 script/dock
-script/extract-onepassword-secrets || true
+script/extract-onepassword-secrets
 script/install-vscode-extensions
 script/terminal
 
