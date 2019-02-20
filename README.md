@@ -2,10 +2,19 @@
 
 My dot files shared between machines for ZSH, Bash, macOS, Linux, Cygwin and MSYS.
 
+For increasing security [check out this article](https://blog.bejarano.io/hardening-macos.html).
+
 ## Installation
 
 Run [`script/setup`](https://github.com/caycehouse/dotfiles/blob/master/script/setup)
 after checkout to symlink (or copy) everything in this directory to your home directory.
+
+After the initial strap:
+
+1. Enable unlock mac with apple watch in System Preferences -> Security & Privacy.
+2. Enable Night Shift from Sunrise to Sunset on max warmth in System Preferences -> Displays -> Night Shift.
+3. Disable message previews in System Preferences -> Notifications -> Messages.
+4. Enable Touch ID support for [sudo](https://www.imore.com/how-use-sudo-your-mac-touch-id)
 
 ## Status
 
