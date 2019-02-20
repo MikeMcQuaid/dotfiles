@@ -10,9 +10,6 @@ osascript -e 'tell application "System Preferences" to quit'
 # General UI/UX                                                               #
 ###############################################################################
 
-log 'Disabling chime on boot'
-sudo nvram SystemAudioVolume=" "
-
 log 'Disabling LSQuarantine dialog'
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
@@ -105,10 +102,6 @@ sudo chflags nohidden /Volumes
 # Safari & WebKit                                                             #
 ###############################################################################
 
-log 'Privacy: don’t send search queries to Apple'
-defaults write com.apple.Safari UniversalSearchEnabled -bool false
-defaults write com.apple.Safari SuppressSearchSuggestions -bool true
-
 log 'Disable Quick Website Search'
 defaults write com.apple.Safari WebsiteSpecificSearchEnabled -bool false
 
@@ -130,9 +123,6 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 
 log 'Hide Safari’s bookmarks bar by default'
 defaults write com.apple.Safari ShowFavoritesBar -bool false
-
-log 'Enable Safari’s debug menu'
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
 
 log 'Make Safari’s search banners default to Contains instead of Starts With'
 defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
@@ -182,59 +172,6 @@ log 'Update extensions automatically'
 defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 
 ###############################################################################
-# Spotlight                                                                   #
-###############################################################################
-
-log 'Change Spotlight indexing order and disable some search results'
-# Yosemite-specific search results (remove them if you are using macOS 10.9 or older):
-# 	MENU_DEFINITION
-# 	MENU_CONVERSION
-# 	MENU_EXPRESSION
-# 	MENU_SPOTLIGHT_SUGGESTIONS (send search queries to Apple)
-# 	MENU_WEBSEARCH             (send search queries to Apple)
-# 	MENU_OTHER
-defaults write com.apple.spotlight orderedItems -array \
-	'{"enabled" = 1;"name" = "APPLICATIONS";}' \
-	'{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
-	'{"enabled" = 1;"name" = "DIRECTORIES";}' \
-	'{"enabled" = 1;"name" = "PDF";}' \
-	'{"enabled" = 1;"name" = "FONTS";}' \
-	'{"enabled" = 0;"name" = "DOCUMENTS";}' \
-	'{"enabled" = 0;"name" = "MESSAGES";}' \
-	'{"enabled" = 0;"name" = "CONTACT";}' \
-	'{"enabled" = 0;"name" = "EVENT_TODO";}' \
-	'{"enabled" = 0;"name" = "IMAGES";}' \
-	'{"enabled" = 0;"name" = "BOOKMARKS";}' \
-	'{"enabled" = 0;"name" = "MUSIC";}' \
-	'{"enabled" = 0;"name" = "MOVIES";}' \
-	'{"enabled" = 0;"name" = "PRESENTATIONS";}' \
-	'{"enabled" = 0;"name" = "SPREADSHEETS";}' \
-	'{"enabled" = 0;"name" = "SOURCE";}' \
-	'{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
-	'{"enabled" = 0;"name" = "MENU_OTHER";}' \
-	'{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
-	'{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
-	'{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
-	'{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
-# Load new settings before rebuilding the index
-killall mds > /dev/null 2>&1
-# Make sure indexing is enabled for the main volume
-sudo mdutil -i on / > /dev/null
-# Rebuild the index from scratch
-sudo mdutil -E / > /dev/null
-
-###############################################################################
-# Terminal                                                                    #
-###############################################################################
-
-log 'Only use UTF-8 in Terminal.app'
-defaults write com.apple.terminal StringEncodings -array 4
-
-log 'Enable Secure Keyboard Entry in Terminal.app'
-# See: https://security.stackexchange.com/a/47786/8918
-defaults write com.apple.terminal SecureKeyboardEntry -bool true
-
-###############################################################################
 # TextEdit                                                                    #
 ###############################################################################
 
@@ -260,9 +197,6 @@ defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
 
 log 'Install System data files & security updates'
 defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
-
-log 'Automatically download apps purchased on other Macs'
-defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
 
 log 'Turn on app auto-update'
 defaults write com.apple.commerce AutoUpdate -bool true

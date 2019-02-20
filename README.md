@@ -15,6 +15,7 @@ After the initial strap:
 2. Enable Night Shift from Sunrise to Sunset on max warmth in System Preferences -> Displays -> Night Shift.
 3. Disable message previews in System Preferences -> Notifications -> Messages.
 4. Enable Touch ID support for [sudo](https://www.imore.com/how-use-sudo-your-mac-touch-id)
+5. Change Finder view option to show ~/Library.
 
 ## Status
 
