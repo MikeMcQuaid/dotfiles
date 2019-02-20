@@ -1,5 +1,5 @@
 # zplug fix implemented from https://github.com/zplug/zplug/issues/448.
-unalias git
+unalias git &>/dev/null
 
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
