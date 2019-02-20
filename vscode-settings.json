@@ -16,6 +16,6 @@
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
-  "php-cs-fixer.lastDownload": 1549563097870,
+  "php-cs-fixer.lastDownload": 1550677968643,
   "explorer.confirmDelete": false
 }
