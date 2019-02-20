@@ -1,25 +1,12 @@
-#!/bin/sh
-# Install all dotfiles into the home directory
+#!/usr/bin/env bash -e
+
+log() { echo -e "\033[0;35m${1}\033[0m"; }
 
 DOTFILESDIRREL=$(dirname $0)
 cd $DOTFILESDIRREL/..
 DOTFILESDIR=$(pwd -P)
 
-[ $(uname -s) = "Darwin" ] && export MACOS=1 && export UNIX=1
-[ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
-uname -s | grep -q "_NT-" && export WINDOWS=1
-
-if [ $MACOS ]
-then
-  VSCODE="$HOME/Library/Application Support/Code/User"
-elif [ $LINUX ]
-then
-  VSCODE="$HOME/.config/Code/User"
-elif [ $WINDOWS ]
-then
-  VSCODE="$APPDATA/Code/User"
-fi
-
+log 'Installing dotfiles'
 for DOTFILE in *; do
   HOMEFILE="$HOME/.$DOTFILE"
   [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
@@ -27,36 +14,30 @@ for DOTFILE in *; do
 
   echo $DOTFILE | egrep -q '(^script/$|\.txt$|\.md$)' && continue
   echo $DOTFILE | grep -q 'vscode-settings' &&
-       HOMEFILE="$VSCODE/settings.json" &&
-       mkdir -p "$VSCODE"
+       HOMEFILE="$HOME/Library/Application Support/Code/User/settings.json" &&
+       mkdir -p "$HOME/Library/Application Support/Code/User"
 
   echo $DOTFILE | grep -q '\.sh' &&
        HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
 
-  if [ $UNIX ]
+  if [ -L "$HOMEFILE" ] && ! [ -d $DOTFILE ]
   then
-    if [ -L "$HOMEFILE" ] && ! [ -d $DOTFILE ]
-    then
-      ln -sfv "$DIRFILE" "$HOMEFILE"
-    else
-      rm -rv "$HOMEFILE"
-      ln -sv "$DIRFILE" "$HOMEFILE"
-    fi
+    ln -sfv "$DIRFILE" "$HOMEFILE"
   else
-    cp -rv "$DIRFILE" "$HOMEFILE"
+    rm -rv "$HOMEFILE"
+    ln -sv "$DIRFILE" "$HOMEFILE"
   fi
 done
 
-if [ $MACOS ]
+log 'Running accessory scripts'
+script/extract-onepassword-secrets
+script/install-vscode-extensions
+script/defaults
+script/dock
+script/terminal
+
+log 'Setting default shell to zsh'
+if [ "$SHELL" != '/usr/local/bin/zsh' ]
 then
-  brew install git
-  script/extract-onepassword-secrets
-  script/install-vscode-extensions
-  script/defaults
-  script/dock
-  script/terminal
-  if [ "$SHELL" != $(which zsh) ]
-  then
-    sudo chsh -s $(which zsh) $USER
-  fi
+  sudo chsh -s '/usr/local/bin/zsh' $USER
 fi
