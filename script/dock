@@ -1,17 +1,17 @@
-#!/bin/sh
-# Setup Dock configuration
-set -e
+#!/usr/bin/env bash -e
+
+log() { echo -e "\033[0;35m${1}\033[0m"; }
 
 if ! command -v dockutil >/dev/null
 then
-  echo "--> Installing Dockutil..."
+  log 'Installing Dockutil'
   brew install dockutil
 fi
 
-echo "--> Removing all Dock items..."
+log 'Removing all Dock items'
 dockutil --remove all
 
-echo "--> Adding back Dock items..."
+log 'Adding back Dock items'
 dockutil --add /Applications/Launchpad.app
 dockutil --add /Applications/Safari.app
 dockutil --add /Applications/Messages.app
