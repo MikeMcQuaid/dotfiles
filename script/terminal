@@ -1,6 +1,6 @@
 #!/usr/bin/env bash -e
 
-log() { echo -e "\033[0;35m${1}\033[0m"; }
+log() { echo -e "\033[0;35m${1}...\033[0m"; }
 
 DOTFILESDIRREL=$(dirname $0)
 cd $DOTFILESDIRREL/..
