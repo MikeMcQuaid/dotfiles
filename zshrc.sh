@@ -51,3 +51,4 @@ eval "$(rbenv init -)"
 
 # Add custom scripts to path
 export PATH="$PATH:$HOME/.bin"
+export PATH="$PATH:$HOME/.composer/vendor/bin"

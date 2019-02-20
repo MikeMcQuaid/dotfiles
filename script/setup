@@ -39,6 +39,7 @@ script/terminal
 log 'Installing valet globally'
 brew install composer
 composer global require laravel/valet
+$HOME/.composer/vendor/bin/valet install
 
 log 'Setting default shell to zsh'
 brew install zsh zplug
