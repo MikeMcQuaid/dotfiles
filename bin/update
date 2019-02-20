@@ -1,28 +1,28 @@
 #!/usr/bin/env bash -e
 
-log() { echo -e "\033[0;35m${1}\033[0m"; }
+log() { echo -e "\033[0;35m${1}...\033[0m"; }
 
 # Ask for the administrator password upfront.
 sudo -v
 
-log 'Update macOS'
+log 'Updating macOS'
 sudo softwareupdate --install --all
 
-log 'Update Mac App Store'
+log 'Updating Mac App Store Apps'
 mas upgrade
 
-log 'Update Homebrew'
+log 'Updating Homebrew casks'
 brew update
 brew upgrade
 rm -rfv $(brew --cache)/*
 brew tap --repair
 brew cleanup
 
-log 'Update Composer'
+log 'Updating Composer'
 composer self-update
 composer global update --no-dev --prefer-dist
 
-log 'Update npm'
+log 'Updating npm'
 npm install --global npm@latest
 npm update --global
 
