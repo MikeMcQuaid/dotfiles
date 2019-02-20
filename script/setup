@@ -37,6 +37,7 @@ script/dock
 script/terminal
 
 log 'Setting default shell to zsh'
+brew install zsh zplug
 if [ "$SHELL" != '/usr/local/bin/zsh' ]
 then
   sudo chsh -s '/usr/local/bin/zsh' $USER
