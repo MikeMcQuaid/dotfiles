@@ -1,5 +1,6 @@
-#!/bin/sh
-# Set sensible macOS defaults
+#!/usr/bin/env bash -e
+
+log() { echo -e "\033[0;35m${1}\033[0m"; }
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
@@ -9,43 +10,43 @@ osascript -e 'tell application "System Preferences" to quit'
 # General UI/UX                                                               #
 ###############################################################################
 
-echo "--> Disabling chime on boot..."
+log 'Disabling chime on boot'
 sudo nvram SystemAudioVolume=" "
 
-echo "--> Disabling LSQuarantine dialog..."
+log 'Disabling LSQuarantine dialog'
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-echo "--> Disabling resume system-wide..."
+log 'Disabling resume system-wide'
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
-echo "--> Restart on system freeze..."
+log 'Restart on system freeze'
 sudo systemsetup -setrestartfreeze on
 
-echo "--> Disabling automatic capitalization..."
+log 'Disabling automatic capitalization'
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
-echo "--> Diabling automatic dash substitution..."
+log 'Diabling automatic dash substitution'
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
-echo "--> Disabling automatic period substitution..."
+log 'Disabling automatic period substitution'
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 
-echo "--> Disabling automatic quote substitution..."
+log 'Disabling automatic quote substitution'
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
-echo "--> Disabling autocorrect..."
+log 'Disabling autocorrect'
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
 
-echo "--> Enabling Tap-To-Click..."
+log 'Enabling Tap-To-Click'
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-echo "--> Enabling trackpad corner secondary click..."
+log 'Enabling trackpad corner secondary click'
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
@@ -55,7 +56,7 @@ defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryCli
 # Screen                                                                      #
 ###############################################################################
 
-echo "--> Require password immediately on screensaver..."
+log 'Require password immediately on screensaver'
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
@@ -63,128 +64,128 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 # Finder                                                                      #
 ###############################################################################
 
-echo "--> Setting ${HOME} as default location for Finder windows..."
+log 'Setting ${HOME} as default location for Finder windows'
 defaults write com.apple.finder NewWindowTarget -string "PfLo"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
 
-echo "--> Show icons for hard drives, servers, and removable media on the Desktop..."
+log 'Show icons for hard drives, servers, and removable media on the Desktop'
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
-echo "--> Show all filename extensions..."
+log 'Show all filename extensions'
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-echo "--> Disabling the warning when changing a file extension..."
+log 'Disabling the warning when changing a file extension'
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-echo "--> Disabling creation of .DS_Store files on network or USB volumes..."
+log 'Disabling creation of .DS_Store files on network or USB volumes'
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-echo "--> Enabling snap-to-grid for icons on the desktop and in other icon views..."
+log 'Enabling snap-to-grid for icons on the desktop and in other icon views'
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 
-echo "--> Setting column view in all Finder windows by default..."
+log 'Setting column view in all Finder windows by default'
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
-echo "--> Disabling the warning before emptying the Trash..."
+log 'Disabling the warning before emptying the Trash'
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
-echo "--> Showing the ~/Library folder..."
+log 'Showing the ~/Library folder'
 chflags nohidden ~/Library
 
-echo "--> Showing the /Volumes folder..."
+log 'Showing the /Volumes folder'
 sudo chflags nohidden /Volumes
 
 ###############################################################################
 # Safari & WebKit                                                             #
 ###############################################################################
 
-echo "--> Privacy: don’t send search queries to Apple..."
+log 'Privacy: don’t send search queries to Apple'
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
 defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 
-echo "--> Disable Quick Website Search..."
+log 'Disable Quick Website Search'
 defaults write com.apple.Safari WebsiteSpecificSearchEnabled -bool false
 
-echo "--> Press Tab to highlight each item on a web page..."
+log 'Press Tab to highlight each item on a web page'
 defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true
 
-echo "--> Show the full URL in the address bar (note: this still hides the scheme)..."
+log 'Show the full URL in the address bar (note: this still hides the scheme)'
 defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 
-echo "--> Set Safari’s home page to about:blank for faster loading..."
+log 'Set Safari’s home page to about:blank for faster loading'
 defaults write com.apple.Safari HomePage -string "about:blank"
 
-echo "--> Prevent Safari from opening ‘safe’ files automatically after downloading..."
+log 'Prevent Safari from opening ‘safe’ files automatically after downloading'
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
-echo "--> Allow hitting the Backspace key to go to the previous page in history..."
+log 'Allow hitting the Backspace key to go to the previous page in history'
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true
 
-echo "--> Hide Safari’s bookmarks bar by default..."
+log 'Hide Safari’s bookmarks bar by default'
 defaults write com.apple.Safari ShowFavoritesBar -bool false
 
-echo "--> Enable Safari’s debug menu..."
+log 'Enable Safari’s debug menu'
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
 
-echo "--> Make Safari’s search banners default to Contains instead of Starts With..."
+log 'Make Safari’s search banners default to Contains instead of Starts With'
 defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
 
-echo "--> Remove useless icons from Safari’s bookmarks bar..."
+log 'Remove useless icons from Safari’s bookmarks bar'
 defaults write com.apple.Safari ProxiesInBookmarksBar "()"
 
-echo "--> Enable the Develop menu and the Web Inspector in Safari..."
+log 'Enable the Develop menu and the Web Inspector in Safari'
 defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
 
-echo "--> Add a context menu item for showing the Web Inspector in web views..."
+log 'Add a context menu item for showing the Web Inspector in web views'
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
-echo "--> Enable continuous spellchecking..."
+log 'Enable continuous spellchecking'
 defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true
 
-echo "--> Disable auto-correct..."
+log 'Disable auto-correct'
 defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
 
-echo "--> Disable AutoFill..."
+log 'Disable AutoFill'
 defaults write com.apple.Safari AutoFillFromAddressBook -bool false
 defaults write com.apple.Safari AutoFillPasswords -bool false
 defaults write com.apple.Safari AutoFillCreditCardData -bool false
 defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
 
-echo "--> Warn about fraudulent websites..."
+log 'Warn about fraudulent websites'
 defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
 
-echo "--> Disable plug-ins..."
+log 'Disable plug-ins'
 defaults write com.apple.Safari WebKitPluginsEnabled -bool false
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2PluginsEnabled -bool false
 
-echo "--> Disable Java..."
+log 'Disable Java'
 defaults write com.apple.Safari WebKitJavaEnabled -bool false
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool false
 
-echo "--> Block pop-up windows..."
+log 'Block pop-up windows'
 defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically -bool false
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically -bool false
 
-echo "--> Enable Do Not Track..."
+log 'Enable Do Not Track'
 defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
-echo "--> Update extensions automatically..."
+log 'Update extensions automatically'
 defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 
 ###############################################################################
 # Spotlight                                                                   #
 ###############################################################################
 
-echo "--> Change Spotlight indexing order and disable some search results..."
+log 'Change Spotlight indexing order and disable some search results'
 # Yosemite-specific search results (remove them if you are using macOS 10.9 or older):
 # 	MENU_DEFINITION
 # 	MENU_CONVERSION
@@ -226,10 +227,10 @@ sudo mdutil -E / > /dev/null
 # Terminal                                                                    #
 ###############################################################################
 
-echo "--> Only use UTF-8 in Terminal.app..."
+log 'Only use UTF-8 in Terminal.app'
 defaults write com.apple.terminal StringEncodings -array 4
 
-echo "--> Enable Secure Keyboard Entry in Terminal.app..."
+log 'Enable Secure Keyboard Entry in Terminal.app'
 # See: https://security.stackexchange.com/a/47786/8918
 defaults write com.apple.terminal SecureKeyboardEntry -bool true
 
@@ -237,10 +238,10 @@ defaults write com.apple.terminal SecureKeyboardEntry -bool true
 # TextEdit                                                                    #
 ###############################################################################
 
-echo "--> Use plain text mode for new TextEdit documents..."
+log 'Use plain text mode for new TextEdit documents'
 defaults write com.apple.TextEdit RichText -int 0
 
-echo "--> Open and save files as UTF-8 in TextEdit..."
+log 'Open and save files as UTF-8 in TextEdit'
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 
@@ -248,73 +249,73 @@ defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 # Mac App Store                                                               #
 ###############################################################################
 
-echo "--> Enable the automatic update check..."
+log 'Enable the automatic update check'
 defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 
-echo "--> Check for software updates daily, not just once per week..."
+log 'Check for software updates daily, not just once per week'
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
-echo "--> Download newly available updates in background..."
+log 'Download newly available updates in background'
 defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
 
-echo "--> Install System data files & security updates..."
+log 'Install System data files & security updates'
 defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 
-echo "--> Automatically download apps purchased on other Macs..."
+log 'Automatically download apps purchased on other Macs'
 defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
 
-echo "--> Turn on app auto-update..."
+log 'Turn on app auto-update'
 defaults write com.apple.commerce AutoUpdate -bool true
 
-echo "--> Allow the App Store to reboot machine on macOS updates..."
+log 'Allow the App Store to reboot machine on macOS updates'
 defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
 
 ###############################################################################
 # Photos                                                                      #
 ###############################################################################
 
-echo "--> Prevent Photos from opening automatically when devices are plugged in..."
+log 'Prevent Photos from opening automatically when devices are plugged in'
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
 ###############################################################################
 # Messages                                                                    #
 ###############################################################################
 
-echo "--> Disable smart quotes as it’s annoying for messages that contain code..."
+log 'Disable smart quotes as it’s annoying for messages that contain code'
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
 
-echo "--> Disable continuous spell checking..."
+log 'Disable continuous spell checking'
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
 ###############################################################################
 # Security                                                                    #
 ###############################################################################
 
-echo "--> Enable Firewall globally..."
+log 'Enable Firewall globally'
 sudo defaults write /Library/Preferences/com.apple.alf globalstate 1
 
-echo "--> Enable Firewall stealth mode..."
+log 'Enable Firewall stealth mode'
 sudo defaults write /Library/Preferences/com.apple.alf stealthenabled 1
 
-echo "--> Disable IR remote control..."
+log 'Disable IR remote control'
 sudo defaults write /Library/Preferences/com.apple.driver.AppleIRController DeviceEnabled -bool false
 
-echo "--> Disable wifi captive portal..."
+log 'Disable wifi captive portal'
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
 
-echo "--> Do not show password hints..."
+log 'Do not show password hints'
 sudo defaults write /Library/Preferences/com.apple.loginwindow RetriesUntilHint -int 0
 
-echo "--> Destroy FileVault key when going into standby mode, forcing a re-auth..."
+log 'Destroy FileVault key when going into standby mode, forcing a re-auth'
 sudo pmset destroyfvkeyonstandby 1
 
-echo "--> Enable secure virtual memory..."
+log 'Enable secure virtual memory'
 sudo defaults write /Library/Preferences/com.apple.virtualMemory UseEncryptedSwap -bool true
 
-echo "--> Disable Bonjour multicast advertisements..."
+log 'Disable Bonjour multicast advertisements'
 sudo defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool true
 
-echo "--> Disable the crash reporter..."
+log 'Disable the crash reporter'
 defaults write com.apple.CrashReporter DialogType -string "none"
 
 ###############################################################################
@@ -331,4 +332,4 @@ for app in "cfprefsd" \
 	"TextEdit"; do
 	killall "${app}" &> /dev/null
 done
-echo "--> Done. Note that some of these changes require a logout/restart to take effect..."
+log 'Done. Note that some of these changes require a logout/restart to take effect'
