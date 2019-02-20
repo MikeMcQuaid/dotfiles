@@ -1,11 +1,11 @@
-#!/bin/sh
-# Configure Terminal.app
-set -e
+#!/usr/bin/env bash -e
+
+log() { echo -e "\033[0;35m${1}\033[0m"; }
 
 DOTFILESDIRREL=$(dirname $0)
 cd $DOTFILESDIRREL/..
 
-# Use the Darcula theme by default in Terminal.app
+log 'Using the Darcula theme by default in Terminal.app'
 osascript <<EOD
 tell application "Terminal"
 	local allOpenedWindows
