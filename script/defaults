@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -e
+#!/usr/bin/env bash
 
 log() { echo -e "\033[0;35m${1}\033[0m"; }
 
