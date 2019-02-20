@@ -45,3 +45,6 @@ eval "$(hub alias -s)"
 
 # Initialize rbenv
 eval "$(rbenv init -)"
+
+# Add custom scripts to path
+export PATH="$PATH:$HOME/.bin"
