@@ -30,10 +30,10 @@ for DOTFILE in *; do
 done
 
 log 'Running accessory scripts'
-script/extract-onepassword-secrets
-script/install-vscode-extensions
 script/defaults
 script/dock
+script/extract-onepassword-secrets
+script/install-vscode-extensions
 script/terminal
 
 log 'Setting default shell to zsh'
