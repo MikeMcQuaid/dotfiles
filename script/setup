@@ -32,7 +32,7 @@ done
 log 'Running accessory scripts'
 script/defaults
 script/dock
-script/extract-onepassword-secrets
+script/extract-onepassword-secrets || true
 script/install-vscode-extensions
 script/terminal
 
