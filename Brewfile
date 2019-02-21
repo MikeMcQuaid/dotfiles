@@ -48,7 +48,6 @@ cask "the-unarchiver"
 cask "tor-browser"
 cask "transmit"
 cask "vagrant"
-cask "virtualbox"
 cask "visual-studio-code"
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
