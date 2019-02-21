@@ -49,6 +49,7 @@ cask "tor-browser"
 cask "transmit"
 cask "vagrant"
 cask "visual-studio-code"
+cask "vmware-fusion"
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
