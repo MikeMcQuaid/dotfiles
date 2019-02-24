@@ -13,6 +13,7 @@ brew "grip"
 brew "hub"
 brew "mas"
 brew "mysql@5.7", restart_service: true, link: true, conflicts_with: ["mysql"]
+brew "nmap"
 brew "npm"
 brew "pinentry-mac"
 brew "php"
