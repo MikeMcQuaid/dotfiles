@@ -1,4 +1,6 @@
-#!/usr/bin/env bash -e
+#!/usr/bin/env bash
+
+set -e
 
 log() { echo -e "\033[0;35m${1}...\033[0m"; }
 
@@ -14,7 +16,8 @@ mas upgrade
 log 'Updating Homebrew casks'
 brew update
 brew upgrade
-rm -rfv $(brew --cache)/*
+BREW_CACHE=$(brew --cache)
+rm -rfv "${BREW_CACHE:?}/*"
 brew tap --repair
 brew cleanup
 
