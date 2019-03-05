@@ -30,7 +30,6 @@ for DOTFILE in *; do
 done
 
 log 'Running accessory scripts'
-script/defaults
 script/dock
 script/extract-onepassword-secrets
 script/install-vscode-extensions

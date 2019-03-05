@@ -2,8 +2,6 @@
 
 My dot files shared between machines for ZSH, Bash, macOS, Linux, Cygwin and MSYS.
 
-For increasing security [check out this article](https://blog.bejarano.io/hardening-macos.html).
-
 ## Installation
 
 Run [`script/setup`](https://github.com/caycehouse/dotfiles/blob/master/script/setup)
