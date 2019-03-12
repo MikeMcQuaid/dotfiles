@@ -13,7 +13,7 @@ dockutil --remove all
 
 log 'Adding back Dock items'
 dockutil --add /Applications/Launchpad.app
-dockutil --add /Applications/Safari.app
+dockutil --add /Applications/Google\ Chrome.app
 dockutil --add /Applications/Messages.app
 dockutil --add /Applications/iTunes.app
 dockutil --add /Applications/App\ Store.app
@@ -23,4 +23,4 @@ dockutil --add /Applications/System\ Preferences.app
 dockutil --add /Applications/Visual\ Studio\ Code.app
 dockutil --add /Applications/Sequel\ Pro.app
 dockutil --add /Applications/Steam.app
-dockutil --add '~/Downloads' --display stack
+dockutil --add "$HOME/Downloads" --display stack
