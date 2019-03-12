@@ -17,7 +17,6 @@ dockutil --add /Applications/Google\ Chrome.app
 dockutil --add /Applications/Messages.app
 dockutil --add /Applications/iTunes.app
 dockutil --add /Applications/App\ Store.app
-dockutil --add /Applications/Mail.app
 dockutil --add /Applications/Utilities/Terminal.app
 dockutil --add /Applications/System\ Preferences.app
 dockutil --add /Applications/Visual\ Studio\ Code.app
