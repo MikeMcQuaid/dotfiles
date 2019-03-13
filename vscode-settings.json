@@ -6,6 +6,8 @@
     "editor.wordWrap": "bounded",
     "editor.wordWrapColumn": 118,
     "editor.formatOnType": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveTimeout": 5000,
     "editor.renderLineHighlight": "none",
     "editor.minimap.enabled": false,
     "editor.glyphMargin": false,
@@ -18,7 +20,10 @@
         "comments": true,
         "strings": true
     },
-    "editor.rulers": [80, 118],
+    "editor.rulers": [
+        80,
+        118
+    ],
     "editor.scrollBeyondLastLine": false,
     "editor.showUnused": false,
     "editor.tabSize": 2,
@@ -47,27 +52,22 @@
     "debug.inlineValues": true,
     "breadcrumbs.enabled": true,
     "git.promptToSaveFilesBeforeCommit": true,
-    "ruby.codeCompletion": "rcodetools",
-    "ruby.format": "rubocop",
-    "ruby.intellisense": "rubyLocate",
+    "ruby.useLanguageServer": true,
     "ruby.lint": {
-        "reek": true,
-        "rubocop": true,
-        "ruby": true, //Runs ruby -wc
-        "fasterer": true,
-        "debride": true,
-        "ruby-lint": true
+        "rubocop": true
     },
-    "spellright.language": "en_GB",
+    "ruby.format": "rubocop",
+    "spellright.language": [
+        "en_GB",
+        "en_US"
+    ],
     "spellright.groupDictionaries": false,
     "spellright.addToSystemDictionary": true,
-    "searchRipgrep.enable": true,
+    "search.runInExtensionHost": true,
     "spellright.documentTypes": [
         "markdown",
         "latex",
         "plaintext",
         "git-commit"
-    ],
-    "go.gocodeAutoBuild": true,
-    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+    ]
 }
