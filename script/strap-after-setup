@@ -1,0 +1,12 @@
+#!/bin/sh
+# Run by Strap after installing Brewfile dependencies
+
+cd $(dirname $0)/..
+
+script/extract-onepassword-secrets
+script/install-vscode-extensions
+
+if [ "$SHELL" != "/bin/zsh" ]
+then
+  chsh -s /bin/zsh mike
+fi
