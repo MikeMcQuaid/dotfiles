@@ -3,13 +3,8 @@ set -e
 
 if ! command -v code >/dev/null
 then
-  if [ $(uname -s) = "Darwin" ]
-  then
-    brew cask install code
-  else
-    echo "Install VS Code first!" >&2
-    exit 1
-  fi
+  echo "Install VS Code first!" >&2
+  exit 1
 fi
 
 EXTENSIONS="$(code --list-extensions)"
