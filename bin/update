@@ -13,9 +13,10 @@ sudo softwareupdate --install --all
 log 'Updating Mac App Store Apps'
 mas upgrade
 
-log 'Updating Homebrew casks'
+log 'Updating Homebrew'
 brew update
 brew upgrade
+brew cask upgrade
 BREW_CACHE=$(brew --cache)
 rm -rfv "${BREW_CACHE:?}/*"
 brew tap --repair
