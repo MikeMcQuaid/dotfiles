@@ -17,5 +17,8 @@
   "editor.formatOnPaste": true,
   "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
   "php-cs-fixer.lastDownload": 1550677968643,
-  "explorer.confirmDelete": false
+  "explorer.confirmDelete": false,
+  "files.associations": {
+    "*.leex": "HTML (Eex)"
+  }
 }
