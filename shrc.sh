@@ -184,6 +184,7 @@ elif quiet_which vi
 then
   export EDITOR="vi"
 fi
+alias e="$EDITOR"
 
 # Run dircolors if it exists
 quiet_which dircolors && eval "$(dircolors -b)"
