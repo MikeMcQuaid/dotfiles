@@ -9,17 +9,20 @@ then
 fi
 
 log 'Removing all Dock items'
-dockutil --remove all
+dockutil --remove all --no-restart
 
 log 'Adding back Dock items'
-dockutil --add /Applications/Launchpad.app
-dockutil --add /Applications/Google\ Chrome.app
-dockutil --add /Applications/Messages.app
-dockutil --add /Applications/iTunes.app
-dockutil --add /Applications/App\ Store.app
-dockutil --add /Applications/Utilities/Terminal.app
-dockutil --add /Applications/System\ Preferences.app
-dockutil --add /Applications/Visual\ Studio\ Code.app
-dockutil --add /Applications/Sequel\ Pro.app
-dockutil --add /Applications/Steam.app
-dockutil --add "$HOME/Downloads" --display stack
+dockutil --add /Applications/Launchpad.app --no-restart
+dockutil --add /Applications/Google\ Chrome.app --no-restart
+dockutil --add /Applications/Messages.app --no-restart
+dockutil --add /Applications/iTunes.app --no-restart
+dockutil --add /Applications/App\ Store.app --no-restart
+dockutil --add /Applications/Utilities/Terminal.app --no-restart
+dockutil --add /Applications/System\ Preferences.app --no-restart
+dockutil --add /Applications/Visual\ Studio\ Code.app --no-restart
+dockutil --add /Applications/Sequel\ Pro.app --no-restart
+dockutil --add /Applications/Steam.app --no-restart
+dockutil --add "$HOME/Downloads" --display stack --no-restart
+
+log 'Restarting Dock'
+/usr/bin/killall Dock >/dev/null 2>&1
