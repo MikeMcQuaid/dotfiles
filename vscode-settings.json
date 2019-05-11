@@ -4,10 +4,8 @@
   "telemetry.enableTelemetry": false,
   "editor.rulers": [80, 100, 120],
   "gitProjectManager.baseProjectsFolders": ["~/sourcecode"],
-  "workbench.iconTheme": "vscode-icons",
   "workbench.colorTheme": "Dracula",
   "workbench.statusBar.feedback.visible": false,
-  "vsicons.dontShowNewVersionMessage": true,
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
   "git.autofetch": true,
@@ -16,9 +14,14 @@
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
-  "php-cs-fixer.lastDownload": 1550677968643,
+  "php-cs-fixer.lastDownload": 1557100791292,
   "explorer.confirmDelete": false,
   "files.associations": {
     "*.leex": "HTML (Eex)"
-  }
+  },
+  "window.zoomLevel": 0,
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "workbench.iconTheme": "vscode-icons"
 }
