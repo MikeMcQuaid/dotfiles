@@ -49,6 +49,9 @@ eval "$(hub alias -s)"
 # Initialize rbenv
 eval "$(rbenv init -)"
 
+# Initialize fuck
+eval $(thefuck --alias)
+
 # Add custom scripts to path
 export PATH="$PATH:$HOME/.bin"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
