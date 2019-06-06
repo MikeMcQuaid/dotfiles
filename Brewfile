@@ -59,7 +59,6 @@ cask "spectacle"
 cask "steam"
 cask "teamviewer"
 cask "the-unarchiver"
-cask "tor-browser"
 cask "visual-studio-code"
 mas "Apple Remote Desktop", id: 409907375
 mas "Keynote", id: 409183694
