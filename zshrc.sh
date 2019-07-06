@@ -1,11 +1,5 @@
-# zplug fix implemented from https://github.com/zplug/zplug/issues/448.
-unalias git &>/dev/null
-
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
-
-# Clear packages
-zplug clear
 
 # Package list
 zplug desyncr/auto-ls
