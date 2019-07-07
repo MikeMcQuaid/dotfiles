@@ -50,4 +50,7 @@ eval $(thefuck --alias)
 export PATH="$PATH:$HOME/.bin"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 
-neofetch
+if command -v neofetch >/dev/null
+then
+    neofetch
+fi
