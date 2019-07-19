@@ -86,6 +86,8 @@ then
   export HOMEBREW_AUTO_UPDATE_SECS=3600
   export HOMEBREW_BINTRAY_USER=mikemcquaid
   export HOMEBREW_DEVELOPER=1
+  export HOMEBREW_BUNDLE_BREW_SKIP="rakudo-star mkcert nss go hyperscan aws-iam-authenticator awscli awssume imagemagick"
+  export HOMEBREW_BUNDLE_CASK_SKIP="docker github/bootstrap/zulu8"
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
 
