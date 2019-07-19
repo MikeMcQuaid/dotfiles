@@ -47,6 +47,7 @@ quiet_which() {
 }
 
 add_to_path_end "/sbin"
+add_to_path_end "$HOME/.gem/ruby/2.6.0/bin"
 add_to_path_end "$HOME/.gem/ruby/2.3.0/bin"
 add_to_path_end "$HOME/.rbenv/bin"
 add_to_path_end "$HOME/.cabal/bin"
