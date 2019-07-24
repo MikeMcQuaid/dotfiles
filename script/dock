@@ -12,13 +12,13 @@ log 'Removing all Dock items'
 dockutil --remove all --no-restart
 
 log 'Adding back Dock items'
-dockutil --add /System/Applications/Launchpad.app --no-restart
+dockutil --add /Applications/Launchpad.app --no-restart
 dockutil --add /Applications/Google\ Chrome.app --no-restart
-dockutil --add /System/Applications/Messages.app --no-restart
-dockutil --add /System/Applications/Music.app --no-restart
-dockutil --add /System/Applications/App\ Store.app --no-restart
-dockutil --add /System/Applications/Utilities/Terminal.app --no-restart
-dockutil --add /System/Applications/System\ Preferences.app --no-restart
+dockutil --add /Applications/Messages.app --no-restart
+dockutil --add /Applications/iTunes.app --no-restart
+dockutil --add /Applications/App\ Store.app --no-restart
+dockutil --add /Applications/Utilities/Terminal.app --no-restart
+dockutil --add /Applications/System\ Preferences.app --no-restart
 dockutil --add /Applications/Visual\ Studio\ Code.app --no-restart
 dockutil --add /Applications/Sequel\ Pro.app --no-restart
 dockutil --add /Applications/Steam.app --no-restart
