@@ -59,7 +59,6 @@ cask "pycharm"
 cask "sequel-pro"
 cask "spectacle"
 cask "steam"
-cask "teamviewer"
 cask "the-unarchiver"
 cask "visual-studio-code"
 mas "Apple Remote Desktop", id: 409907375
