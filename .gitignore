@@ -2,6 +2,7 @@
 /ssh/id_rsa
 /ssh/*_rsa*
 /ssh/known_hosts
+/ssh/known_hosts.old
 /gnupg/*.d/
 /gnupg/*.db
 /gnupg/*.gpg
