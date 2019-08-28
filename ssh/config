@@ -1,6 +1,9 @@
 Host waffle
 	HostName 207.148.24.216
 
+Host twinkies
+	HostName 104.238.131.251
+
 Host *
 	StrictHostKeyChecking ask
 	VerifyHostKeyDNS ask
