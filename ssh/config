@@ -4,6 +4,9 @@ Host waffle
 Host twinkies
 	HostName 104.238.131.251
 
+Host zingers
+	HostName 207.246.95.203
+
 Host *
 	StrictHostKeyChecking ask
 	VerifyHostKeyDNS ask
