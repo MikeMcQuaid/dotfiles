@@ -13,7 +13,7 @@ dockutil --remove all --no-restart
 
 log 'Adding back Dock items'
 dockutil --add /Applications/Launchpad.app --no-restart
-dockutil --add /Applications/Safari.app --no-restart
+dockutil --add /Applications/Google\ Chrome.app --no-restart
 dockutil --add /Applications/Messages.app --no-restart
 dockutil --add /Applications/iTunes.app --no-restart
 dockutil --add /Applications/App\ Store.app --no-restart
