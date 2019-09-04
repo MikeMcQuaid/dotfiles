@@ -192,6 +192,7 @@
 	# Use macOS Keychain to store HTTP passwords.
 	helper = osxkeychain
 [hub]
+	# Use HTTPS rather than SSH protocol in Hub
 	protocol = https
 # Settings for Git LFS
 [filter "lfs"]
@@ -202,8 +203,16 @@
 [commit]
 	# Show the diff as a comment in the commit message template.
 	verbose = true
+	# Sign commits with GPG
 	gpgsign = true
 [tag]
+	# Sort tags by newest first
 	sort = -version:refname
 [protocol]
-	version = 2
+	# Use Git v2 protocol for better performance
+	# TODO: re-enable when more widely supported by Git versions
+	# version = 2
+[log]
+	# Print more readable dates in `git log`
+	# TODO: re-enable when more widely supported by Git versions
+	# date = human

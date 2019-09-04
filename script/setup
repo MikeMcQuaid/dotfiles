@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Install all dotfiles into the home directory
 
 log() { echo -e "\033[0;35m${1}...\033[0m"; }
 
@@ -28,21 +29,3 @@ for DOTFILE in *; do
     ln -sv "$DIRFILE" "$HOMEFILE"
   fi
 done
-
-log 'Running accessory scripts'
-script/dock
-script/extract-onepassword-secrets
-script/install-vscode-extensions
-script/terminal
-
-log 'Installing valet globally'
-brew install composer
-composer global require laravel/valet
-$HOME/.composer/vendor/bin/valet install
-
-log 'Setting default shell to zsh'
-brew install zsh zplug
-if [ "$SHELL" != '/usr/local/bin/zsh' ]
-then
-  sudo chsh -s '/usr/local/bin/zsh' $USER
-fi

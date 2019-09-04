@@ -1,8 +1,0 @@
-language: objective-c
-os: osx
-
-script:
-  - bash -n *.sh
-  - ./script/setup
-  - export PS1
-  - zsh -c "source ~/.zshrc"

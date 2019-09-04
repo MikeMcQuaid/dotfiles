@@ -10,7 +10,9 @@ Zignd.html-css-class-completion
 onecentlin.laravel5-snippets
 ryannaddy.laravel-artisan
 onecentlin.laravel-blade
-davidanson.vscode-markdownlint
+ban.spellright
+DavidAnson.vscode-markdownlint
+eamodio.gitlens
 eg2.vscode-npm-script
 christian-kohler.npm-intellisense
 christian-kohler.path-intellisense

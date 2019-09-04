@@ -4,7 +4,8 @@ log() { echo -e "\033[0;35m${1}...\033[0m"; }
 
 if ! command -v code >/dev/null
 then
-  brew cask install visual-studio-code
+  echo "Install VS Code first!" >&2
+  exit 1
 fi
 
 EXTENSIONS="$(code --list-extensions)"

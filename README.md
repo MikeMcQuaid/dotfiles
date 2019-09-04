@@ -19,8 +19,6 @@ After the initial strap:
 
 I'm using these on all my personal machines.
 
-[![Build Status](https://travis-ci.com/caycehouse/dotfiles.svg?branch=master)](https://travis-ci.com/caycehouse/dotfiles)
-
 ## Contact
 
 [Cayce House](mailto:cayce@caycehouse.com)
