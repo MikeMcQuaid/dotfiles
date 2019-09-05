@@ -5,16 +5,23 @@ on:
   pull_request: []
 jobs:
   tests:
-    runs-on: macOS-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
-      - name: Set up Git repository
-        uses: actions/checkout@master
+    - name: Set up Git repository
+      uses: actions/checkout@master
 
-      - name: Validate syntax
-        run: bash -n *.sh
+    - name: Validate syntax
+      run: bash -n *.sh
 
-      - name: Test script/setup
-        run: bash script/setup
+    - name: Test script/setup
+      run: bash script/setup
 
-      - name: Test zshrc
-        run: zsh -c "source ~/.zshrc"
+    - name: Test bashrc
+      run: bash -c "source ~/.bashrc"
+
+    - name: Test zshrc
+      run: zsh -c "source ~/.zshrc"
+      if: matrix.os == 'macOS-latest'
