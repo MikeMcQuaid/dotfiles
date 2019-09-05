@@ -1,31 +1,46 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # Install all dotfiles into the home directory
 
-log() { echo -e "\033[0;35m${1}...\033[0m"; }
+cd "$(dirname "$0")/.." || exit
 
-DOTFILESDIRREL=$(dirname $0)
-cd $DOTFILESDIRREL/..
-DOTFILESDIR=$(pwd -P)
+[ "$(uname -s)" = "Darwin" ] && export MACOS=1 && export UNIX=1
+[ "$(uname -s)" = "Linux" ] && export LINUX=1 && export UNIX=1
+uname -s | grep -q "_NT-" && export WINDOWS=1
 
-log 'Installing dotfiles'
+if [ $MACOS ]
+then
+  VSCODE="$HOME/Library/Application Support/Code/User"
+elif [ $LINUX ]
+then
+  VSCODE="$HOME/.config/Code/User"
+elif [ $WINDOWS ]
+then
+  VSCODE="$APPDATA/Code/User"
+fi
+
 for DOTFILE in *; do
   HOMEFILE="$HOME/.$DOTFILE"
-  [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
+  [ -d "$DOTFILE" ] && DOTFILE="$DOTFILE/"
   DIRFILE="$DOTFILESDIR/$DOTFILE"
 
-  echo $DOTFILE | egrep -q '(^script/$|\.txt$|\.md$)' && continue
-  echo $DOTFILE | grep -q 'vscode-settings' &&
-       HOMEFILE="$HOME/Library/Application Support/Code/User/settings.json" &&
-       mkdir -p "$HOME/Library/Application Support/Code/User"
+  echo "$DOTFILE" | grep -E -q '(^script/$|\.txt$|\.md$)' && continue
+  echo "$DOTFILE" | grep -q 'vscode-settings' &&
+       HOMEFILE="$VSCODE/settings.json" &&
+       mkdir -p "$VSCODE"
 
-  echo $DOTFILE | grep -q '\.sh' &&
-       HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
+  echo "$DOTFILE" | grep -q '\.sh' &&
+       HOMEFILE="$HOME/.$(echo "$DOTFILE" | sed -e 's/\.sh//')"
 
-  if [ -L "$HOMEFILE" ] && ! [ -d $DOTFILE ]
+  if [ $UNIX ]
   then
-    ln -sfv "$DIRFILE" "$HOMEFILE"
+    if [ -L "$HOMEFILE" ] && ! [ -d "$DOTFILE" ]
+    then
+      ln -sfv "$DIRFILE" "$HOMEFILE"
+    else
+      rm -rv "$HOMEFILE"
+      ln -sv "$DIRFILE" "$HOMEFILE"
+    fi
   else
-    rm -rv "$HOMEFILE"
-    ln -sv "$DIRFILE" "$HOMEFILE"
+    cp -rv "$DIRFILE" "$HOMEFILE"
   fi
 done

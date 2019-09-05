@@ -17,40 +17,39 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
-# Configure history
-HISTFILE="${HOME}/.zsh_history"
-HISTSIZE=10000
-SAVEHIST=10000
-setopt INC_APPEND_HISTORY
-setopt HIST_IGNORE_DUPS
-setopt EXTENDED_HISTORY
+# check if this is a login shell
+[ "$0" = "-zsh" ] && export LOGIN_ZSH=1
 
-# Make Homebrew safer
-export HOMEBREW_CASK_OPTS=--require-sha
-export HOMEBREW_NO_ANALYTICS=1
-export HOMEBREW_NO_INSECURE_REDIRECT=1
+# run zprofile if this is not a login shell
+[ -n "$LOGIN_ZSH" ] && source ~/.zprofile
 
-# Set FZF command
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+# load shared shell configuration
+source ~/.shrc
 
-# Aliases
-alias ls='exa'
-alias l='exa -l --git'
+# History file
+export HISTFILE=~/.zsh_history
 
-# Alias hub over git
-eval "$(hub alias -s)"
+# Don't show duplicate history entires
+setopt hist_find_no_dups
 
-# Initialize rbenv
-eval "$(rbenv init -)"
+# Remove unnecessary blanks from history
+setopt hist_reduce_blanks
 
-# Initialize fuck
-eval $(thefuck --alias)
+# Share history between instances
+setopt share_history
 
-# Add custom scripts to path
-export PATH="$PATH:$HOME/.bin"
-export PATH="$PATH:$HOME/.composer/vendor/bin"
+# Don't hang up background jobs
+setopt no_hup
 
-if command -v neofetch >/dev/null
-then
-    neofetch
-fi
+# use emacs bindings even with vim as EDITOR
+bindkey -e
+
+# fix backspace on Debian
+[ -n "$LINUX" ] && bindkey "^?" backward-delete-char
+
+# fix delete key on macOS
+[ -n "$MACOS" ] && bindkey '\e[3~' delete-char
+
+# alternate mappings for Ctrl-U/V to search the history
+bindkey "^u" history-beginning-search-backward
+bindkey "^v" history-beginning-search-forward

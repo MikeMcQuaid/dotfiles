@@ -1,6 +1,5 @@
-#!/usr/bin/env bash -e
-
-log() { echo -e "\033[0;35m${1}...\033[0m"; }
+#!/bin/bash
+set -e
 
 if ! command -v code >/dev/null
 then
@@ -10,12 +9,12 @@ fi
 
 EXTENSIONS="$(code --list-extensions)"
 
-for EXTENSION in $(cat $(dirname $0)/../vscode-extensions)
+while IFS= read -r EXTENSION
 do
   if echo "$EXTENSIONS" | grep -q "$EXTENSION"
   then
-    log "Extension '$EXTENSION' is already installed"
+    echo "Extension '$EXTENSION' is already installed."
   else
     code --install-extension "$EXTENSION"
   fi
-done
+done < <(cat "$(dirname "$0")"/../vscode-extensions)

@@ -1,17 +1,13 @@
-#!/usr/bin/env bash -e
-
-log() { echo -e "\033[0;35m${1}...\033[0m"; }
+#!/bin/sh
 
 if ! command -v dockutil >/dev/null
 then
-  log 'Installing Dockutil'
-  brew install dockutil
+  echo "Install dockutil first!" >&2
+  exit 1
 fi
 
-log 'Removing all Dock items'
 dockutil --remove all --no-restart
 
-log 'Adding back Dock items'
 dockutil --add /Applications/Launchpad.app --no-restart
 dockutil --add /Applications/Google\ Chrome.app --no-restart
 dockutil --add /Applications/Messages.app --no-restart
@@ -24,5 +20,4 @@ dockutil --add /Applications/Sequel\ Pro.app --no-restart
 dockutil --add /Applications/Steam.app --no-restart
 dockutil --add "$HOME/Downloads" --display stack --no-restart
 
-log 'Restarting Dock'
 /usr/bin/killall Dock >/dev/null 2>&1

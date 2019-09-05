@@ -1,22 +1,17 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # Run by Strap after installing Brewfile dependencies
 
-log() { echo -e "\033[0;35m${1}...\033[0m"; }
+cd "$(dirname "$0")/.." || exit
 
-cd $(dirname $0)/..
-
-log 'Running accessory scripts'
 script/dock
 script/extract-onepassword-secrets
 script/install-vscode-extensions
 script/terminal
 
-log 'Installing valet globally'
 composer global require laravel/valet
-$HOME/.composer/vendor/bin/valet install
+"$HOME"/.composer/vendor/bin/valet install
 
-log 'Setting default shell to zsh'
 if [ "$SHELL" != '/usr/local/bin/zsh' ]
 then
-  sudo chsh -s '/usr/local/bin/zsh' $USER
+  sudo chsh -s '/usr/local/bin/zsh' "$USER"
 fi

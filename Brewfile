@@ -31,7 +31,6 @@ brew "thefuck"
 brew "tree"
 brew "zplug"
 brew "zsh"
-cask "1password"
 cask "1password-cli"
 cask "adobe-creative-cloud"
 cask "adoptopenjdk8"
@@ -63,6 +62,7 @@ cask "steam"
 cask "suspicious-package"
 cask "the-unarchiver"
 cask "visual-studio-code"
+mas "1Password 7", id: 1333542190
 mas "Apple Remote Desktop", id: 409907375
 mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 1295203466
