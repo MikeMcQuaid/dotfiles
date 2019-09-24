@@ -33,6 +33,12 @@ for DOTFILE in *; do
   echo $DOTFILE | grep -q '\.sh' &&
        HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
 
+  if echo $DOTFILE | grep -q 'github-vscode-settings'
+  then
+    [ -d "$HOME/GitHub/github" ] || continue
+    HOMEFILE="$HOME/GitHub/github/.vscode"
+  fi
+
   if [ $UNIX ]
   then
     if [ -L "$HOMEFILE" ] && ! [ -d $DOTFILE ]

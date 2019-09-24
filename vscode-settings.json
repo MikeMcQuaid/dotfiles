@@ -1,7 +1,7 @@
 {
     "editor.fontFamily": "'SF Mono', Menlo, Monaco, Consolas, monospace",
     "editor.fontWeight": "500",
-    "editor.renderWhitespace": "boundary",
+    "editor.renderWhitespace": "all",
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.wordWrap": "bounded",
     "editor.wordWrapColumn": 118,
@@ -60,6 +60,7 @@
         "rubocop": true
     },
     "ruby.format": "rubocop",
+    "javascript.format.enable": false,
     "spellright.language": [
         "en_GB",
         "en_US"
