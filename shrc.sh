@@ -140,11 +140,8 @@ then
   fi
 
   add_to_path_end "$HOMEBREW_PREFIX/opt/git/share/git-core/contrib/diff-highlight"
-  add_to_path_end "$HOME/Library/Python/2.7/bin"
   add_to_path_end "/Applications/Fork.app/Contents/Resources"
   add_to_path_end "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-  add_to_path_end "/Applications/Xcode.app/Contents/Developer/usr/bin"
-  add_to_path_end "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
 
   alias ql="qlmanage -p 1>/dev/null"
   alias locate="mdfind -name"
