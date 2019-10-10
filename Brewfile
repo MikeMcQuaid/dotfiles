@@ -37,9 +37,11 @@ brew "libsodium"
 brew "mas"
 brew "md5sha1sum"
 brew "memcached", restart_service: true
+brew "mkcert"
 brew "mysql@5.7", restart_service: true
 brew "nginx", restart_service: true
 brew "nss"
+brew "openconnect"
 brew "overmind"
 brew "pinentry-mac"
 brew "protobuf"
@@ -50,7 +52,6 @@ brew "rbenv-default-gems"
 brew "redis", restart_service: true
 brew "ripgrep"
 brew "ruby"
-brew "ruby@2.3"
 brew "ruby@2.4"
 brew "ruby@2.5"
 brew "shellcheck"
@@ -75,6 +76,7 @@ cask "transmission"
 cask "vagrant"
 cask "visual-studio-code"
 cask "vmware-fusion"
+cask "vnc-viewer"
 cask "whatsapp"
 cask "zoomus"
 mas "1Blocker", id: 1107421413
@@ -88,6 +90,7 @@ mas "Numbers", id: 409203825
 mas "OneDrive", id: 823766827
 mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
+mas "Save to Pocket", id: 1477385213
 mas "Slack", id: 803453959
 mas "StopTheMadness", id: 1376402589
 mas "Tweetbot", id: 1384080005
