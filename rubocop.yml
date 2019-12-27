@@ -7,7 +7,7 @@ Layout/RescueEnsureAlignment:
   Enabled: false
 
 # Too much noise.
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: false
 
 # Too much noise.
