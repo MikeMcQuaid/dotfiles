@@ -54,7 +54,7 @@
     "search.smartCase": true,
     "debug.inlineValues": true,
     "breadcrumbs.enabled": true,
-    "git.promptToSaveFilesBeforeCommit": true,
+    "git.promptToSaveFilesBeforeCommit": "always",
     "ruby.useLanguageServer": true,
     "ruby.lint": {
         "rubocop": true
