@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+# Sync Homebrew's installed Rubies with rbenv and NodeJSs with nodenv
+
+require "pathname"
+require "fileutils"
+
+def gem_like_version(version)
+  Gem::Version.new(version.basename
+                          .to_s
+                          .tr("_", "."))
+end
+
+def link_version_without_revision(version, versions_path)
+  basename_without_revision = version.basename
+                                     .to_s
+                                     .gsub(/_\d+$/, "")
+  versions_path.mkpath
+  FileUtils.ln_sf version, versions_path / basename_without_revision
+end
+
+def link_rbenv_version_without_revision(version)
+  link_version_without_revision(version, @rbenv_versions)
+end
+
+def link_nodenv_version_without_revision(version)
+  link_version_without_revision(version, @nodenv_versions)
+end
+
+@rbenv_versions  = Pathname("#{ENV["HOME"]}/.rbenv/versions")
+@nodenv_versions = Pathname("#{ENV["HOME"]}/.nodenv/versions")
+
+homebrew_ruby_versions  = Pathname.glob("/usr/local/Cellar/ruby")
+homebrew_ruby_versions += Pathname.glob("/usr/local/Cellar/ruby@*")
+homebrew_ruby_versions.flat_map(&:children)
+                      .sort_by(&method(:gem_like_version))
+                      .each(&method(:link_rbenv_version_without_revision))
+
+homebrew_node_versions  = Pathname.glob("/usr/local/Cellar/node")
+homebrew_node_versions += Pathname.glob("/usr/local/Cellar/node@*")
+homebrew_node_versions.flat_map(&:children)
+                      .sort_by(&method(:gem_like_version))
+                      .each(&method(:link_nodenv_version_without_revision))
+
+(@nodenv_versions.children + @rbenv_versions.children)
+  .select(&:symlink?)
+  .reject(&:exist?)
+  .each { |path| FileUtils.rm_f path }

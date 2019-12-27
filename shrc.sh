@@ -151,7 +151,7 @@ then
   # Old default Curl is broken for Git on Leopard.
   [ "$OSTYPE" = "darwin9.0" ] && export GIT_SSL_NO_VERIFY=1
 
-  rbenv-sync-homebrew-rubies
+  rbenv-nodenv-homebrew-sync
 elif [ "$LINUX" ]
 then
   quiet_which keychain && eval "$(keychain -q --eval --agents ssh id_rsa)"
