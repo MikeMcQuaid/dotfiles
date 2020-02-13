@@ -11,6 +11,10 @@ tap "homebrew/test-bot"
 cask "adoptopenjdk8"
 brew "ack"
 brew "automake"
+brew "aws-iam-authenticator"
+brew "openssl@1.1"
+brew "xz"
+brew "awscli"
 brew "cmake"
 brew "container-diff"
 brew "elasticsearch@2.4", restart_service: true
@@ -21,7 +25,6 @@ brew "git"
 brew "openssl"
 brew "gnupg"
 brew "go"
-brew "xz"
 brew "grc"
 brew "hub"
 brew "hyperscan"
@@ -40,6 +43,9 @@ brew "memcached", restart_service: true
 brew "mkcert"
 brew "mysql@5.7", restart_service: true
 brew "nginx", restart_service: true
+brew "node-build"
+brew "node@12"
+brew "nodenv"
 brew "nss"
 brew "openconnect"
 brew "overmind"
@@ -59,6 +65,7 @@ brew "socat"
 brew "ssh-copy-id"
 brew "wget"
 brew "github/bootstrap/kustomize@2.0"
+brew "github/packages/awssume"
 brew "heroku/brew/heroku"
 cask "1password-cli"
 cask "appcleaner"
@@ -67,6 +74,7 @@ cask "firefox"
 cask "fork"
 cask "google-chrome"
 cask "keepingyouawake"
+cask "orka"
 cask "sizeup"
 cask "sketch"
 cask "skype"
@@ -85,7 +93,6 @@ mas "GarageBand", id: 682658836
 mas "Grids", id: 963509558
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
-mas "Mactracker", id: 430255202
 mas "Numbers", id: 409203825
 mas "OneDrive", id: 823766827
 mas "Pages", id: 409201541
