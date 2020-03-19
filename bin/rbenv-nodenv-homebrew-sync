@@ -15,6 +15,7 @@ def link_version_without_revision(version, versions_path)
                                      .to_s
                                      .gsub(/_\d+$/, "")
   versions_path.mkpath
+  FileUtils.rm_f versions_path / basename_without_revision
   FileUtils.ln_sf version, versions_path / basename_without_revision
 end
 
