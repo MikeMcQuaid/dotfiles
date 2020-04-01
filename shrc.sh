@@ -21,8 +21,11 @@ field() {
 # Setup paths
 remove_from_path() {
   [ -d "$1" ] || return
-  # Doesn't work for first item in the PATH but I don't care.
-  export PATH=${PATH//:$1/}
+  PATHSUB=":$PATH:"
+  PATHSUB=${PATHSUB//:$1:/:}
+  PATHSUB=${PATHSUB#:}
+  PATHSUB=${PATHSUB%:}
+  export PATH="$PATHSUB"
 }
 
 add_to_path_start() {
@@ -46,14 +49,11 @@ quiet_which() {
   command -v "$1" >/dev/null
 }
 
-add_to_path_end "/sbin"
-add_to_path_end "$HOME/.gem/ruby/2.6.0/bin"
-add_to_path_end "$HOME/.gem/ruby/2.3.0/bin"
-add_to_path_end "$HOME/.rbenv/bin"
-add_to_path_end "$HOME/.cabal/bin"
+add_to_path_end "/usr/local/bin"
+add_to_path_end "/usr/local/sbin"
+
 add_to_path_end "$HOME/.dotfiles/bin"
-add_to_path_start "/usr/local/bin"
-add_to_path_start "/usr/local/sbin"
+add_to_path_end "$HOME/.gem/ruby/2.6.0/bin"
 
 # Setup Go development
 export GOPATH="$HOME/.gopath"
@@ -140,13 +140,13 @@ then
   fi
 
   add_to_path_end "$HOMEBREW_PREFIX/opt/git/share/git-core/contrib/diff-highlight"
-  add_to_path_end "/Applications/Fork.app/Contents/Resources"
   add_to_path_end "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
-  alias ql="qlmanage -p 1>/dev/null"
+  alias fork="/Applications/Fork.app/Contents/Resources/fork_cli"
+  alias vmrun="/Applications/VMware Fusion.app/Contents/Public/vmrun"
+
   alias locate="mdfind -name"
   alias finder-hide="setfile -a V"
-  alias fork="fork_cli"
 
   rbenv-nodenv-homebrew-sync
 elif [ "$LINUX" ]
@@ -227,5 +227,3 @@ github-api-curl() {
 }
 alias github-api-curl="noglob github-api-curl"
 
-# Look in ./bin but do it last to avoid weird `which` results.
-force_add_to_path_start "bin"
