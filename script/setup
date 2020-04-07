@@ -33,10 +33,9 @@ for DOTFILE in *; do
   echo $DOTFILE | grep -q '\.sh' &&
        HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
 
-  if echo $DOTFILE | grep -q 'github-vscode-settings'
+  if echo $DOTFILE | grep -q 'rubocop.yml'
   then
-    [ -d "$HOME/GitHub/github" ] || continue
-    HOMEFILE="$HOME/GitHub/github/.vscode"
+    HOMEFILE="$HOME/Documents/.rubocop.yml"
   fi
 
   if [ $UNIX ]
