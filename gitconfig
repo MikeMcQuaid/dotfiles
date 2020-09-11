@@ -20,10 +20,15 @@
 	rebase = true
 [fetch]
 	# Always prune when fetching (and pulling).
-	prune = 1
+	prune = true
+	# Write commit graph to speed up some repositories.
+	writeCommitGraph = true
+[gc]
+	# Write commit graph to speed up some repositories.
+	writeCommitGraph = true
 [rerere]
 	# Store and re-use manual conflict resolution changes.
-	enabled = 1
+	enabled = true
 [core]
 	# Exclude everything this file. Used for general exclusions.
 	excludesfile = ~/.gitignore
@@ -31,6 +36,7 @@
 	attributesfile = ~/.gitattributes
 	# Don't prompt for commit messages for merge commits.
 	mergeoptions = --no-edit
+	# Speed up some repositories.
 	commitGraph = true
 [help]
   # Autocorrect mistyped commands.
