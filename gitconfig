@@ -68,15 +68,15 @@
 	# always using that branch's version rather than the current branch.
 	theirs = !git noff -Xtheirs
 	# Fetch all branches and rebase the current branch against
-	# upstream/master.
-	rebase-against-master = !git fetch --all \
-	                      && git rebase $(git upstream)/master
+	# upstream/HEAD.
+	rebase-against-head = !git fetch --all \
+	                      && git rebase $(git upstream)/HEAD
 	# Push the current branch upstream to origin using the same branch
 	# name for the remote branch.
 	upstream-current-branch = !git push --set-upstream origin \
 	                         $(git current-branch)
-	# Create a pull request on GitHub using the `hub` command.
-	pull-request = !rm -f .git/PULLREQ_EDITMSG && hub pull-request -o
+	# Create a pull request on GitHub using the `gh` command.
+	pull-request = !rm -f .git/PULLREQ_EDITMSG && gh pr create --web
 	# Upstream the current branch to origin and create a pull request
 	# on GitHub.
 	upstream-and-pull-request = !git upstream-current-branch \
@@ -88,10 +88,10 @@
 	push-and-set-upstream = push --set-upstream
 	# Create a new branch by checking out another branch.
 	checkout-as-new-branch = checkout -b
-	# Rebase against origin/master and prompt for what operations
+	# Rebase against origin/HEAD and prompt for what operations
 	# should be performed.
-	interactively-rebase-against-origin-master = \
-	  !git rebase --interactive origin/master
+	interactively-rebase-against-origin-head = \
+	  !git rebase --interactive origin/HEAD
 	# Show the commit log with a prettier, clearer history.
 	pretty-one-line-log = log --graph --oneline --decorate
 	# Commit any changes to files, squash them into the last commit
@@ -117,32 +117,32 @@
 	assumed = !git ls-files -v | grep '^[hsmrck?]' | cut -c 3-
 	# Delete all non-master branches
 	delete-merged = !git branch --merged | grep -v 'master' | grep -v '*' | xargs -n 1 git branch -D
-	# Get the merge-base compared to origin/master
-	merge-base-master = merge-base origin/master HEAD
+	# Get the merge-base compared to origin/HEAD
+	merge-base-head = merge-base origin/HEAD HEAD
 	# Diff against the current branch's merge-base
-	diff-merge-base = !git diff $(git merge-base-master)
+	diff-merge-base = !git diff $(git merge-base-head)
 
 	# Push the current branch upstream to MikeMcQuaid using the same
 	# branch name for the remote branch.
-	um = !(git remote -v | grep -q MikeMcQuaid || hub fork) \
+	um = !(git remote -v | grep -q MikeMcQuaid || gh repo fork) \
 	    && git push --set-upstream MikeMcQuaid $(git current-branch)
 	# Push the current branch to MikeMcQuaid and open a pull request.
-	umpr = !git um && hub pull-request -o
+	umpr = !git um && gh pr create --web --head MikeMcQuaid/$(git current-branch)
 
 	## Shortened 'New' Commands
 	fahr = !git fetch --all && git hard-reset
-	rem = !git rebase-against-master
+	rem = !git rebase-against-head
 	wip = !git work-in-progress
 	pr = !git upstream-and-pull-request
 	up = !git upstream-current-branch
 	fa = !git fetch --all
 	pf = !git push --force-with-lease
 	dm = !git diff-merge-base
-	mb = !git merge-base-master
+	mb = !git merge-base-head
 	w = !git word-diff
 	u = !git push-and-set-upstream
 	b = !git checkout-as-new-branch
-	i = !git interactively-rebase-against-origin-master
+	i = !git interactively-rebase-against-origin-head
 	# `true` needed as the return status is wrong otherwise.
 	l = !git pretty-one-line-log || true
 	f = !git fix-up-previous-commit
@@ -177,23 +177,9 @@
 	# Auto-add `--autosquash` to `git rebase`
 	autoSquash = true
 [url "git@github.com:"]
-	# Always use GitHub SSH protocol to push.
-	# Allows use of git:// for public repositories with push access
-	pushInsteadOf = git://github.com/
-[url "https://github.com/"]
-	# Use HTTP for GitHub instead of git:// or git@
-	# Enable this in networks where git:// or git@ are blocked.
-	#insteadOf = git://github.com/
-	#insteadOf = git@github.com:
-[url "git@github.com:"]
 	# Use SSH for GitHub instead of https://
 	# Enable this in networks where https:// has issues.
-	#insteadOf = https://github.com/
-[url "git@gitorious.org:"]
-	# Always use Gitorious SSH protocol to push.
-	# Allows use of git:// for public repositories with push access
-	# (which is often faster).
-	pushInsteadOf = git://gitorious.org/
+	# insteadOf = https://github.com/
 [credential]
 	# Use macOS Keychain to store HTTP passwords.
 	helper = osxkeychain
@@ -217,7 +203,7 @@
 [protocol]
 	# Use Git v2 protocol for better performance
 	# TODO: re-enable when more widely supported by Git versions
-	# version = 2
+	version = 2
 [log]
 	# Print more readable dates in `git log`
 	# TODO: re-enable when more widely supported by Git versions
