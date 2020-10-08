@@ -127,7 +127,7 @@
 	um = !(git remote -v | grep -q MikeMcQuaid || gh repo fork) \
 	    && git push --set-upstream MikeMcQuaid $(git current-branch)
 	# Push the current branch to MikeMcQuaid and open a pull request.
-	umpr = !git um && gh pr create --web --head MikeMcQuaid/$(git current-branch)
+	umpr = !git um && gh pr create --web --head MikeMcQuaid:$(git current-branch)
 
 	## Shortened 'New' Commands
 	fahr = !git fetch --all && git hard-reset
