@@ -86,8 +86,10 @@ then
   export HOMEBREW_AUTO_UPDATE_SECS=3600
   export HOMEBREW_BINTRAY_USER=mikemcquaid
   export HOMEBREW_DEVELOPER=1
+  export HOMEBREW_UPDATE_REPORT_ONLY_INSTALLED=1
   export HOMEBREW_BUNDLE_BREW_SKIP="rakudo-star mkcert nss aws-iam-authenticator docker docker-machine awscli awssume imagemagick kubectl@1.14 kustomize@2.0 container-diff"
   export HOMEBREW_BUNDLE_CASK_SKIP="github/bootstrap/zulu8"
+  export HOMEBREW_GIT_FILTER_TREE_ZERO=1
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
 
@@ -123,10 +125,10 @@ then
   export RESQUE_REDIS_URL="redis://localhost:6379"
   export HEROKU_ORGANIZATION="github-enterprise"
 
-  if quiet_which diff-highlight
+  if quiet_which diff-so-fancy
   then
     # shellcheck disable=SC2016
-    export GIT_PAGER='diff-highlight | less -+$LESS -RX'
+    export GIT_PAGER='diff-so-fancy | less -+$LESS -RX'
   else
     # shellcheck disable=SC2016
     export GIT_PAGER='less -+$LESS -RX'
@@ -134,9 +136,30 @@ then
 
   if quiet_which exa
   then
-    alias ls="exa -Fg"
+    alias ls="exa --classify --group --git"
   else
     alias ls="ls -F"
+  fi
+
+  if quiet_which bat
+  then
+    export BAT_THEME="ansi-light"
+    alias cat="bat"
+  fi
+
+  if quiet_which prettyping
+  then
+    alias ping="prettyping --nolegend"
+  fi
+
+  if quiet_which htop
+  then
+    alias top="sudo htop"
+  fi
+
+  if quiet_which ncdu
+  then
+    alias du="ncdu --color dark -rr"
   fi
 
   add_to_path_end "$HOMEBREW_PREFIX/opt/git/share/git-core/contrib/diff-highlight"

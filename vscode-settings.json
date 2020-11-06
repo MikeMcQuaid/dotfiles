@@ -73,5 +73,9 @@
         "latex",
         "plaintext",
         "git-commit"
-    ]
+    ],
+    "git.enableCommitSigning": true,
+    "git.fetchOnPull": true,
+    "git.openDiffOnClick": false,
+    "gitlens.blame.ignoreWhitespace": true
 }

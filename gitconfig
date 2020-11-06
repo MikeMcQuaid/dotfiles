@@ -38,6 +38,8 @@
 	mergeoptions = --no-edit
 	# Speed up some repositories.
 	commitGraph = true
+	# Output unicode characters (e.g. emoji).
+	quotepath = on
 [help]
   # Autocorrect mistyped commands.
 	autocorrect = 1
