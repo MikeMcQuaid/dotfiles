@@ -4,38 +4,56 @@
 require "pathname"
 require "fileutils"
 
-def gem_like_version(version)
-  Gem::Version.new(version.basename
-                          .to_s
-                          .tr("_", "."))
+def gem_like_version(version_path)
+  Gem::Version.new(version_path.basename
+                               .to_s
+                               .tr("_", "."))
 end
 
-def link_version_without_revision(version, versions_path)
-  basename_without_revision = version.basename
-                                     .to_s
-                                     .gsub(/_\d+$/, "")
-  versions_path.mkpath
+def gem_version_segments(version_path)
+  basename_without_revision = version_path.basename
+                                          .to_s
+                                          .gsub(/_\d+$/, "")
+  Gem::Version.new(basename_without_revision)
+              .canonical_segments
+end
 
-  retry_key = "#{version}-#{versions_path}"
+def link_version(version_path, version_name, versions_path)
+  link_path = versions_path / version_name
 
   begin
-    FileUtils.rm_f versions_path / basename_without_revision
-    FileUtils.ln_sf version, versions_path / basename_without_revision
-  rescue => e
+    FileUtils.rm_f link_path
+    FileUtils.ln_sf version_path, link_path
+  rescue
     @retries ||= {}
-    raise if @retries[retry_key]
+    raise if @retries[link_path]
 
-    @retries[retry_key] ||= true
+    @retries[link_path] ||= true
     retry
   end
 end
 
-def link_rbenv_version_without_revision(version)
-  link_version_without_revision(version, @rbenv_versions)
+def link_rbenv_versions(version_path)
+  @rbenv_versions.mkpath
+
+  major_version, minor_version, patch_version = gem_version_segments(version_path)
+  patch_version ||= 0
+  (0..patch_version).each do |patch|
+    link_version(version_path, "#{major_version}.#{minor_version}.#{patch}", @rbenv_versions)
+  end
 end
 
-def link_nodenv_version_without_revision(version)
-  link_version_without_revision(version, @nodenv_versions)
+def link_nodenv_versions(version_path)
+  @nodenv_versions.mkpath
+
+  major_version, minor_version, patch_version = gem_version_segments(version_path)
+  minor_version ||= 0
+  (0..minor_version).each do |minor|
+    patch_version ||= 0
+    (0..patch_version).each do |patch|
+      link_version(version_path, "#{major_version}.#{minor}.#{patch}", @nodenv_versions)
+    end
+  end
 end
 
 @rbenv_versions  = Pathname("#{ENV["HOME"]}/.rbenv/versions")
@@ -45,13 +63,13 @@ homebrew_ruby_versions  = Pathname.glob("/usr/local/Cellar/ruby")
 homebrew_ruby_versions += Pathname.glob("/usr/local/Cellar/ruby@*")
 homebrew_ruby_versions.flat_map(&:children)
                       .sort_by(&method(:gem_like_version))
-                      .each(&method(:link_rbenv_version_without_revision))
+                      .each(&method(:link_rbenv_versions))
 
 homebrew_node_versions  = Pathname.glob("/usr/local/Cellar/node")
 homebrew_node_versions += Pathname.glob("/usr/local/Cellar/node@*")
 homebrew_node_versions.flat_map(&:children)
                       .sort_by(&method(:gem_like_version))
-                      .each(&method(:link_nodenv_version_without_revision))
+                      .each(&method(:link_nodenv_versions))
 
 (@nodenv_versions.children + @rbenv_versions.children)
   .select(&:symlink?)
