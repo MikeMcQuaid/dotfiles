@@ -77,5 +77,7 @@
     "git.enableCommitSigning": true,
     "git.fetchOnPull": true,
     "git.openDiffOnClick": false,
-    "gitlens.blame.ignoreWhitespace": true
+    "gitlens.blame.ignoreWhitespace": true,
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredLightColorTheme": "macOS Classic"
 }
