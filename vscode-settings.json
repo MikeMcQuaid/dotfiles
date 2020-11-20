@@ -32,7 +32,6 @@
     "editor.tabSize": 2,
     "editor.tabCompletion": "on",
     "workbench.editor.tabCloseButton": "left",
-    "workbench.colorTheme": "macOS Classic",
     "workbench.iconTheme": "macos-classic-icons",
     "workbench.startupEditor": "none",
     "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -79,5 +78,7 @@
     "git.openDiffOnClick": false,
     "gitlens.blame.ignoreWhitespace": true,
     "window.autoDetectColorScheme": true,
-    "workbench.preferredLightColorTheme": "macOS Classic"
+    "workbench.preferredLightColorTheme": "macOS Classic",
+    "workbench.preferredDarkColorTheme": "Monokai Dimmed",
+    "workbench.colorTheme": "macOS Classic"
 }
