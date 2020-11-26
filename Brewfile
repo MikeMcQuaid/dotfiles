@@ -85,7 +85,6 @@ cask "visual-studio-code"
 cask "vmware-fusion"
 cask "vnc-viewer"
 cask "whatsapp"
-cask "zoom-in"
 cask "zoomus"
 mas "1Blocker", id: 1107421413
 mas "awesomeApps.Hue-Menu", id: 1500678169
