@@ -92,29 +92,6 @@ then
   export HOMEBREW_GIT_FILTER_TREE_ZERO=1
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
-
-  # Output whether the dependencies for a Homebrew package are bottled.
-  brew_bottled_deps() {
-    for DEP in "$@"; do
-      echo "$DEP deps:"
-      brew deps --include-build "$DEP" | xargs brew info | grep stable
-      [ "$#" -ne 1 ] && echo
-    done
-  }
-
-  # Output the most popular unbottled Homebrew packages
-  brew_popular_unbottled() {
-    brew deps --include-build --all |
-      awk '{ gsub(":? ", "\n") } 1' |
-      sort |
-      uniq -c |
-      sort |
-      tail -n 500 |
-      awk '{print $2}' |
-      xargs brew info |
-      grep stable |
-      grep -v bottled
-  }
 fi
 
 if [ "$MACOS" ]
