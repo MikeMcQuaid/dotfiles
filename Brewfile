@@ -6,7 +6,6 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "homebrew/test-bot"
-cask "adoptopenjdk8"
 brew "ack"
 brew "automake"
 brew "bat"
@@ -18,6 +17,8 @@ brew "fork-cleaner"
 brew "gh"
 brew "libtool"
 brew "openssl@1.1"
+brew "jansson"
+brew "jemalloc"
 brew "gnupg"
 brew "go"
 brew "python@3.9"
@@ -25,8 +26,6 @@ brew "grc"
 brew "htop"
 brew "hyperscan"
 brew "icu4c"
-brew "jansson"
-brew "jemalloc"
 brew "jq"
 brew "launchdns", restart_service: true
 brew "lcov"
@@ -42,6 +41,7 @@ brew "node-build"
 brew "node@12"
 brew "nodenv"
 brew "openconnect"
+brew "openjdk"
 brew "overmind"
 brew "pidof"
 brew "pinentry-mac"
@@ -84,7 +84,6 @@ cask "vagrant"
 cask "visual-studio-code"
 cask "vmware-fusion"
 cask "vnc-viewer"
-cask "whatsapp"
 cask "zoomus"
 mas "1Blocker", id: 1107421413
 mas "awesomeApps.Hue-Menu", id: 1500678169
@@ -100,4 +99,5 @@ mas "Slack", id: 803453959
 mas "StopTheMadness", id: 1376402589
 mas "TouchDraw", id: 548887176
 mas "Tweetbot", id: 1384080005
+mas "WhatsApp", id: 1147396723
 mas "Xcode", id: 497799835
