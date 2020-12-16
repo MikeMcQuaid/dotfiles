@@ -84,7 +84,7 @@ cask "vagrant"
 cask "visual-studio-code"
 cask "vmware-fusion"
 cask "vnc-viewer"
-cask "zoomus"
+cask "zoom"
 mas "1Blocker", id: 1107421413
 mas "awesomeApps.Hue-Menu", id: 1500678169
 mas "GarageBand", id: 682658836
