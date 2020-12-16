@@ -33,9 +33,12 @@ for DOTFILE in *; do
   echo $DOTFILE | grep -q '\.sh' &&
        HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
 
-  if echo $DOTFILE | grep -q 'rubocop.yml'
+  if echo $DOTFILE | grep -q 'rubocop-github.yml'
   then
-    HOMEFILE="$HOME/Documents/.rubocop.yml"
+    HOMEFILE="$HOME/GitHub/.rubocop.yml"
+  elif echo $DOTFILE | grep -q 'rubocop-oss.yml'
+  then
+    HOMEFILE="$HOME/OSS/.rubocop.yml"
   fi
 
   if [ $UNIX ]
@@ -44,7 +47,7 @@ for DOTFILE in *; do
     then
       ln -sfv "$DIRFILE" "$HOMEFILE"
     else
-      rm -rv "$HOMEFILE"
+      rm -rv "$HOMEFILE" 2>/dev/null
       ln -sv "$DIRFILE" "$HOMEFILE"
     fi
   else
