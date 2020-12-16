@@ -11,7 +11,7 @@ then
     mkdir -p "$HOMEBREW_PREFIX/share/zsh/site-functions" &>/dev/null && \
     ln -s "$HOMEBREW_PREFIX/Library/Contributions/brew_zsh_completion.zsh" \
           "$HOMEBREW_PREFIX/share/zsh/site-functions/_brew"
-  export FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
+  FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
 fi
 
 # Enable regex moving
