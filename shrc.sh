@@ -101,6 +101,8 @@ then
   export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
   export RESQUE_REDIS_URL="redis://localhost:6379"
   export HEROKU_ORGANIZATION="github-enterprise"
+  export GITHUB_USE_HOMEBREW_BINARIES=1
+  export GITHUB_NO_AUTO_BOOTSTRAP=1
 
   if quiet_which diff-so-fancy
   then
