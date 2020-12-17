@@ -15,6 +15,7 @@ brew "exa"
 brew "fd"
 brew "fork-cleaner"
 brew "gh"
+brew "git"
 brew "libtool"
 brew "openssl@1.1"
 brew "jansson"
@@ -37,6 +38,7 @@ brew "memcached", restart_service: true
 brew "mysql@5.7", restart_service: true, link: true
 brew "ncdu"
 brew "nginx", restart_service: true
+brew "node"
 brew "node-build"
 brew "node@12"
 brew "nodenv"
@@ -45,6 +47,7 @@ brew "openjdk"
 brew "overmind"
 brew "pidof"
 brew "pinentry-mac"
+brew "postgresql", restart_service: true
 brew "prettyping"
 brew "protobuf"
 brew "ruby-build"
@@ -86,8 +89,8 @@ cask "vmware-fusion"
 cask "vnc-viewer"
 cask "zoom"
 mas "1Blocker", id: 1107421413
-mas "awesomeApps.Hue-Menu", id: 1500678169
 mas "GarageBand", id: 682658836
+mas "Hue Menu Bar", id: 1500678169
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Mactracker", id: 430255202
