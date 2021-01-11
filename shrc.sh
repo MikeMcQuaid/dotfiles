@@ -102,7 +102,10 @@ then
   export RESQUE_REDIS_URL="redis://localhost:6379"
   export HEROKU_ORGANIZATION="github-enterprise"
   export GITHUB_USE_HOMEBREW_BINARIES=1
+  export HOMEBREW_GITHUB_USE_HOMEBREW_BINARIES=1
   export GITHUB_NO_AUTO_BOOTSTRAP=1
+  export BOOTSTRAP_DISABLE_ISSUES=1
+  export GITHUB_PROFILE_BOOTSTRAP=1
 
   if quiet_which diff-so-fancy
   then
