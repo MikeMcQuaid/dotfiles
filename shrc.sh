@@ -153,6 +153,22 @@ then
   alias locate="mdfind -name"
   alias finder-hide="setfile -a V"
 
+  find() {
+    local arg
+    local path_arg
+    local dot_arg
+
+    for arg
+    do
+      [[ $arg =~ "^-" ]] && break
+      path_arg="$arg"
+    done
+
+    [ -z "$path_arg" ] && dot_arg="."
+
+    command find $dot_arg "$@"
+  }
+
   rbenv-nodenv-homebrew-sync
 elif [ "$LINUX" ]
 then
