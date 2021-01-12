@@ -77,7 +77,7 @@ brew "node"
 # Install NodeJS versions
 brew "node-build"
 # Platform built on V8 to build network applications
-brew "node@12"
+brew "node@14"
 # Manage multiple NodeJS versions
 brew "nodenv"
 # Open client for Cisco AnyConnect VPN
@@ -116,6 +116,8 @@ brew "ruby@2.4"
 brew "ruby@2.5"
 # Powerful, clean, object-oriented scripting language
 brew "ruby@2.6"
+# Powerful, clean, object-oriented scripting language
+brew "ruby@2.7"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # SOcket CAT: netcat on steroids
