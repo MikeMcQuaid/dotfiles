@@ -90,6 +90,7 @@ then
   export HOMEBREW_BUNDLE_BREW_SKIP="rakudo-star mkcert nss aws-iam-authenticator docker docker-machine awscli awssume imagemagick kubectl@1.14 kustomize@2.0 container-diff"
   export HOMEBREW_BUNDLE_CASK_SKIP="zulu8 github/bootstrap/zulu8"
   export HOMEBREW_GIT_FILTER_TREE_ZERO=1
+  export HOMEBREW_BOOTSNAP=1
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
 fi
