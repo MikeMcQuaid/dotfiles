@@ -130,28 +130,52 @@ brew "wget"
 brew "youtube-dl"
 # Distributed search & analytics engine
 brew "github/bootstrap/elasticsearch@2.4"
+# Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Command-line helper for the 1Password password manager
 cask "1password-cli"
+# Application uninstaller
 cask "appcleaner"
+# Voice and text chat software
 cask "discord"
+# App to build and share containerized applications and microservices
 cask "docker"
+# GIT client
 cask "fork"
+# Web browser
 cask "google-chrome"
+# Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
+# Shows the next meeting in the menu bar
 cask "meetingbar"
+# Open-source software for live streaming and screen recording
+cask "obs"
 cask "orka"
+# Automatically hides or quits apps after periods of inactivity
 cask "quitter"
+# Utility to resize and position application windows
 cask "sizeup"
+# Digital design and prototyping platform
 cask "sketch"
+# Video chat, voice call and instant messaging application
 cask "skype"
+# Sound and audio controller
 cask "soundsource"
+# Video game digital distribution service
 cask "steam"
+# Mux and tag mp4 files
 cask "subler"
+# Open-source BitTorrent client
 cask "transmission"
+# Development environment
 cask "vagrant"
+# Open-source code editor
 cask "visual-studio-code"
+# App to run other operating systems without rebooting
 cask "vmware-fusion"
+# Remote desktop application focusing on security
 cask "vnc-viewer"
+# Video communication and virtual meeting platform
 cask "zoom"
 mas "1Blocker", id: 1107421413
 mas "GarageBand", id: 682658836
