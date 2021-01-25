@@ -84,6 +84,8 @@ brew "nodenv"
 brew "openconnect"
 # Development kit for the Java programming language
 brew "openjdk"
+# Development kit for the Java programming language
+brew "openjdk@8"
 # Clean C library for processing UTF-8 Unicode data
 brew "utf8proc"
 # Process manager for Procfile-based applications and tmux
