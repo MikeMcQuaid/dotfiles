@@ -11,7 +11,7 @@ Host *.github.com *.github.net *.githubapp.com
 
 Host github-shell
 	User mikemcquaid
-	HostName shell.service.cp1-iad.github.net
+	HostName shell.service.ac4-iad.github.net
 	ProxyJump bastion.githubapp.com
 
 Host *
