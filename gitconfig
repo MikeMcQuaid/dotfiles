@@ -100,8 +100,6 @@
 	# and update its date.
 	fix-up-previous-commit = !git commit --all --amend \
 	                              --reuse-message=HEAD --date=\"$(date)\" #"
-	# Checkout the master branch and update it.
-	pull-master = !git checkout master && git pull
 	# Commit a work-in-progress commit (to use with
 	# fix-up-previous-commit)
 	work-in-progress = commit -a -m 'WIP'
@@ -117,8 +115,8 @@
 	unassume = update-index --no-assume-unchanged
 	# List all files that are assumed to be unchanged
 	assumed = !git ls-files -v | grep '^[hsmrck?]' | cut -c 3-
-	# Delete all non-master branches
-	delete-merged = !git branch --merged | grep -v 'master' | grep -v '*' | xargs -n 1 git branch -D
+	# Delete all non-master/main branches
+	delete-merged = !git branch --merged | grep -v 'master' | grep -v 'main' | grep -v '*' | xargs -n 1 git branch -D
 	# Get the merge-base compared to origin/HEAD
 	merge-base-head = merge-base origin/HEAD HEAD
 	# Diff against the current branch's merge-base
