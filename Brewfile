@@ -28,10 +28,10 @@ brew "gh"
 brew "git"
 # Generic library support script
 brew "libtool"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
 # Implementation of malloc emphasizing fragmentation avoidance
 brew "jemalloc"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
