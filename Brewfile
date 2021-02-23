@@ -26,18 +26,10 @@ brew "fork-cleaner"
 brew "gh"
 # Distributed revision control system
 brew "git"
-# Generic library support script
-brew "libtool"
-# Implementation of malloc emphasizing fragmentation avoidance
-brew "jemalloc"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # Colorize logfiles and command output
 brew "grc"
 # Improved top (interactive process viewer)
@@ -46,8 +38,6 @@ brew "htop"
 brew "hyperfine"
 # High-performance regular expression matching library
 brew "hyperscan"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c"
 # C library for encoding, decoding, and manipulating JSON
 brew "jansson"
 # Lightweight and flexible command-line JSON processor
@@ -58,14 +48,14 @@ brew "launchdns", restart_service: true
 brew "lcov"
 # NaCl networking and cryptography library
 brew "libsodium"
-# YAML Parser
-brew "libyaml"
 # Mac App Store command-line interface
 brew "mas"
 # Hash utilities
 brew "md5sha1sum"
 # High performance, distributed memory object caching system
 brew "memcached", restart_service: true
+# Simple tool to make locally trusted development certificates
+brew "mkcert"
 # Open source relational database management system
 brew "mysql@5.7", restart_service: true, link: true
 # NCurses Disk Usage
@@ -74,8 +64,6 @@ brew "ncdu"
 brew "nginx", restart_service: true
 # Platform built on V8 to build network applications
 brew "node"
-# Install NodeJS versions
-brew "node-build"
 # Platform built on V8 to build network applications
 brew "node@14"
 # Manage multiple NodeJS versions
@@ -84,10 +72,6 @@ brew "nodenv"
 brew "openconnect"
 # Development kit for the Java programming language
 brew "openjdk"
-# Development kit for the Java programming language
-brew "openjdk@8"
-# Clean C library for processing UTF-8 Unicode data
-brew "utf8proc"
 # Process manager for Procfile-based applications and tmux
 brew "overmind"
 # Display the PID number for a given process name
@@ -100,8 +84,6 @@ brew "postgresql", restart_service: true
 brew "prettyping"
 # Protocol buffers (Google's data interchange format)
 brew "protobuf"
-# Install various Ruby versions and implementations
-brew "ruby-build"
 # Ruby version manager
 brew "rbenv"
 # Auto-installs gems for Ruby installs
@@ -130,6 +112,8 @@ brew "softhsm"
 brew "wget"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
+# Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-autosuggestions"
 # Distributed search & analytics engine
 brew "github/bootstrap/elasticsearch@2.4"
 # Password manager that keeps all passwords secure behind one password
