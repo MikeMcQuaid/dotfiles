@@ -16,6 +16,8 @@ brew "bat"
 brew "cmake"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
+# Load/unload environment variables based on $PWD
+brew "direnv"
 # Modern replacement for 'ls'
 brew "exa"
 # Simple, fast and user-friendly alternative to find

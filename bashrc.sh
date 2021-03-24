@@ -12,3 +12,6 @@ export HISTFILE="$HOME/.bash_history"
 export HISTCONTROL="ignoredups"
 export PROMPT_COMMAND="history -a"
 export HISTIGNORE="&:ls:[bf]g:exit"
+
+# enable direnv (if installed)
+which direnv &>/dev/null && eval "$(direnv hook bash)"
