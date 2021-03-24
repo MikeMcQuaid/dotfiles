@@ -1,9 +1,11 @@
 tap "github/bootstrap"
 tap "github/packages"
+tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
+tap "homebrew/formula-analytics"
 tap "homebrew/services"
 tap "homebrew/test-bot"
 # Search tool like grep, but optimized for programmers
@@ -59,7 +61,7 @@ brew "memcached", restart_service: true
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
 # Open source relational database management system
-brew "mysql@5.7", restart_service: true, link: true
+brew "mysql@5.7", restart_service: true
 # NCurses Disk Usage
 brew "ncdu"
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
@@ -106,6 +108,8 @@ brew "ruby@2.6"
 brew "ruby@2.7"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Work with remote images registries
+brew "skopeo"
 # SOcket CAT: netcat on steroids
 brew "socat"
 # Cryptographic store accessible through a PKCS#11 interface
@@ -118,6 +122,8 @@ brew "youtube-dl"
 brew "zsh-autosuggestions"
 # Distributed search & analytics engine
 brew "github/bootstrap/elasticsearch@2.4"
+# Everything you need to get started with Heroku
+brew "heroku/brew/heroku"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line helper for the 1Password password manager
@@ -134,10 +140,17 @@ cask "fork"
 cask "google-chrome"
 # Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
+# Email tracker, read receipt and spy pixel blocker plugin for Apple Mail
+cask "mailtrackerblocker"
 # Shows the next meeting in the menu bar
 cask "meetingbar"
+# Provides updates to various Microsoft products
+cask "microsoft-auto-update"
+# Multi-platform web browser
+cask "microsoft-edge"
 # Open-source software for live streaming and screen recording
 cask "obs"
+# Orchestration with Kubernetes on Apple
 cask "orka"
 # Automatically hides or quits apps after periods of inactivity
 cask "quitter"
@@ -166,6 +179,7 @@ cask "vnc-viewer"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "1Blocker", id: 1107421413
+mas "com.pixelmatorteam.pixelmator.x", id: 1289583905
 mas "GarageBand", id: 682658836
 mas "Hue Menu Bar", id: 1500678169
 mas "iMovie", id: 408981434
@@ -173,7 +187,6 @@ mas "Keynote", id: 409183694
 mas "Mactracker", id: 430255202
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Pixelmator Pro", id: 1289583905
 mas "Save to Pocket", id: 1477385213
 mas "Slack", id: 803453959
 mas "StopTheMadness", id: 1376402589
