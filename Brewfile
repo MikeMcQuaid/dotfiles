@@ -1,9 +1,12 @@
 tap "github/bootstrap"
 tap "github/packages"
 tap "heroku/brew"
+tap "homebrew/aliases"
+tap "homebrew/autoupdate"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
+tap "homebrew/command-not-found"
 tap "homebrew/core"
 tap "homebrew/formula-analytics"
 tap "homebrew/services"
@@ -18,6 +21,8 @@ brew "bat"
 brew "cmake"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
+# In-depth comparison of files, archives, and directories
+brew "diffoscope"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Modern replacement for 'ls'
@@ -178,8 +183,7 @@ cask "vmware-fusion"
 cask "vnc-viewer"
 # Video communication and virtual meeting platform
 cask "zoom"
-mas "1Blocker", id: 1107421413
-mas "com.pixelmatorteam.pixelmator.x", id: 1289583905
+mas "1Blocker", id: 1365531024
 mas "GarageBand", id: 682658836
 mas "Hue Menu Bar", id: 1500678169
 mas "iMovie", id: 408981434
@@ -187,6 +191,7 @@ mas "Keynote", id: 409183694
 mas "Mactracker", id: 430255202
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Pixelmator Pro", id: 1289583905
 mas "Save to Pocket", id: 1477385213
 mas "Slack", id: 803453959
 mas "StopTheMadness", id: 1376402589
