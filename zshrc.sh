@@ -22,6 +22,10 @@ setopt share_history
 # Don't hang up background jobs
 setopt no_hup
 
+# autocorrect command and parameter spelling
+setopt correct
+setopt correctall
+
 # use emacs bindings even with vim as EDITOR
 bindkey -e
 
