@@ -80,5 +80,7 @@
     "window.autoDetectColorScheme": true,
     "workbench.preferredLightColorTheme": "macOS Classic",
     "workbench.preferredDarkColorTheme": "Monokai Dimmed",
-    "workbench.colorTheme": "macOS Classic"
+    "workbench.colorTheme": "macOS Classic",
+    "terminal.integrated.enableBell": true,
+    "git.enableSmartCommit": true
 }
