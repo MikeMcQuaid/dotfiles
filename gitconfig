@@ -181,8 +181,8 @@
 	# Enable this in networks where https:// has issues.
 	# insteadOf = https://github.com/
 [credential]
-	# Use macOS Keychain to store HTTP passwords.
-	helper = osxkeychain
+	# Use macOS Keychain or Git cache to store HTTP passwords.
+	helper = ![ $(uname -s) = Darwin ] && echo osxkeychain || echo cache
 [hub]
 	# Use HTTPS rather than SSH protocol in Hub
 	protocol = https
