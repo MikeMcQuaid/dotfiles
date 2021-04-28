@@ -8,7 +8,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
     steps:
     - name: Set up Git repository
       uses: actions/checkout@master
@@ -20,8 +23,8 @@ jobs:
       run: bash script/setup
 
     - name: Test bashrc
-      run: bash -c "source ~/.bashrc"
+      run: bash -xc "source ~/.bashrc"
 
     - name: Test zshrc
-      run: zsh -c "source ~/.zshrc"
-      if: matrix.os == 'macOS-latest'
+      run: zsh -xc "source ~/.zshrc"
+      if: matrix.os == 'macos-latest'

@@ -15,3 +15,6 @@ export HISTIGNORE="&:ls:[bf]g:exit"
 
 # enable direnv (if installed)
 which direnv &>/dev/null && eval "$(direnv hook bash)"
+
+# to avoid non-zero exit code
+true

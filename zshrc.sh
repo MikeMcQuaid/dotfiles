@@ -1,5 +1,5 @@
-# run zprofile if this is not a login shell
-[ "$0" = "-zsh" ] || source ~/.zprofile
+# always source zprofile regardless of whether this is/isn't a login shell
+source ~/.zprofile
 
 # load shared shell configuration
 source ~/.shrc
@@ -42,3 +42,6 @@ ZSH_AUTOSUGGESTIONS="$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggesti
 
 # enable direnv (if installed)
 which direnv &>/dev/null && eval "$(direnv hook zsh)"
+
+# to avoid non-zero exit code
+true
