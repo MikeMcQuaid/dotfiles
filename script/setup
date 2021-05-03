@@ -1,7 +1,14 @@
 #!/bin/sh
 # Install all dotfiles into the home directory
 
-DOTFILESDIRREL=$(dirname $0)
+if [ -L "$0" ]; then
+  SCRIPTSETUP="$(readlink "$0")"
+else
+  SCRIPTSETUP="$0"
+fi
+
+echo $SCRIPTSETUP
+DOTFILESDIRREL=$(dirname $SCRIPTSETUP)
 cd $DOTFILESDIRREL/..
 DOTFILESDIR=$(pwd -P)
 
@@ -54,3 +61,8 @@ for DOTFILE in *; do
     cp -rv "$DIRFILE" "$HOMEFILE"
   fi
 done
+
+# Fix up permissions for Codespaces
+if [ -d /workspaces ] && [ "$(whoami 2>/dev/null)" = "root" ]; then
+  chmod 700 /workspaces
+fi

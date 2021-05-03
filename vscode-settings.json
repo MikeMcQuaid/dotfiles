@@ -82,5 +82,18 @@
     "workbench.preferredDarkColorTheme": "Monokai Dimmed",
     "workbench.colorTheme": "macOS Classic",
     "terminal.integrated.enableBell": true,
-    "git.enableSmartCommit": true
+    "git.enableSmartCommit": true,
+    "diffEditor.renderSideBySide": false,
+    "diffEditor.codeLens": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "terminal.integrated.profiles.linux": {
+        "zsh": {
+            "path": "zsh"
+        }
+    },
+    "terminal.integrated.profiles.osx": {
+        "zsh": {
+            "path": "zsh"
+        }
+    }
 }
