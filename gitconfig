@@ -121,6 +121,8 @@
 	merge-base-head = merge-base origin/HEAD HEAD
 	# Diff against the current branch's merge-base
 	diff-merge-base = !git diff $(git merge-base-head)
+	# `brew style` changed files
+	brew-style-changed = !git diff origin/HEAD --name-only | xargs brew style --fix --display-cop-names
 
 	# Push the current branch upstream to MikeMcQuaid using the same
 	# branch name for the remote branch.
