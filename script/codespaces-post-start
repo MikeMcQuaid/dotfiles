@@ -1,0 +1,7 @@
+#!/bin/sh
+# Run by github/github codespaces after starting
+
+if ! grep -q "root.*/bin/zsh" /etc/passwd
+then
+  chsh -s /bin/zsh root
+fi
