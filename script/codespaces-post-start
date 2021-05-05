@@ -1,7 +1,16 @@
 #!/bin/sh
 # Run by github/github codespaces after starting
 
+# Always want to use ZSH as my default shell (e.g. for SSH)
 if ! grep -q "root.*/bin/zsh" /etc/passwd
 then
   chsh -s /bin/zsh root
 fi
+
+# Install some developer tools and setup Linux how I like it
+apt-get install \
+  exa grc ripgrep shellcheck zsh-autosuggestions \
+  locate
+
+# Setup the database for locate
+updatedb
