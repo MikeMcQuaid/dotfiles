@@ -138,15 +138,14 @@ fi
 # Configure environment
 export CLICOLOR=1
 export HEROKU_ORGANIZATION="github-enterprise"
-export GITHUB_USE_HOMEBREW_BINARIES=1
-export HOMEBREW_GITHUB_USE_HOMEBREW_BINARIES=1
-export GITHUB_NO_AUTO_BOOTSTRAP=1
-export BOOTSTRAP_DISABLE_ISSUES=1
 export GITHUB_PROFILE_BOOTSTRAP=1
 
 # OS-specific configuration
 if [ "$MACOS" ]
 then
+  export GITHUB_USE_HOMEBREW_BINARIES=1
+  export HOMEBREW_GITHUB_USE_HOMEBREW_BINARIES=1
+  export GITHUB_NO_AUTO_BOOTSTRAP=1
   export GREP_OPTIONS="--color=auto"
   export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
 
