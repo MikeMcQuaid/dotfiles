@@ -21,16 +21,8 @@ end
 def link_version(version_path, version_name, versions_path)
   link_path = versions_path / version_name
 
-  begin
-    FileUtils.rm_f link_path
-    FileUtils.ln_sf version_path, link_path
-  rescue
-    @retries ||= {}
-    raise if @retries[link_path]
-
-    @retries[link_path] ||= true
-    retry
-  end
+  FileUtils.rm_f link_path
+  FileUtils.ln_sf version_path, link_path
 end
 
 def link_rbenv_versions(version_path)
