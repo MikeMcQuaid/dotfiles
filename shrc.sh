@@ -136,7 +136,6 @@ then
 fi
 
 # Configure environment
-export GREP_OPTIONS="--color=auto"
 export CLICOLOR=1
 export HEROKU_ORGANIZATION="github-enterprise"
 export GITHUB_USE_HOMEBREW_BINARIES=1
@@ -148,6 +147,7 @@ export GITHUB_PROFILE_BOOTSTRAP=1
 # OS-specific configuration
 if [ "$MACOS" ]
 then
+  export GREP_OPTIONS="--color=auto"
   export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
 
   add_to_path_end "$HOMEBREW_PREFIX/opt/git/share/git-core/contrib/diff-highlight"

@@ -33,20 +33,35 @@ for DOTFILE in *; do
   [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
   DIRFILE="$DOTFILESDIR/$DOTFILE"
 
+  # Don't mess with Codespaces' default GPG/SSH setup.
+  if [ -n "$CODESPACES" ]
+  then
+    echo $DOTFILE | egrep -q '^(gnupg|ssh)/' && continue
+  fi
+
+  # Don't try to install documentation/script files
   echo $DOTFILE | egrep -q '(^script/$|\.txt$|\.md$)' && continue
+
+  # Fixup VSCode settings path
   echo $DOTFILE | grep -q 'vscode-settings' &&
        HOMEFILE="$VSCODE/settings.json" &&
        mkdir -p "$VSCODE"
 
+  # Remove .sh extensions
   echo $DOTFILE | grep -q '\.sh' &&
        HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
 
+  # Fixup RuboCop configuration (if possible)
   if echo $DOTFILE | grep -q 'rubocop-github.yml'
   then
-    HOMEFILE="$HOME/GitHub/.rubocop.yml"
+    HOMEGITHUB="$HOME/GitHub"
+    [ -d $HOMEGITHUB ] || continue
+    HOMEFILE="$HOMEGITHUB/.rubocop.yml"
   elif echo $DOTFILE | grep -q 'rubocop-oss.yml'
   then
-    HOMEFILE="$HOME/OSS/.rubocop.yml"
+    HOMEOSS="$HOME/OSS"
+    [ -d $HOMEOSS ] || continue
+    HOMEFILE="$HOMEOSS/.rubocop.yml"
   fi
 
   if [ $UNIX ]
@@ -70,7 +85,7 @@ then
 fi
 
 # Fix up permissions for Codespaces
-if [ -d /workspaces ] && [ "$(whoami 2>/dev/null)" = "root" ]
+if [ -n "$CODESPACES" ]
 then
   chmod 700 /workspaces
 fi
