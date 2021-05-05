@@ -78,7 +78,7 @@ alias rg="rg --colors 'match:style:nobold' --colors 'path:style:nobold'"
 alias be="noglob bundle exec"
 alias sha256="shasum -a 256"
 
-# Platform-specific stuff
+# Command-specific stuff
 if quiet_which brew
 then
   export HOMEBREW_PREFIX="$(brew --prefix)"
@@ -95,55 +95,60 @@ then
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
 fi
 
+if quiet_which diff-so-fancy
+then
+  # shellcheck disable=SC2016
+  export GIT_PAGER='diff-so-fancy | less -+$LESS -RX'
+else
+  # shellcheck disable=SC2016
+  export GIT_PAGER='less -+$LESS -RX'
+fi
+
+if quiet_which exa
+then
+  alias ls="exa --classify --group --git"
+elif [ "$MACOS" ]
+then
+  alias ls="ls -F"
+else
+  alias ls="ls -F --color=auto"
+fi
+
+if quiet_which bat
+then
+  export BAT_THEME="ansi"
+  alias cat="bat"
+fi
+
+if quiet_which prettyping
+then
+  alias ping="prettyping --nolegend"
+fi
+
+if quiet_which htop
+then
+  alias top="sudo htop"
+fi
+
+if quiet_which ncdu
+then
+  alias du="ncdu --color dark -rr"
+fi
+
+# Configure environment
+export GREP_OPTIONS="--color=auto"
+export CLICOLOR=1
+export HEROKU_ORGANIZATION="github-enterprise"
+export GITHUB_USE_HOMEBREW_BINARIES=1
+export HOMEBREW_GITHUB_USE_HOMEBREW_BINARIES=1
+export GITHUB_NO_AUTO_BOOTSTRAP=1
+export BOOTSTRAP_DISABLE_ISSUES=1
+export GITHUB_PROFILE_BOOTSTRAP=1
+
+# OS-specific configuration
 if [ "$MACOS" ]
 then
-  export GREP_OPTIONS="--color=auto"
-  export CLICOLOR=1
   export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
-  export RESQUE_REDIS_URL="redis://localhost:6379"
-  export HEROKU_ORGANIZATION="github-enterprise"
-  export GITHUB_USE_HOMEBREW_BINARIES=1
-  export HOMEBREW_GITHUB_USE_HOMEBREW_BINARIES=1
-  export GITHUB_NO_AUTO_BOOTSTRAP=1
-  export BOOTSTRAP_DISABLE_ISSUES=1
-  export GITHUB_PROFILE_BOOTSTRAP=1
-
-  if quiet_which diff-so-fancy
-  then
-    # shellcheck disable=SC2016
-    export GIT_PAGER='diff-so-fancy | less -+$LESS -RX'
-  else
-    # shellcheck disable=SC2016
-    export GIT_PAGER='less -+$LESS -RX'
-  fi
-
-  if quiet_which exa
-  then
-    alias ls="exa --classify --group --git"
-  else
-    alias ls="ls -F"
-  fi
-
-  if quiet_which bat
-  then
-    export BAT_THEME="ansi"
-    alias cat="bat"
-  fi
-
-  if quiet_which prettyping
-  then
-    alias ping="prettyping --nolegend"
-  fi
-
-  if quiet_which htop
-  then
-    alias top="sudo htop"
-  fi
-
-  if quiet_which ncdu
-  then
-    alias du="ncdu --color dark -rr"
-  fi
 
   add_to_path_end "$HOMEBREW_PREFIX/opt/git/share/git-core/contrib/diff-highlight"
   add_to_path_end "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
@@ -154,6 +159,7 @@ then
   alias locate="mdfind -name"
   alias finder-hide="setfile -a V"
 
+  # make no-argument find Just Work.
   find() {
     local arg
     local path_arg
@@ -178,12 +184,9 @@ then
   add_to_path_end "/data/github/shell/bin"
 
   alias su="/bin/su -"
-  alias ls="ls -F --color=auto"
   alias open="xdg-open"
 elif [ "$WINDOWS" ]
 then
-  alias ls="ls -F --color=auto"
-
   open() {
     # shellcheck disable=SC2145
     cmd /C"$@"
@@ -203,7 +206,6 @@ elif quiet_which vi
 then
   export EDITOR="vi"
 fi
-alias e="$EDITOR"
 
 # Run dircolors if it exists
 quiet_which dircolors && eval "$(dircolors -b)"
