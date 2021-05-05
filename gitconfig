@@ -183,8 +183,10 @@
 	# Enable this in networks where https:// has issues.
 	# insteadOf = https://github.com/
 [credential]
-	# Use macOS Keychain or Git cache to store HTTP passwords.
-	helper = ![ $(uname -s) = Darwin ] && echo osxkeychain || echo cache
+	# Use my custom dotfiles credentials helper.
+	helper = dotfiles
+[credential "https://github.com"]
+	username = MikeMcQuaid
 [hub]
 	# Use HTTPS rather than SSH protocol in Hub
 	protocol = https
