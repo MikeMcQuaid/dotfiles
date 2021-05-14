@@ -49,6 +49,7 @@ quiet_which() {
   command -v "$1" >/dev/null
 }
 
+add_to_path_start "/home/linuxbrew/.linuxbrew/bin"
 add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
 
@@ -81,10 +82,9 @@ alias sha256="shasum -a 256"
 # Command-specific stuff
 if quiet_which brew
 then
-  export HOMEBREW_PREFIX="$(brew --prefix)"
-  export HOMEBREW_REPOSITORY="$(brew --repo)"
+  eval $(brew shellenv)
+
   export HOMEBREW_AUTO_UPDATE_SECS=3600
-  export HOMEBREW_BINTRAY_USER=mikemcquaid
   export HOMEBREW_DEVELOPER=1
   export HOMEBREW_UPDATE_REPORT_ONLY_INSTALLED=1
   export HOMEBREW_BUNDLE_BREW_SKIP="rakudo-star nss aws-iam-authenticator docker docker-machine awscli awssume imagemagick kubernetes-cli kubectl kubectl@1.14 kustomize@2.0 kustomize@3.1 container-diff"
@@ -199,6 +199,8 @@ then
   export EDITOR="code"
   export GIT_EDITOR="$EDITOR -w"
   export SVN_EDITOR="$GIT_EDITOR"
+  # don't repeated create dock icons
+  alias code='open -b com.microsoft.VSCode "$@"'
 elif quiet_which vim
 then
   export EDITOR="vim"

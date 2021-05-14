@@ -139,8 +139,6 @@ cask "appcleaner"
 cask "discord"
 # App to build and share containerized applications and microservices
 cask "docker"
-# GIT client
-cask "fork"
 # Web browser
 cask "google-chrome"
 # Tool to prevent the system from going into sleep mode
