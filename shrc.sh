@@ -158,6 +158,9 @@ then
   alias locate="mdfind -name"
   alias finder-hide="setfile -a V"
 
+  # don't repeated create dock icons
+  quiet_which code && alias code='open -b com.microsoft.VSCode "$@"'
+
   # make no-argument find Just Work.
   find() {
     local arg
