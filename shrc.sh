@@ -87,7 +87,7 @@ then
   export HOMEBREW_AUTO_UPDATE_SECS=3600
   export HOMEBREW_DEVELOPER=1
   export HOMEBREW_UPDATE_REPORT_ONLY_INSTALLED=1
-  export HOMEBREW_BUNDLE_BREW_SKIP="rakudo-star nss aws-iam-authenticator docker docker-machine awscli awssume imagemagick kubernetes-cli kubectl kubectl@1.14 kustomize@2.0 kustomize@3.1 container-diff"
+  export HOMEBREW_BUNDLE_BREW_SKIP="rakudo-star nss aws-iam-authenticator docker docker-machine awscli awssume imagemagick kubernetes-cli kubectl kubectl@1.14 kustomize@2.0 kustomize@3.1 container-diff hyperscan github/bootstrap/elasticsearch@2.4"
   export HOMEBREW_BUNDLE_CASK_SKIP="zulu8 github/bootstrap/zulu8"
   export HOMEBREW_GIT_FILTER_TREE_ZERO=1
   export HOMEBREW_BOOTSNAP=1
