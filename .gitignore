@@ -8,6 +8,7 @@
 /gnupg/*.kbx
 /gnupg/*.private.*
 /gnupg/.*
+/gnupg/gpg-agent.conf
 bundle/cache
 secrets
 rbenv/*/
