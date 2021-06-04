@@ -26,8 +26,6 @@ def link_version(version_path, version_name, versions_path)
 end
 
 def link_rbenv_versions(version_path)
-  @rbenv_versions.mkpath
-
   major_version, minor_version, patch_version = gem_version_segments(version_path)
   patch_version ||= 0
   (0..patch_version).each do |patch|
@@ -49,7 +47,10 @@ def link_nodenv_versions(version_path)
 end
 
 @rbenv_versions  = Pathname("#{ENV["HOME"]}/.rbenv/versions")
+@rbenv_versions.mkpath
+
 @nodenv_versions = Pathname("#{ENV["HOME"]}/.nodenv/versions")
+@nodenv_versions.mkpath
 
 homebrew_ruby_versions  = Pathname.glob("/usr/local/Cellar/ruby")
 homebrew_ruby_versions += Pathname.glob("/usr/local/Cellar/ruby@*")
