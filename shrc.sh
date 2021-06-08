@@ -139,6 +139,7 @@ fi
 export CLICOLOR=1
 export HEROKU_ORGANIZATION="github-enterprise"
 export GITHUB_PROFILE_BOOTSTRAP=1
+export GITHUB_M1_TESTING_I_KNOW_WHAT_IM_DOING=1
 
 # OS-specific configuration
 if [ "$MACOS" ]
