@@ -45,6 +45,8 @@ brew "grc"
 brew "htop"
 # Command-line benchmarking tool
 brew "hyperfine"
+# High-performance regular expression matching library
+brew "hyperscan"
 # C library for encoding, decoding, and manipulating JSON
 brew "jansson"
 # Lightweight and flexible command-line JSON processor
@@ -109,6 +111,8 @@ brew "ruby@2.5"
 brew "ruby@2.6"
 # Powerful, clean, object-oriented scripting language
 brew "ruby@2.7"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
 # Work with remote images registries
 brew "skopeo"
 # SOcket CAT: netcat on steroids
@@ -121,6 +125,8 @@ brew "wget"
 brew "youtube-dl"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
+# Distributed search & analytics engine
+brew "github/bootstrap/elasticsearch@2.4"
 # Everything you need to get started with Heroku
 brew "heroku/brew/heroku"
 # Password manager that keeps all passwords secure behind one password
