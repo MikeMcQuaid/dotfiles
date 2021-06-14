@@ -89,3 +89,6 @@ if [ -n "$CODESPACES" ]
 then
   chmod 700 /workspaces
 fi
+
+
+CBInjection/Models/InjectionKey.swiftCBInjection.xcodeproj/project.pbxproj
