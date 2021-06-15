@@ -3,6 +3,10 @@
 
 cd $(dirname $0)/..
 
+mkdir -pv ~/OSS ~/GitHub
+ln -vsf "$(brew --repository)" ~/OSS/Homebrew
+ln -vsf "$(pwd -P)" ~/OSS/dotfiles
+
 script/install-vscode-extensions
 
 if [ "$SHELL" != "/bin/zsh" ]
