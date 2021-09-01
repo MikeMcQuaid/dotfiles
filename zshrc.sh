@@ -43,5 +43,8 @@ ZSH_AUTOSUGGESTIONS="$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggesti
 # enable direnv (if installed)
 which direnv &>/dev/null && eval "$(direnv hook zsh)"
 
+# enable mcfly (if installed)
+which mcfly &>/dev/null && eval "$(mcfly init zsh)"
+
 # to avoid non-zero exit code
 true

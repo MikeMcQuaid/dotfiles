@@ -16,5 +16,8 @@ export HISTIGNORE="&:ls:[bf]g:exit"
 # enable direnv (if installed)
 which direnv &>/dev/null && eval "$(direnv hook bash)"
 
+# enable mcfly (if installed)
+which mcfly &>/dev/null && eval "$(mcfly init bash)"
+
 # to avoid non-zero exit code
 true
