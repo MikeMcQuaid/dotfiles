@@ -211,7 +211,8 @@
 	version = 2
 [log]
 	# Print more readable dates in `git log`
-	date = human
+	# TODO: reenable when more widely supported
+	# date = human
 [delta]
 	features = line-numbers decorations
 	syntax-theme = GitHub
