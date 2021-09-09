@@ -101,5 +101,6 @@
     "terminal.integrated.tabs.enabled": true,
     "security.workspace.trust.untrustedFiles": "open",
     "redhat.telemetry.enabled": true,
-    "editor.inlineSuggest.enabled": true
+    "editor.inlineSuggest.enabled": true,
+    "editor.bracketPairColorization.enabled": true
 }
