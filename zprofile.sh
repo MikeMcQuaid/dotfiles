@@ -1,5 +1,5 @@
 # load shared shell configuration
-source ~/.shprofile
+[ -n "$SHPROFILE_LOADED" ] || source ~/.shprofile
 
 # Enable completions
 autoload -U compinit && compinit
