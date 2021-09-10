@@ -27,7 +27,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 # Case insensitive globbing
 setopt no_case_glob
 
-# Expand parameters, commands and aritmatic in prompts
+# Expand parameters, commands and arithmetic in prompts
 setopt prompt_subst
 
 # Colorful prompt with Git and Subversion branch
