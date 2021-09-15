@@ -213,8 +213,6 @@ then
   export EDITOR="code"
   export GIT_EDITOR="$EDITOR -w"
   export SVN_EDITOR="$GIT_EDITOR"
-  # don't repeated create dock icons
-  alias code='open -b com.microsoft.VSCode "$@"'
 elif quiet_which vim
 then
   export EDITOR="vim"
