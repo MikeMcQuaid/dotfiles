@@ -47,12 +47,15 @@ fi
 # Load secrets
 [ -f "$HOME/.secrets" ] && source "$HOME/.secrets"
 
-# Load GITHUB_TOKEN from Git
-export GITHUB_TOKEN=$(
-  printf "protocol=https\\nhost=github.com\\n" \
-  | git credential fill \
-  | perl -lne '/password=(gho_.+)/ && print "$1"'
-)
+# Load GITHUB_TOKEN from macOS keychain
+if [ $MACOS ]
+then
+  export GITHUB_TOKEN=$(
+    printf "protocol=https\\nhost=github.com\\n" \
+    | git credential fill \
+    | perl -lne '/password=(gho_.+)/ && print "$1"'
+  )
+fi
 
 # Some post-secret aliases
 export HOMEBREW_GITHUB_API_TOKEN="$GITHUB_TOKEN"
