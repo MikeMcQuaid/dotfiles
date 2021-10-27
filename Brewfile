@@ -128,8 +128,6 @@ cask "orka"
 cask "quitter"
 # Utility to resize and position application windows
 cask "sizeup"
-# Digital design and prototyping platform
-cask "sketch"
 # Sound and audio controller
 cask "soundsource"
 # Video game digital distribution service
