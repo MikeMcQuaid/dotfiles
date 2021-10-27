@@ -102,5 +102,7 @@
     "security.workspace.trust.untrustedFiles": "open",
     "redhat.telemetry.enabled": true,
     "editor.inlineSuggest.enabled": true,
-    "editor.bracketPairColorization.enabled": true
+    "editor.bracketPairColorization.enabled": true,
+    "workbench.panel.defaultLocation": "right",
+    "terminal.integrated.scrollback": 4000
 }
