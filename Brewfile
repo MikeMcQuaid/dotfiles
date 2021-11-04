@@ -1,6 +1,4 @@
-tap "cantino/mcfly"
 tap "github/bootstrap"
-tap "github/packages"
 tap "heroku/brew"
 tap "homebrew/aliases"
 tap "homebrew/autoupdate"
@@ -58,14 +56,14 @@ brew "lsd"
 brew "mas"
 # NCurses Disk Usage
 brew "ncdu"
-# Platform built on V8 to build network applications
-brew "node"
 # OCI Registry As Storage
 brew "oras"
 # Simplistic interactive filtering tool
 brew "peco"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Optimizer for PNG files
+brew "pngcrush"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
 # Install various Ruby versions and implementations
@@ -88,20 +86,20 @@ brew "ruby@2.6"
 brew "ruby@2.7"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Autoformat shell script source code
+brew "shfmt"
 # Work with remote images registries
 brew "skopeo"
 # SOcket CAT: netcat on steroids
 brew "socat"
+# Cleans your SVG files by removing unnecessary data
+brew "svgcleaner"
 # Internet file retriever
 brew "wget"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
-# McFly
-brew "cantino/mcfly/mcfly"
-# GitHub Codespaces CLI tool
-brew "github/packages/ghcs"
 # Everything you need to get started with Heroku
 brew "heroku/brew/heroku"
 # Password manager that keeps all passwords secure behind one password
@@ -110,16 +108,14 @@ cask "1password"
 cask "1password-cli"
 # Application uninstaller
 cask "appcleaner"
+# Web browser focusing on privacy
+cask "brave-browser"
 # GIT client
 cask "fork"
 # Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
-# Email tracker, read receipt and spy pixel blocker plugin for Apple Mail
-cask "mailtrackerblocker"
 # Provides updates to various Microsoft products
 cask "microsoft-auto-update"
-# Web browser
-cask "microsoft-edge"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Orchestration with Kubernetes on Apple
@@ -142,7 +138,6 @@ cask "visual-studio-code"
 cask "zoom"
 mas "1Blocker", id: 1365531024
 mas "GarageBand", id: 682658836
-mas "Hue Menu Bar", id: 1500678169
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Mactracker", id: 430255202
