@@ -114,8 +114,6 @@ cask "brave-browser"
 cask "fork"
 # Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
-# Provides updates to various Microsoft products
-cask "microsoft-auto-update"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Orchestration with Kubernetes on Apple
