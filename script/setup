@@ -83,8 +83,15 @@ then
   ln -sf "$DOTFILESDIR" "$HOMEDOTFILES"
 fi
 
-# Fix up permissions for Codespaces
 if [ -n "$CODESPACES" ]
 then
+  # Fix up Codespaces permissions
   chmod 700 /workspaces
+
+  # Send notification that dotfiles setup has completed
+  curl --silent \
+    --form-string "token=$PUSHOVER_API_TOKEN" \
+    --form-string "user=$PUSHOVER_USER_KEY" \
+    --form-string "message=dotfiles script/setup complete for $CODESPACE_NAME!" \
+    https://api.pushover.net/1/messages.json
 fi

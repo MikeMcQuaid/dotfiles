@@ -14,3 +14,10 @@ apt-get install -y \
 
 # Setup the database for locate
 updatedb
+
+# Send notification that dotfiles post-start has completed
+curl --silent \
+  --form-string "token=$PUSHOVER_API_TOKEN" \
+  --form-string "user=$PUSHOVER_USER_KEY" \
+  --form-string "message=dotfiles script/codespaces-post-start complete for $CODESPACE_NAME!" \
+  https://api.pushover.net/1/messages.json
