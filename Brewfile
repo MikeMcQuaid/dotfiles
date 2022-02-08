@@ -110,6 +110,8 @@ cask "1password-cli"
 cask "appcleaner"
 # Web browser focusing on privacy
 cask "brave-browser"
+# Hard disk backup and cloning utility
+cask "carbon-copy-cloner"
 # GIT client
 cask "fork"
 # Tool to prevent the system from going into sleep mode
@@ -147,5 +149,6 @@ mas "Slack", id: 803453959
 mas "StopTheMadness", id: 1376402589
 mas "TouchDraw", id: 548887176
 mas "Tweetbot", id: 1384080005
+mas "Vinegar", id: 1591303229
 mas "WhatsApp", id: 1147396723
 mas "Xcode", id: 497799835
