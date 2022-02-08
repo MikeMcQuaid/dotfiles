@@ -87,8 +87,8 @@ then
   export HOMEBREW_AUTO_UPDATE_SECS=3600
   export HOMEBREW_DEVELOPER=1
   export HOMEBREW_UPDATE_REPORT_ONLY_INSTALLED=1
-  export HOMEBREW_GIT_FILTER_TREE_ZERO=1
   export HOMEBREW_BOOTSNAP=1
+  export HOMEBREW_NO_ENV_HINTS=1
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
   alias intelbrew='arch -x86_64 /usr/local/bin/brew'
