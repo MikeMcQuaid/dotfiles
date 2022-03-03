@@ -18,7 +18,9 @@ field() {
   ruby -ane "puts \$F[$1]"
 }
 
-# Setup paths
+# Setup PATH
+
+# Remove from anywhere in PATH
 remove_from_path() {
   [ -d "$1" ] || return
   PATHSUB=":$PATH:"
@@ -28,18 +30,21 @@ remove_from_path() {
   export PATH="$PATHSUB"
 }
 
+# Add to the start of PATH if it exists
 add_to_path_start() {
   [ -d "$1" ] || return
   remove_from_path "$1"
   export PATH="$1:$PATH"
 }
 
+# Add to the end of PATH if it exists
 add_to_path_end() {
   [ -d "$1" ] || return
   remove_from_path "$1"
   export PATH="$PATH:$1"
 }
 
+# Add to PATH even if it doesn't exist
 force_add_to_path_start() {
   remove_from_path "$1"
   export PATH="$1:$PATH"
@@ -193,6 +198,7 @@ then
   quiet_which keychain && eval "$(keychain -q --eval --agents ssh id_rsa)"
 
   add_to_path_end "/data/github/shell/bin"
+  add_to_path_start "/workspaces/github/bin"
 
   alias su="/bin/su -"
   alias open="xdg-open"
