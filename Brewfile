@@ -4,6 +4,7 @@ tap "homebrew/aliases"
 tap "homebrew/autoupdate"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-drivers"
 tap "homebrew/cask-versions"
 tap "homebrew/command-not-found"
 tap "homebrew/core"
@@ -112,6 +113,10 @@ cask "appcleaner"
 cask "brave-browser"
 # Hard disk backup and cloning utility
 cask "carbon-copy-cloner"
+# Elgato FACECAM configuration tool
+cask "elgato-camera-hub"
+# Control your Elgato Key Lights
+cask "elgato-control-center"
 # GIT client
 cask "fork"
 # Tool to prevent the system from going into sleep mode
@@ -137,6 +142,8 @@ cask "visual-studio-code"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "1Blocker", id: 1365531024
+mas "Cardhop", id: 1290358394
+mas "Fantastical", id: 975937182
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
