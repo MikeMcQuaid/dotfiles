@@ -10,7 +10,7 @@ fi
 # Install some developer tools and setup Linux how I like it
 apt-get install -y \
   exa grc ripgrep shellcheck zsh-autosuggestions \
-  locate
+  locate colordiff
 
 # Setup the database for locate
 updatedb
