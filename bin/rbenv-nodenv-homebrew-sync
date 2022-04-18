@@ -52,14 +52,16 @@ end
 @nodenv_versions = Pathname("#{ENV["HOME"]}/.nodenv/versions")
 @nodenv_versions.mkpath
 
-homebrew_ruby_versions  = Pathname.glob("/usr/local/Cellar/ruby")
-homebrew_ruby_versions += Pathname.glob("/usr/local/Cellar/ruby@*")
+homebrew_cellar = ENV["HOMEBREW_CELLAR"] || `brew --cellar 2>/dev/null`.chomp
+
+homebrew_ruby_versions  = Pathname.glob("#{homebrew_cellar}/ruby")
+homebrew_ruby_versions += Pathname.glob("#{homebrew_cellar}/ruby@*")
 homebrew_ruby_versions.flat_map(&:children)
                       .sort_by(&method(:gem_like_version))
                       .each(&method(:link_rbenv_versions))
 
-homebrew_node_versions  = Pathname.glob("/usr/local/Cellar/node")
-homebrew_node_versions += Pathname.glob("/usr/local/Cellar/node@*")
+homebrew_node_versions  = Pathname.glob("#{homebrew_cellar}/node")
+homebrew_node_versions += Pathname.glob("#{homebrew_cellar}/node@*")
 homebrew_node_versions.flat_map(&:children)
                       .sort_by(&method(:gem_like_version))
                       .each(&method(:link_nodenv_versions))
