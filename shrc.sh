@@ -65,8 +65,9 @@ add_to_path_end "$HOME/.gem/ruby/2.6.0/bin"
 export GOPATH="$HOME/.gopath"
 add_to_path_end "$GOPATH/bin"
 
-# Run rbenv if it exists
+# Run rbenv/nodenv if they exist
 quiet_which rbenv && add_to_path_start "$(rbenv root)/shims"
+quiet_which nodenv && add_to_path_start "$(nodenv root)/shims"
 
 # Aliases
 alias mkdir="mkdir -vp"
