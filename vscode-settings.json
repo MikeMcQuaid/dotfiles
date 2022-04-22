@@ -43,7 +43,6 @@
     "window.nativeTabs": true,
     "window.restoreWindows": "all",
     "window.zoomLevel": 0,
-    "files.autoSave": "onFocusChange",
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
@@ -104,5 +103,7 @@
     "editor.inlineSuggest.enabled": true,
     "editor.bracketPairColorization.enabled": true,
     "terminal.integrated.scrollback": 8000,
-    "terminal.integrated.persistentSessionScrollback": 1000
+    "terminal.integrated.persistentSessionScrollback": 1000,
+    "files.autoSave": "afterDelay",
+    "grammarly.dialect": "british"
 }
