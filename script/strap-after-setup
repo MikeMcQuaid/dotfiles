@@ -3,13 +3,24 @@
 
 cd $(dirname $0)/..
 
+# Close terminal windows on successful exit code
+/usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.Terminal.plist -c \
+  "Set 'Window Settings':Basic:shellExitAction 1"
+
+# Setup my home directory how I like it
 mkdir -pv ~/OSS ~/GitHub
 ln -vsf "$(brew --repository)" ~/OSS/Homebrew
 ln -vsf "$(pwd -P)" ~/OSS/dotfiles
 
 script/install-vscode-extensions
 
+# Use ZSH as my default Shell
 if [ "$SHELL" != "/bin/zsh" ]
 then
   chsh -s /bin/zsh mike
 fi
+
+bin/touchid-enable-pam-sudo
+
+# Ensure auto-update is always enabled
+sudo defaults write /Library/Preferences/com.apple.commerce.plist AutoUpdate 1
