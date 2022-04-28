@@ -119,6 +119,8 @@ cask "elgato-camera-hub"
 cask "elgato-control-center"
 # GIT client
 cask "fork"
+# Utility to fix grammar errors and style issues in text
+cask "grammarly"
 # Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
 # Open-source software for live streaming and screen recording
