@@ -12,7 +12,6 @@
     "editor.renderLineHighlight": "none",
     "editor.minimap.enabled": false,
     "editor.glyphMargin": false,
-    "editor.renderIndentGuides": true,
     "editor.selectionHighlight": false,
     "editor.find.globalFindClipboard": true,
     "editor.renderControlCharacters": true,
@@ -105,5 +104,6 @@
     "terminal.integrated.scrollback": 8000,
     "terminal.integrated.persistentSessionScrollback": 1000,
     "files.autoSave": "afterDelay",
-    "grammarly.dialect": "british"
+    "grammarly.dialect": "british",
+    "editor.guides.indentation": true
 }
