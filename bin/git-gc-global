@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Garbage collect all Git repositories under the current directory.
 set -e
 
