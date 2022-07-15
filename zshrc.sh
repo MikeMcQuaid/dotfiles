@@ -46,5 +46,10 @@ which direnv &>/dev/null && eval "$(direnv hook zsh)"
 # enable mcfly (if installed)
 which mcfly &>/dev/null && eval "$(mcfly init zsh)"
 
+# More colours with grc
+# shellcheck disable=SC1090
+GRC_ZSH="$HOMEBREW_PREFIX/etc/grc.zsh"
+[ -f "$GRC_ZSH" ] && source "$GRC_ZSH"
+
 # to avoid non-zero exit code
 true
