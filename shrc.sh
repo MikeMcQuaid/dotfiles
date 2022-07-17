@@ -98,6 +98,12 @@ then
   add_to_path_end "$HOMEBREW_PREFIX/Library/Homebrew/shims/gems"
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
+
+  # Skip Xcode on other MacBook.
+  if [[ "$(hostname)" == "m1kebook"* ]]
+  then
+    export HOMEBREW_BUNDLE_MAS_SKIP="Xcode"
+  fi
 fi
 
 if quiet_which git-delta
