@@ -5,6 +5,7 @@ tap "homebrew/autoupdate"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-drivers"
+tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/command-not-found"
 tap "homebrew/core"
@@ -29,6 +30,8 @@ brew "exa"
 brew "fd"
 # Cleans up old and inactive forks on your GitHub account
 brew "fork-cleaner"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -50,15 +53,13 @@ brew "hyperfine"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Mini DNS server designed solely to route queries to localhost
-brew "launchdns", restart_service: true
+brew "launchdns"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Mac App Store command-line interface
 brew "mas"
 # NCurses Disk Usage
 brew "ncdu"
-# OCI Registry As Storage
-brew "oras"
 # Simplistic interactive filtering tool
 brew "peco"
 # Pinentry for GPG on Mac
@@ -78,10 +79,6 @@ brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # Powerful, clean, object-oriented scripting language
-brew "ruby@2.4"
-# Powerful, clean, object-oriented scripting language
-brew "ruby@2.5"
-# Powerful, clean, object-oriented scripting language
 brew "ruby@2.6"
 # Powerful, clean, object-oriented scripting language
 brew "ruby@2.7"
@@ -89,8 +86,6 @@ brew "ruby@2.7"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
-# Work with remote images registries
-brew "skopeo"
 # SOcket CAT: netcat on steroids
 brew "socat"
 # Cleans your SVG files by removing unnecessary data
@@ -109,14 +104,19 @@ cask "1password"
 cask "1password-cli"
 # Application uninstaller
 cask "appcleaner"
-# Web browser focusing on privacy
-cask "brave-browser"
 # Hard disk backup and cloning utility
 cask "carbon-copy-cloner"
 # Elgato FACECAM configuration tool
 cask "elgato-camera-hub"
 # Control your Elgato Key Lights
 cask "elgato-control-center"
+cask "font-abel"
+cask "font-fjalla-one"
+cask "font-inter"
+# Monospaced variant of "San Francisco" by Apple
+cask "font-sf-mono"
+# Sans-serif signage typeface with a gentle character
+cask "font-signika"
 # GIT client
 cask "fork"
 # Utility to fix grammar errors and style issues in text
@@ -131,10 +131,6 @@ cask "orka"
 cask "quitter"
 # Utility to resize and position application windows
 cask "sizeup"
-# Sound and audio controller
-cask "soundsource"
-# Video game digital distribution service
-cask "steam"
 # Mux and tag mp4 files
 cask "subler"
 # Open-source BitTorrent client
