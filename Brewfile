@@ -1,5 +1,4 @@
 tap "github/bootstrap"
-tap "heroku/brew"
 tap "homebrew/aliases"
 tap "homebrew/autoupdate"
 tap "homebrew/bundle"
@@ -96,8 +95,6 @@ brew "wget"
 brew "youtube-dl"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
-# Everything you need to get started with Heroku
-brew "heroku/brew/heroku"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line helper for the 1Password password manager
@@ -140,6 +137,7 @@ cask "visual-studio-code"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "1Blocker", id: 1365531024
+mas "1Password for Safari", id: 1569813296
 mas "Cardhop", id: 1290358394
 mas "Fantastical", id: 975937182
 mas "GarageBand", id: 682658836
@@ -156,4 +154,3 @@ mas "TouchDraw", id: 548887176
 mas "Tweetbot", id: 1384080005
 mas "Vinegar", id: 1591303229
 mas "WhatsApp", id: 1147396723
-mas "Xcode", id: 497799835
