@@ -10,7 +10,6 @@
     "editor.formatOnSaveTimeout": 5000,
     "editor.formatOnType": true,
     "editor.renderLineHighlight": "none",
-    "editor.minimap.enabled": false,
     "editor.glyphMargin": false,
     "editor.selectionHighlight": false,
     "editor.find.globalFindClipboard": true,
@@ -105,5 +104,11 @@
     "terminal.integrated.persistentSessionScrollback": 1000,
     "files.autoSave": "afterDelay",
     "grammarly.dialect": "british",
-    "editor.guides.indentation": true
+    "editor.guides.indentation": true,
+    "editor.minimap.enabled": false,
+    "debug.allowBreakpointsEverywhere": true,
+    "debug.autoExpandLazyVariables": true,
+    "debug.showBreakpointsInOverviewRuler": true,
+    "workbench.editor.enablePreview": false,
+    "githubPullRequests.pullBranch": "never"
 }
