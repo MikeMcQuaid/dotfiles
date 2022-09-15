@@ -84,6 +84,7 @@ alias rake="noglob rake"
 alias rg="rg --colors 'match:style:nobold' --colors 'path:style:nobold'"
 alias be="nocorrect noglob bundle exec"
 alias sha256="shasum -a 256"
+alias perlsed="perl -p -e"
 
 # Command-specific stuff
 if quiet_which brew
@@ -94,16 +95,12 @@ then
   export HOMEBREW_DEVELOPER=1
   export HOMEBREW_BOOTSNAP=1
   export HOMEBREW_NO_ENV_HINTS=1
+  export HOMEBREW_INSTALL_FROM_API=1
+  export HOMEBREW_AUTOREMOVE=1
 
   add_to_path_end "$HOMEBREW_PREFIX/Library/Homebrew/shims/gems"
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
-
-  # Skip Xcode on other MacBook.
-  if [[ "$(hostname)" == "m1kebook"* ]]
-  then
-    export HOMEBREW_BUNDLE_MAS_SKIP="Xcode"
-  fi
 fi
 
 if quiet_which git-delta
@@ -176,6 +173,16 @@ then
 
   alias locate="mdfind -name"
   alias finder-hide="setfile -a V"
+
+  # Load GITHUB_TOKEN from macOS keychain
+  export GITHUB_TOKEN=$(
+    printf "protocol=https\\nhost=github.com\\n" \
+    | git credential fill \
+    | perl -lne '/password=(gho_.+)/ && print "$1"'
+  )
+  export HOMEBREW_GITHUB_API_TOKEN="$GITHUB_TOKEN"
+  export JEKYLL_GITHUB_TOKEN="$GITHUB_TOKEN"
+  export BUNDLE_RUBYGEMS__PKG__GITHUB__COM="$GITHUB_TOKEN"
 
   # make no-argument find Just Work.
   find() {
