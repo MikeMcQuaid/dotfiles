@@ -184,6 +184,11 @@ then
   export JEKYLL_GITHUB_TOKEN="$GITHUB_TOKEN"
   export BUNDLE_RUBYGEMS__PKG__GITHUB__COM="$GITHUB_TOKEN"
 
+  # output what's listening on the supplied port
+  on-port() {
+    sudo lsof -nP -i4TCP:$1
+  }
+
   # make no-argument find Just Work.
   find() {
     local arg
@@ -271,4 +276,9 @@ trash() {
 # GitHub API shortcut
 github-api-curl() {
   noglob curl -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/$1"
+}
+
+# Spit out Okta keychain password
+okta-keychain() {
+  security find-generic-password -l device_trust '-w'
 }
