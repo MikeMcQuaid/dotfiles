@@ -40,7 +40,6 @@
     "window.titleBarStyle": "native",
     "window.nativeTabs": true,
     "window.restoreWindows": "all",
-    "window.zoomLevel": 0,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
@@ -82,7 +81,6 @@
     "git.enableSmartCommit": true,
     "diffEditor.renderSideBySide": false,
     "diffEditor.codeLens": true,
-    "diffEditor.ignoreTrimWhitespace": false,
     "terminal.integrated.profiles.linux": {
         "zsh": {
             "path": "zsh"
