@@ -78,8 +78,6 @@ brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # Powerful, clean, object-oriented scripting language
-brew "ruby@2.6"
-# Powerful, clean, object-oriented scripting language
 brew "ruby@2.7"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
@@ -87,8 +85,6 @@ brew "shellcheck"
 brew "shfmt"
 # SOcket CAT: netcat on steroids
 brew "socat"
-# Cleans your SVG files by removing unnecessary data
-brew "svgcleaner"
 # Internet file retriever
 brew "wget"
 # Download YouTube videos from the command-line
