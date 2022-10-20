@@ -59,6 +59,10 @@ brew "lsd"
 brew "mas"
 # NCurses Disk Usage
 brew "ncdu"
+# Platform built on V8 to build network applications
+brew "node"
+# Manage multiple NodeJS versions
+brew "nodenv"
 # Simplistic interactive filtering tool
 brew "peco"
 # Pinentry for GPG on Mac
