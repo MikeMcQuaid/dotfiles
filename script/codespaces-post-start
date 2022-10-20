@@ -19,7 +19,7 @@ apt-get install -y \
   locate colordiff
 
 # Setup the database for locate
-updatedb
+nohup updatedb &
 
 # Send notification that dotfiles post-start has completed
 curl --silent \
