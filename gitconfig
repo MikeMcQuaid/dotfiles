@@ -93,7 +93,8 @@
 	# Rebase against origin/HEAD and prompt for what operations
 	# should be performed.
 	interactively-rebase-against-origin-head = \
-	  !git rebase --interactive origin/HEAD
+	  !git rev-parse --verify --quiet origin/HEAD >/dev/null || git remote set-head origin --auto && \
+		 git rebase --interactive origin/HEAD
 	# Show the commit log with a prettier, clearer history.
 	pretty-one-line-log = log --graph --oneline --decorate
 	# Commit any changes to files, squash them into the last commit
