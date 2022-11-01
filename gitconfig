@@ -204,6 +204,9 @@
 	verbose = true
 	# Sign commits with GPG
 	gpgsign = true
+[gpg]
+	# Use my custom dotfiles Codespaces GPG helper.
+	program = git-gpg-dotfiles
 [tag]
 	# Sort tags by newest first
 	sort = -version:refname
