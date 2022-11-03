@@ -88,10 +88,9 @@ then
   # Fix up Codespaces permissions
   chmod 700 /workspaces
 
-  # Send notification that dotfiles setup has completed
-  curl --silent \
-    --form-string "token=$PUSHOVER_API_TOKEN" \
-    --form-string "user=$PUSHOVER_USER_KEY" \
-    --form-string "message=dotfiles script/setup complete for $CODESPACE_NAME!" \
-    https://api.pushover.net/1/messages.json
+  # Don't try to git gc github/github, it happens often and takes ages
+  if [ "$CODESPACE_VSCODE_FOLDER" = "/workspaces/github" ]
+  then
+    git -C /workspaces/github config gc.auto 0
+  fi
 fi
