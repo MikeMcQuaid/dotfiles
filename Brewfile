@@ -116,6 +116,8 @@ cask "font-sf-mono"
 cask "font-signika"
 # GIT client
 cask "fork"
+# Web browser
+cask "google-chrome"
 # Utility to fix grammar errors and style issues in text
 cask "grammarly"
 # Tool to prevent the system from going into sleep mode
