@@ -90,6 +90,7 @@ cask "spectacle"
 cask "visual-studio-code"
 cask "signal"
 cask "zoom"
+cask "tidal"
 #fonts
 
 cask "font-hack"
