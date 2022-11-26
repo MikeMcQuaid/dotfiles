@@ -20,20 +20,7 @@ brew "diffoscope"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Disk Usage/Free Utility - a better 'df' alternative
-brew "duf"
-# More intuitive version of du in rust
-brew "dust"
-# Modern replacement for 'ls'
-brew "exa"
-# Simple, fast and user-friendly alternative to find
-brew "fd"
-# Cleans up old and inactive forks on your GitHub account
-brew "fork-cleaner"
-# Command-line fuzzy finder written in Go
-brew "fzf"
-# GitHub command-line tool
-brew "gh"
-# Distributed revision control system
+
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
@@ -51,38 +38,21 @@ brew "httpie"
 brew "hyperfine"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Mini DNS server designed solely to route queries to localhost
-brew "launchdns"
-# Clone of ls with colorful output, file type icons, and more
+
 brew "lsd"
 # Mac App Store command-line interface
-brew "mas"
-# NCurses Disk Usage
-brew "ncdu"
+
 # Platform built on V8 to build network applications
 brew "node"
 # Manage multiple NodeJS versions
 brew "nodenv"
-# Simplistic interactive filtering tool
-brew "peco"
+
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Optimizer for PNG files
 brew "pngcrush"
 # Wrapper to colorize and simplify ping's output
-brew "prettyping"
-# Install various Ruby versions and implementations
-brew "ruby-build"
-# Ruby version manager
-brew "rbenv"
-# Auto-installs gems for Ruby installs
-brew "rbenv-default-gems"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
-# Powerful, clean, object-oriented scripting language
-brew "ruby"
-# Powerful, clean, object-oriented scripting language
-brew "ruby@2.7"
+
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Autoformat shell script source code
@@ -95,18 +65,6 @@ brew "wget"
 brew "youtube-dl"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
-# Password manager that keeps all passwords secure behind one password
-cask "1password"
-# Command-line helper for the 1Password password manager
-cask "1password-cli"
-# Application uninstaller
-cask "appcleaner"
-# Hard disk backup and cloning utility
-cask "carbon-copy-cloner"
-# Elgato FACECAM configuration tool
-cask "elgato-camera-hub"
-# Control your Elgato Key Lights
-cask "elgato-control-center"
 cask "font-abel"
 cask "font-fjalla-one"
 cask "font-inter"
@@ -120,39 +78,32 @@ cask "fork"
 cask "google-chrome"
 # Utility to fix grammar errors and style issues in text
 cask "grammarly"
-# Tool to prevent the system from going into sleep mode
-cask "keepingyouawake"
-# Open-source software for live streaming and screen recording
-cask "obs"
-# Orchestration with Kubernetes on Apple
-cask "orka"
-# Automatically hides or quits apps after periods of inactivity
-cask "quitter"
-# Utility to resize and position application windows
-cask "sizeup"
-# Mux and tag mp4 files
-cask "subler"
-# Open-source BitTorrent client
-cask "transmission"
-# Open-source code editor
-cask "visual-studio-code"
 # Video communication and virtual meeting platform
 cask "zoom"
-mas "1Blocker", id: 1365531024
-mas "1Password for Safari", id: 1569813296
-mas "Cardhop", id: 1290358394
-mas "Fantastical", id: 975937182
-mas "GarageBand", id: 682658836
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
-mas "Mactracker", id: 430255202
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Pixelmator Pro", id: 1289583905
-mas "Save to Pocket", id: 1477385213
-mas "Slack", id: 803453959
-mas "StopTheMadness", id: 1376402589
-mas "TouchDraw", id: 548887176
-mas "Tweetbot", id: 1384080005
-mas "Vinegar", id: 1591303229
-mas "WhatsApp", id: 1147396723
+
+# Apps That keep me sane
+cask "alfred"
+cask "flux"
+cask "iterm2"
+cask "lastpass"
+cask "spectacle"
+cask "spotify"
+cask "visual-studio-code"
+cask "signal"
+cask "zoom"
+#fonts
+
+cask "font-hack"
+cask 'font-lato'
+cask 'font-open-sans'
+cask 'font-roboto'
+cask 'font-jetbrains-mono'
+cask 'font-source-code-pro-for-powerline'
+cask 'font-source-code-pro'
+cask 'font-source-sans-pro'
+cask 'font-source-serif-pro'
+
+# app store
+mas 'Meeter', id: 1510445899
+mas 'Microsoft Remote Desktop', id: 1295203466
+mas 'Evernote', id: 406056744
