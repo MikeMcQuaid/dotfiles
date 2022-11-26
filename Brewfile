@@ -11,17 +11,17 @@ tap "homebrew/core"
 tap "homebrew/formula-analytics"
 tap "homebrew/services"
 tap "homebrew/test-bot"
-# Search tool like grep, but optimized for programmers
-brew "ack"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
-# In-depth comparison of files, archives, and directories
-brew "diffoscope"
-# Load/unload environment variables based on $PWD
-brew "direnv"
-# Disk Usage/Free Utility - a better 'df' alternative
 
+brew "tfenv"
+brew "tflint"
+brew "graphviz"
+brew "subversion"
+brew "svn"
 brew "git"
+brew "mas"
+brew "helm"
+brew "jq"
+
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # GNU version of the tar archiving utility
@@ -87,7 +87,6 @@ cask "flux"
 cask "iterm2"
 cask "lastpass"
 cask "spectacle"
-cask "spotify"
 cask "visual-studio-code"
 cask "signal"
 cask "zoom"
