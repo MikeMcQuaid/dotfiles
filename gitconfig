@@ -1,11 +1,11 @@
 [user]
 	# Name used in commit messages.
-	name = Mike McQuaid
+	name = Grant McNaught
 	# Email used in commit messages.
-	email = mike@mikemcquaid.com
+	email = grant.mcnaught@gmail.com
 [github]
 	# GitHub username for command-line tools.
-	user = MikeMcQuaid
+	user = gmcnaught
 [color]
 	# Colour terminal command output when possible.
 	ui = auto
@@ -125,12 +125,6 @@
 	# `brew style` changed files
 	brew-style-changed = !git diff origin/HEAD --name-only | xargs brew style --fix --display-cop-names
 
-	# Push the current branch upstream to MikeMcQuaid using the same
-	# branch name for the remote branch.
-	um = !(git remote -v | grep -q MikeMcQuaid || gh repo fork --remote-name MikeMcQuaid) \
-	    && git push --set-upstream MikeMcQuaid $(git current-branch)
-	# Push the current branch to MikeMcQuaid and open a pull request.
-	umpr = !git um && gh pr create --web --head MikeMcQuaid:$(git current-branch)
 
 	## Shortened 'New' Commands
 	fahr = !git fetch --all && git hard-reset
@@ -184,15 +178,15 @@
 [url "git@github.com:"]
 	# Use SSH for GitHub instead of https://
 	# Enable this in networks where https:// has issues.
-	# insteadOf = https://github.com/
+	insteadOf = https://github.com/
 [credential]
 	# Use my custom dotfiles credentials helper.
 	helper = dotfiles
 [credential "https://github.com"]
-	username = MikeMcQuaid
+	username = gmcnaught
 [hub]
 	# Use HTTPS rather than SSH protocol in Hub
-	protocol = https
+	protocol = ssh
 # Settings for Git LFS
 [filter "lfs"]
 	clean = git-lfs clean -- %f
