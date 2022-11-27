@@ -1,16 +1,7 @@
 Host *.github.com *.github.net *.githubapp.com
 	ForwardAgent no
-	User mikemcquaid
+	User gmcnaught
 
-Host github-shell
-	User mikemcquaid
-	HostName shell.service.ac4-iad.github.net
-	ProxyJump bastion.githubapp.com
-
-Host github-codespaces
-	User root
-	Hostname localhost
-	Port 2222
 
 Host *
 	StrictHostKeyChecking ask
@@ -22,3 +13,4 @@ Host *
 	AddKeysToAgent yes
 	ControlMaster auto
 	ControlPath /tmp/ssh-%r@%h:%p.socket
+
