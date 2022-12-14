@@ -108,5 +108,8 @@
     "debug.autoExpandLazyVariables": true,
     "debug.showBreakpointsInOverviewRuler": true,
     "workbench.editor.enablePreview": false,
-    "githubPullRequests.pullBranch": "never"
+    "githubPullRequests.pullBranch": "never",
+    "github.copilot.enable": {
+        "*": true
+    }
 }
