@@ -10,6 +10,7 @@
 /gnupg/*.lock
 /gnupg/.*
 /gnupg/gpg-agent.conf
+/gnupg/sshcontrol
 bundle/cache
 secrets
 rbenv/*/
