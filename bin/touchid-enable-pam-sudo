@@ -4,7 +4,9 @@
 pam_sudo_filename = "/etc/pam.d/sudo"
 pam_sudo_contents = File.read(pam_sudo_filename)
 if pam_sudo_contents.include?("pam_tid.so")
-  puts "TouchID PAM sudo module already enabled!"
+  unless ARGV.include?("--quiet")
+    puts "TouchID PAM sudo module already enabled!"
+  end
   exit
 end
 

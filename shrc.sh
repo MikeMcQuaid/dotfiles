@@ -206,8 +206,9 @@ then
     command find $dot_arg "$@"
   }
 
-  # Only run rbenv-nodenv-homebrew-sync if it's not already running
+  # Only run these if they're not already running
   pgrep -fq rbenv-nodenv-homebrew-sync || rbenv-nodenv-homebrew-sync
+  pgrep -fq touchid-enable-pam-sudo    || touchid-enable-pam-sudo --quiet
 elif [ "$LINUX" ]
 then
   quiet_which keychain && eval "$(keychain -q --eval --agents ssh id_rsa)"
