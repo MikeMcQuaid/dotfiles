@@ -140,6 +140,7 @@ cask "visual-studio-code"
 cask "zoom"
 mas "1Blocker", id: 1365531024
 mas "1Password for Safari", id: 1569813296
+mas "Airmail", id: 918858936
 mas "Cardhop", id: 1290358394
 mas "Fantastical", id: 975937182
 mas "GarageBand", id: 682658836
