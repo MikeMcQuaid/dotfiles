@@ -147,6 +147,7 @@ mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Mactracker", id: 430255202
+mas "Mastonaut", id: 1450757574
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
@@ -154,6 +155,5 @@ mas "Save to Pocket", id: 1477385213
 mas "Slack", id: 803453959
 mas "StopTheMadness", id: 1376402589
 mas "TouchDraw", id: 548887176
-mas "Tweetbot", id: 1384080005
 mas "Vinegar", id: 1591303229
 mas "WhatsApp", id: 1147396723
