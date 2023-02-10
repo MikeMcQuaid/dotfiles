@@ -83,6 +83,10 @@ brew "ripgrep"
 brew "ruby"
 # Powerful, clean, object-oriented scripting language
 brew "ruby@2.7"
+# Powerful, clean, object-oriented scripting language
+brew "ruby@3.0"
+# Powerful, clean, object-oriented scripting language
+brew "ruby@3.1"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Autoformat shell script source code
@@ -151,6 +155,7 @@ mas "Mastonaut", id: 1450757574
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
+mas "Reeder", id: 1529448980
 mas "Save to Pocket", id: 1477385213
 mas "Slack", id: 803453959
 mas "StopTheMadness", id: 1376402589
