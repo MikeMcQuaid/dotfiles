@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/ruby
 # Sync Homebrew's installed Rubies with rbenv and NodeJSs with nodenv
 
 require "pathname"
