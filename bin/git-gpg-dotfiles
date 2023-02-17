@@ -2,8 +2,7 @@
 # Use the right GPG helper on Codespaces
 set -e
 
-if [[ "$CODESPACES" == "true" ]]
-then
+if [[ "$CODESPACES" == "true" ]]; then
   /.codespaces/bin/gh-gpgsign "$@"
 else
   gpg "$@"

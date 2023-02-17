@@ -12,13 +12,11 @@ echorun() {
   "$@"
 }
 
-find -L "$CURRENT" -name .git -print0 | while read -d '' -r SCM
-do
+find -L "$CURRENT" -name .git -print0 | while read -d '' -r SCM; do
   DIRECTORY="$(dirname "$SCM")"
   cd "$DIRECTORY" || continue
   echo "== Garbage collecting $(basename "$DIRECTORY")"
-  if [ -d .git ]
-  then
+  if [ -d .git ]; then
     echorun git gc --aggressive
   fi
   echo

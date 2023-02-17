@@ -6,8 +6,7 @@ source ~/.shprofile
 echo "$-" | grep -q "i" && export INTERACTIVE_BASH=1
 
 # run bashrc if this is a login, interactive shell
-if [ -n "$LOGIN_BASH" ] && [ -n "$INTERACTIVE_BASH" ]
-then
+if [ -n "$LOGIN_BASH" ] && [ -n "$INTERACTIVE_BASH" ]; then
   source ~/.bashrc
 fi
 
@@ -30,30 +29,25 @@ shopt -s cdspell
 # Bash completion
 [ -f /etc/profile.d/bash-completion ] && source /etc/profile.d/bash-completion
 if type brew &>/dev/null; then
-  for COMPLETION in $(brew --prefix)/etc/bash_completion.d/*
-  do
+  for COMPLETION in $(brew --prefix)/etc/bash_completion.d/*; do
     [[ -f $COMPLETION ]] && source "$COMPLETION"
   done
-  if [[ -f $(brew --prefix)/etc/profile.d/bash_completion.sh ]];
-  then
+  if [[ -f $(brew --prefix)/etc/profile.d/bash_completion.sh ]]; then
     source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
   fi
 fi
 
 # Colorful prompt
-if [ "$USER" = "root" ]
-then
+if [ "$USER" = "root" ]; then
   PS1='\[\033[01;35m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
-elif [ -n "${SSH_CONNECTION}" ]
-then
+elif [ -n "${SSH_CONNECTION}" ]; then
   PS1='\[\033[01;36m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
 else
   PS1='\[\033[01;32m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
 fi
 
 # only set key bindings on interactive shell
-if [ -n "$INTERACTIVE_BASH" ]
-then
+if [ -n "$INTERACTIVE_BASH" ]; then
   # fix delete key on macOS
   [ "$MACOS" ] && bind '"\e[3~" delete-char'
 

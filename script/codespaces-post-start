@@ -2,14 +2,12 @@
 # Run by github/github codespaces after starting
 
 # Fix github GPG
-if [ -d "/workspaces/github" ]
-then
+if [ -d "/workspaces/github" ]; then
   git -C /workspaces/github config gpg.program /.codespaces/bin/gh-gpgsign
 fi
 
 # Always want to use ZSH as my default shell (e.g. for SSH)
-if ! grep -q "root.*/bin/zsh" /etc/passwd
-then
+if ! grep -q "root.*/bin/zsh" /etc/passwd; then
   chsh -s /bin/zsh root
 fi
 

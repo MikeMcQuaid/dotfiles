@@ -15,8 +15,7 @@ ln -vsf "$(pwd -P)" ~/OSS/dotfiles
 script/install-vscode-extensions
 
 # Use ZSH as my default Shell
-if [ "$SHELL" != "/bin/zsh" ]
-then
+if [ "$SHELL" != "/bin/zsh" ]; then
   chsh -s /bin/zsh mike
 fi
 

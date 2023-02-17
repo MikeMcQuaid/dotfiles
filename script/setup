@@ -1,8 +1,7 @@
 #!/bin/sh
 # Install all dotfiles into the home directory
 
-if [ -L "$0" ]
-then
+if [ -L "$0" ]; then
   SCRIPTSETUP="$(readlink "$0")"
 else
   SCRIPTSETUP="$0"
@@ -16,14 +15,11 @@ DOTFILESDIR=$(pwd -P)
 [ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
 
-if [ $MACOS ]
-then
+if [ $MACOS ]; then
   VSCODE="$HOME/Library/Application Support/Code/User"
-elif [ $LINUX ]
-then
+elif [ $LINUX ]; then
   VSCODE="$HOME/.config/Code/User"
-elif [ $WINDOWS ]
-then
+elif [ $WINDOWS ]; then
   VSCODE="$APPDATA/Code/User"
 fi
 
@@ -33,8 +29,7 @@ for DOTFILE in *; do
   DIRFILE="$DOTFILESDIR/$DOTFILE"
 
   # Don't mess with Codespaces' default GPG/SSH setup.
-  if [ -n "$CODESPACES" ]
-  then
+  if [ -n "$CODESPACES" ]; then
     echo $DOTFILE | egrep -q '^(gnupg|ssh)/' && continue
   fi
 
@@ -43,30 +38,26 @@ for DOTFILE in *; do
 
   # Fixup VSCode settings path
   echo $DOTFILE | grep -q 'vscode-settings' &&
-       HOMEFILE="$VSCODE/settings.json" &&
-       mkdir -p "$VSCODE"
+    HOMEFILE="$VSCODE/settings.json" &&
+    mkdir -p "$VSCODE"
 
   # Remove .sh extensions
   echo $DOTFILE | grep -q '\.sh' &&
-       HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
+    HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
 
   # Fixup RuboCop configuration (if possible)
-  if echo $DOTFILE | grep -q 'rubocop-github.yml'
-  then
+  if echo $DOTFILE | grep -q 'rubocop-github.yml'; then
     HOMEGITHUB="$HOME/GitHub"
     [ -d $HOMEGITHUB ] || continue
     HOMEFILE="$HOMEGITHUB/.rubocop.yml"
-  elif echo $DOTFILE | grep -q 'rubocop-oss.yml'
-  then
+  elif echo $DOTFILE | grep -q 'rubocop-oss.yml'; then
     HOMEOSS="$HOME/OSS"
     [ -d $HOMEOSS ] || continue
     HOMEFILE="$HOMEOSS/.rubocop.yml"
   fi
 
-  if [ $UNIX ]
-  then
-    if [ -L "$HOMEFILE" ] && ! [ -d $DOTFILE ]
-    then
+  if [ $UNIX ]; then
+    if [ -L "$HOMEFILE" ] && ! [ -d $DOTFILE ]; then
       ln -sfv "$DIRFILE" "$HOMEFILE"
     else
       rm -rv "$HOMEFILE" 2>/dev/null
@@ -78,19 +69,16 @@ for DOTFILE in *; do
 done
 
 HOMEDOTFILES="$HOME/.dotfiles"
-if [ "$DOTFILESDIR" != "$HOMEDOTFILES" ]
-then
+if [ "$DOTFILESDIR" != "$HOMEDOTFILES" ]; then
   ln -sf "$DOTFILESDIR" "$HOMEDOTFILES"
 fi
 
-if [ -n "$CODESPACES" ]
-then
+if [ -n "$CODESPACES" ]; then
   # Fix up Codespaces permissions
   chmod 700 /workspaces
 
   # Don't try to git gc github/github, it happens often and takes ages
-  if [ "$CODESPACE_VSCODE_FOLDER" = "/workspaces/github" ]
-  then
+  if [ "$CODESPACE_VSCODE_FOLDER" = "/workspaces/github" ]; then
     git -C /workspaces/github config gc.auto 0
   fi
 fi

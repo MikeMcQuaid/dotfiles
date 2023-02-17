@@ -4,13 +4,12 @@
 # Enable completions
 autoload -U compinit && compinit
 
-if which brew &>/dev/null
-then
-  [ -w "$HOMEBREW_PREFIX/bin/brew" ] && \
-    [ ! -f "$HOMEBREW_PREFIX/share/zsh/site-functions/_brew" ] && \
-    mkdir -p "$HOMEBREW_PREFIX/share/zsh/site-functions" &>/dev/null && \
+if which brew &>/dev/null; then
+  [ -w "$HOMEBREW_PREFIX/bin/brew" ] &&
+    [ ! -f "$HOMEBREW_PREFIX/share/zsh/site-functions/_brew" ] &&
+    mkdir -p "$HOMEBREW_PREFIX/share/zsh/site-functions" &>/dev/null &&
     ln -s "$HOMEBREW_PREFIX/Library/Contributions/brew_zsh_completion.zsh" \
-          "$HOMEBREW_PREFIX/share/zsh/site-functions/_brew"
+      "$HOMEBREW_PREFIX/share/zsh/site-functions/_brew"
   FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
 fi
 
@@ -38,11 +37,9 @@ git_branch() {
   [ -n "$GIT_BRANCH" ] && echo "($GIT_BRANCH) "
 }
 
-if [ "$USER" = "root" ]
-then
+if [ "$USER" = "root" ]; then
   export PROMPT='%{$fg_bold[magenta]%}%m %{$fg_bold[blue]%}# %b%f'
-elif [ -n "${SSH_CONNECTION}" ]
-then
+elif [ -n "${SSH_CONNECTION}" ]; then
   export PROMPT='%{$fg_bold[cyan]%}%m %{$fg_bold[blue]%}# %b%f'
 else
   export PROMPT='%{$fg_bold[green]%}%m %{$fg_bold[blue]%}# %b%f'

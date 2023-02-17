@@ -1,1 +1,1 @@
-pwd > ~/.lastpwd
+pwd >~/.lastpwd

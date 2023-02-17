@@ -15,32 +15,28 @@ grep -q "Microsoft" /proc/version 2>/dev/null && export UBUNTU_ON_WINDOWS=1
 [ -z "$USER" ] && export USER="$(whoami)"
 
 # Count CPUs for Make jobs
-if [ $MACOS ]
-then
+if [ $MACOS ]; then
   export CPUCOUNT="$(sysctl -n hw.ncpu)"
-elif [ $LINUX ]
-then
+elif [ $LINUX ]; then
   export CPUCOUNT="$(getconf _NPROCESSORS_ONLN)"
 else
   export CPUCOUNT=1
 fi
 
-if [ "$CPUCOUNT" -gt 1 ]
-then
+if [ "$CPUCOUNT" -gt 1 ]; then
   export MAKEFLAGS="-j$CPUCOUNT"
   export BUNDLE_JOBS="$CPUCOUNT"
 fi
 
 # Enable Terminal.app folder icons
 [ "$TERM_PROGRAM" = "Apple_Terminal" ] && export TERMINALAPP=1
-if [ $TERMINALAPP ]
-then
+if [ $TERMINALAPP ]; then
   set_terminal_app_pwd() {
     # Tell Terminal.app about each directory change.
     printf '\e]7;%s\a' "$(echo "file://$HOST$PWD" | sed -e 's/ /%20/g')"
   }
 fi
-[ -s ~/.lastpwd ] && [ "$PWD" = "$HOME" ] && \
+[ -s ~/.lastpwd ] && [ "$PWD" = "$HOME" ] &&
   builtin cd "$(cat ~/.lastpwd)" 2>/dev/null
 [ $TERMINALAPP ] && set_terminal_app_pwd
 
