@@ -28,6 +28,12 @@ if [ "$CPUCOUNT" -gt 1 ]; then
   export BUNDLE_JOBS="$CPUCOUNT"
 fi
 
+# Setup Homebrew
+PATH="/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+if which brew &>/dev/null; then
+  eval "$(brew shellenv)"
+fi
+
 # Enable Terminal.app folder icons
 [ "$TERM_PROGRAM" = "Apple_Terminal" ] && export TERMINALAPP=1
 if [ $TERMINALAPP ]; then

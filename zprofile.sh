@@ -4,12 +4,7 @@
 # Enable completions
 autoload -U compinit && compinit
 
-if which brew &>/dev/null; then
-  [ -w "$HOMEBREW_PREFIX/bin/brew" ] &&
-    [ ! -f "$HOMEBREW_PREFIX/share/zsh/site-functions/_brew" ] &&
-    mkdir -p "$HOMEBREW_PREFIX/share/zsh/site-functions" &>/dev/null &&
-    ln -s "$HOMEBREW_PREFIX/Library/Contributions/brew_zsh_completion.zsh" \
-      "$HOMEBREW_PREFIX/share/zsh/site-functions/_brew"
+if [ -n "$HOMEBREW_PREFIX" ]; then
   FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
 fi
 
