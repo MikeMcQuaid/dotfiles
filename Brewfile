@@ -1,4 +1,3 @@
-tap "github/bootstrap"
 tap "homebrew/aliases"
 tap "homebrew/autoupdate"
 tap "homebrew/bundle"
@@ -27,8 +26,6 @@ brew "dust"
 brew "exa"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Cleans up old and inactive forks on your GitHub account
-brew "fork-cleaner"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GitHub command-line tool
