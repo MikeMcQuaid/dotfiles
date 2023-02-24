@@ -215,12 +215,16 @@
 	version = 2
 [log]
 	# Print more readable dates in `git log`
-	# TODO: reenable when more widely supported
-	# date = human
+	date = human
+# git-delta settings
 [delta]
 	features = line-numbers decorations
 	syntax-theme = GitHub
 	file-decoration-style = ''
 	hunk-header-decoration-style = ''
 [merge]
+	# Use 3-way diffs.
 	conflictstyle = diff3
+[checkout]
+	# If in doubt about the branch to checkout, pick origin.
+	defaultRemote = origin
