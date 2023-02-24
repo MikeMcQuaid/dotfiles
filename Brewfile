@@ -26,8 +26,6 @@ brew "dust"
 brew "exa"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Command-line fuzzy finder written in Go
-brew "fzf"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -42,26 +40,18 @@ brew "gnupg"
 brew "grc"
 # Improved top (interactive process viewer)
 brew "htop"
-# User-friendly cURL replacement (command-line HTTP client)
-brew "httpie"
 # Command-line benchmarking tool
 brew "hyperfine"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Mini DNS server designed solely to route queries to localhost
 brew "launchdns"
-# Clone of ls with colorful output, file type icons, and more
-brew "lsd"
 # Mac App Store command-line interface
 brew "mas"
-# NCurses Disk Usage
-brew "ncdu"
 # Platform built on V8 to build network applications
 brew "node"
 # Manage multiple NodeJS versions
 brew "nodenv"
-# Simplistic interactive filtering tool
-brew "peco"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Optimizer for PNG files
@@ -79,17 +69,11 @@ brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # Powerful, clean, object-oriented scripting language
-brew "ruby@2.7"
-# Powerful, clean, object-oriented scripting language
-brew "ruby@3.0"
-# Powerful, clean, object-oriented scripting language
 brew "ruby@3.1"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
-# SOcket CAT: netcat on steroids
-brew "socat"
 # Internet file retriever
 brew "wget"
 # Download YouTube videos from the command-line
@@ -144,11 +128,8 @@ mas "1Password for Safari", id: 1569813296
 mas "Airmail", id: 918858936
 mas "Cardhop", id: 1290358394
 mas "Fantastical", id: 975937182
-mas "GarageBand", id: 682658836
-mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Mactracker", id: 430255202
-mas "Mastonaut", id: 1450757574
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
