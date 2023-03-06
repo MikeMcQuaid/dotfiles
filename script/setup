@@ -46,10 +46,10 @@ for DOTFILE in *; do
     HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
 
   # Fixup RuboCop configuration (if possible)
-  if echo $DOTFILE | grep -q 'rubocop-github.yml'; then
-    HOMEGITHUB="$HOME/GitHub"
-    [ -d $HOMEGITHUB ] || continue
-    HOMEFILE="$HOMEGITHUB/.rubocop.yml"
+  if echo $DOTFILE | grep -q 'rubocop-raise.yml'; then
+    HOMERAISE="$HOME/Raise"
+    [ -d $HOMERAISE ] || continue
+    HOMEFILE="$HOMERAISE/.rubocop.yml"
   elif echo $DOTFILE | grep -q 'rubocop-oss.yml'; then
     HOMEOSS="$HOME/OSS"
     [ -d $HOMEOSS ] || continue
