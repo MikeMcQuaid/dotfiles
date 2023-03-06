@@ -119,6 +119,8 @@ cask "sizeup"
 cask "subler"
 # Open-source BitTorrent client
 cask "transmission"
+# Virtual machines UI using QEMU
+cask "utm"
 # Open-source code editor
 cask "visual-studio-code"
 # Video communication and virtual meeting platform
@@ -136,6 +138,7 @@ mas "Pixelmator Pro", id: 1289583905
 mas "Reeder", id: 1529448980
 mas "Slack", id: 803453959
 mas "StopTheMadness", id: 1376402589
+mas "TestFlight", id: 899247664
 mas "TouchDraw", id: 548887176
 mas "Vinegar", id: 1591303229
 mas "WhatsApp", id: 1147396723
