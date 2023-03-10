@@ -228,3 +228,6 @@
 [checkout]
 	# If in doubt about the branch to checkout, pick origin.
 	defaultRemote = origin
+[init]
+	# Use same default branch name as GitHub.
+	defaultBranch = main

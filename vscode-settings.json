@@ -47,7 +47,7 @@
     "explorer.confirmDragAndDrop": false,
     "search.globalFindClipboard": false,
     "search.smartCase": true,
-    "debug.inlineValues": true,
+    "debug.inlineValues": "on",
     "breadcrumbs.enabled": true,
     "git.promptToSaveFilesBeforeCommit": "always",
     "ruby.useLanguageServer": true,
@@ -91,8 +91,6 @@
             "path": "zsh"
         }
     },
-    "terminal.integrated.shell.linux": "zsh",
-    "terminal.integrated.shell.osx": "zsh",
     "terminal.integrated.tabs.enabled": true,
     "security.workspace.trust.untrustedFiles": "open",
     "redhat.telemetry.enabled": true,
@@ -111,5 +109,11 @@
     "githubPullRequests.pullBranch": "never",
     "github.copilot.enable": {
         "*": true
-    }
+    },
+    "git.openRepositoryInParentFolders": "always",
+    "qttools.useExternalBrowser": true,
+    "qttools.extraSearchDirectories": [
+        "/opt/homebrew/opt/qt/bin",
+    ],
+    "qttools.creator": "/Applications/Qt Creator.app/Contents/MacOS/Qt Creator"
 }

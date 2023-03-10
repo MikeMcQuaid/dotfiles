@@ -14,6 +14,8 @@ tap "homebrew/test-bot"
 brew "ack"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Cross-platform make
+brew "cmake"
 # In-depth comparison of files, archives, and directories
 brew "diffoscope"
 # Load/unload environment variables based on $PWD
@@ -22,6 +24,8 @@ brew "direnv"
 brew "duf"
 # More intuitive version of du in rust
 brew "dust"
+# ESP8266 and ESP32 serial bootloader utility
+brew "esptool"
 # Modern replacement for 'ls'
 brew "exa"
 # Simple, fast and user-friendly alternative to find
@@ -48,6 +52,8 @@ brew "jq"
 brew "launchdns"
 # Mac App Store command-line interface
 brew "mas"
+# Small build system for use with gyp or CMake
+brew "ninja"
 # Platform built on V8 to build network applications
 brew "node"
 # Manage multiple NodeJS versions
@@ -58,6 +64,8 @@ brew "pinentry-mac"
 brew "pngcrush"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
+# Cross-platform application and UI framework
+brew "qt"
 # Install various Ruby versions and implementations
 brew "ruby-build"
 # Ruby version manager
@@ -111,6 +119,8 @@ cask "microsoft-edge"
 cask "obs"
 # Orchestration with Kubernetes on Apple
 cask "orka"
+# IDE for application development
+cask "qt-creator"
 # Automatically hides or quits apps after periods of inactivity
 cask "quitter"
 # Utility to resize and position application windows

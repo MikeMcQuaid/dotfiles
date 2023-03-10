@@ -1,5 +1,5 @@
 AllCops:
-  SuggestExtensions: false
+  SuggestExtensions: true
 
 # To allow #/ or #: comments.
 Layout/LeadingCommentSpace:
