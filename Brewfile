@@ -70,8 +70,6 @@ brew "qt"
 brew "ruby-build"
 # Ruby version manager
 brew "rbenv"
-# Auto-installs gems for Ruby installs
-brew "rbenv-default-gems"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
