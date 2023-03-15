@@ -65,10 +65,6 @@ add_to_path_end "${HOME}/.gem/ruby/2.6.0/bin"
 export GOPATH="${HOME}/.gopath"
 add_to_path_end "${GOPATH}/bin"
 
-# Run rbenv/nodenv if they exist
-quiet_which rbenv && add_to_path_start "$(rbenv root)/shims"
-quiet_which nodenv && add_to_path_start "$(nodenv root)/shims"
-
 # Aliases
 alias mkdir="mkdir -vp"
 alias df="df -H"
@@ -192,8 +188,7 @@ if [[ -n "${MACOS}" ]]; then
     command find "${dot_arg}" "$@"
   }
 
-  # Only run these if they're not already running
-  pgrep -fq rbenv-nodenv-homebrew-sync || rbenv-nodenv-homebrew-sync
+  # Only run this if it's not already running
   pgrep -fq touchid-enable-pam-sudo || touchid-enable-pam-sudo --quiet
 elif [[ -n "${LINUX}" ]]; then
   quiet_which keychain && eval "$(keychain -q --eval --agents ssh id_rsa)"
@@ -208,6 +203,16 @@ elif [[ -n "${WINDOWS}" ]]; then
     # shellcheck disable=SC2145
     cmd /C"$@"
   }
+fi
+# Run rbenv/nodenv if they exist
+if quiet_which rbenv; then
+  add_to_path_start "$(rbenv root)/shims"
+  quiet_which brew && brew rbenv-sync
+fi
+
+if quiet_which nodenv; then
+  add_to_path_start "$(nodenv root)/shims"
+  quiet_which brew && brew nodenv-sync
 fi
 
 # Set up editor
