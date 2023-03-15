@@ -115,5 +115,8 @@
     "qttools.extraSearchDirectories": [
         "/opt/homebrew/opt/qt/bin",
     ],
-    "qttools.creator": "/Applications/Qt Creator.app/Contents/MacOS/Qt Creator"
+    "qttools.creator": "/Applications/Qt Creator.app/Contents/MacOS/Qt Creator",
+    "gitlens.advanced.messages": {
+        "suppressRebaseSwitchToTextWarning": true
+    }
 }
