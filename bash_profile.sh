@@ -26,6 +26,9 @@ shopt -s cmdhist
 # Correct minor directory changing spelling mistakes
 shopt -s cdspell
 
+# Remove broken bash completion
+/bin/rm -f "${HOMEBREW_PREFIX}/etc/bash_completion.d/ctest"
+
 # Bash completion
 [ -f /etc/profile.d/bash-completion ] && source /etc/profile.d/bash-completion
 if type brew &>/dev/null; then
