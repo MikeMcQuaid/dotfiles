@@ -54,12 +54,14 @@ quiet_which() {
   command -v "$1" >/dev/null
 }
 
-add_to_path_start "/home/linuxbrew/.linuxbrew/bin"
-add_to_path_start "/opt/homebrew/bin"
-add_to_path_start "/usr/local/bin"
+if [[ -n "${MACOS}" ]]; then
+  add_to_path_start "/opt/homebrew/bin"
+elif [[ -n "${LINUX}" ]]; then
+  add_to_path_start "/home/linuxbrew/.linuxbrew/bin"
+fi
 
+add_to_path_start "/usr/local/bin"
 add_to_path_end "${HOME}/.dotfiles/bin"
-add_to_path_end "${HOME}/.gem/ruby/2.6.0/bin"
 
 # Setup Go development
 export GOPATH="${HOME}/.gopath"
@@ -96,7 +98,7 @@ if quiet_which brew; then
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
 fi
 
-if quiet_which git-delta; then
+if quiet_which delta; then
   export GIT_PAGER='delta'
 else
   # shellcheck disable=SC2016
@@ -122,20 +124,6 @@ fi
 
 if quiet_which htop; then
   alias top="sudo htop"
-fi
-
-if quiet_which dust; then
-  alias du="dust"
-fi
-
-if quiet_which duf; then
-  alias df="duf"
-fi
-
-if quiet_which mcfly; then
-  export MCFLY_LIGHT=TRUE
-  export MCFLY_FUZZY=true
-  export MCFLY_RESULTS=64
 fi
 
 # Configure environment
@@ -193,6 +181,9 @@ if [[ -n "${MACOS}" ]]; then
 elif [[ -n "${LINUX}" ]]; then
   quiet_which keychain && eval "$(keychain -q --eval --agents ssh id_rsa)"
 
+  # Run dircolors if it exists
+  quiet_which dircolors && eval "$(dircolors -b)"
+
   add_to_path_end "/data/github/shell/bin"
   add_to_path_start "/workspaces/github/bin"
 
@@ -207,12 +198,10 @@ fi
 # Run rbenv/nodenv if they exist
 if quiet_which rbenv; then
   add_to_path_start "$(rbenv root)/shims"
-  quiet_which brew && brew rbenv-sync
 fi
 
 if quiet_which nodenv; then
   add_to_path_start "$(nodenv root)/shims"
-  quiet_which brew && brew nodenv-sync
 fi
 
 # Set up editor
@@ -220,14 +209,9 @@ if quiet_which code; then
   export EDITOR="code"
   export GIT_EDITOR="${EDITOR} -w"
   export SVN_EDITOR="${GIT_EDITOR}"
-elif quiet_which vim; then
+else
   export EDITOR="vim"
-elif quiet_which vi; then
-  export EDITOR="vi"
 fi
-
-# Run dircolors if it exists
-quiet_which dircolors && eval "$(dircolors -b)"
 
 # Save directory changes
 cd() {
