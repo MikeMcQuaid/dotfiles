@@ -18,12 +18,6 @@ brew "bat"
 brew "cmake"
 # In-depth comparison of files, archives, and directories
 brew "diffoscope"
-# Load/unload environment variables based on $PWD
-brew "direnv"
-# Disk Usage/Free Utility - a better 'df' alternative
-brew "duf"
-# More intuitive version of du in rust
-brew "dust"
 # ESP8266 and ESP32 serial bootloader utility
 brew "esptool"
 # Modern replacement for 'ls'
@@ -60,8 +54,12 @@ brew "node"
 brew "nodenv"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Professional collaborative platform for embedded development
+brew "platformio"
 # Optimizer for PNG files
 brew "pngcrush"
+# Object-relational database system
+brew "postgresql@14", restart_service: true
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
 # Cross-platform application and UI framework
@@ -119,8 +117,6 @@ cask "obs"
 cask "orka"
 # IDE for application development
 cask "qt-creator"
-# Automatically hides or quits apps after periods of inactivity
-cask "quitter"
 # Utility to resize and position application windows
 cask "sizeup"
 # Mux and tag mp4 files
@@ -139,7 +135,6 @@ mas "Airmail", id: 918858936
 mas "Cardhop", id: 1290358394
 mas "Fantastical", id: 975937182
 mas "Keynote", id: 409183694
-mas "Mactracker", id: 430255202
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
