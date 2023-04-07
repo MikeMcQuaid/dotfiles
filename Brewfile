@@ -26,6 +26,8 @@ brew "esptool"
 brew "exa"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Manage Procfile-based applications
+brew "foreman"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
