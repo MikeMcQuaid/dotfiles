@@ -92,6 +92,12 @@ if quiet_which brew; then
   export HOMEBREW_BOOTSNAP=1
   export HOMEBREW_NO_ENV_HINTS=1
   export HOMEBREW_AUTOREMOVE=1
+  export HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS=1
+  export HOMEBREW_CLEANUP_MAX_AGE_DAYS=30
+  export HOMEBREW_SORBET_RUNTIME=1
+
+  # This doesn't play nicely with brew bundle.
+  export HOMEBREW_BUNDLE_MAS_SKIP="TestFlight"
 
   add_to_path_end "${HOMEBREW_PREFIX}/Library/Homebrew/shims/gems"
 
@@ -116,6 +122,7 @@ fi
 if quiet_which bat; then
   export BAT_THEME="ansi"
   alias cat="bat"
+  export HOMEBREW_BAT=1
 fi
 
 if quiet_which prettyping; then
