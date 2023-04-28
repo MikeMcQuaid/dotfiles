@@ -162,6 +162,9 @@ if [[ -n "${MACOS}" ]]; then
   export JEKYLL_GITHUB_TOKEN="${GITHUB_TOKEN}"
   export BUNDLE_RUBYGEMS__PKG__GITHUB__COM="${GITHUB_TOKEN}"
 
+  # Use ESP32 in Arduino CLI
+  export ARDUINO_BOARD_MANAGER_ADDITIONAL_URLS="https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json"
+
   # output what's listening on the supplied port
   on-port() {
     sudo lsof -nP -i4TCP:"$1"
@@ -216,6 +219,25 @@ if quiet_which code; then
   export EDITOR="code"
   export GIT_EDITOR="${EDITOR} -w"
   export SVN_EDITOR="${GIT_EDITOR}"
+
+  code() {
+    local arg
+
+    # mkdir/touch any files that don't exist because the `open` hack doesn't work for them.
+    for arg; do
+      [[ -e "${arg}" ]] && break
+
+      command mkdir -p "$(dirname "${arg}")"
+      touch "${arg}"
+    done
+
+    open -b "com.microsoft.VSCode" "$@"
+  }
+
+  # Edit Rails credentials in VSCode
+  rails-credentials-edit() {
+    EDITOR="code -w" bundle exec rails credentials:edit
+  }
 else
   export EDITOR="vim"
 fi
@@ -253,10 +275,15 @@ trash() {
 
 # GitHub API shortcut
 github-api-curl() {
-  noglob curl -H "Authorization: token ${GITHUB_TOKEN}" "https://api.github.com/$1"
+  noglob curl -H "Authorization: token ${GITHUB_TOKEN}" "https://api.github.com/$1" | jq .
 }
 
 # Spit out Okta keychain password
 okta-keychain() {
   security find-generic-password -l device_trust '-w'
+}
+
+# Clear entire screen buffer
+clearer() {
+  tput reset
 }
