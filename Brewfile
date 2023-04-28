@@ -2,7 +2,6 @@ tap "homebrew/aliases"
 tap "homebrew/autoupdate"
 tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/command-not-found"
@@ -12,6 +11,8 @@ tap "homebrew/services"
 tap "homebrew/test-bot"
 # Search tool like grep, but optimized for programmers
 brew "ack"
+# Arduino command-line interface
+brew "arduino-cli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Cross-platform make
@@ -82,6 +83,8 @@ brew "ruby@3.1"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
+# Watch files and take action when they change
+brew "watchman"
 # Internet file retriever
 brew "wget"
 # Download YouTube videos from the command-line
@@ -135,15 +138,16 @@ cask "visual-studio-code"
 cask "zoom"
 mas "1Blocker", id: 1365531024
 mas "1Password for Safari", id: 1569813296
-mas "Airmail", id: 918858936
 mas "Cardhop", id: 1290358394
 mas "Fantastical", id: 975937182
+mas "InYourFace", id: 1476964367
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
 mas "Reeder", id: 1529448980
 mas "Slack", id: 803453959
+mas "Spark", id: 1176895641
 mas "StopTheMadness", id: 1376402589
 mas "TestFlight", id: 899247664
 mas "TouchDraw", id: 548887176
