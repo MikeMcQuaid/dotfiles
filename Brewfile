@@ -55,6 +55,8 @@ brew "mas"
 brew "ninja"
 # Platform built on V8 to build network applications
 brew "node"
+# Platform built on V8 to build network applications
+brew "node@18"
 # Manage multiple NodeJS versions
 brew "nodenv"
 # Pinentry for GPG on Mac
@@ -87,6 +89,8 @@ brew "shfmt"
 brew "watchman"
 # Internet file retriever
 brew "wget"
+# JavaScript package manager
+brew "yarn"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
 # Fish-like fast/unobtrusive autosuggestions for zsh
@@ -140,7 +144,7 @@ mas "1Blocker", id: 1365531024
 mas "1Password for Safari", id: 1569813296
 mas "Cardhop", id: 1290358394
 mas "Fantastical", id: 975937182
-mas "InYourFace", id: 1476964367
+mas "In Your Face", id: 1476964367
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
