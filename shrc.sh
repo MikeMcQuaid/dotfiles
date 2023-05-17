@@ -207,11 +207,19 @@ elif [[ -n "${WINDOWS}" ]]; then
 fi
 # Run rbenv/nodenv if they exist
 if quiet_which rbenv; then
-  add_to_path_start "$(rbenv root)/shims"
+  shims="$(rbenv root)/shims"
+  if ! [[ -d "${shims}" ]]; then
+    rbenv rehash
+  fi
+  add_to_path_start "${shims}"
 fi
 
 if quiet_which nodenv; then
-  add_to_path_start "$(nodenv root)/shims"
+  shims="$(nodenv root)/shims"
+  if ! [[ -d "${shims}" ]]; then
+    nodenv rehash
+  fi
+  add_to_path_start "${shims}"
 fi
 
 # Set up editor
