@@ -145,15 +145,14 @@ mas "1Password for Safari", id: 1569813296
 mas "Cardhop", id: 1290358394
 mas "Fantastical", id: 975937182
 mas "In Your Face", id: 1476964367
+mas "Ivory", id: 6444602274
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
 mas "Reeder", id: 1529448980
 mas "Slack", id: 803453959
-mas "Spark", id: 1176895641
 mas "StopTheMadness", id: 1376402589
-mas "TestFlight", id: 899247664
 mas "TouchDraw", id: 548887176
 mas "Vinegar", id: 1591303229
 mas "WhatsApp", id: 1147396723
