@@ -72,15 +72,13 @@ alias mkdir="mkdir -vp"
 alias df="df -H"
 alias rm="rm -iv"
 alias mv="mv -iv"
-alias zmv="noglob zmv -vW"
 alias cp="cp -irv"
 alias du="du -sh"
 alias make="nice make"
 alias less="less --ignore-case --raw-control-chars"
 alias rsync="rsync --partial --progress --human-readable --compress"
-alias rake="noglob rake"
 alias rg="rg --colors 'match:style:nobold' --colors 'path:style:nobold'"
-alias be="nocorrect noglob bundle exec"
+alias be="bundle exec"
 alias sha256="shasum -a 256"
 alias perlsed="perl -p -e"
 
@@ -283,7 +281,7 @@ trash() {
 
 # GitHub API shortcut
 github-api-curl() {
-  noglob curl -H "Authorization: token ${GITHUB_TOKEN}" "https://api.github.com/$1" | jq .
+  curl -H "Authorization: token ${GITHUB_TOKEN}" "https://api.github.com/$1" | jq .
 }
 
 # Spit out Okta keychain password
