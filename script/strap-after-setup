@@ -12,8 +12,6 @@ mkdir -pv ~/OSS ~/Raise
 ln -vsf "$(brew --repository)" ~/OSS/Homebrew
 ln -vsf "$(pwd -P)" ~/OSS/dotfiles
 
-script/install-vscode-extensions
-
 # Use ZSH as my default Shell
 if [ "$SHELL" != "/bin/zsh" ]; then
   chsh -s /bin/zsh mike
