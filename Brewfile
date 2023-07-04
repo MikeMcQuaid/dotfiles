@@ -11,18 +11,14 @@ tap "homebrew/services"
 tap "homebrew/test-bot"
 # Search tool like grep, but optimized for programmers
 brew "ack"
-# Arduino command-line interface
-brew "arduino-cli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Cross-platform make
-brew "cmake"
+# Collection of portable C++ source libraries
+brew "boost"
 # In-depth comparison of files, archives, and directories
 brew "diffoscope"
 # Command-line tool for DigitalOcean
 brew "doctl"
-# ESP8266 and ESP32 serial bootloader utility
-brew "esptool"
 # Modern replacement for 'ls'
 brew "exa"
 # Simple, fast and user-friendly alternative to find
@@ -37,6 +33,8 @@ brew "git"
 brew "git-delta"
 # GNU version of the tar archiving utility
 brew "gnu-tar"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Colorize logfiles and command output
@@ -55,22 +53,20 @@ brew "mas"
 brew "ninja"
 # Platform built on V8 to build network applications
 brew "node"
+# Install NodeJS versions
+brew "node-build"
 # Platform built on V8 to build network applications
 brew "node@18"
 # Manage multiple NodeJS versions
 brew "nodenv"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
-# Professional collaborative platform for embedded development
-brew "platformio"
 # Optimizer for PNG files
 brew "pngcrush"
 # Object-relational database system
 brew "postgresql@14", restart_service: true
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
-# Cross-platform application and UI framework
-brew "qt"
 # Install various Ruby versions and implementations
 brew "ruby-build"
 # Ruby version manager
@@ -105,7 +101,7 @@ cask "appcleaner"
 cask "carbon-copy-cloner"
 # Elgato FACECAM configuration tool
 cask "elgato-camera-hub"
-# Control your Elgato Key Lights
+# Control your Elgato key lights
 cask "elgato-control-center"
 cask "font-abel"
 cask "font-fjalla-one"
@@ -122,20 +118,10 @@ cask "google-chrome"
 cask "grammarly"
 # Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
-# Open-source software for live streaming and screen recording
-cask "obs"
 # Orchestration with Kubernetes on Apple
 cask "orka"
-# IDE for application development
-cask "qt-creator"
 # Utility to resize and position application windows
 cask "sizeup"
-# Mux and tag mp4 files
-cask "subler"
-# Open-source BitTorrent client
-cask "transmission"
-# Virtual machines UI using QEMU
-cask "utm"
 # Open-source code editor
 cask "visual-studio-code"
 # Video communication and virtual meeting platform
@@ -180,18 +166,11 @@ vscode "ms-azuretools.vscode-docker"
 vscode "ms-vscode-remote.remote-containers"
 vscode "ms-vscode-remote.remote-wsl"
 vscode "ms-vscode-remote.vscode-remote-extensionpack"
-vscode "ms-vscode.cmake-tools"
-vscode "ms-vscode.cpptools"
-vscode "ms-vscode.cpptools-extension-pack"
-vscode "ms-vscode.cpptools-themes"
-vscode "platformio.platformio-ide"
 vscode "redhat.vscode-commons"
 vscode "redhat.vscode-yaml"
 vscode "Shopify.ruby-lsp"
 vscode "sorbet.sorbet-vscode-extension"
 vscode "stylelint.vscode-stylelint"
 vscode "timonwong.shellcheck"
-vscode "tonka3000.qtvsctools"
-vscode "twxs.cmake"
 vscode "Wattenberger.footsteps"
 vscode "znck.grammarly"
