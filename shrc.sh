@@ -94,9 +94,6 @@ if quiet_which brew; then
   export HOMEBREW_CLEANUP_MAX_AGE_DAYS=30
   export HOMEBREW_SORBET_RUNTIME=1
 
-  # This doesn't play nicely with brew bundle.
-  export HOMEBREW_BUNDLE_MAS_SKIP="TestFlight"
-
   add_to_path_end "${HOMEBREW_PREFIX}/Library/Homebrew/shims/gems"
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'

@@ -127,7 +127,8 @@
 
 	# Push the current branch upstream to MikeMcQuaid using the same
 	# branch name for the remote branch.
-	um = !(git remote -v | grep -q MikeMcQuaid || gh repo fork --remote-name MikeMcQuaid) \
+	um = !(git remote -v | grep -q MikeMcQuaid || gh repo fork --remote --remote-name MikeMcQuaid) \
+	    && gh repo set-default $(git remote get-url origin) \
 	    && git push --set-upstream MikeMcQuaid $(git current-branch)
 	# Push the current branch to MikeMcQuaid and open a pull request.
 	umpr = !git um && gh pr create --web --head MikeMcQuaid:$(git current-branch)
