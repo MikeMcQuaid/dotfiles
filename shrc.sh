@@ -155,10 +155,6 @@ if [[ -n "${MACOS}" ]]; then
   )
   export HOMEBREW_GITHUB_API_TOKEN="${GITHUB_TOKEN}"
   export JEKYLL_GITHUB_TOKEN="${GITHUB_TOKEN}"
-  export BUNDLE_RUBYGEMS__PKG__GITHUB__COM="${GITHUB_TOKEN}"
-
-  # Use ESP32 in Arduino CLI
-  export ARDUINO_BOARD_MANAGER_ADDITIONAL_URLS="https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json"
 
   # output what's listening on the supplied port
   on-port() {
