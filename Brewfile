@@ -122,6 +122,8 @@ cask "keepingyouawake"
 cask "orka"
 # Utility to resize and position application windows
 cask "sizeup"
+# Virtual machines UI using QEMU
+cask "utm"
 # Open-source code editor
 cask "visual-studio-code"
 # Video communication and virtual meeting platform
@@ -139,7 +141,7 @@ mas "Pixelmator Pro", id: 1289583905
 mas "Reeder", id: 1529448980
 mas "Slack", id: 803453959
 mas "StopTheMadness", id: 1376402589
-mas "TouchDraw", id: 548887176
+mas "TouchDraw", id: 1580322028
 mas "Vinegar", id: 1591303229
 mas "WhatsApp", id: 1147396723
 vscode "aliariff.vscode-erb-beautify"
