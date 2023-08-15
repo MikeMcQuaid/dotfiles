@@ -45,7 +45,7 @@ cmake_install.cmake
 install_manifest.txt
 
 # Ignore build directories.
-b/
+build/
 
 # Ignore some testing files.
 test/js/functional/*.html
