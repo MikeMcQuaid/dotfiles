@@ -15,6 +15,8 @@ brew "ack"
 brew "bat"
 # Collection of portable C++ source libraries
 brew "boost"
+# Cross-platform make
+brew "cmake"
 # In-depth comparison of files, archives, and directories
 brew "diffoscope"
 # Command-line tool for DigitalOcean
@@ -49,6 +51,8 @@ brew "jq"
 brew "launchdns"
 # Mac App Store command-line interface
 brew "mas"
+# High performance, distributed memory object caching system
+brew "memcached", restart_service: true
 # Small build system for use with gyp or CMake
 brew "ninja"
 # Platform built on V8 to build network applications
@@ -64,7 +68,7 @@ brew "pinentry-mac"
 # Optimizer for PNG files
 brew "pngcrush"
 # Object-relational database system
-brew "postgresql@14", restart_service: true
+brew "postgresql@15", restart_service: true
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
 # Install various Ruby versions and implementations
