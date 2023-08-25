@@ -234,8 +234,11 @@ if quiet_which code; then
   }
 
   # Edit Rails credentials in VSCode
-  rails-credentials-edit() {
-    EDITOR="code -w" bundle exec rails credentials:edit
+  rails-credentials-edit-production() {
+    EDITOR="code -w" bundle exec rails credentials:edit --environment production
+  }
+  rails-credentials-edit-development() {
+    EDITOR="code -w" bundle exec rails credentials:edit --environment development
   }
 else
   export EDITOR="vim"
