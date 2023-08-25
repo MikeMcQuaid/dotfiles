@@ -121,5 +121,8 @@
     },
     "cmake.configureOnOpen": false,
     "ruby.rubocop.useBundler": true,
-    "ruby.rubocop.useServer": true
+    "ruby.rubocop.useServer": true,
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    }
 }
