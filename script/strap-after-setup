@@ -8,7 +8,7 @@ cd $(dirname $0)/..
   "Set 'Window Settings':Basic:shellExitAction 1"
 
 # Setup my home directory how I like it
-mkdir -pv ~/OSS ~/Raise
+mkdir -pv ~/OSS ~/Workbrew
 ln -vsf "$(brew --repository)" ~/OSS/Homebrew
 ln -vsf "$(pwd -P)" ~/OSS/dotfiles
 
