@@ -90,6 +90,8 @@ if quiet_which brew; then
 
   export HOMEBREW_DEVELOPER=1
   export HOMEBREW_BOOTSNAP=1
+  export HOMEBREW_BUNDLE_INSTALL_CLEANUP=1
+  export HOMEBREW_BUNDLE_DUMP_DESCRIBE=1
   export HOMEBREW_NO_ENV_HINTS=1
   export HOMEBREW_AUTOREMOVE=1
   export HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS=1
@@ -109,9 +111,9 @@ else
   export GIT_PAGER='less -+$LESS -RX'
 fi
 
-if quiet_which exa
+if quiet_which eza
 then
-  alias ls="exa --classify --group --git"
+  alias ls="eza --classify --group --git"
 elif [[ -n "${MACOS}" ]]
 then
   alias ls="ls -F"
