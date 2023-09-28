@@ -21,8 +21,8 @@ brew "cmake"
 brew "diffoscope"
 # Command-line tool for DigitalOcean
 brew "doctl"
-# Modern replacement for 'ls'
-brew "exa"
+# Modern, maintained replacement for ls
+brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Manage Procfile-based applications
@@ -39,6 +39,8 @@ brew "gnu-tar"
 brew "unbound"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
 # Colorize logfiles and command output
 brew "grc"
 # Improved top (interactive process viewer)
@@ -47,8 +49,6 @@ brew "htop"
 brew "hyperfine"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Mini DNS server designed solely to route queries to localhost
-brew "launchdns"
 # Mac App Store command-line interface
 brew "mas"
 # High performance, distributed memory object caching system
@@ -136,6 +136,7 @@ mas "1Blocker", id: 1365531024
 mas "1Password for Safari", id: 1569813296
 mas "Cardhop", id: 1290358394
 mas "Fantastical", id: 975937182
+mas "Hush", id: 1544743900
 mas "In Your Face", id: 1476964367
 mas "Ivory", id: 6444602274
 mas "Keynote", id: 409183694
@@ -148,6 +149,7 @@ mas "StopTheMadness", id: 1376402589
 mas "TouchDraw", id: 1580322028
 mas "Vinegar", id: 1591303229
 mas "WhatsApp", id: 1147396723
+mas "Xcode", id: 497799835
 vscode "aliariff.vscode-erb-beautify"
 vscode "anykeyh.simplecov-vscode"
 vscode "ban.spellright"
@@ -161,6 +163,7 @@ vscode "GitHub.copilot"
 vscode "GitHub.copilot-labs"
 vscode "github.vscode-github-actions"
 vscode "GitHub.vscode-pull-request-github"
+vscode "golang.go"
 vscode "heybourn.headwind"
 vscode "huacnlee.theme-macos-classic"
 vscode "kaiwood.endwise"
@@ -179,4 +182,3 @@ vscode "sorbet.sorbet-vscode-extension"
 vscode "stylelint.vscode-stylelint"
 vscode "timonwong.shellcheck"
 vscode "Wattenberger.footsteps"
-vscode "znck.grammarly"
