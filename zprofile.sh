@@ -1,8 +1,8 @@
 # load shared shell configuration
 [ -n "$SHPROFILE_LOADED" ] || source ~/.shprofile
 
-# Enable completions
-autoload -U compinit && compinit
+# Enable completions and allow insecure loading
+autoload -U compinit && compinit -u
 
 if [ -n "$HOMEBREW_PREFIX" ]; then
   FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"

@@ -57,6 +57,7 @@ quiet_which() {
 if [[ -n "${MACOS}" ]]
 then
   add_to_path_start "/opt/homebrew/bin"
+  add_to_path_start "/opt/workbrew/bin"
 elif [[ -n "${LINUX}" ]]
 then
   add_to_path_start "/home/linuxbrew/.linuxbrew/bin"
@@ -85,7 +86,8 @@ alias sha256="shasum -a 256"
 alias perlsed="perl -p -e"
 
 # Command-specific stuff
-if quiet_which brew; then
+if quiet_which brew
+then
   eval $(brew shellenv)
 
   export HOMEBREW_DEVELOPER=1
