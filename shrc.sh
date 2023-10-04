@@ -99,6 +99,12 @@ if quiet_which brew; then
 
   add_to_path_end "${HOMEBREW_PREFIX}/Library/Homebrew/shims/gems"
 
+  # Specifically want this to expand when defined, not when run.
+  # shellcheck disable=SC2139
+  alias homebrew="${HOMEBREW_PREFIX}/bin/brew"
+  alias workbrew='/opt/workbrew/bin/brew'
+  alias workbrewdo='sudo --set-home --preserve-env --user=workbrew --'
+
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
 fi
 
