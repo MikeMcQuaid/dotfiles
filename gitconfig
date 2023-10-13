@@ -237,3 +237,4 @@
 	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-core
 	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-cask
 	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-services
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-bundle
