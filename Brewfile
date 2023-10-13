@@ -11,6 +11,8 @@ tap "homebrew/services"
 tap "homebrew/test-bot"
 # Search tool like grep, but optimized for programmers
 brew "ack"
+# Static checker for GitHub Actions workflow files
+brew "actionlint"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Collection of portable C++ source libraries
@@ -49,14 +51,16 @@ brew "htop"
 brew "hyperfine"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Platform built on V8 to build network applications
+brew "node"
+# CLI for Node.js style checker and lint tool for Markdown files
+brew "markdownlint-cli"
 # Mac App Store command-line interface
 brew "mas"
 # High performance, distributed memory object caching system
 brew "memcached", restart_service: true
 # Small build system for use with gyp or CMake
 brew "ninja"
-# Platform built on V8 to build network applications
-brew "node"
 # Install NodeJS versions
 brew "node-build"
 # Platform built on V8 to build network applications
@@ -89,6 +93,8 @@ brew "shfmt"
 brew "watchman"
 # Internet file retriever
 brew "wget"
+# Linter for YAML files
+brew "yamllint"
 # JavaScript package manager
 brew "yarn"
 # Download YouTube videos from the command-line
@@ -97,7 +103,7 @@ brew "youtube-dl"
 brew "zsh-autosuggestions"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
-# Command-line helper for the 1Password password manager
+# Command-line interface for 1Password
 cask "1password-cli"
 # Application uninstaller
 cask "appcleaner"
