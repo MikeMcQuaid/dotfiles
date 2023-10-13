@@ -139,9 +139,6 @@ fi
 
 # Configure environment
 export CLICOLOR=1
-export GITHUB_PROFILE_BOOTSTRAP=1
-export GITHUB_PACKAGES_SUBPROJECT_CACHE_READ=1
-export GITHUB_NO_AUTO_BOOTSTRAP=1
 
 # OS-specific configuration
 if [[ -n "${MACOS}" ]]; then
