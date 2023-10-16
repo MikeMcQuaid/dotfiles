@@ -27,8 +27,6 @@ brew "doctl"
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Manage Procfile-based applications
-brew "foreman"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -43,6 +41,8 @@ brew "unbound"
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Foreman clone written in Go
+brew "goreman"
 # Colorize logfiles and command output
 brew "grc"
 # Improved top (interactive process viewer)
@@ -142,6 +142,7 @@ mas "1Blocker", id: 1365531024
 mas "1Password for Safari", id: 1569813296
 mas "Cardhop", id: 1290358394
 mas "Fantastical", id: 975937182
+mas "GarageBand", id: 682658836
 mas "Hush", id: 1544743900
 mas "In Your Face", id: 1476964367
 mas "Ivory", id: 6444602274
