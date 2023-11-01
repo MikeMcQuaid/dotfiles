@@ -3,14 +3,8 @@
 
 cd $(dirname $0)/..
 
-# Close terminal windows on successful exit code
-/usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.Terminal.plist -c \
-  "Set 'Window Settings':Basic:shellExitAction 1"
-
-# Setup my home directory how I like it
-mkdir -pv ~/OSS ~/Workbrew
-ln -vsf "$(brew --repository)" ~/OSS/Homebrew
-ln -vsf "$(pwd -P)" ~/OSS/dotfiles
+# Create dev directory
+mkdir dev
 
 # Use ZSH as my default Shell
 if [ "$SHELL" != "/bin/zsh" ]; then

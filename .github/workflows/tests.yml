@@ -13,18 +13,18 @@ jobs:
           - windows-latest
           - macos-latest
     steps:
-    - name: Set up Git repository
-      uses: actions/checkout@master
+      - name: Set up Git repository
+        uses: actions/checkout@master
 
-    - name: Validate syntax
-      run: bash -n *.sh
+      - name: Validate syntax
+        run: bash -n *.sh
 
-    - name: Test script/setup
-      run: bash script/setup
+      - name: Test script/setup
+        run: bash script/setup
 
-    - name: Test bashrc
-      run: bash -xc "source ~/.bashrc"
+      - name: Test bashrc
+        run: bash -xc "source ~/.bashrc"
 
-    - name: Test zshrc
-      run: zsh -xc "source ~/.zshrc"
-      if: matrix.os == 'macos-latest'
+      - name: Test zshrc
+        run: zsh -xc "source ~/.zshrc"
+        if: matrix.os == 'macos-latest'

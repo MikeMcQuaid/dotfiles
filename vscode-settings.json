@@ -1,128 +1,26 @@
 {
-    "editor.fontFamily": "'SF Mono', Menlo, Monaco, Consolas, monospace",
-    "editor.fontWeight": "500",
-    "editor.renderWhitespace": "all",
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.wordWrap": "bounded",
-    "editor.wordWrapColumn": 118,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.formatOnSaveTimeout": 5000,
-    "editor.formatOnType": true,
-    "editor.renderLineHighlight": "none",
-    "editor.glyphMargin": false,
-    "editor.selectionHighlight": false,
-    "editor.find.globalFindClipboard": true,
-    "editor.renderControlCharacters": true,
-    "editor.suggest.localityBonus": true,
-    "editor.suggestSelection": "recentlyUsedByPrefix",
-    "editor.quickSuggestions": {
-        "other": true,
-        "comments": true,
-        "strings": true
-    },
-    "editor.rulers": [
-        80,
-        118
-    ],
-    "editor.scrollBeyondLastLine": false,
-    "editor.showUnused": false,
-    "editor.tabSize": 2,
-    "editor.tabCompletion": "on",
-    "workbench.editor.tabCloseButton": "left",
-    "workbench.iconTheme": "macos-classic-icons",
-    "workbench.startupEditor": "none",
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.editor.closeOnFileDelete": false,
-    "workbench.editor.revealIfOpen": true,
-    "workbench.editor.tabSizing": "shrink",
-    "workbench.fontAliasing": "auto",
-    "window.titleBarStyle": "native",
-    "window.nativeTabs": true,
-    "window.restoreWindows": "all",
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true,
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
-    "search.globalFindClipboard": false,
-    "search.smartCase": true,
-    "debug.inlineValues": "on",
-    "breadcrumbs.enabled": true,
-    "git.promptToSaveFilesBeforeCommit": "always",
-    "ruby.useLanguageServer": true,
-    "ruby.lint": {
-        "rubocop": true
-    },
-    "ruby.format": "rubocop",
-    "javascript.format.enable": false,
-    "spellright.language": [
-        "en_GB",
-        "en_US"
-    ],
-    "spellright.groupDictionaries": false,
-    "spellright.addToSystemDictionary": true,
-    "search.runInExtensionHost": true,
-    "spellright.documentTypes": [
-        "markdown",
-        "latex",
-        "plaintext",
-        "git-commit"
-    ],
-    "git.enableCommitSigning": true,
-    "git.fetchOnPull": true,
-    "git.openDiffOnClick": false,
-    "gitlens.blame.ignoreWhitespace": true,
-    "window.autoDetectColorScheme": true,
-    "workbench.preferredLightColorTheme": "macOS Classic",
-    "workbench.preferredDarkColorTheme": "Monokai Dimmed",
-    "workbench.colorTheme": "macOS Classic",
-    "terminal.integrated.enableBell": true,
-    "git.enableSmartCommit": true,
-    "diffEditor.renderSideBySide": false,
-    "diffEditor.codeLens": true,
-    "terminal.integrated.profiles.linux": {
-        "zsh": {
-            "path": "zsh"
-        }
-    },
-    "terminal.integrated.profiles.osx": {
-        "zsh": {
-            "path": "zsh"
-        }
-    },
-    "terminal.integrated.tabs.enabled": true,
-    "security.workspace.trust.untrustedFiles": "open",
-    "redhat.telemetry.enabled": true,
-    "editor.inlineSuggest.enabled": true,
-    "editor.bracketPairColorization.enabled": true,
-    "terminal.integrated.scrollback": 8000,
-    "terminal.integrated.persistentSessionScrollback": 1000,
-    "files.autoSave": "afterDelay",
-    "grammarly.dialect": "british",
-    "editor.guides.indentation": true,
-    "editor.minimap.enabled": false,
-    "debug.allowBreakpointsEverywhere": true,
-    "debug.autoExpandLazyVariables": true,
-    "debug.showBreakpointsInOverviewRuler": true,
-    "workbench.editor.enablePreview": false,
-    "githubPullRequests.pullBranch": "never",
-    "github.copilot.enable": {
-        "*": true
-    },
-    "git.openRepositoryInParentFolders": "always",
-    "qttools.useExternalBrowser": true,
-    "qttools.extraSearchDirectories": [
-        "/opt/homebrew/opt/qt/bin",
-    ],
-    "qttools.creator": "/Applications/Qt Creator.app/Contents/MacOS/Qt Creator",
-    "gitlens.advanced.messages": {
-        "suppressRebaseSwitchToTextWarning": true
-    },
-    "cmake.configureOnOpen": false,
-    "ruby.rubocop.useBundler": true,
-    "ruby.rubocop.useServer": true,
-    "[dockerfile]": {
-        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-    }
+  "tabnine.experimentalAutoImports": true,
+  "editor.fontFamily": "JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "todo-tree.tree.showScanModeButton": false,
+  "prettier.printWidth": 120,
+  "editor.formatOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.lintTask.enable": true,
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "workbench.colorTheme": "Community Material Theme Palenight High Contrast",
+  "markdown.marp.enableHtml": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": true,
+    "markdown": false,
+    "scminput": false
+  },
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "window.zoomLevel": 1
 }

@@ -25,36 +25,3 @@ shopt -s cmdhist
 
 # Correct minor directory changing spelling mistakes
 shopt -s cdspell
-
-# Remove broken bash completion
-/bin/rm -f "${HOMEBREW_PREFIX}/etc/bash_completion.d/ctest"
-
-# Bash completion
-[ -f /etc/profile.d/bash-completion ] && source /etc/profile.d/bash-completion
-if type brew &>/dev/null; then
-  for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d"/*; do
-    [[ -f $COMPLETION ]] && source "$COMPLETION"
-  done
-  if [[ -f $(brew --prefix)/etc/profile.d/bash_completion.sh ]]; then
-    source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
-  fi
-fi
-
-# Colorful prompt
-if [ "$USER" = "root" ]; then
-  PS1='\[\033[01;35m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
-elif [ -n "${SSH_CONNECTION}" ]; then
-  PS1='\[\033[01;36m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
-else
-  PS1='\[\033[01;32m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
-fi
-
-# only set key bindings on interactive shell
-if [ -n "$INTERACTIVE_BASH" ]; then
-  # fix delete key on macOS
-  [ "$MACOS" ] && bind '"\e[3~" delete-char'
-
-  # alternate mappings for Ctrl-U/V to search the history
-  bind '"^u" history-search-backward'
-  bind '"^v" history-search-forward'
-fi

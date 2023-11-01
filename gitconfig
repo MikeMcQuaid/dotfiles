@@ -1,34 +1,11 @@
 [user]
 	# Name used in commit messages.
-	name = Mike McQuaid
+	name = Mehdi Amrane
 	# Email used in commit messages.
-	email = mike@mikemcquaid.com
+	# email = example@example.com
 [github]
 	# GitHub username for command-line tools.
-	user = MikeMcQuaid
-[color]
-	# Colour terminal command output when possible.
-	ui = auto
-[gist]
-	# Open GitHub Gist in browser after submission.
-	browse = true
-[push]
-	# Push to the set upstream branch being tracked by default.
-	default = simple
-[pull]
-	# Default to rebasing on pulls
-	rebase = true
-[fetch]
-	# Always prune when fetching (and pulling).
-	prune = true
-	# Write commit graph to speed up some repositories.
-	writeCommitGraph = true
-[gc]
-	# Write commit graph to speed up some repositories.
-	writeCommitGraph = true
-[rerere]
-	# Store and re-use manual conflict resolution changes.
-	enabled = true
+	user = mehdiamrane
 [core]
 	# Exclude everything this file. Used for general exclusions.
 	excludesfile = ~/.gitignore
@@ -40,6 +17,10 @@
 	commitGraph = true
 	# Output unicode characters (e.g. emoji).
 	quotepath = on
+	# Whether Git should ignore case differences when comparing file contents.
+	ignorecase = false
+[push]
+	autoSetupRemote = true
 [help]
   # Autocorrect mistyped commands.
 	autocorrect = 1
@@ -154,10 +135,6 @@
 	## Shortened Existing Commands
 	p = pull
 	s = status --short --branch
-[instaweb]
-	# Use the Ruby WEBRick library when creating a `git instaweb`
-	# HTTP server.
-	httpd = webrick
 [diff]
 	# Use the slower but better patience diff algorithm
 	algorithm = patience
@@ -182,32 +159,11 @@
 	autoStash = true
 	# Auto-add `--autosquash` to `git rebase`
 	autoSquash = true
-[url "git@github.com:"]
-	# Use SSH for GitHub instead of https://
-	# Enable this in networks where https:// has issues.
-	# insteadOf = https://github.com/
-[credential]
-	# Use my custom dotfiles credentials helper.
-	helper = dotfiles
 [credential "https://github.com"]
-	username = MikeMcQuaid
-[hub]
-	# Use HTTPS rather than SSH protocol in Hub
-	protocol = https
-# Settings for Git LFS
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	required = true
-	process = git-lfs filter-process
+	username = mehdiamrane
 [commit]
 	# Show the diff as a comment in the commit message template.
 	verbose = true
-	# Sign commits with GPG
-	gpgsign = true
-[gpg]
-	# Use my custom dotfiles Codespaces GPG helper.
-	program = git-gpg-dotfiles
 [tag]
 	# Sort tags by newest first
 	sort = -version:refname
@@ -217,12 +173,6 @@
 [log]
 	# Print more readable dates in `git log`
 	date = human
-# git-delta settings
-[delta]
-	features = line-numbers decorations
-	syntax-theme = GitHub
-	file-decoration-style = ''
-	hunk-header-decoration-style = ''
 [merge]
 	# Use 3-way diffs.
 	conflictstyle = diff3
@@ -232,9 +182,3 @@
 [init]
 	# Use same default branch name as GitHub.
 	defaultBranch = main
-[safe]
-	directory = /opt/homebrew
-	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-core
-	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-cask
-	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-services
-	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-bundle
