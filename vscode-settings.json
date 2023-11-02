@@ -124,5 +124,6 @@
     "ruby.rubocop.useServer": true,
     "[dockerfile]": {
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-    }
+    },
+    "go.toolsManagement.autoUpdate": true
 }
