@@ -65,6 +65,8 @@ brew "ninja"
 brew "node-build"
 # Platform built on V8 to build network applications
 brew "node@18"
+# Platform built on V8 to build network applications
+brew "node@20"
 # Manage multiple NodeJS versions
 brew "nodenv"
 # Pinentry for GPG on Mac
