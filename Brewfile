@@ -99,8 +99,8 @@ brew "wget"
 brew "yamllint"
 # JavaScript package manager
 brew "yarn"
-# Download YouTube videos from the command-line
-brew "youtube-dl"
+# Fork of youtube-dl with additional features and fixes
+brew "yt-dlp"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
 # Password manager that keeps all passwords secure behind one password
@@ -117,6 +117,7 @@ cask "elgato-camera-hub"
 cask "elgato-control-center"
 cask "font-abel"
 cask "font-fjalla-one"
+# Variable font designed for display
 cask "font-inter"
 # Monospaced variant of "San Francisco" by Apple
 cask "font-sf-mono"
