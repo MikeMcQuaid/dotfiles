@@ -107,7 +107,8 @@
     "workbench.editor.enablePreview": false,
     "githubPullRequests.pullBranch": "never",
     "github.copilot.enable": {
-        "*": true
+        "*": true,
+        "markdown": true
     },
     "git.openRepositoryInParentFolders": "always",
     "qttools.useExternalBrowser": true,
@@ -125,5 +126,7 @@
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
     "go.toolsManagement.autoUpdate": true,
-    "terminal.integrated.tabs.enabled": false
+    "terminal.integrated.tabs.enabled": false,
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "workbench.editor.tabActionLocation": "left"
 }
