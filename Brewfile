@@ -9,6 +9,7 @@ tap "homebrew/core"
 tap "homebrew/formula-analytics"
 tap "homebrew/services"
 tap "homebrew/test-bot"
+tap "workbrew/private", "https://#{ENV.fetch("HOMEBREW_GITHUB_API_TOKEN")}@github.com/Workbrew/homebrew-private"
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Static checker for GitHub Actions workflow files
@@ -139,6 +140,8 @@ cask "sizeup"
 cask "utm"
 # Open-source code editor
 cask "visual-studio-code"
+# Installer for Workbrew Agent
+cask "workbrew"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "1Blocker", id: 1365531024
