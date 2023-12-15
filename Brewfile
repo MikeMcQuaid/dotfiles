@@ -42,6 +42,8 @@ brew "unbound"
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Fast linters runner for Go
+brew "golangci-lint"
 # Foreman clone written in Go
 brew "goreman"
 # Colorize logfiles and command output
