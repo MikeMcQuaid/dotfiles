@@ -28,6 +28,8 @@ brew "doctl"
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Manage Procfile-based applications
+brew "foreman"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -44,8 +46,6 @@ brew "gnupg"
 brew "go"
 # Fast linters runner for Go
 brew "golangci-lint"
-# Foreman clone written in Go
-brew "goreman"
 # Colorize logfiles and command output
 brew "grc"
 # Improved top (interactive process viewer)
