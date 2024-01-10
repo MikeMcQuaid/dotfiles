@@ -90,6 +90,8 @@ brew "ripgrep"
 brew "ruby"
 # Powerful, clean, object-oriented scripting language
 brew "ruby@3.1"
+# Powerful, clean, object-oriented scripting language
+brew "ruby@3.2"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Autoformat shell script source code
