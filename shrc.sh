@@ -182,7 +182,7 @@ if [[ -n "${MACOS}" ]]; then
 
     [[ -z "${path_arg}" ]] && dot_arg="."
 
-    command find "${dot_arg}" "$@"
+    command find ${dot_arg} "$@"
   }
 
   # Only run this if it's not already running
