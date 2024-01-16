@@ -55,6 +55,7 @@ GRC_ZSH="$HOMEBREW_PREFIX/etc/grc.zsh"
 alias zmv="noglob zmv -vW"
 alias rake="noglob rake"
 alias be="nocorrect noglob bundle exec"
+alias brew="nocorrect brew"
 
 # to avoid non-zero exit code
 true
