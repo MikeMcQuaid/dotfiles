@@ -102,8 +102,6 @@ brew "watchman"
 brew "wget"
 # Linter for YAML files
 brew "yamllint"
-# JavaScript package manager
-brew "yarn"
 # Fork of youtube-dl with additional features and fixes
 brew "yt-dlp"
 # Fish-like fast/unobtrusive autosuggestions for zsh
@@ -153,7 +151,6 @@ mas "1Password for Safari", id: 1569813296
 mas "Cardhop", id: 1290358394
 mas "Fantastical", id: 975937182
 mas "GarageBand", id: 682658836
-mas "Hush", id: 1544743900
 mas "In Your Face", id: 1476964367
 mas "Ivory", id: 6444602274
 mas "Keynote", id: 409183694
