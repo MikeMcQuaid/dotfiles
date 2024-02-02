@@ -105,6 +105,7 @@ if quiet_which brew; then
   alias homebrew="${HOMEBREW_PREFIX}/bin/brew"
   alias workbrew='/opt/workbrew/bin/brew'
   alias workbrewdo='sudo --set-home --preserve-env --user=workbrew --'
+  alias workbrewpermissions='sudo chown -R workbrew /opt/homebrew; sudo chmod -R g+w /opt/homebrew; sudo chmod -R g-w /opt/homebrew/var'
   alias youtube-dl='yt-dlp'
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
