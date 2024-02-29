@@ -22,6 +22,10 @@ brew "boost"
 brew "cmake"
 # Command-line tool for DigitalOcean
 brew "doctl"
+# Disk Usage/Free Utility - a better 'df' alternative
+brew "duf"
+# More intuitive version of du in rust
+brew "dust"
 # Modern, maintained replacement for ls
 brew "eza"
 # Simple, fast and user-friendly alternative to find
