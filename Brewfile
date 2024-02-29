@@ -136,6 +136,8 @@ cask "grammarly"
 cask "keepingyouawake"
 # Orchestration with Kubernetes on Apple
 cask "orka"
+# Automatically hides or quits apps after periods of inactivity
+cask "quitter"
 # Utility to resize and position application windows
 cask "sizeup"
 # Virtual machines UI using QEMU
