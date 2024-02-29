@@ -20,8 +20,6 @@ brew "bat"
 brew "boost"
 # Cross-platform make
 brew "cmake"
-# In-depth comparison of files, archives, and directories
-brew "diffoscope"
 # Command-line tool for DigitalOcean
 brew "doctl"
 # Modern, maintained replacement for ls
@@ -38,8 +36,6 @@ brew "git"
 brew "git-delta"
 # GNU version of the tar archiving utility
 brew "gnu-tar"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
@@ -62,8 +58,6 @@ brew "markdownlint-cli"
 brew "mas"
 # High performance, distributed memory object caching system
 brew "memcached", restart_service: true
-# Small build system for use with gyp or CMake
-brew "ninja"
 # Install NodeJS versions
 brew "node-build"
 # Platform built on V8 to build network applications
@@ -130,12 +124,8 @@ cask "font-signika"
 cask "fork"
 # Web browser
 cask "google-chrome"
-# Utility to fix grammar errors and style issues in text
-cask "grammarly"
 # Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
-# Orchestration with Kubernetes on Apple
-cask "orka"
 # Automatically hides or quits apps after periods of inactivity
 cask "quitter"
 # Utility to resize and position application windows
