@@ -40,12 +40,6 @@ bindkey "^v" history-beginning-search-forward
 ZSH_AUTOSUGGESTIONS="$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 [ -f "$ZSH_AUTOSUGGESTIONS" ] && source "$ZSH_AUTOSUGGESTIONS"
 
-# enable direnv (if installed)
-which direnv &>/dev/null && eval "$(direnv hook zsh)"
-
-# enable mcfly (if installed)
-which mcfly &>/dev/null && eval "$(mcfly init zsh)"
-
 # More colours with grc
 # shellcheck disable=SC1090
 GRC_ZSH="$HOMEBREW_PREFIX/etc/grc.zsh"
