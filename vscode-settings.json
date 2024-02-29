@@ -77,7 +77,6 @@
     "workbench.preferredLightColorTheme": "macOS Classic",
     "workbench.preferredDarkColorTheme": "Monokai Dimmed",
     "workbench.colorTheme": "macOS Classic",
-    "terminal.integrated.enableBell": true,
     "git.enableSmartCommit": true,
     "diffEditor.renderSideBySide": false,
     "diffEditor.codeLens": true,
@@ -128,5 +127,9 @@
     "go.toolsManagement.autoUpdate": true,
     "terminal.integrated.tabs.enabled": false,
     "terminal.integrated.enableMultiLinePasteWarning": false,
-    "workbench.editor.tabActionLocation": "left"
+    "workbench.editor.tabActionLocation": "left",
+    "accessibility.signals.terminalBell": {
+        "sound": "on"
+    },
+    "terminal.integrated.enableVisualBell": true
 }
