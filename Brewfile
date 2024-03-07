@@ -40,8 +40,6 @@ brew "git"
 brew "git-delta"
 # GNU version of the tar archiving utility
 brew "gnu-tar"
-# GNU Pretty Good Privacy (PGP) package
-brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Fast linters runner for Go
@@ -70,8 +68,6 @@ brew "node@18"
 brew "node@20"
 # Manage multiple NodeJS versions
 brew "nodenv"
-# Pinentry for GPG on Mac
-brew "pinentry-mac"
 # Optimizer for PNG files
 brew "pngcrush"
 # Object-relational database system

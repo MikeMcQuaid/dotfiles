@@ -72,13 +72,3 @@ HOMEDOTFILES="$HOME/.dotfiles"
 if [ "$DOTFILESDIR" != "$HOMEDOTFILES" ]; then
   ln -sf "$DOTFILESDIR" "$HOMEDOTFILES"
 fi
-
-if [ -n "$CODESPACES" ]; then
-  # Fix up Codespaces permissions
-  chmod 700 /workspaces
-
-  # Don't try to git gc github/github, it happens often and takes ages
-  if [ "$CODESPACE_VSCODE_FOLDER" = "/workspaces/github" ]; then
-    git -C /workspaces/github config gc.auto 0
-  fi
-fi
