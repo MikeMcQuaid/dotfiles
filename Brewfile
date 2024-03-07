@@ -150,8 +150,8 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
 mas "Reeder", id: 1529448980
+mas "Refined GitHub", id: 1519867270
 mas "Slack", id: 803453959
-mas "StopTheMadness", id: 1376402589
 mas "TouchDraw", id: 1580322028
 mas "Vinegar", id: 1591303229
 mas "WhatsApp", id: 1147396723
