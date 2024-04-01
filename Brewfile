@@ -95,7 +95,7 @@ brew "watchman"
 brew "wget"
 # Linter for YAML files
 brew "yamllint"
-# Fork of youtube-dl with additional features and fixes
+# Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
