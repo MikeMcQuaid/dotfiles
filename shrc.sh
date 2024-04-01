@@ -306,3 +306,11 @@ okta-keychain() {
 clearer() {
   tput reset
 }
+
+# Sit/stand desk
+desk_stand() {
+  curl -X POST http://10.0.0.45/button/desk_preset_1/press
+}
+desk_sit() {
+  curl -X POST http://10.0.0.45/button/desk_preset_2/press
+}
