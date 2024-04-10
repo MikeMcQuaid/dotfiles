@@ -240,7 +240,6 @@
 [safe]
 	directory = /opt/homebrew
 	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-aliases
-	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-autoupdate
 	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-bundle
 	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-cask
 	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-cask-fonts
