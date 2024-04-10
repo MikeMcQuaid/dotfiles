@@ -8,7 +8,7 @@ tap "homebrew/core"
 tap "homebrew/formula-analytics"
 tap "homebrew/services"
 tap "homebrew/test-bot"
-tap "workbrew/private", "https://#{ENV.fetch("HOMEBREW_GITHUB_API_TOKEN")}@github.com/Workbrew/homebrew-private"
+tap "workbrew/tap"
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Static checker for GitHub Actions workflow files
