@@ -134,5 +134,6 @@
     "accessibility.signals.terminalBell": {
         "sound": "on"
     },
-    "terminal.integrated.enableVisualBell": true
+    "terminal.integrated.enableVisualBell": true,
+    "github.copilot.editor.enableAutoCompletions": true
 }
