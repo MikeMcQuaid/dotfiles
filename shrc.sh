@@ -92,17 +92,18 @@ if quiet_which brew; then
   export HOMEBREW_BUNDLE_INSTALL_CLEANUP=1
   export HOMEBREW_BUNDLE_DUMP_DESCRIBE=1
   export HOMEBREW_NO_ENV_HINTS=1
-  export HOMEBREW_AUTOREMOVE=1
   export HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS=1
   export HOMEBREW_CLEANUP_MAX_AGE_DAYS=30
-  export HOMEBREW_SORBET_RUNTIME=1
-  export HOMEBREW_RUBY3=1
+  export HOMEBREW_ENFORCE_SBOM=1
 
   add_to_path_end "${HOMEBREW_PREFIX}/Library/Homebrew/shims/gems"
 
   # Specifically want this to expand when defined, not when run.
   # shellcheck disable=SC2139
   alias homebrew="${HOMEBREW_PREFIX}/bin/brew"
+  alias portableruby="${HOMEBREW_PREFIX}/Library/Homebrew/vendor/portable-ruby/current/bin/ruby"
+  alias portablebundle="${HOMEBREW_PREFIX}/Library/Homebrew/vendor/portable-ruby/current/bin/bundle"
+
   alias workbrew='/opt/workbrew/bin/brew'
   alias workbrewdo='sudo --set-home --preserve-env --user=workbrew --'
   alias workbrewpermissions='sudo chown -R workbrew /opt/homebrew; sudo chmod -R g+w /opt/homebrew; sudo chmod -R g-w /opt/homebrew/var'
