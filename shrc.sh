@@ -54,10 +54,12 @@ quiet_which() {
   command -v "$1" >/dev/null
 }
 
-if [[ -n "${MACOS}" ]]; then
+if [[ -n "${MACOS}" ]]
+then
   add_to_path_start "/opt/homebrew/bin"
   add_to_path_start "/opt/workbrew/bin"
-elif [[ -n "${LINUX}" ]]; then
+elif [[ -n "${LINUX}" ]]
+then
   add_to_path_start "/home/linuxbrew/.linuxbrew/bin"
 fi
 
@@ -84,7 +86,8 @@ alias sha256="shasum -a 256"
 alias perlsed="perl -p -e"
 
 # Command-specific stuff
-if quiet_which brew; then
+if quiet_which brew
+then
   eval "$(brew shellenv)"
 
   export HOMEBREW_DEVELOPER=1
@@ -112,40 +115,48 @@ if quiet_which brew; then
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
 fi
 
-if quiet_which delta; then
+if quiet_which delta
+then
   export GIT_PAGER='delta'
 else
   # shellcheck disable=SC2016
   export GIT_PAGER='less -+$LESS -RX'
 fi
 
-if quiet_which eza; then
+if quiet_which eza
+then
   alias ls="eza --classify --group --git"
-elif [[ -n "${MACOS}" ]]; then
+elif [[ -n "${MACOS}" ]]
+then
   alias ls="ls -F"
 else
   alias ls="ls -F --color=auto"
 fi
 
-if quiet_which bat; then
+if quiet_which bat
+then
   export BAT_THEME="ansi"
   alias cat="bat"
   export HOMEBREW_BAT=1
 fi
 
-if quiet_which prettyping; then
+if quiet_which prettyping
+then
   alias ping="prettyping --nolegend"
 fi
 
-if quiet_which dust; then
+if quiet_which dust
+then
   alias du="dust"
 fi
 
-if quiet_which duf; then
+if quiet_which duf
+then
   alias df="duf"
 fi
 
-if quiet_which htop; then
+if quiet_which htop
+then
   alias top="sudo htop"
 fi
 
@@ -153,7 +164,8 @@ fi
 export CLICOLOR=1
 
 # OS-specific configuration
-if [[ -n "${MACOS}" ]]; then
+if [[ -n "${MACOS}" ]]
+then
   export GREP_OPTIONS="--color=auto"
   export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
 
@@ -185,19 +197,21 @@ if [[ -n "${MACOS}" ]]; then
     local path_arg
     local dot_arg
 
-    for arg; do
+    for arg
+    do
       [[ ${arg} =~ "^-" ]] && break
       path_arg="${arg}"
     done
 
     [[ -z "${path_arg}" ]] && dot_arg="."
 
-    command find ${dot_arg} "$@"
+    command find "${dot_arg}" "$@"
   }
 
   # Only run this if it's not already running
   pgrep -fq touchid-enable-pam-sudo || touchid-enable-pam-sudo --quiet
-elif [[ -n "${LINUX}" ]]; then
+elif [[ -n "${LINUX}" ]]
+then
   quiet_which keychain && eval "$(keychain -q --eval --agents ssh id_rsa)"
 
   # Run dircolors if it exists
@@ -208,31 +222,37 @@ elif [[ -n "${LINUX}" ]]; then
 
   alias su="/bin/su -"
   alias open="xdg-open"
-elif [[ -n "${WINDOWS}" ]]; then
+elif [[ -n "${WINDOWS}" ]]
+then
   open() {
     # shellcheck disable=SC2145
     cmd /C"$@"
   }
 fi
 # Run rbenv/nodenv if they exist
-if quiet_which rbenv; then
+if quiet_which rbenv
+then
   shims="$(rbenv root)/shims"
-  if ! [[ -d "${shims}" ]]; then
+  if ! [[ -d "${shims}" ]]
+  then
     rbenv rehash
   fi
   add_to_path_start "${shims}"
 fi
 
-if quiet_which nodenv; then
+if quiet_which nodenv
+then
   shims="$(nodenv root)/shims"
-  if ! [[ -d "${shims}" ]]; then
+  if ! [[ -d "${shims}" ]]
+  then
     nodenv rehash
   fi
   add_to_path_start "${shims}"
 fi
 
 # Set up editor
-if quiet_which code; then
+if quiet_which code
+then
   export EDITOR="code"
   export GIT_EDITOR="${EDITOR} -w"
   export SVN_EDITOR="${GIT_EDITOR}"
@@ -241,7 +261,8 @@ if quiet_which code; then
     local arg
 
     # mkdir/touch any files that don't exist because the `open` hack doesn't work for them.
-    for arg; do
+    for arg
+    do
       [[ -e "${arg}" ]] && break
 
       command mkdir -p "$(dirname "${arg}")"
