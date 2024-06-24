@@ -106,17 +106,16 @@ cask "1password-cli"
 cask "appcleaner"
 # Hard disk backup and cloning utility
 cask "carbon-copy-cloner"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
 # Elgato FACECAM configuration tool
 cask "elgato-camera-hub"
 # Control your Elgato key lights
 cask "elgato-control-center"
 cask "font-abel"
 cask "font-fjalla-one"
-# Variable font designed for display
 cask "font-inter"
-# Monospaced variant of "San Francisco" by Apple
 cask "font-sf-mono"
-# Sans-serif signage typeface with a gentle character
 cask "font-signika"
 # GIT client
 cask "fork"
@@ -142,16 +141,14 @@ mas "Cardhop", id: 1290358394
 mas "Fantastical", id: 975937182
 mas "GarageBand", id: 682658836
 mas "In Your Face", id: 1476964367
-mas "Ivory", id: 6444602274
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
-mas "Reeder", id: 1529448980
 mas "Refined GitHub", id: 1519867270
 mas "Slack", id: 803453959
+mas "StopTheMadness", id: 1376402589
 mas "TouchDraw", id: 1580322028
-mas "Vinegar", id: 1591303229
 mas "WhatsApp", id: 1147396723
 mas "Xcode", id: 497799835
 vscode "aliariff.vscode-erb-beautify"
@@ -161,7 +158,6 @@ vscode "bradlc.vscode-tailwindcss"
 vscode "davidanson.vscode-markdownlint"
 vscode "davidbwaters.macos-modern-theme"
 vscode "dbaeumer.vscode-eslint"
-vscode "eamodio.gitlens"
 vscode "editorconfig.editorconfig"
 vscode "foxundermoon.shell-format"
 vscode "github.codespaces"
@@ -178,16 +174,10 @@ vscode "lorankloeze.ruby-rubocop-revived"
 vscode "manuelpuyol.erb-linter"
 vscode "markis.code-coverage"
 vscode "ms-azuretools.vscode-docker"
-vscode "ms-vscode-remote.remote-containers"
-vscode "ms-vscode-remote.remote-wsl"
-vscode "ms-vscode-remote.vscode-remote-extensionpack"
 vscode "ms-vscode.makefile-tools"
 vscode "msyrus.go-doc"
-vscode "redhat.vscode-commons"
 vscode "redhat.vscode-yaml"
 vscode "shopify.ruby-lsp"
 vscode "sorbet.sorbet-vscode-extension"
-vscode "standard.vscode-standard"
 vscode "stylelint.vscode-stylelint"
 vscode "timonwong.shellcheck"
-vscode "wattenberger.footsteps"
