@@ -69,7 +69,7 @@ brew "nodenv"
 # Optimizer for PNG files
 brew "pngcrush"
 # Object-relational database system
-brew "postgresql@15", restart_service: true
+brew "postgresql@16", restart_service: true
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
 # Install various Ruby versions and implementations
@@ -157,7 +157,6 @@ vscode "ban.spellright"
 vscode "bradlc.vscode-tailwindcss"
 vscode "davidanson.vscode-markdownlint"
 vscode "davidbwaters.macos-modern-theme"
-vscode "dbaeumer.vscode-eslint"
 vscode "editorconfig.editorconfig"
 vscode "foxundermoon.shell-format"
 vscode "github.codespaces"
@@ -179,5 +178,6 @@ vscode "msyrus.go-doc"
 vscode "redhat.vscode-yaml"
 vscode "shopify.ruby-lsp"
 vscode "sorbet.sorbet-vscode-extension"
+vscode "standard.vscode-standard"
 vscode "stylelint.vscode-stylelint"
 vscode "timonwong.shellcheck"
