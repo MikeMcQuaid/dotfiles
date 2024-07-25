@@ -19,9 +19,8 @@ setopt share_history
 # Don't hang up background jobs
 setopt no_hup
 
-# autocorrect command and parameter spelling
+# autocorrect command spelling
 setopt correct
-setopt correctall
 
 # use emacs bindings even with vim as EDITOR
 bindkey -e
@@ -48,8 +47,7 @@ GRC_ZSH="$HOMEBREW_PREFIX/etc/grc.zsh"
 # zsh-specific aliases
 alias zmv="noglob zmv -vW"
 alias rake="noglob rake"
-alias be="nocorrect noglob bundle exec"
-alias brew="nocorrect brew"
+alias be="noglob bundle exec"
 
 # to avoid non-zero exit code
 true
