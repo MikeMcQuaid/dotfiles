@@ -135,5 +135,6 @@
         "sound": "on"
     },
     "terminal.integrated.enableVisualBell": true,
-    "github.copilot.editor.enableAutoCompletions": true
+    "github.copilot.editor.enableAutoCompletions": true,
+    "rubyLsp.formatter": "rubocop"
 }
