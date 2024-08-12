@@ -52,12 +52,6 @@
     "debug.inlineValues": "on",
     "breadcrumbs.enabled": true,
     "git.promptToSaveFilesBeforeCommit": "always",
-    "ruby.useLanguageServer": true,
-    "ruby.lint": {
-        "rubocop": true
-    },
-    "ruby.format": "rubocop",
-    "javascript.format.enable": false,
     "spellright.language": [
         "en_GB",
         "en_US"
@@ -74,7 +68,6 @@
     "git.enableCommitSigning": true,
     "git.fetchOnPull": true,
     "git.openDiffOnClick": false,
-    "gitlens.blame.ignoreWhitespace": true,
     "window.autoDetectColorScheme": true,
     "workbench.preferredLightColorTheme": "MacOS Modern Light - Xcode Default",
     "workbench.preferredDarkColorTheme": "MacOS Modern Dark - Xcode Default",
@@ -82,7 +75,6 @@
     "workbench.productIconTheme": "macos-modern",
     "git.enableSmartCommit": true,
     "diffEditor.renderSideBySide": false,
-    "diffEditor.codeLens": true,
     "terminal.integrated.profiles.linux": {
         "zsh": {
             "path": "zsh"
@@ -94,17 +86,15 @@
         }
     },
     "security.workspace.trust.untrustedFiles": "open",
-    "redhat.telemetry.enabled": true,
     "editor.inlineSuggest.enabled": true,
     "editor.bracketPairColorization.enabled": true,
     "terminal.integrated.scrollback": 8000,
     "terminal.integrated.persistentSessionScrollback": 1000,
     "files.autoSave": "afterDelay",
-    "grammarly.dialect": "british",
     "editor.guides.indentation": true,
     "editor.minimap.enabled": false,
     "debug.allowBreakpointsEverywhere": true,
-    "debug.autoExpandLazyVariables": true,
+    "debug.autoExpandLazyVariables": "on",
     "debug.showBreakpointsInOverviewRuler": true,
     "workbench.editor.enablePreview": false,
     "githubPullRequests.pullBranch": "never",
@@ -113,28 +103,17 @@
         "markdown": true
     },
     "git.openRepositoryInParentFolders": "always",
-    "qttools.useExternalBrowser": true,
-    "qttools.extraSearchDirectories": [
-        "/opt/homebrew/opt/qt/bin",
-    ],
-    "qttools.creator": "/Applications/Qt Creator.app/Contents/MacOS/Qt Creator",
-    "gitlens.advanced.messages": {
-        "suppressRebaseSwitchToTextWarning": true
-    },
-    "cmake.configureOnOpen": false,
-    "ruby.rubocop.useBundler": true,
-    "ruby.rubocop.useServer": true,
     "[dockerfile]": {
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
     "go.toolsManagement.autoUpdate": true,
     "terminal.integrated.tabs.enabled": false,
-    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
     "workbench.editor.tabActionLocation": "left",
     "accessibility.signals.terminalBell": {
         "sound": "on"
     },
     "terminal.integrated.enableVisualBell": true,
     "github.copilot.editor.enableAutoCompletions": true,
-    "rubyLsp.formatter": "rubocop"
+    "rubyLsp.formatter": "rubocop",
 }
