@@ -56,8 +56,6 @@ brew "node"
 brew "markdownlint-cli"
 # Mac App Store command-line interface
 brew "mas"
-# High performance, distributed memory object caching system
-brew "memcached", restart_service: true
 # Install NodeJS versions
 brew "node-build"
 # Platform built on V8 to build network applications
@@ -133,6 +131,8 @@ cask "utm"
 cask "visual-studio-code"
 # Installer for Workbrew Agent
 cask "workbrew"
+# Multiplayer code editor
+cask "zed"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "1Blocker", id: 1365531024
