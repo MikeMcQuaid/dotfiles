@@ -94,7 +94,6 @@
     "editor.guides.indentation": true,
     "editor.minimap.enabled": false,
     "debug.allowBreakpointsEverywhere": true,
-    "debug.autoExpandLazyVariables": "on",
     "debug.showBreakpointsInOverviewRuler": true,
     "workbench.editor.enablePreview": false,
     "githubPullRequests.pullBranch": "never",
