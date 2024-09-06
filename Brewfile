@@ -150,7 +150,7 @@ mas "Slack", id: 803453959
 mas "StopTheMadness", id: 1376402589
 mas "TouchDraw", id: 1580322028
 mas "WhatsApp", id: 1147396723
-mas "Xcode", id: 497799835
+mas "Xcode", id: 497799835 unless File.exist?("/Applications/Xcode-beta.app")
 vscode "aliariff.vscode-erb-beautify"
 vscode "anykeyh.simplecov-vscode"
 vscode "ban.spellright"
