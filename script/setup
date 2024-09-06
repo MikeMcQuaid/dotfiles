@@ -57,8 +57,15 @@ for DOTFILE in *; do
   fi
 
   if [ $UNIX ]; then
-    if [ -L "$HOMEFILE" ] && ! [ -d $DOTFILE ]; then
-      ln -sfv "$DIRFILE" "$HOMEFILE"
+    if ! [ -d "$DOTFILE" ]; then
+      if [ -L "$HOMEFILE" ]; then
+        ln -sf "$DIRFILE" "$HOMEFILE"
+      else
+        ln -svf "$DIRFILE" "$HOMEFILE"
+      fi
+    elif [ -L "$HOMEFILE" ]; then
+      rm -r "$HOMEFILE" 2>/dev/null
+      ln -s "$DIRFILE" "$HOMEFILE"
     else
       rm -rv "$HOMEFILE" 2>/dev/null
       ln -sv "$DIRFILE" "$HOMEFILE"
