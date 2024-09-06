@@ -1,7 +1,7 @@
 #!/bin/sh
 # Run by Strap after installing Brewfile dependencies
 
-cd $(dirname $0)/..
+cd "$(dirname "$0")/.." || exit
 
 # Close terminal windows on successful exit code
 /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.Terminal.plist -c \
@@ -20,4 +20,6 @@ fi
 bin/touchid-enable-pam-sudo
 
 # Ensure auto-update is always enabled
-sudo defaults write /Library/Preferences/com.apple.commerce.plist AutoUpdate 1
+if [ "$(defaults read /Library/Preferences/com.apple.commerce.plist AutoUpdate)" != "1" ]; then
+  sudo defaults write /Library/Preferences/com.apple.commerce.plist AutoUpdate 1
+fi
