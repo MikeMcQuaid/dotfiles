@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Run by Strap after installing Brewfile dependencies
 
 cd "$(dirname "$0")/.." || exit
@@ -9,15 +9,25 @@ cd "$(dirname "$0")/.." || exit
 
 # Setup my home directory how I like it
 mkdir -pv ~/OSS ~/Workbrew
-ln -vsf "$(brew --repository)" ~/OSS/Homebrew
-ln -vsf "$(pwd -P)" ~/OSS/dotfiles
+if ! [ -d ~/OSS/Homebrew ]; then
+  ln -vsf "$(brew --repository)" ~/OSS/Homebrew
+fi
+if ! [ -d ~/OSS/dotfiles ]; then
+  ln -vsf "$(pwd -P)" ~/OSS/dotfiles
+fi
 
 # Use ZSH as my default Shell
 if [ "$SHELL" != "/bin/zsh" ]; then
   chsh -s /bin/zsh mike
 fi
 
-bin/touchid-enable-pam-sudo
+# Enable Touch ID for sudo
+bin/touchid-enable-pam-sudo --quiet
+
+# Add GitHub credentials if missing
+if command -v "gh" >/dev/null && ! gh auth token &>/dev/null; then
+  gh auth login --git-protocol https --hostname github.com --web
+fi
 
 # Ensure auto-update is always enabled
 if [ "$(defaults read /Library/Preferences/com.apple.commerce.plist AutoUpdate)" != "1" ]; then
