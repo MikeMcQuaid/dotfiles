@@ -6,7 +6,8 @@ for FILENAME in $(git ls-files --modified --others); do
   MESSAGE="$(echo "$FILENAME" | sed -e 's|^Library/Homebrew/||' \
     -e 's|^Formula/||' \
     -e 's|^Casks/||' \
-    -e 's|^[a-z]/||' \
+    -e 's|^[0-9a-z]/||' \
+    -e 's|^font/\(font-[0-9a-z]/\)\{0,1\}||' \
     -e 's|^lib/||' \
     -e 's/\.rb//' \
     -e 's/$/: /')"
