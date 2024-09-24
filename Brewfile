@@ -7,7 +7,6 @@ tap "homebrew/formula-analytics"
 tap "homebrew/portable-ruby"
 tap "homebrew/services"
 tap "homebrew/test-bot"
-tap "workbrew/tap"
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Static checker for GitHub Actions workflow files
@@ -129,8 +128,6 @@ cask "sizeup"
 cask "utm"
 # Open-source code editor
 cask "visual-studio-code"
-# Installer for Workbrew Agent
-cask "workbrew"
 # Multiplayer code editor
 cask "zed"
 # Video communication and virtual meeting platform
