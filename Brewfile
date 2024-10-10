@@ -105,6 +105,8 @@ cask "appcleaner"
 cask "carbon-copy-cloner"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+# Write, edit, and chat about your code with AI
+cask "cursor"
 # Elgato FACECAM configuration tool
 cask "elgato-camera-hub"
 # Control your Elgato key lights

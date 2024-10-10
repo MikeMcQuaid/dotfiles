@@ -17,10 +17,13 @@ uname -s | grep -q "_NT-" && export WINDOWS=1
 
 if [ "$MACOS" ]; then
   VSCODE="$HOME/Library/Application Support/Code/User"
+  CURSOR="$HOME/Library/Application Support/Cursor/User"
 elif [ "$LINUX" ]; then
   VSCODE="$HOME/.config/Code/User"
+  CURSOR="$HOME/.config/Cursor/User"
 elif [ "$WINDOWS" ]; then
   VSCODE="$APPDATA/Code/User"
+  CURSOR="$APPDATA/Cursor/User"
 fi
 
 for DOTFILE in *; do
@@ -40,6 +43,16 @@ for DOTFILE in *; do
   echo "$DOTFILE" | grep -q 'vscode-settings' &&
     HOMEFILE="$VSCODE/settings.json" &&
     mkdir -p "$VSCODE"
+
+  # Fixup Cursor settings path
+  echo "$DOTFILE" | grep -q 'cursor-settings' &&
+    HOMEFILE="$CURSOR/settings.json" &&
+    mkdir -p "$CURSOR"
+
+  # Fixup Cursor keybindings path
+  echo "$DOTFILE" | grep -q 'vscode-keybindings' &&
+    HOMEFILE="$CURSOR/keybindings.json" &&
+    mkdir -p "$CURSOR"
 
   # Remove .sh extensions
   echo "$DOTFILE" | grep -q '\.sh' &&

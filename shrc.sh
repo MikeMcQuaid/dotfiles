@@ -158,22 +158,8 @@ if [[ -n "${MACOS}" ]]; then
   export GREP_OPTIONS="--color=auto"
   export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
 
-  add_to_path_end "${HOMEBREW_PREFIX}/opt/git/share/git-core/contrib/diff-highlight"
-  add_to_path_end "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
-  alias fork="/Applications/Fork.app/Contents/Resources/fork_cli"
-
   alias locate="mdfind -name"
   alias finder-hide="setfile -a V"
-
-  # Load GITHUB_TOKEN from macOS keychain
-  export GITHUB_TOKEN=$(
-    printf "protocol=https\\nhost=github.com\\n" |
-      git credential fill |
-      perl -lne '/password=(gho_.+)/ && print "$1"'
-  )
-  export HOMEBREW_GITHUB_API_TOKEN="${GITHUB_TOKEN}"
-  export JEKYLL_GITHUB_TOKEN="${GITHUB_TOKEN}"
 
   # output what's listening on the supplied port
   on-port() {
@@ -215,6 +201,7 @@ elif [[ -n "${WINDOWS}" ]]; then
     cmd /C"$@"
   }
 fi
+
 # Run rbenv/nodenv if they exist
 if quiet_which rbenv; then
   shims="$(rbenv root)/shims"
@@ -232,27 +219,18 @@ if quiet_which nodenv; then
   add_to_path_start "${shims}"
 fi
 
+# Load GITHUB_TOKEN from gh
+if quiet_which gh; then
+  export GITHUB_TOKEN="$(gh auth token)"
+  export HOMEBREW_GITHUB_API_TOKEN="${GITHUB_TOKEN}"
+  export JEKYLL_GITHUB_TOKEN="${GITHUB_TOKEN}"
+fi
+
 # Set up editor
-if quiet_which code
-then
+if quiet_which code; then
   export EDITOR="code"
   export GIT_EDITOR="${EDITOR} -w"
   export SVN_EDITOR="${GIT_EDITOR}"
-
-  code() {
-    local arg
-
-    # mkdir/touch any files that don't exist because the `open` hack doesn't work for them.
-    for arg
-    do
-      [[ -e "${arg}" ]] && break
-
-      command mkdir -p "$(dirname "${arg}")"
-      touch "${arg}"
-    done
-
-    open -b "com.microsoft.VSCode" "$@"
-  }
 
   # Edit Rails credentials in VSCode
   rails-credentials-edit-production() {

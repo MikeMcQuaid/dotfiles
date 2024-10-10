@@ -1,0 +1,125 @@
+{
+    "editor.fontFamily": "'SF Mono', Monaco, Consolas, monospace",
+    "editor.tabSize": 2,
+    "editor.fontWeight": 500,
+    "window.titleBarStyle": "native",
+    "window.nativeTabs": true,
+    "workbench.editor.showIcons": false,
+    "problems.decorations.enabled": false,
+    "editor.renderWhitespace": "all",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 118,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveTimeout": 5000,
+    "editor.formatOnType": true,
+    "editor.renderLineHighlight": "none",
+    "editor.glyphMargin": false,
+    "editor.selectionHighlight": false,
+    "editor.find.globalFindClipboard": true,
+    "editor.renderControlCharacters": true,
+    "editor.suggest.localityBonus": true,
+    "editor.suggestSelection": "recentlyUsedByPrefix",
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+    },
+    "editor.rulers": [
+        80,
+        118
+    ],
+    "editor.scrollBeyondLastLine": false,
+    "editor.showUnused": false,
+    "editor.tabCompletion": "on",
+    "workbench.editor.tabCloseButton": "left",
+    "workbench.startupEditor": "none",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.closeOnFileDelete": false,
+    "workbench.editor.revealIfOpen": true,
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.fontAliasing": "auto",
+    "window.restoreWindows": "all",
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "search.globalFindClipboard": false,
+    "search.smartCase": true,
+    "debug.inlineValues": "on",
+    "breadcrumbs.enabled": true,
+    "git.promptToSaveFilesBeforeCommit": "always",
+    "spellright.language": [
+        "en_GB",
+        "en_US"
+    ],
+    "spellright.groupDictionaries": false,
+    "spellright.addToSystemDictionary": true,
+    "search.runInExtensionHost": true,
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext",
+        "git-commit"
+    ],
+    "git.enableCommitSigning": true,
+    "git.fetchOnPull": true,
+    "git.openDiffOnClick": false,
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredLightColorTheme": "MacOS Modern Light - Xcode Default",
+    "workbench.preferredDarkColorTheme": "MacOS Modern Dark - Xcode Default",
+    "workbench.colorTheme": "MacOS Modern Light - Xcode Default",
+    "workbench.productIconTheme": "macos-modern",
+    "git.enableSmartCommit": true,
+    "diffEditor.renderSideBySide": false,
+    "terminal.integrated.profiles.linux": {
+        "zsh": {
+            "path": "zsh"
+        }
+    },
+    "terminal.integrated.profiles.osx": {
+        "zsh": {
+            "path": "zsh"
+        }
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.inlineSuggest.enabled": true,
+    "editor.bracketPairColorization.enabled": true,
+    "terminal.integrated.scrollback": 8000,
+    "terminal.integrated.persistentSessionScrollback": 1000,
+    "files.autoSave": "afterDelay",
+    "editor.guides.indentation": true,
+    "editor.minimap.enabled": false,
+    "debug.allowBreakpointsEverywhere": true,
+    "debug.showBreakpointsInOverviewRuler": true,
+    "workbench.editor.enablePreview": false,
+    "githubPullRequests.pullBranch": "never",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
+    },
+    "git.openRepositoryInParentFolders": "always",
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    "go.toolsManagement.autoUpdate": true,
+    "terminal.integrated.tabs.enabled": false,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "workbench.editor.tabActionLocation": "left",
+    "accessibility.signals.terminalBell": {
+        "sound": "on"
+    },
+    "terminal.integrated.enableVisualBell": true,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "rubyLsp.formatter": "rubocop",
+    "cursor.cpp.disabledLanguages": [
+        "plaintext",
+        "scminput"
+    ],
+    "workbench.panel.defaultLocation": "right",
+    "terminal.integrated.sendKeybindingsToShell": true
+}
