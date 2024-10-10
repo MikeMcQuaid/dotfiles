@@ -7,56 +7,56 @@ else
   SCRIPTSETUP="$0"
 fi
 
-DOTFILESDIRREL=$(dirname $SCRIPTSETUP)
-cd $DOTFILESDIRREL/..
+DOTFILESDIRREL=$(dirname "$SCRIPTSETUP")
+cd "$DOTFILESDIRREL"/.. || exit
 DOTFILESDIR=$(pwd -P)
 
 [ $(uname -s) = "Darwin" ] && export MACOS=1 && export UNIX=1
 [ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
 
-if [ $MACOS ]; then
+if [ "$MACOS" ]; then
   VSCODE="$HOME/Library/Application Support/Code/User"
-elif [ $LINUX ]; then
+elif [ "$LINUX" ]; then
   VSCODE="$HOME/.config/Code/User"
-elif [ $WINDOWS ]; then
+elif [ "$WINDOWS" ]; then
   VSCODE="$APPDATA/Code/User"
 fi
 
 for DOTFILE in *; do
   HOMEFILE="$HOME/.$DOTFILE"
-  [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
+  [ -d "$DOTFILE" ] && DOTFILE="$DOTFILE/"
   DIRFILE="$DOTFILESDIR/$DOTFILE"
 
   # Don't mess with Codespaces' default GPG/SSH setup.
   if [ -n "$CODESPACES" ]; then
-    echo $DOTFILE | egrep -q '^(gnupg|ssh)/' && continue
+    echo "$DOTFILE" | egrep -q '^(gnupg|ssh)/' && continue
   fi
 
   # Don't try to install documentation/script files
-  echo $DOTFILE | egrep -q '(^script/$|\.txt$|\.md$)' && continue
+  echo "$DOTFILE" | egrep -q '(^script/$|\.txt$|\.md$)' && continue
 
   # Fixup VSCode settings path
-  echo $DOTFILE | grep -q 'vscode-settings' &&
+  echo "$DOTFILE" | grep -q 'vscode-settings' &&
     HOMEFILE="$VSCODE/settings.json" &&
     mkdir -p "$VSCODE"
 
   # Remove .sh extensions
-  echo $DOTFILE | grep -q '\.sh' &&
-    HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
+  echo "$DOTFILE" | grep -q '\.sh' &&
+    HOMEFILE="$HOME/.$(echo "$DOTFILE" | sed -e 's/\.sh//')"
 
   # Fixup RuboCop configuration (if possible)
-  if echo $DOTFILE | grep -q 'rubocop-work.yml'; then
+  if echo "$DOTFILE" | grep -q 'rubocop-work.yml'; then
     HOMEWORK="$HOME/Workbrew"
-    [ -d $HOMEWORK ] || continue
+    [ -d "$HOMEWORK" ] || continue
     HOMEFILE="$HOMEWORK/.rubocop.yml"
-  elif echo $DOTFILE | grep -q 'rubocop-oss.yml'; then
+  elif echo "$DOTFILE" | grep -q 'rubocop-oss.yml'; then
     HOMEOSS="$HOME/OSS"
-    [ -d $HOMEOSS ] || continue
+    [ -d "$HOMEOSS" ] || continue
     HOMEFILE="$HOMEOSS/.rubocop.yml"
   fi
 
-  if [ $UNIX ]; then
+  if [ "$UNIX" ]; then
     if ! [ -d "$DOTFILE" ]; then
       if [ -L "$HOMEFILE" ]; then
         ln -sf "$DIRFILE" "$HOMEFILE"
