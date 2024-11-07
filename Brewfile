@@ -61,6 +61,8 @@ brew "node-build"
 brew "node@18"
 # Platform built on V8 to build network applications
 brew "node@20"
+# Platform built on V8 to build network applications
+brew "node@22"
 # Manage multiple NodeJS versions
 brew "nodenv"
 # Optimizer for PNG files
@@ -136,8 +138,6 @@ cask "zed"
 cask "zoom"
 mas "1Blocker", id: 1365531024
 mas "1Password for Safari", id: 1569813296
-mas "Cardhop", id: 1290358394
-mas "Fantastical", id: 975937182
 mas "GarageBand", id: 682658836
 mas "In Your Face", id: 1476964367
 mas "Keynote", id: 409183694
