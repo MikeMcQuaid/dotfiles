@@ -56,11 +56,11 @@ quiet_which() {
 
 if [[ -n "${MACOS}" ]]; then
   add_to_path_start "/opt/homebrew/bin"
-  add_to_path_start "/opt/workbrew/bin"
 elif [[ -n "${LINUX}" ]]; then
   add_to_path_start "/home/linuxbrew/.linuxbrew/bin"
 fi
 
+add_to_path_start "/opt/workbrew/bin"
 add_to_path_start "/usr/local/bin"
 add_to_path_end "${HOME}/.dotfiles/bin"
 
@@ -94,7 +94,6 @@ if quiet_which brew; then
   export HOMEBREW_NO_ENV_HINTS=1
   export HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS=1
   export HOMEBREW_CLEANUP_MAX_AGE_DAYS=30
-  export HOMEBREW_ENFORCE_SBOM=1
   export HOMEBREW_NO_VERIFY_ATTESTATIONS=1
 
   add_to_path_end "${HOMEBREW_PREFIX}/Library/Homebrew/shims/gems"
@@ -157,6 +156,7 @@ export CLICOLOR=1
 if [[ -n "${MACOS}" ]]; then
   export GREP_OPTIONS="--color=auto"
   export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
+  export HOMEBREW_ENFORCE_SBOM=1
 
   alias locate="mdfind -name"
   alias finder-hide="setfile -a V"
