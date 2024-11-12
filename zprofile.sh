@@ -2,6 +2,7 @@
 [ -n "$SHPROFILE_LOADED" ] || source ~/.shprofile
 
 # Enable completions and allow insecure loading
+skip_global_compinit=1
 autoload -U compinit && compinit -u
 
 if [ -n "$HOMEBREW_PREFIX" ]; then
