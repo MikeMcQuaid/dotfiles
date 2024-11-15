@@ -95,6 +95,8 @@ brew "wget"
 brew "yamllint"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
+# Find security issues in GitHub Actions setups
+brew "zizmor"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
 # Password manager that keeps all passwords secure behind one password
