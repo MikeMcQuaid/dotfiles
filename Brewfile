@@ -115,11 +115,10 @@ cask "cursor"
 cask "elgato-camera-hub"
 # Control your Elgato key lights
 cask "elgato-control-center"
-cask "font-abel"
-cask "font-fjalla-one"
-cask "font-inter"
 cask "font-sf-mono"
 cask "font-signika"
+cask "font-skranji"
+cask "font-space-mono"
 # GIT client
 cask "fork"
 # Web browser
