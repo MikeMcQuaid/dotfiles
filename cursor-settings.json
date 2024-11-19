@@ -114,4 +114,6 @@
     "terminal.integrated.enableVisualBell": true,
     "github.copilot.editor.enableAutoCompletions": true,
     "rubyLsp.formatter": "rubocop",
+    "cursor.cmdk.useThemedDiffBackground": true,
+    "cursor.diffs.useCharacterLevelDiffs": true,
 }
