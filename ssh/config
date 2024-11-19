@@ -1,4 +1,4 @@
-Host github.com
+Host github.com gitlab.com
 	User git
 
 Host *
