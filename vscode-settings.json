@@ -114,5 +114,5 @@
     },
     "terminal.integrated.enableVisualBell": true,
     "github.copilot.editor.enableAutoCompletions": true,
-    "rubyLsp.formatter": "rubocop",
+    "rubyLsp.formatter": "rubocop"
 }
