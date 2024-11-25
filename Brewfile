@@ -87,6 +87,8 @@ brew "ruby@3.2"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
+# Syntax-aware linter for prose
+brew "vale"
 # Watch files and take action when they change
 brew "watchman"
 # Internet file retriever
