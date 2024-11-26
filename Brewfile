@@ -149,10 +149,8 @@ mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
 mas "Refined GitHub", id: 1519867270
 mas "Slack", id: 803453959
-mas "StopTheMadness", id: 1376402589
 mas "TouchDraw", id: 1580322028
 mas "WhatsApp", id: 310633997
-mas "Xcode", id: 497799835 unless File.exist?("/Applications/Xcode-beta.app")
 vscode "aliariff.vscode-erb-beautify"
 vscode "anykeyh.simplecov-vscode"
 vscode "ban.spellright"
