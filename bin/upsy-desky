@@ -9,22 +9,24 @@ usage() {
   exit 1
 }
 
-[ -z "$COMMAND" ] && usage
+[[ -z "${COMMAND}" ]] && usage
 
-POWER_TYPE="$(pmset -g batt | grep -Eo '(Battery|AC) Power')"
-[ "${POWER_TYPE}" != "AC Power" ] && exit 0
+POWER_TYPE="$(/usr/bin/pmset -g batt | grep -Eo '(Battery|AC) Power')"
+[[ "${POWER_TYPE}" != "AC Power" ]] && exit 0
 
-LID_UP="$(ioreg -r -k AppleClamshellState | grep AppleClamshellState | awk '{print $4}')"
-[ "${LID_UP}" != "No" ] && exit 0
+LID_UP="$(/usr/sbin/ioreg -r -k AppleClamshellState | grep AppleClamshellState | awk '{print $4}')"
+[[ "${LID_UP}" != "No" ]] && exit 0
 
 DESK_IP_ADDRESS="10.0.0.45"
 
-if [ "$COMMAND" == "up" ]; then
+if [[ "${COMMAND}" == "up" ]]
+then
   DESK_PRESS_URL="http://${DESK_IP_ADDRESS}/button/desk_preset_1/press"
-elif [ "$COMMAND" == "down" ]; then
+elif [[ "${COMMAND}" == "down" ]]
+then
   DESK_PRESS_URL="http://${DESK_IP_ADDRESS}/button/desk_preset_2/press"
 else
   usage
 fi
 
-curl -X POST "${DESK_PRESS_URL}" &>/dev/null
+/usr/bin/curl -X POST "${DESK_PRESS_URL}" &>/dev/null
