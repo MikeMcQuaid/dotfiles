@@ -222,6 +222,7 @@ fi
 # Load GITHUB_TOKEN from gh
 if quiet_which gh; then
   export GITHUB_TOKEN="$(gh auth token)"
+  export GH_TOKEN="${GITHUB_TOKEN}"
   export HOMEBREW_GITHUB_API_TOKEN="${GITHUB_TOKEN}"
   export JEKYLL_GITHUB_TOKEN="${GITHUB_TOKEN}"
 fi
