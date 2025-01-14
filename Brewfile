@@ -9,6 +9,8 @@ tap "homebrew/services"
 tap "homebrew/test-bot"
 # Search tool like grep, but optimized for programmers
 brew "ack"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -68,7 +70,7 @@ brew "nodenv"
 # Optimizer for PNG files
 brew "pngcrush"
 # Object-relational database system
-brew "postgresql@16", restart_service: true
+brew "postgresql@16", restart_service: :changed
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
 # Install various Ruby versions and implementations
@@ -83,8 +85,8 @@ brew "ruby"
 brew "ruby@3.1"
 # Powerful, clean, object-oriented scripting language
 brew "ruby@3.2"
-# Static analysis and lint tool, for (ba)sh scripts
-brew "shellcheck"
+# Powerful, clean, object-oriented scripting language
+brew "ruby@3.3"
 # Autoformat shell script source code
 brew "shfmt"
 # Syntax-aware linter for prose
