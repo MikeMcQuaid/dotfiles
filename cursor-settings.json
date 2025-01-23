@@ -116,4 +116,9 @@
     "rubyLsp.formatter": "rubocop",
     "cursor.cmdk.useThemedDiffBackground": true,
     "cursor.diffs.useCharacterLevelDiffs": true,
+    "[properties]": {
+        "editor.formatOnSave": false,
+        "editor.formatOnPaste": false,
+        "editor.formatOnType": false
+    }
 }

@@ -114,5 +114,10 @@
     },
     "terminal.integrated.enableVisualBell": true,
     "github.copilot.editor.enableAutoCompletions": true,
-    "rubyLsp.formatter": "rubocop"
+    "rubyLsp.formatter": "rubocop",
+    "[properties]": {
+        "editor.formatOnSave": false,
+        "editor.formatOnPaste": false,
+        "editor.formatOnType": false
+    }
 }
