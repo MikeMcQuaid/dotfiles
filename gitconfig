@@ -3,8 +3,8 @@
 	name = Mike McQuaid
 	# Email used in commit messages.
 	email = mike@mikemcquaid.com
-	# Sign Git commits with SSH key when possible.
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID3dbEVCqBzPGwz7v6vWfn4uM/of0Hpo8Ql9by+6q3nO
+[include]
+	path = ~/.gitconfig.local
 [github]
 	# GitHub username for command-line tools.
 	user = MikeMcQuaid
@@ -205,14 +205,6 @@
 [commit]
 	# Show the diff as a comment in the commit message template.
 	verbose = true
-	# Sign commits with GPG
-	gpgsign = true
-[gpg]
-	# Do GPG signing with SSH keys
-	format = ssh
-[gpg "ssh"]
-  # Let 1Password act as GPG agent
-	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 [tag]
 	# Sort tags by newest first
 	sort = -version:refname

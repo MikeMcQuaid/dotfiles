@@ -11,8 +11,8 @@ DOTFILESDIRREL=$(dirname "$SCRIPTSETUP")
 cd "$DOTFILESDIRREL"/.. || exit
 DOTFILESDIR=$(pwd -P)
 
-[ $(uname -s) = "Darwin" ] && export MACOS=1 && export UNIX=1
-[ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
+[ "$(uname -s)" = "Darwin" ] && export MACOS=1 && export UNIX=1
+[ "$(uname -s)" = "Linux" ] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
 
 if [ "$MACOS" ]; then
@@ -31,13 +31,19 @@ for DOTFILE in *; do
   [ -d "$DOTFILE" ] && DOTFILE="$DOTFILE/"
   DIRFILE="$DOTFILESDIR/$DOTFILE"
 
-  # Don't mess with Codespaces' default GPG/SSH setup.
+  # Don't mess with Codespaces' default SSH setup.
   if [ -n "$CODESPACES" ]; then
-    echo "$DOTFILE" | egrep -q '^(gnupg|ssh)/' && continue
+    echo "$DOTFILE" | grep -E -q '^ssh/' && continue
   fi
 
   # Don't try to install documentation/script files
-  echo "$DOTFILE" | egrep -q '(^script/$|\.txt$|\.md$)' && continue
+  echo "$DOTFILE" | grep -E -q '(^script/$|\.txt$|\.md$)' && continue
+
+  # Only install gitconfig.local.macos on macOS
+  if echo "$DOTFILE" | grep -q 'gitconfig.local.macos'; then
+    [ -z "$MACOS" ] && continue
+    HOMEFILE="$HOME/.gitconfig.local"
+  fi
 
   # Fixup VSCode settings path
   echo "$DOTFILE" | grep -q 'vscode-settings' &&
