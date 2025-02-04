@@ -60,8 +60,6 @@ brew "mas"
 # Install NodeJS versions
 brew "node-build"
 # Platform built on V8 to build network applications
-brew "node@18"
-# Platform built on V8 to build network applications
 brew "node@20"
 # Platform built on V8 to build network applications
 brew "node@22"
