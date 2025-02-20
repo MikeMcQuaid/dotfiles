@@ -241,3 +241,4 @@
 	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-services
 	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-test-bot
 	directory = /opt/homebrew/Library/Taps/workbrew/homebrew-tap
+	directory = /opt/homebrew/Library/Taps/workbrew/homebrew-private
