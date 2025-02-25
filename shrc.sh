@@ -95,6 +95,7 @@ if quiet_which brew; then
   export HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS=1
   export HOMEBREW_CLEANUP_MAX_AGE_DAYS=30
   export HOMEBREW_WORKBREW_LOCKFILE=1
+  export HOMEBREW_UPGRADE_GREEDY_CASKS="cursor"
 
   add_to_path_end "${HOMEBREW_PREFIX}/Library/Homebrew/shims/gems"
 
