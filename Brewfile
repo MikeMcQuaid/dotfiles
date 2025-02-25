@@ -7,6 +7,7 @@ tap "homebrew/formula-analytics"
 tap "homebrew/portable-ruby"
 tap "homebrew/services"
 tap "homebrew/test-bot"
+tap "workbrew/private"
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Static analysis and lint tool, for (ba)sh scripts
@@ -101,6 +102,8 @@ brew "yt-dlp"
 brew "zizmor"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
+# A simple test formula for the workbrew-private-tap
+brew "workbrew/private/workbrew-private-tap-test"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line interface for 1Password
