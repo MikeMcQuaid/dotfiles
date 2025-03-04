@@ -17,12 +17,18 @@
 [push]
 	# Push to the set upstream branch being tracked by default.
 	default = simple
+	# Automatically create remotes if they don't exist.
+	autoSetupRemote = true
 [pull]
 	# Default to rebasing on pulls
 	rebase = true
 [fetch]
 	# Always prune when fetching (and pulling).
 	prune = true
+	# Always prune tags when fetching.
+	pruneTags = true
+	# Always fetch all remotes.
+	all = true
 	# Write commit graph to speed up some repositories.
 	writeCommitGraph = true
 [gc]
@@ -31,6 +37,8 @@
 [rerere]
 	# Store and re-use manual conflict resolution changes.
 	enabled = true
+	# Automatically re-apply resolutions if seen again
+	autoupdate = true
 [core]
 	# Exclude everything this file. Used for general exclusions.
 	excludesfile = ~/.gitignore
@@ -161,12 +169,19 @@
 	# HTTP server.
 	httpd = webrick
 [diff]
-	# Use the slower but better patience diff algorithm
-	algorithm = patience
+	# Use the better histogram diff algorithm
+	algorithm = histogram
 	# Use new diff algorithm to make e.g. function diffs look better.
 	compactionheuristic = true
 	# Use a different colour for moved lines than added/modified ones
-	colorMoved = default
+	colorMoved = true
+	# Use more Git-internals specific prefixes for diff hunks
+	mnemonicPrefix = true
+	# Detect if a file has been renamed
+	renames = true
+[grep]
+	# Use Perl regexes for grep
+	patternType = perl
 [diff "xml"]
 	textconv = xmllint --format --recover
 [mergetool]
@@ -205,6 +220,9 @@
 [commit]
 	# Show the diff as a comment in the commit message template.
 	verbose = true
+[branch]
+	# Sort branches by committer date.
+	sort = -committerdate
 [tag]
 	# Sort tags by newest first
 	sort = -version:refname
