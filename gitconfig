@@ -25,8 +25,6 @@
 [fetch]
 	# Always prune when fetching (and pulling).
 	prune = true
-	# Always prune tags when fetching.
-	pruneTags = true
 	# Always fetch all remotes.
 	all = true
 	# Write commit graph to speed up some repositories.
