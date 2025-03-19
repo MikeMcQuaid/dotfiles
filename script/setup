@@ -1,100 +1,120 @@
 #!/bin/sh
 # Install all dotfiles into the home directory
 
-if [ -L "$0" ]; then
+if [[ -L "$0" ]]
+then
   SCRIPTSETUP="$(readlink "$0")"
 else
   SCRIPTSETUP="$0"
 fi
 
-DOTFILESDIRREL=$(dirname "$SCRIPTSETUP")
-cd "$DOTFILESDIRREL"/.. || exit
+DOTFILESDIRREL=$(dirname "${SCRIPTSETUP}")
+cd "${DOTFILESDIRREL}"/.. || exit
 DOTFILESDIR=$(pwd -P)
 
-[ "$(uname -s)" = "Darwin" ] && export MACOS=1 && export UNIX=1
-[ "$(uname -s)" = "Linux" ] && export LINUX=1 && export UNIX=1
+[[ "$(uname -s)" = "Darwin" ]] && export MACOS=1 && export UNIX=1
+[[ "$(uname -s)" = "Linux" ]] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
 
-if [ "$MACOS" ]; then
-  VSCODE="$HOME/Library/Application Support/Code/User"
-  CURSOR="$HOME/Library/Application Support/Cursor/User"
-elif [ "$LINUX" ]; then
-  VSCODE="$HOME/.config/Code/User"
-  CURSOR="$HOME/.config/Cursor/User"
-elif [ "$WINDOWS" ]; then
-  VSCODE="$APPDATA/Code/User"
-  CURSOR="$APPDATA/Cursor/User"
+if [[ -n "${MACOS}" ]]
+then
+  VSCODE="${HOME}/Library/Application Support/Code/User"
+  CURSOR="${HOME}/Library/Application Support/Cursor/User"
+elif [[ -n "${LINUX}" ]]
+then
+  VSCODE="${HOME}/.config/Code/User"
+  CURSOR="${HOME}/.config/Cursor/User"
+elif [[ -n "${WINDOWS}" ]]
+then
+  VSCODE="${APPDATA}/Code/User"
+  CURSOR="${APPDATA}/Cursor/User"
 fi
+ZED="${HOME}/.config/zed/settings.json"
 
-for DOTFILE in *; do
-  HOMEFILE="$HOME/.$DOTFILE"
-  [ -d "$DOTFILE" ] && DOTFILE="$DOTFILE/"
-  DIRFILE="$DOTFILESDIR/$DOTFILE"
+for DOTFILE in *
+do
+  HOMEFILE="${HOME}/.${DOTFILE}"
+  [[ -d "${DOTFILE}" ]] && DOTFILE="${DOTFILE}/"
+  DIRFILE="${DOTFILESDIR}/${DOTFILE}"
 
   # Don't mess with Codespaces' default SSH setup.
-  if [ -n "$CODESPACES" ]; then
-    echo "$DOTFILE" | grep -E -q '^ssh/' && continue
+  if [[ -n "${CODESPACES}" ]]
+  then
+    echo "${DOTFILE}" | grep -E -q '^ssh/' && continue
   fi
 
   # Don't try to install documentation/script files
-  echo "$DOTFILE" | grep -E -q '(^script/$|\.txt$|\.md$)' && continue
+  echo "${DOTFILE}" | grep -E -q '(^script/$|\.txt$|\.md$)' && continue
 
   # Only install gitconfig.local.macos on macOS
-  if echo "$DOTFILE" | grep -q 'gitconfig.local.macos'; then
-    [ -z "$MACOS" ] && continue
-    HOMEFILE="$HOME/.gitconfig.local"
+  if echo "${DOTFILE}" | grep -q 'gitconfig.local.macos'
+  then
+    [[ -z "${MACOS}" ]] && continue
+    HOMEFILE="${HOME}/.gitconfig.local"
   fi
 
   # Fixup VSCode settings path
-  echo "$DOTFILE" | grep -q 'vscode-settings' &&
-    HOMEFILE="$VSCODE/settings.json" &&
-    mkdir -p "$VSCODE"
+  echo "${DOTFILE}" | grep -q 'vscode-settings' &&
+    HOMEFILE="${VSCODE}/settings.json" &&
+    mkdir -p "${VSCODE}"
 
   # Fixup Cursor settings path
-  echo "$DOTFILE" | grep -q 'cursor-settings' &&
-    HOMEFILE="$CURSOR/settings.json" &&
-    mkdir -p "$CURSOR"
+  echo "${DOTFILE}" | grep -q 'cursor-settings' &&
+    HOMEFILE="${CURSOR}/settings.json" &&
+    mkdir -p "${CURSOR}"
 
   # Fixup Cursor keybindings path
-  echo "$DOTFILE" | grep -q 'vscode-keybindings' &&
-    HOMEFILE="$CURSOR/keybindings.json" &&
-    mkdir -p "$CURSOR"
+  echo "${DOTFILE}" | grep -q 'vscode-keybindings' &&
+    HOMEFILE="${CURSOR}/keybindings.json" &&
+    mkdir -p "${CURSOR}"
+
+  # Fixup Zed settings path
+  echo "${DOTFILE}" | grep -q 'zed-settings' &&
+    HOMEFILE="${ZED}/settings.json" &&
+    mkdir -p "${ZED}"
 
   # Remove .sh extensions
-  echo "$DOTFILE" | grep -q '\.sh' &&
-    HOMEFILE="$HOME/.$(echo "$DOTFILE" | sed -e 's/\.sh//')"
+  echo "${DOTFILE}" | grep -q '\.sh' &&
+    HOMEFILE="${HOME}/.$(echo "${DOTFILE}" | sed -e 's/\.sh//')"
 
   # Fixup RuboCop configuration (if possible)
-  if echo "$DOTFILE" | grep -q 'rubocop-work.yml'; then
-    HOMEWORK="$HOME/Workbrew"
-    [ -d "$HOMEWORK" ] || continue
-    HOMEFILE="$HOMEWORK/.rubocop.yml"
-  elif echo "$DOTFILE" | grep -q 'rubocop-oss.yml'; then
-    HOMEOSS="$HOME/OSS"
-    [ -d "$HOMEOSS" ] || continue
-    HOMEFILE="$HOMEOSS/.rubocop.yml"
+  if echo "${DOTFILE}" | grep -q 'rubocop-work.yml'
+  then
+    HOMEWORK="${HOME}/Workbrew"
+    [[ -d "${HOMEWORK}" ]] || continue
+    HOMEFILE="${HOMEWORK}/.rubocop.yml"
+  elif echo "${DOTFILE}" | grep -q 'rubocop-oss.yml'
+  then
+    HOMEOSS="${HOME}/OSS"
+    [[ -d "${HOMEOSS}" ]] || continue
+    HOMEFILE="${HOMEOSS}/.rubocop.yml"
   fi
 
-  if [ "$UNIX" ]; then
-    if ! [ -d "$DOTFILE" ]; then
-      if [ -L "$HOMEFILE" ]; then
-        ln -sf "$DIRFILE" "$HOMEFILE"
+  if [[ -n "${UNIX}" ]]
+  then
+    if ! [[ -d "${DOTFILE}" ]]
+    then
+      if [[ -L "${HOMEFILE}" ]]
+      then
+        ln -sf "${DIRFILE}" "${HOMEFILE}"
       else
-        ln -svf "$DIRFILE" "$HOMEFILE"
+        ln -svf "${DIRFILE}" "${HOMEFILE}"
       fi
-    elif [ -L "$HOMEFILE" ]; then
-      rm -r "$HOMEFILE" 2>/dev/null
-      ln -s "$DIRFILE" "$HOMEFILE"
+    elif [[ -L "${HOMEFILE}" ]]
+    then
+      rm -r "${HOMEFILE}" 2>/dev/null
+      ln -s "${DIRFILE}" "${HOMEFILE}"
     else
-      rm -rv "$HOMEFILE" 2>/dev/null
-      ln -sv "$DIRFILE" "$HOMEFILE"
+      rm -rv "${HOMEFILE}" 2>/dev/null
+      ln -sv "${DIRFILE}" "${HOMEFILE}"
     fi
   else
-    cp -rv "$DIRFILE" "$HOMEFILE"
+    cp -rv "${DIRFILE}" "${HOMEFILE}"
   fi
 done
 
-HOMEDOTFILES="$HOME/.dotfiles"
-if [ "$DOTFILESDIR" != "$HOMEDOTFILES" ]; then
-  ln -sf "$DOTFILESDIR" "$HOMEDOTFILES"
+HOMEDOTFILES="${HOME}/.dotfiles"
+if [[ "${DOTFILESDIR}" != "${HOMEDOTFILES}" ]]
+then
+  ln -sf "${DOTFILESDIR}" "${HOMEDOTFILES}"
 fi
