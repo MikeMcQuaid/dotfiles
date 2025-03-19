@@ -102,8 +102,6 @@ brew "yt-dlp"
 brew "zizmor"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
-# A simple test formula for the workbrew-private-tap
-brew "workbrew/private/workbrew-private-tap-test"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line interface for 1Password
@@ -136,8 +134,6 @@ cask "quitter"
 cask "sizeup"
 # Virtual machines UI using QEMU
 cask "utm"
-# Open-source code editor
-cask "visual-studio-code"
 # Multiplayer code editor
 cask "zed"
 # Video communication and virtual meeting platform
@@ -157,9 +153,11 @@ mas "WhatsApp", id: 310633997
 vscode "aliariff.vscode-erb-beautify"
 vscode "anykeyh.simplecov-vscode"
 vscode "ban.spellright"
+vscode "bierner.markdown-mermaid"
 vscode "bradlc.vscode-tailwindcss"
 vscode "davidanson.vscode-markdownlint"
 vscode "davidbwaters.macos-modern-theme"
+vscode "dbaeumer.vscode-eslint"
 vscode "editorconfig.editorconfig"
 vscode "foxundermoon.shell-format"
 vscode "github.codespaces"
@@ -169,7 +167,6 @@ vscode "github.vscode-github-actions"
 vscode "github.vscode-pull-request-github"
 vscode "golang.go"
 vscode "heybourn.headwind"
-vscode "huacnlee.theme-macos-classic"
 vscode "koichisasada.vscode-rdbg"
 vscode "manuelpuyol.erb-linter"
 vscode "markis.code-coverage"
@@ -182,3 +179,4 @@ vscode "sorbet.sorbet-vscode-extension"
 vscode "standard.vscode-standard"
 vscode "stylelint.vscode-stylelint"
 vscode "timonwong.shellcheck"
+vscode "yzane.markdown-pdf"
