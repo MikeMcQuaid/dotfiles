@@ -15,10 +15,10 @@ brew "shellcheck"
 brew "actionlint"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Collection of portable C++ source libraries
-brew "boost"
 # Cross-platform make
 brew "cmake"
+# Load/unload environment variables based on $PWD
+brew "direnv"
 # Command-line tool for DigitalOcean
 brew "doctl"
 # Disk Usage/Free Utility - a better 'df' alternative
@@ -51,6 +51,8 @@ brew "htop"
 brew "hyperfine"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# YAML Parser
+brew "libyaml"
 # Platform built on V8 to build network applications
 brew "node"
 # CLI for Node.js style checker and lint tool for Markdown files
@@ -127,12 +129,16 @@ cask "fork"
 cask "google-chrome"
 # Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
+# Audiobook manager for Audible users
+cask "openaudible"
 # Automatically hides or quits apps after periods of inactivity
 cask "quitter"
 # Utility to resize and position application windows
 cask "sizeup"
 # Virtual machines UI using QEMU
 cask "utm"
+# Yet another monitor
+cask "yam-display"
 # Multiplayer code editor
 cask "zed"
 # Video communication and virtual meeting platform
