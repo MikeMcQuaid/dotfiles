@@ -109,6 +109,8 @@ if quiet_which brew; then
   alias workbrewdo='sudo --set-home --preserve-env --user=workbrew --'
   alias workbrewpermissions='sudo chown -R workbrew /opt/homebrew; sudo chmod -R g+w /opt/homebrew; sudo chmod -R g-w /opt/homebrew/var'
   alias youtube-dl='yt-dlp'
+  alias bbe="brew bundle exec --"
+  alias ebbe='eval "$(brew bundle env)"'
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
 fi
@@ -285,6 +287,11 @@ trash() {
 # GitHub API shortcut
 github-api-curl() {
   curl -H "Authorization: token ${GITHUB_TOKEN}" "https://api.github.com/$1" | jq .
+}
+
+# GitHub Packages shortcut
+github-packages-curl() {
+  curl -H "Authorization: Bearer QQ==" -H "Accept: application/vnd.oci.image.index.v1+json" "$@" | jq .
 }
 
 # Spit out Okta keychain password
