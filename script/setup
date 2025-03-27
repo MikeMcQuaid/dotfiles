@@ -14,6 +14,7 @@ DOTFILESDIR=$(pwd -P)
 [[ "$(uname -s)" = "Darwin" ]] && export MACOS=1 && export UNIX=1
 [[ "$(uname -s)" = "Linux" ]] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
+[[ -n "$LINUX" ]] && grep -qEi "(Microsoft|WSL)" /proc/version && export WSL=1
 
 if [[ -n "${MACOS}" ]]; then
   VSCODE="${HOME}/Library/Application Support/Code/User"
@@ -103,5 +104,18 @@ done
 HOMEDOTFILES="${HOME}/.dotfiles"
 if [[ "${DOTFILESDIR}" != "${HOMEDOTFILES}" ]]; then
   rm -f "${HOMEDOTFILES}"
-  ln -s "${DOTFILESDIR}" "${HOMEDOTFILES}"
+  ln -sf "${DOTFILESDIR}" "${HOMEDOTFILES}"
+fi
+
+# Setup my home directory how I like it
+mkdir -pv ~/OSS ~/Workbrew
+if command -v "brew" >/dev/null && ! [[ -d ~/OSS/Homebrew ]]; then
+  ln -vsf "$(brew --repository)" ~/OSS/Homebrew
+fi
+if ! [[ -d ~/OSS/dotfiles ]]; then
+  ln -vsf "${DOTFILESDIR}" ~/OSS/dotfiles
+fi
+
+if [[ -n "${LINUX}" ]]; then
+  exec script/linux-after-setup
 fi

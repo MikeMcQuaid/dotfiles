@@ -1,0 +1,28 @@
+#!/bin/bash
+# Run by script/setup on Linux
+
+cd "$(dirname "$0")/.." || exit
+
+# Use ZSH as my default Shell
+if [[ "$SHELL" != "/usr/bin/zsh" ]]; then
+  chsh -s /usr/bin/zsh mike
+fi
+
+# Install stuff from apt-get if needed
+if command -v "apt-get" >/dev/null; then
+  echo "Updating apt-get..."
+  sudo apt-get update
+  if ! command -v "gh" >/dev/null; then
+    sudo apt-get install -y gh
+  fi
+  if [[ -n "$WSL" ]]; then
+    if ! command -v "wslview" >/dev/null; then
+      sudo apt-get install -y wslu
+    fi
+  fi
+fi
+
+# Add GitHub credentials if missing
+if command -v "gh" >/dev/null && ! gh auth token &>/dev/null; then
+  gh auth login --git-protocol https --hostname github.com --web
+fi

@@ -7,15 +7,6 @@ cd "$(dirname "$0")/.." || exit
 /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.Terminal.plist -c \
   "Set 'Window Settings':Basic:shellExitAction 1"
 
-# Setup my home directory how I like it
-mkdir -pv ~/OSS ~/Workbrew
-if ! [ -d ~/OSS/Homebrew ]; then
-  ln -vsf "$(brew --repository)" ~/OSS/Homebrew
-fi
-if ! [ -d ~/OSS/dotfiles ]; then
-  ln -vsf "$(pwd -P)" ~/OSS/dotfiles
-fi
-
 # Use ZSH as my default Shell
 if [ "$SHELL" != "/bin/zsh" ]; then
   chsh -s /bin/zsh mike
