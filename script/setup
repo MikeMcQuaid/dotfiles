@@ -102,5 +102,6 @@ done
 
 HOMEDOTFILES="${HOME}/.dotfiles"
 if [[ "${DOTFILESDIR}" != "${HOMEDOTFILES}" ]]; then
-  ln -sf "${DOTFILESDIR}" "${HOMEDOTFILES}"
+  rm -f "${HOMEDOTFILES}"
+  ln -s "${DOTFILESDIR}" "${HOMEDOTFILES}"
 fi
