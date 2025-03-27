@@ -247,14 +247,11 @@
 	defaultBranch = main
 [safe]
 	directory = /opt/homebrew
-	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-aliases
-	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-bundle
 	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-cask
 	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-command-not-found
 	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-core
-	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-formula-analytics
 	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-portable-ruby
-	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-services
 	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-test-bot
 	directory = /opt/homebrew/Library/Taps/workbrew/homebrew-tap
 	directory = /opt/homebrew/Library/Taps/workbrew/homebrew-private
+	directory = /home/linuxbrew/.linuxbrew/Homebrew
