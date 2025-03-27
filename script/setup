@@ -1,8 +1,7 @@
 #!/bin/sh
 # Install all dotfiles into the home directory
 
-if [[ -L "$0" ]]
-then
+if [[ -L "$0" ]]; then
   SCRIPTSETUP="$(readlink "$0")"
 else
   SCRIPTSETUP="$0"
@@ -16,30 +15,25 @@ DOTFILESDIR=$(pwd -P)
 [[ "$(uname -s)" = "Linux" ]] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
 
-if [[ -n "${MACOS}" ]]
-then
+if [[ -n "${MACOS}" ]]; then
   VSCODE="${HOME}/Library/Application Support/Code/User"
   CURSOR="${HOME}/Library/Application Support/Cursor/User"
-elif [[ -n "${LINUX}" ]]
-then
+elif [[ -n "${LINUX}" ]]; then
   VSCODE="${HOME}/.config/Code/User"
   CURSOR="${HOME}/.config/Cursor/User"
-elif [[ -n "${WINDOWS}" ]]
-then
+elif [[ -n "${WINDOWS}" ]]; then
   VSCODE="${APPDATA}/Code/User"
   CURSOR="${APPDATA}/Cursor/User"
 fi
 ZED="${HOME}/.config/zed/settings.json"
 
-for DOTFILE in *
-do
+for DOTFILE in *; do
   HOMEFILE="${HOME}/.${DOTFILE}"
   [[ -d "${DOTFILE}" ]] && DOTFILE="${DOTFILE}/"
   DIRFILE="${DOTFILESDIR}/${DOTFILE}"
 
   # Don't mess with Codespaces' default SSH setup.
-  if [[ -n "${CODESPACES}" ]]
-  then
+  if [[ -n "${CODESPACES}" ]]; then
     echo "${DOTFILE}" | grep -E -q '^ssh/' && continue
   fi
 
@@ -47,8 +41,7 @@ do
   echo "${DOTFILE}" | grep -E -q '(^script/$|\.txt$|\.md$)' && continue
 
   # Only install gitconfig.local.macos on macOS
-  if echo "${DOTFILE}" | grep -q 'gitconfig.local.macos'
-  then
+  if echo "${DOTFILE}" | grep -q 'gitconfig.local.macos'; then
     [[ -z "${MACOS}" ]] && continue
     HOMEFILE="${HOME}/.gitconfig.local"
   fi
@@ -78,30 +71,24 @@ do
     HOMEFILE="${HOME}/.$(echo "${DOTFILE}" | sed -e 's/\.sh//')"
 
   # Fixup RuboCop configuration (if possible)
-  if echo "${DOTFILE}" | grep -q 'rubocop-work.yml'
-  then
+  if echo "${DOTFILE}" | grep -q 'rubocop-work.yml'; then
     HOMEWORK="${HOME}/Workbrew"
     [[ -d "${HOMEWORK}" ]] || continue
     HOMEFILE="${HOMEWORK}/.rubocop.yml"
-  elif echo "${DOTFILE}" | grep -q 'rubocop-oss.yml'
-  then
+  elif echo "${DOTFILE}" | grep -q 'rubocop-oss.yml'; then
     HOMEOSS="${HOME}/OSS"
     [[ -d "${HOMEOSS}" ]] || continue
     HOMEFILE="${HOMEOSS}/.rubocop.yml"
   fi
 
-  if [[ -n "${UNIX}" ]]
-  then
-    if ! [[ -d "${DOTFILE}" ]]
-    then
-      if [[ -L "${HOMEFILE}" ]]
-      then
+  if [[ -n "${UNIX}" ]]; then
+    if ! [[ -d "${DOTFILE}" ]]; then
+      if [[ -L "${HOMEFILE}" ]]; then
         ln -sf "${DIRFILE}" "${HOMEFILE}"
       else
         ln -svf "${DIRFILE}" "${HOMEFILE}"
       fi
-    elif [[ -L "${HOMEFILE}" ]]
-    then
+    elif [[ -L "${HOMEFILE}" ]]; then
       rm -r "${HOMEFILE}" 2>/dev/null
       ln -s "${DIRFILE}" "${HOMEFILE}"
     else
@@ -114,7 +101,6 @@ do
 done
 
 HOMEDOTFILES="${HOME}/.dotfiles"
-if [[ "${DOTFILESDIR}" != "${HOMEDOTFILES}" ]]
-then
+if [[ "${DOTFILESDIR}" != "${HOMEDOTFILES}" ]]; then
   ln -sf "${DOTFILESDIR}" "${HOMEDOTFILES}"
 fi
