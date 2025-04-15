@@ -88,13 +88,11 @@ if quiet_which brew; then
   eval "$(brew shellenv)"
 
   export HOMEBREW_DEVELOPER=1
-  export HOMEBREW_BOOTSNAP=1
   export HOMEBREW_BUNDLE_INSTALL_CLEANUP=1
   export HOMEBREW_BUNDLE_DUMP_DESCRIBE=1
   export HOMEBREW_NO_ENV_HINTS=1
   export HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS=1
   export HOMEBREW_CLEANUP_MAX_AGE_DAYS=30
-  export HOMEBREW_WORKBREW_LOCKFILE=1
   export HOMEBREW_UPGRADE_GREEDY_CASKS="cursor"
 
   add_to_path_end "${HOMEBREW_PREFIX}/Library/Homebrew/shims/gems"
@@ -203,23 +201,6 @@ elif [[ -n "${WINDOWS}" ]]; then
     # shellcheck disable=SC2145
     cmd /C"$@"
   }
-fi
-
-# Run rbenv/nodenv if they exist
-if quiet_which rbenv; then
-  shims="$(rbenv root)/shims"
-  if ! [[ -d "${shims}" ]]; then
-    rbenv rehash
-  fi
-  add_to_path_start "${shims}"
-fi
-
-if quiet_which nodenv; then
-  shims="$(nodenv root)/shims"
-  if ! [[ -d "${shims}" ]]; then
-    nodenv rehash
-  fi
-  add_to_path_start "${shims}"
 fi
 
 # Load GITHUB_TOKEN from gh

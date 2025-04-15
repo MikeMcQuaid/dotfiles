@@ -7,6 +7,7 @@ tap "homebrew/formula-analytics"
 tap "homebrew/portable-ruby"
 tap "homebrew/services"
 tap "homebrew/test-bot"
+tap "workbrew/private"
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Static analysis and lint tool, for (ba)sh scripts
@@ -59,34 +60,20 @@ brew "node"
 brew "markdownlint-cli"
 # Mac App Store command-line interface
 brew "mas"
-# Install NodeJS versions
-brew "node-build"
 # Platform built on V8 to build network applications
 brew "node@20"
 # Platform built on V8 to build network applications
 brew "node@22"
-# Manage multiple NodeJS versions
-brew "nodenv"
 # Optimizer for PNG files
 brew "pngcrush"
 # Object-relational database system
 brew "postgresql@16", restart_service: :changed
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
-# Install various Ruby versions and implementations
-brew "ruby-build"
-# Ruby version manager
-brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
-# Powerful, clean, object-oriented scripting language
-brew "ruby@3.1"
-# Powerful, clean, object-oriented scripting language
-brew "ruby@3.2"
-# Powerful, clean, object-oriented scripting language
-brew "ruby@3.3"
 # Autoformat shell script source code
 brew "shfmt"
 # Syntax-aware linter for prose
@@ -146,14 +133,14 @@ cask "zoom"
 mas "1Blocker", id: 1365531024
 mas "1Password for Safari", id: 1569813296
 mas "GarageBand", id: 682658836
-mas "In Your Face", id: 1476964367
+mas "InYourFace", id: 1476964367
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
 mas "Refined GitHub", id: 1519867270
 mas "Slack", id: 803453959
-mas "TouchDraw", id: 1580322028
+mas "TouchDraw2", id: 1580322028
 mas "WhatsApp", id: 310633997
 vscode "aliariff.vscode-erb-beautify"
 vscode "anykeyh.simplecov-vscode"

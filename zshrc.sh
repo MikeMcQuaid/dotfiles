@@ -49,5 +49,8 @@ alias zmv="noglob zmv -vW"
 alias rake="noglob rake"
 alias be="noglob bundle exec"
 
+# setup direnv
+eval "$(direnv hook zsh)"
+
 # to avoid non-zero exit code
 true
