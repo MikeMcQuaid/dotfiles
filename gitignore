@@ -47,5 +47,6 @@ build/
 # Ignore some testing files.
 test/js/functional/*.html
 
-# Ignore Workbrew cache files
+# Ignore some Workbrew files
 *.workbrew.*.cache.*
+*.workbrew.*.disabled
