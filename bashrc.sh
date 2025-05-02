@@ -20,3 +20,24 @@ GRC_SH="$HOMEBREW_PREFIX/etc/grc.sh"
 
 # to avoid non-zero exit code
 true
+
+# Node version manager (git install): https://github.com/nvm-sh/nvm#git-install
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH=/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin:$PATH
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+SSH_AUTH_SOCK=/var/folders/kz/mzk3jkrj3w37475q29gp416h0000gn/T//ssh-gi6D53Fb2biU/agent.43206; export SSH_AUTH_SOCK;
+SSH_AGENT_PID=43207; export SSH_AGENT_PID;
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+
+#DOCKER
+alias docker='podman'
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/pdss/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+export GPG_TTY=$(tty)

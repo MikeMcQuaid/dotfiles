@@ -1,0 +1,5 @@
+{
+    "require": {
+        "composer/ca-bundle": "^1.5"
+    }
+}

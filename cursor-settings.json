@@ -98,7 +98,10 @@
     "workbench.editor.enablePreview": false,
     "githubPullRequests.pullBranch": "never",
     "github.copilot.enable": {
-        "*": false
+        "*": false,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
     },
     "git.openRepositoryInParentFolders": "always",
     "[dockerfile]": {
@@ -114,11 +117,15 @@
     "terminal.integrated.enableVisualBell": true,
     "github.copilot.editor.enableAutoCompletions": true,
     "rubyLsp.formatter": "rubocop",
-    "cursor.cmdk.useThemedDiffBackground": true,
-    "cursor.diffs.useCharacterLevelDiffs": true,
     "[properties]": {
         "editor.formatOnSave": false,
         "editor.formatOnPaste": false,
         "editor.formatOnType": false
-    }
+    },
+    "cursor.cpp.disabledLanguages": [
+        "plaintext",
+        "scminput"
+    ],
+    "editor.fontSize": 14,
+    "editor.accessibilitySupport": "on"
 }

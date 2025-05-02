@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Install all dotfiles into the home directory
 
 if [[ -L "$0" ]]; then

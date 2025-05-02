@@ -44,3 +44,22 @@ export RPROMPT='%{$fg_bold[red]%}$(git_branch)%b[%{$fg_bold[blue]%}%~%b%f]'
 
 # more macOS/Bash-like word jumps
 export WORDCHARS=""
+
+zmodload zsh/datetime
+
+function preexec() {
+  __TIMER=$EPOCHREALTIME
+}
+
+function powerline_precmd() {
+  local __ERRCODE=$?
+  local __DURATION=0
+
+  if [ -n $__TIMER ]; then
+    local __ERT=$EPOCHREALTIME
+    __DURATION="$(($__ERT - ${__TIMER:-__ERT}))"
+  fi
+
+  PS1="$(powerline-go -modules duration -duration $__DURATION -error $__ERRCODE -shell zsh)"
+  unset __TIMER
+}

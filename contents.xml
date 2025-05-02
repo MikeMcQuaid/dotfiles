@@ -1,0 +1,2990 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE outline PUBLIC "-//omnigroup.com//DTD OUTLINE 3.0//EN" "http://www.omnigroup.com/namespace/OmniOutliner/xmloutline-v3.dtd">
+<outline xmlns="http://www.omnigroup.com/namespace/OmniOutliner/v3">
+  <style-attribute-registry>
+    <style-attribute version="0" key="baseline-offset" group="baseline" name="offset" class="number" integral="1" min="-1000" max="1000">0</style-attribute>
+    <style-attribute version="0" key="font-family" group="font" name="family" class="string">Helvetica</style-attribute>
+    <style-attribute version="1" key="font-fill" group="font" name="fill color" class="color">
+      <color w="0"/>
+    </style-attribute>
+    <style-attribute version="0" key="font-fixed-pitch" group="font" name="fixed pitch" class="bool">no</style-attribute>
+    <style-attribute version="0" key="font-italic" group="font" name="italic" class="bool">no</style-attribute>
+    <style-attribute version="0" key="font-size" group="font" name="size" class="number" integral="0" min="1" max="65536">12</style-attribute>
+    <style-attribute version="0" key="font-weight" group="font" name="weight" class="number" integral="1" min="1" max="14">5</style-attribute>
+    <style-attribute version="0" key="heading-lowercase(com.omnigroup.OmniOutliner)" group="heading" name="lowercase" class="bool">no</style-attribute>
+    <style-attribute version="0" key="item-post-gap(com.omnigroup.OmniOutliner)" group="row" name="post gap" class="number" integral="1" min="0" max="1000">0</style-attribute>
+    <style-attribute version="0" key="item-pre-gap(com.omnigroup.OmniOutliner)" group="row" name="pre gap" class="number" integral="1" min="0" max="1000">1</style-attribute>
+    <style-attribute version="0" key="item-row-padding(com.omnigroup.OmniOutliner)" group="row" name="row padding" class="string">4</style-attribute>
+    <style-attribute version="0" key="paragraph-base-writing-direction" group="paragraph" name="writing direction" class="enum">
+      <enum-name-table default-value="-1">
+        <enum-name-table-element value="-1" name="natural"/>
+        <enum-name-table-element value="0" name="left-to-right"/>
+        <enum-name-table-element value="1" name="right-to-left"/>
+      </enum-name-table>
+    </style-attribute>
+    <style-attribute version="0" key="text-background-color" group="text" name="background color" class="color">
+      <color w="0" a="0"/>
+    </style-attribute>
+    <style-attribute version="1" key="underline-color" group="underline" name="color" class="color">
+      <color w="0"/>
+    </style-attribute>
+    <style-attribute version="1" key="underline-style" group="underline" name="style" class="enum">
+      <enum-name-table default-value="0">
+        <enum-name-table-element value="0" name="none"/>
+        <enum-name-table-element value="1" name="single"/>
+        <enum-name-table-element value="2" name="thick"/>
+        <enum-name-table-element value="9" name="double"/>
+      </enum-name-table>
+    </style-attribute>
+  </style-attribute-registry>
+  <named-styles>
+    <named-style id="bMbdsrPBbNQ" name="Bold" display-order="0">
+      <style>
+        <value key="font-weight">9</value>
+      </style>
+    </named-style>
+    <named-style id="j7s0i2W8XqH" name="Emphasis" display-order="1">
+      <style>
+        <value key="font-italic">yes</value>
+      </style>
+    </named-style>
+    <named-style id="a0as48_ttlo" name="UI" display-order="2">
+      <style>
+        <value key="font-family">Lucida Grande</value>
+        <value key="font-size">13</value>
+        <value key="font-weight">9</value>
+      </style>
+    </named-style>
+    <named-style id="a-WJm12exYM" name="Verbatim" display-order="3">
+      <style>
+        <value key="font-family">Courier</value>
+        <value key="font-fixed-pitch">yes</value>
+        <value key="font-size">15</value>
+        <value key="font-weight">9</value>
+      </style>
+    </named-style>
+    <named-style id="m1Cc5eWj5Pz" name="↓ [Special styles below] ↓" display-order="4">
+      <style/>
+    </named-style>
+    <named-style id="oQxEDq66I5w" name="Destination" display-order="5">
+      <style>
+        <inherited-style name="Bold" idref="bMbdsrPBbNQ"/>
+        <value key="text-background-color">
+          <color r="1" g="0.435294" b="0.811765" a="0.3"/>
+        </value>
+      </style>
+    </named-style>
+    <named-style id="mRPR-6uEuRb" name="Box" display-order="6">
+      <style>
+        <value key="text-background-color">
+          <color r="1" g="1" b="0.4" a="0.26"/>
+        </value>
+      </style>
+    </named-style>
+    <named-style id="mkRhzPcpm-u" name="Link" display-order="7">
+      <style>
+        <value key="font-fill">
+          <color r="1.06543e-06" g="0.501961" b="1"/>
+        </value>
+        <value key="underline-color">
+          <color r="1.06543e-06" g="0.501961" b="1"/>
+        </value>
+        <value key="underline-style">single</value>
+      </style>
+    </named-style>
+    <named-style id="cf9x9Xif0tc" name="Drop" display-order="8">
+      <style>
+        <value key="font-fill">
+          <color r="0" g="0" b="0"/>
+        </value>
+        <value key="font-weight">9</value>
+        <value key="text-background-color">
+          <color r="0" g="0" b="0" a="0.25"/>
+        </value>
+      </style>
+    </named-style>
+    <named-style id="aUm3924E6__" name="Anchor" display-order="9">
+      <style>
+        <value key="font-fill">
+          <color r="1" g="0.501961" b="0"/>
+        </value>
+        <value key="text-background-color">
+          <color r="1" g="0.900465" b="0.699397"/>
+        </value>
+      </style>
+    </named-style>
+    <named-style id="klRPa19kyJm" name="Pro" display-order="10">
+      <style>
+        <value key="text-background-color">
+          <color r="0.4" g="0.8" b="1" a="0.3"/>
+        </value>
+      </style>
+    </named-style>
+    <named-style id="fHdhEYH17Qf" name="Variables" display-order="11">
+      <style>
+        <value key="text-background-color">
+          <color r="0.565611" g="0.970833" b="0.409187" a="0.5"/>
+        </value>
+      </style>
+    </named-style>
+  </named-styles>
+  <attachments>
+    <attachment id="att0" href="AutobackupSheet.png" type="image"/>
+    <attachment id="att1" href="AutocompleteAddress.png" type="image"/>
+    <attachment id="att2" href="AutoUpdateSheet.png" type="image"/>
+    <attachment id="att3" href="BackupTab.png" type="image"/>
+    <attachment id="att4" href="Distributions.png" type="image"/>
+    <attachment id="att5" href="Documentation.png" type="image"/>
+    <attachment id="att6" href="Info.png" type="image"/>
+    <attachment id="att7" href="InstallTab.png" type="image"/>
+    <attachment id="att8" href="LogWindow.png" type="image"/>
+    <attachment id="att9" href="Mirrors.png" type="image"/>
+    <attachment id="att10" href="NotificationCenterUpdate.png" type="image"/>
+    <attachment id="att11" href="PackageTab.png" type="image"/>
+    <attachment id="att12" href="Prefs.png" type="image"/>
+    <attachment id="att13" href="UpdateCheckAlert.png" type="image"/>
+    <attachment id="att14" href="UpdateTab.png" type="image"/>
+  </attachments>
+  <settings>
+    <base-style>
+      <style>
+        <value key="baseline-offset">3</value>
+        <value key="font-family">Hoefler Text</value>
+        <value key="font-size">16</value>
+        <value key="item-post-gap(com.omnigroup.OmniOutliner)">8</value>
+        <value key="item-pre-gap(com.omnigroup.OmniOutliner)">8</value>
+        <value key="item-row-padding(com.omnigroup.OmniOutliner)">8</value>
+        <value key="paragraph-base-writing-direction">left-to-right</value>
+      </style>
+    </base-style>
+    <page-adornment>
+      <first-page-headers is-active="yes">
+        <header location="center">
+          <text>
+            <p>
+              <run>
+                <lit><cell variable="OOSectionTitleVariableIdentifier"/></lit>
+              </run>
+            </p>
+          </text>
+        </header>
+      </first-page-headers>
+    </page-adornment>
+    <print-info>
+      <print-info-key name="OOScaleDocumentToFitPageWidth" type="boolean">true</print-info-key>
+    </print-info>
+    <auto-generate-level-styles>no</auto-generate-level-styles>
+  </settings>
+  <editor content-size="{692, 637}" vertical-scrollbar-visible-width="15" scroll-position="{0, 9894}" column-titles-display-mode="off" ruler-visible="yes" status-visible="no">
+    <drawer display="sections" width="236"/>
+    <note-split-view height="33"/>
+    <hoisted-rows ids="h2f6xuYZ-Sl"/>
+    <selected-rows ids="dJO9sBUL1qL"/>
+    <selected-columns ids="dTpN3JwYpBn"/>
+    <selected-characters range="{28, 0}"/>
+    <toolbar>{
+    &quot;TB Display Mode&quot; = 2;
+    &quot;TB Icon Size Mode&quot; = 2;
+    &quot;TB Is Shown&quot; = 1;
+    &quot;TB Item Identifiers&quot; =     (
+        ToggleSections,
+        ExpandAll,
+        CollapseAll,
+        ToggleShowRowStates,
+        ToggleRuler,
+        NSToolbarFlexibleSpaceItem,
+        AddColumn,
+        NSToolbarFlexibleSpaceItem
+    );
+    &quot;TB Size Mode&quot; = 1;
+}</toolbar>
+  </editor>
+  <columns>
+    <column id="dTpN3JwYpBn" type="text" width="18" minimum-width="18" maximum-width="18" text-export-width="1" is-note-column="yes">
+      <style>
+        <value key="font-fill">
+          <color r="0.356863" g="0.529412" b="0.94902"/>
+        </value>
+        <value key="font-italic">yes</value>
+        <value key="font-size">14</value>
+      </style>
+      <title>
+        <text>
+          <p/>
+        </text>
+      </title>
+    </column>
+    <column id="jFqHUGd_Dg1" type="text" width="656" minimum-width="13" maximum-width="1000000" text-export-width="72" is-outline-column="yes">
+      <title>
+        <text>
+          <p>
+            <run>
+              <lit>Topic</lit>
+            </run>
+          </p>
+        </text>
+      </title>
+    </column>
+  </columns>
+  <root>
+    <style>
+      <value key="font-weight">9</value>
+      <value key="underline-style">single</value>
+    </style>
+    <style>
+      <value key="font-weight">9</value>
+      <value key="underline-style">thick</value>
+    </style>
+    <style>
+      <value key="font-weight">9</value>
+    </style>
+    <item id="h2f6xuYZ-Sl" expanded="yes" children-are-sections="yes">
+      <values>
+        <text>
+          <p>
+            <run>
+              <lit>TeX Live Utility Help</lit>
+            </run>
+          </p>
+        </text>
+      </values>
+      <children>
+        <item id="jj3Kw0ND2KJ" expanded="yes">
+          <style>
+            <inherited-style name="Destination" idref="oQxEDq66I5w"/>
+          </style>
+          <values>
+            <text>
+              <p>
+                <run>
+                  <lit>Introduction</lit>
+                </run>
+              </p>
+            </text>
+          </values>
+          <children>
+            <item id="k2f5GirCi2V">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>TeX Live Utility is a Mac OS X graphical interface for the TeX Live Manager, a program included with recent versions of </lit>
+                    </run>
+                    <run>
+                      <lit><cell href="http://www.tug.org/texlive" name="TeX Live" type="link"/></lit>
+                    </run>
+                    <run>
+                      <lit>.</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="in4rFyB_wd3">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>TeX Live Utility features include:</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="h4_EI5jYkEp" expanded="yes">
+              <style>
+                <inherited-style name="Box" idref="mRPR-6uEuRb"/>
+              </style>
+              <values>
+                <null/>
+              </values>
+              <children>
+                <item id="aylbUuBNBZI">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>Update, add, and remove packages from TeX Live.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="hKEx7oyJ0AC">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>Set default paper size for all TeX programs.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="jZRw6Dt-oYK">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>Show information and documentation for packages.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="bhgyyvqOezY">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>Easily switch between repositories.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="d_VOinQFADJ">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>Configure automatic backups in TeX Live Manager, and restore previous package versions.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="poOULmrNn8P">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>Automatic checking for TeX Live updates.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="icWD2dG7dT1">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>Installation of TeX Live from a repository, via a graphical interface to the UNIX® install script for TeX Live.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+              </children>
+            </item>
+          </children>
+        </item>
+        <item id="nIJtChAWJ-C" expanded="yes">
+          <style>
+            <inherited-style name="Destination" idref="oQxEDq66I5w"/>
+          </style>
+          <values>
+            <text>
+              <p>
+                <run>
+                  <lit>Requirements</lit>
+                </run>
+              </p>
+            </text>
+          </values>
+          <children>
+            <item id="oFz1W9kSXc4">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Mac OS X Lion 10.7 or later.</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="ljqQtR7qc2F">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>TeX Live, which is commonly installed via </lit>
+                    </run>
+                    <run>
+                      <lit><cell href="http://www.tug.org/mactex" name="MacTeX" type="link"/></lit>
+                    </run>
+                    <run>
+                      <lit>.</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="fJCV_FMxg_N">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>A network connection is required for updating or installing, unless you manage your own </lit>
+                    </run>
+                    <run>
+                      <style>
+                        <inherited-style name="Link" idref="mkRhzPcpm-u"/>
+                      </style>
+                      <lit>repository</lit>
+                    </run>
+                    <run>
+                      <lit>.</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="ao9rrwyve9-">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>For install and update of packages, you must have write permission to the TeX Live install directory (typically </lit>
+                    </run>
+                    <run>
+                      <style>
+                        <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                      </style>
+                      <lit>/usr/local/texlive</lit>
+                    </run>
+                    <run>
+                      <lit>).  If you are using MacTeX, this means you must be an administrator of your computer.  If you installed TeX Live by some other means, or e.g., manually changed ownership of the installation directory, you may not need to be an administrator.  TeX Live Utility will only prompt for an administrator password if absolutely necessary.</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+          </children>
+        </item>
+        <item id="eUtfoMZ7bze" expanded="yes" children-are-sections="yes">
+          <values>
+            <text>
+              <p>
+                <run>
+                  <lit>Features</lit>
+                </run>
+              </p>
+            </text>
+          </values>
+          <children>
+            <item id="g-6zW6wA71h" expanded="yes">
+              <style>
+                <inherited-style name="Destination" idref="oQxEDq66I5w"/>
+              </style>
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Update</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <children>
+                <item id="gkBdcd7FCu4">
+                  <style>
+                    <inherited-style name="Anchor" idref="aUm3924E6__"/>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>updatelist</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="eok_2Rmyp9q">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>The primary usage of TeX Live Utility is updating a TeX Live installation with newer packages from </lit>
+                        </run>
+                        <run>
+                          <lit><cell href="http://mirror.ctan.org/" name="CTAN" type="link"/></lit>
+                        </run>
+                        <run>
+                          <lit>.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="i2e5VRqDc4y">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>When you first launch TeX Live Utility, you are greeted with the update window:</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="nBuPvHUmi9B">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit><cell refid="att14" expanded="yes" name="UpdateTab"/></lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="gqTswy4Trgz">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>The </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Installed</lit>
+                        </run>
+                        <run>
+                          <lit> and </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Remote</lit>
+                        </run>
+                        <run>
+                          <lit> columns show the TeX Live version number of the package currently on your system and the version on the mirror, respectively.  The </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Size</lit>
+                        </run>
+                        <run>
+                          <lit> column shows the on-disk size of the package.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="fq84HT071es" expanded="yes">
+                  <style>
+                    <inherited-style name="Box" idref="mRPR-6uEuRb"/>
+                  </style>
+                  <values>
+                    <null/>
+                  </values>
+                  <children>
+                    <item id="oAGx0W2sj_5">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>To update, see the </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="UI" idref="a0as48_ttlo"/>
+                              </style>
+                              <lit>Actions</lit>
+                            </run>
+                            <run>
+                              <lit> menu of the main menu bar.  You can update individual packages or all packages.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="azqdfxO9_gl">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>You can also use a contextual menu (right-click or control-click selected items in the list).</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="oFpudiNeVYi">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <style>
+                                <inherited-style name="Emphasis" idref="j7s0i2W8XqH"/>
+                              </style>
+                              <lit>Note: updating all packages will add </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="Bold" idref="bMbdsrPBbNQ"/>
+                                <inherited-style name="Emphasis" idref="j7s0i2W8XqH"/>
+                              </style>
+                              <lit>and remove</lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="Emphasis" idref="j7s0i2W8XqH"/>
+                              </style>
+                              <lit> packages on your system to match those on the server.  If you do not want packages automatically removed, see the </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="Emphasis" idref="j7s0i2W8XqH"/>
+                                <inherited-style name="Link" idref="mkRhzPcpm-u"/>
+                              </style>
+                              <lit>Preferences</lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="Emphasis" idref="j7s0i2W8XqH"/>
+                              </style>
+                              <lit> section.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+              </children>
+            </item>
+            <item id="fuS_akUfHVg" expanded="yes">
+              <style>
+                <inherited-style name="Destination" idref="oQxEDq66I5w"/>
+              </style>
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Manage Packages</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <children>
+                <item id="jA5__eRlJ7E">
+                  <style>
+                    <inherited-style name="Anchor" idref="aUm3924E6__"/>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>packagelist</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="mF9N_SiMhI1">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>You can also add packages manually, if you installed a minimal distribution such as </lit>
+                        </run>
+                        <run>
+                          <lit><cell href="http://www.tug.org/mactex/morepackages.html" name="BasicTeX" type="link"/></lit>
+                        </run>
+                        <run>
+                          <lit>, or remove them if you want to reclaim additional hard drive space.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="dMjwUXva4um">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit><cell refid="att11" expanded="yes" name="PackageTab"/></lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="jmJRq3eQhOR">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>You can also </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="Link" idref="mkRhzPcpm-u"/>
+                          </style>
+                          <lit>get info</lit>
+                        </run>
+                        <run>
+                          <lit> on packages, and search or view all installed packages.  Note that packages which include binary files, such as XeTeX, will only have the relevant architecture installed on your system.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="px5zLxlairg" expanded="yes">
+                  <style>
+                    <inherited-style name="Box" idref="mRPR-6uEuRb"/>
+                  </style>
+                  <values>
+                    <null/>
+                  </values>
+                  <children>
+                    <item id="epf5M6M8dbr">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Most commands relevant to package management are found under the </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="UI" idref="a0as48_ttlo"/>
+                              </style>
+                              <lit>Actions</lit>
+                            </run>
+                            <run>
+                              <lit> menu.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="mOT9Pkg8cOj">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>To forcibly remove a package, hold down the </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="UI" idref="a0as48_ttlo"/>
+                              </style>
+                              <lit>option</lit>
+                            </run>
+                            <run>
+                              <lit> key (</lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="UI" idref="a0as48_ttlo"/>
+                              </style>
+                              <lit>alt</lit>
+                            </run>
+                            <run>
+                              <lit> on some keyboards) while the </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="UI" idref="a0as48_ttlo"/>
+                              </style>
+                              <lit>Action</lit>
+                            </run>
+                            <run>
+                              <lit> menu is active.  </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="Bold" idref="bMbdsrPBbNQ"/>
+                              </style>
+                              <lit>Do not do this unless you really know what you are doing!</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+              </children>
+            </item>
+            <item id="jF5DhHO-g3r" expanded="yes">
+              <style>
+                <inherited-style name="Destination" idref="oQxEDq66I5w"/>
+              </style>
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Backup</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <children>
+                <item id="dKTZk3U_Jt4">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>TeX Live Manager will automatically save backups for you.  When it updates a package, the previous version of that package is archived, so you can revert to an older version of it easily.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="lfYZ4SmXXbh">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>When you need to revert to an older version, click the </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Restore</lit>
+                        </run>
+                        <run>
+                          <lit> button next to its version number and install date.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="c13XOMWqqMS">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit><cell refid="att3" name="BackupTab"/></lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="d3Gfufasvqr" expanded="yes">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>To configure automatic backups, use the </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Configure</lit>
+                        </run>
+                        <run>
+                          <lit> menu.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                  <children>
+                    <item id="nn-MV_z6300">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit><cell refid="att0" expanded="yes" name="AutobackupSheet"/></lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="kVgvqKhHeil">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>If the </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="UI" idref="a0as48_ttlo"/>
+                              </style>
+                              <lit>Autobackup enabled</lit>
+                            </run>
+                            <run>
+                              <lit> box is checked, the number of previous versions to save (per package) can be set below.  To keep all previous versions, enter ∞ (opt-5 on US keyboards).</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="kXgfGTUzalK">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>If the </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="UI" idref="a0as48_ttlo"/>
+                              </style>
+                              <lit>Prune backups</lit>
+                            </run>
+                            <run>
+                              <lit> box is checked, the number of backups (per package) will be pruned to your maximum value when you dismiss the sheet by choosing </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="UI" idref="a0as48_ttlo"/>
+                              </style>
+                              <lit>Accept</lit>
+                            </run>
+                            <run>
+                              <lit>.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+                <item id="f0Rdu47i8wW" expanded="yes">
+                  <style>
+                    <inherited-style name="Box" idref="mRPR-6uEuRb"/>
+                  </style>
+                  <values>
+                    <null/>
+                  </values>
+                  <children>
+                    <item id="i8LEnnSJuCZ">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>With a system as complex as TeX Live, fully testing all packages for compatibility is practically impossible.  Additionally, sometimes a package author overlooks a bug before submitting an update to CTAN, and it may take a few days (or longer) to get fixed.  Automatic backups can help you meet deadlines and avoid tedious manual package restoration or fixes.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="piTN4jcGlw9">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Although we recommend that you keep backups enabled, old packages can use significant amounts of disk space on today&apos;s smaller SSD drives, so you may wish to limit the number of backups.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+                <item id="nZjujn32Pju">
+                  <style>
+                    <inherited-style name="Pro" idref="klRPa19kyJm"/>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>You can find out how much space is being used by TeX Live backups using the following command in Terminal.app:  </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                          </style>
+                          <lit>du -sk $(kpsewhich -var-value=SELFAUTOPARENT)/$(tlmgr option backupdir |cut -d &quot;:&quot; -f 2 |sed -e &apos;s/^ //g&apos;)</lit>
+                        </run>
+                        <run>
+                          <lit>, which reports size in kilobytes.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+              </children>
+            </item>
+            <item id="cs-_NQpayhC">
+              <style>
+                <inherited-style name="Destination" idref="oQxEDq66I5w"/>
+              </style>
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Package Info</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <children>
+                <item id="kZpnTB8qR65">
+                  <style>
+                    <inherited-style name="Anchor" idref="aUm3924E6__"/>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>getinfo</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="lLDbKZ5DlXh" expanded="yes">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>You can display detailed information for the selected package (in the </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="Link" idref="mkRhzPcpm-u"/>
+                          </style>
+                          <lit>update list</lit>
+                        </run>
+                        <run>
+                          <lit> or the </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="Link" idref="mkRhzPcpm-u"/>
+                          </style>
+                          <lit>package list</lit>
+                        </run>
+                        <run>
+                          <lit>) using the </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Actions</lit>
+                        </run>
+                        <run>
+                          <lit> menu or the </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Cmd-I</lit>
+                        </run>
+                        <run>
+                          <lit> keyboard shortcut.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                  <children>
+                    <item id="olm0VNc6O4v">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit><cell refid="att6" expanded="yes" name="Info"/></lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="gmMNUw_y2oF">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>A short description from the TeX Catalogue is displayed, and documentation obtained from </lit>
+                            </run>
+                            <run>
+                              <lit><cell href="http://www.tug.org/texdoc/" name="Texdoc" type="link"/></lit>
+                            </run>
+                            <run>
+                              <lit> is shown as clickable links and as thumbnail icons.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="iP0FM7DHefZ">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>The bottom area show all files associated with the selected package which are currently available in your system.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="gcoLMAo1bwg" expanded="yes">
+                      <style>
+                        <inherited-style name="Box" idref="mRPR-6uEuRb"/>
+                      </style>
+                      <values>
+                        <null/>
+                      </values>
+                      <children>
+                        <item id="i1PR3WHrTx_">
+                          <values>
+                            <text>
+                              <p>
+                                <run>
+                                  <lit>You can enlarge the icons to readable size with a slider that appears if you hover near the top of the thumbnail display.</lit>
+                                </run>
+                              </p>
+                            </text>
+                          </values>
+                        </item>
+                        <item id="j3FW_vjqMOW">
+                          <values>
+                            <text>
+                              <p>
+                                <run>
+                                  <lit>Use the spacebar or Cmd-Y to show a Quick Look-style preview panel for the selected documentation file.</lit>
+                                </run>
+                              </p>
+                            </text>
+                          </values>
+                        </item>
+                      </children>
+                    </item>
+                  </children>
+                </item>
+              </children>
+            </item>
+            <item id="hJb5KZPUKnx" expanded="yes">
+              <style>
+                <inherited-style name="Destination" idref="oQxEDq66I5w"/>
+              </style>
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Scheduled Update Checking</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <children>
+                <item id="o8WdygmamGW">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>TeX Live Utility can check for updated TeX Live packages automatically, using a </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                          </style>
+                          <lit>launchd</lit>
+                        </run>
+                        <run>
+                          <lit> agent that runs at scheduled intervals.  To configure this check, use the </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Configure</lit>
+                        </run>
+                        <run>
+                          <lit> menu, which has an item to display this sheet:</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="fCdU50G--DW">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit><cell refid="att2" expanded="yes" name="AutoUpdateSheet"/></lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="ioRWavGWtWX">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>The scheduling options should be self-explanatory.  For daily checks, you can only adjust the time of day.  For weekly checks, you can adjust the day of the week and the time of day.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="nOViIVu7LZ0" expanded="yes">
+                  <style>
+                    <value key="font-weight">9</value>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>10.8 and later</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                  <children>
+                    <item id="cldEV22OLyy">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit><cell refid="att10" expanded="yes" name="NotificationCenterUpdate"/></lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="a1g_yQxf2ud">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>To get the “Ignore” and “Launch” buttons to show, you have to wait until you get at least one notification, then change the style to “Alerts” in the Notifications pane of System Preferences.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="pALbOik_Fp3">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>The notification will only be shown if updates are available. This will make sense if you think about it long enough.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+                <item id="nsJ_KJ2wes8" expanded="yes">
+                  <style>
+                    <value key="font-weight">9</value>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>10.7 and earlier</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                  <children>
+                    <item id="mLqAnVh-8hg">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit><cell refid="att13" expanded="yes" name="UpdateCheckAlert"/></lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+                <item id="aQ1ftjLLw_V" expanded="yes">
+                  <style>
+                    <inherited-style name="Box" idref="mRPR-6uEuRb"/>
+                  </style>
+                  <values>
+                    <null/>
+                  </values>
+                  <children>
+                    <item id="pW-P5UhHBpw">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>The update check does not actually update anything or modify your system.  The update checker and launchd property list are installed as </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                              </style>
+                              <lit>~/Library/Application Support/TeX Live Utility/update_check.py </lit>
+                            </run>
+                            <run>
+                              <lit>and </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                              </style>
+                              <lit>~/Library/LaunchAgents/com.googlecode.mactlmgr.update_check.plist</lit>
+                            </run>
+                            <run>
+                              <lit>, respectively.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="gkAacvY9VkV">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>It is best to schedule update checks for a time when you are likely to be idle, as the alert can steal focus while you are typing.  At worst, though, all it does is launch TeX Live Utility; nothing is updated automatically!  This is not a problem with the Notification Center alert on 10.8 and later.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="iMZ761rh1sZ">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>This is distinct from TeX Live Utility&apos;s automatic check for application updates (which can also run manually from the </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="UI" idref="a0as48_ttlo"/>
+                              </style>
+                              <lit>TeX Live Utility</lit>
+                            </run>
+                            <run>
+                              <lit> menu).</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+              </children>
+            </item>
+            <item id="nO7cdL0hzge">
+              <style>
+                <inherited-style name="Destination" idref="oQxEDq66I5w"/>
+              </style>
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Repositories</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <children>
+                <item id="nz4qm6O7QiD">
+                  <style>
+                    <inherited-style name="Anchor" idref="aUm3924E6__"/>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>repository</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="pqrOS0uIX6W">
+                  <style>
+                    <inherited-style name="Anchor" idref="aUm3924E6__"/>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>repositories</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="fsEGdCmwIGZ">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>TeX Live Utility allows you to easily switch between repositories.  In most cases, this will be a </lit>
+                        </run>
+                        <run>
+                          <lit><cell href="http://mirror.ctan.org/" name="Comprehensive TeX Archive Network (CTAN)" type="link"/></lit>
+                        </run>
+                        <run>
+                          <lit> mirror server, but some users have private repositories or use the </lit>
+                        </run>
+                        <run>
+                          <lit><cell href="http://tlcontrib.metatex.org/" name="TLContrib" type="link"/></lit>
+                        </run>
+                        <run>
+                          <lit> site for user-contributed packages.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="iYZncXRv2a8">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>TeX Live Utility comes with a fairly comprehensive list of CTAN mirrors, derived from </lit>
+                        </run>
+                        <run>
+                          <lit><cell href="http://www.tex.ac.uk/tex-archive/CTAN.sites" name="CTAN.sites" type="link"/></lit>
+                        </run>
+                        <run>
+                          <lit>.  The default repository is shown in bold (but may be hidden under a collapsed outline heading).</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="dVit6eWWAY_">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit><cell refid="att9" expanded="yes" name="Mirrors"/></lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="lmNR_xQ7qf0">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>Additional repositories can be added by drag-and-drop from a web browser, or by using the &quot;+&quot; button at the bottom of the window and directly editing the URL.  These can only be added under the &quot;My Repositories&quot; heading.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="fF02loo1HGU">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>Repository URLs can be dragged or copied from the main list for use in other programs or in the TeX Live Utility address field.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="kEXElbn6izy" expanded="yes">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>The quickest way to enter an address is by typing part of it in the address field:</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                  <children>
+                    <item id="j0v0xFIqHJr">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <style>
+                                <value key="baseline-offset">0</value>
+                                <value key="font-family">Helvetica</value>
+                                <value key="font-size">12</value>
+                              </style>
+                              <lit><cell refid="att1" expanded="yes" name="AutocompleteAddress"/></lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="kiP8NRKsK6E">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>You can enter a full name such as &quot;USA&quot; to see all of the mirrors for a given country or continent, or a partial name such as &quot;.edu&quot; to see all university mirrors.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="oR2d7FjPAVj">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>You can also drag-and-drop from a web browser, or drop a .webloc file on the address field.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+                <item id="jA_jV4Q56Xq" expanded="yes">
+                  <style>
+                    <inherited-style name="Box" idref="mRPR-6uEuRb"/>
+                  </style>
+                  <values>
+                    <null/>
+                  </values>
+                  <children>
+                    <item id="pDoEwmUCIxY">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>You can change the &quot;Home&quot; repository using the button at the bottom of the window, by using the </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="UI" idref="a0as48_ttlo"/>
+                              </style>
+                              <lit>Configure</lit>
+                            </run>
+                            <run>
+                              <lit> menu, or by right- or control-clicking on one of the repositories.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="jOJJVid2z-r">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>The default repository is </lit>
+                            </run>
+                            <run>
+                              <lit><cell href="http://mirror.ctan.org/" name="mirror.ctan.org" type="link"/></lit>
+                            </run>
+                            <run>
+                              <lit>, which automatically picks a nearby server for you, in order to spread the load out among multiple sites.  This is generally the best choice for a default, and you are strongly encouraged to use it.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="o1EiTJvOxrc">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Note that you cannot edit or remove the repositories included with TeX Live Utility, and the list will be updated with each release of the program.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+              </children>
+            </item>
+            <item id="ohh8nduMklZ" expanded="yes">
+              <style>
+                <inherited-style name="Destination" idref="oQxEDq66I5w"/>
+              </style>
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Distributions</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <children>
+                <item id="hazLvWksFVy">
+                  <style>
+                    <inherited-style name="Anchor" idref="aUm3924E6__"/>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>distributions</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="lRd-WTGw5lb">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>TeX Live Utility allows you to easily switch between TeX distributions which install the requisite package data (primarily MacTeX). This allows you to easily switch between MacTeX 2014 and 2015, for instance, if both are installed.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="dVnkevHC2GO">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>To change the distribution, choose </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Change Default TeX Live Version…</lit>
+                        </run>
+                        <run>
+                          <lit> from the </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Configure</lit>
+                        </run>
+                        <run>
+                          <lit> menu and choose the radio button for your preferred distribution.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="pgyZsyOzEFM">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit><cell refid="att4" expanded="yes" name="Distributions"/></lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+              </children>
+            </item>
+            <item id="byn1imoFibm" expanded="yes">
+              <style>
+                <inherited-style name="Destination" idref="oQxEDq66I5w"/>
+              </style>
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Documentation</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <children>
+                <item id="kgRMe1vXTn7">
+                  <style>
+                    <inherited-style name="Anchor" idref="aUm3924E6__"/>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>documentation</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="gEJqMtKZUBo">
+                  <style>
+                    <inherited-style name="Anchor" idref="aUm3924E6__"/>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>docfiles</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="jeHbYBAYl7z">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>TeX Live Manager has an option to disable install of documentation files, which can take up a significant amount of space. The BasicTeX distribution ships with a limited subset of TeX Live, and excludes documentation. However, you can add packages on an as-needed basis with TeX Live Utility, and it&apos;s often desirable to have documentation for the installed packages.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="jV5hcXTSHcf">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>To change the default, choose </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Configure Documentation…</lit>
+                        </run>
+                        <run>
+                          <lit> from the </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Configure</lit>
+                        </run>
+                        <run>
+                          <lit> menu and toggle the checkbox. If you enable documentation and click </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Install Now</lit>
+                        </run>
+                        <run>
+                          <lit>, the documentation for all installed packages will be downloaded. Otherwise, it will only be installed for future update or install actions.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="kiEjdUommBp">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <style>
+                            <value key="baseline-offset">0</value>
+                            <value key="font-family">Helvetica</value>
+                            <value key="font-size">12</value>
+                          </style>
+                          <lit><cell refid="att5" expanded="yes" name="Documentation"/></lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="jRMv0iwutJN" expanded="yes">
+                  <style>
+                    <inherited-style name="Box" idref="mRPR-6uEuRb"/>
+                  </style>
+                  <values>
+                    <null/>
+                  </values>
+                  <children>
+                    <item id="nlnraSsEN1o">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>The BasicTeX distribution is popular for laptops with limited disk space, and is approximately 100 MB vs. 2 GB for the full MacTeX installation.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="m8QTxty13fi">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>For more information on BasicTeX, see </lit>
+                            </run>
+                            <run>
+                              <lit><cell href="https://tug.org/mactex/morepackages.html" name="tug.org—morepackages.html" type="link"/></lit>
+                            </run>
+                            <run>
+                              <lit>.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+              </children>
+            </item>
+            <item id="loFja0cULCm" expanded="yes">
+              <style>
+                <inherited-style name="Destination" idref="oQxEDq66I5w"/>
+              </style>
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Logging</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <children>
+                <item id="kjsH-CVEBI6">
+                  <style>
+                    <inherited-style name="Anchor" idref="aUm3924E6__"/>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <style>
+                            <inherited-style name="Anchor" idref="aUm3924E6__"/>
+                          </style>
+                          <lit>logoutput</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="aPJq1P3yFKk">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>TeX Live Utility allows you to see debug output, which comes from various sources.  Much of this is for debugging TeX Live Utility, but some of it is from underlying tools such as </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                          </style>
+                          <lit>tlmgr</lit>
+                        </run>
+                        <run>
+                          <lit> that print out status and progress messages.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="lisODB2ZOeP">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>To show the log window, use the </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Window</lit>
+                        </run>
+                        <run>
+                          <lit> menu.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="hJ-cxJ3XEyK">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit><cell refid="att8" expanded="yes" name="LogWindow"/></lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="e8n8P4Dj1UR">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>TeX Live Utility tries to show status messages and alerts when a problem occurs, but sometimes it doesn&apos;t have enough information to show the underlying cause.  In such cases, you may need to examine the log and look for possible problems.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="pE79zsUtTHJ">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>If the content of the </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Sender</lit>
+                        </run>
+                        <run>
+                          <lit> column contains </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                          </style>
+                          <lit>tlu_ipctask</lit>
+                        </run>
+                        <run>
+                          <lit>, the message may be from </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                          </style>
+                          <lit>tlmgr</lit>
+                        </run>
+                        <run>
+                          <lit> or other command-line tools, wrapped to run with administrative privileges.  If it is an Objective-C method name, such as </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                          </style>
+                          <lit>+[TLMDatabase initialize] </lit>
+                        </run>
+                        <run>
+                          <lit>or </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                          </style>
+                          <lit>-[TLMOperation main]</lit>
+                        </run>
+                        <run>
+                          <lit>, it is almost certainly a debugging message in TeX Live Utility itself.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="pQXa_YZxfNy" expanded="yes">
+                  <style>
+                    <inherited-style name="Box" idref="mRPR-6uEuRb"/>
+                  </style>
+                  <values>
+                    <null/>
+                  </values>
+                  <children>
+                    <item id="lvCcEMjJKgM">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>If you move the top of the log window close enough to the bottom of the main window, it will &quot;stick&quot; to it.  In the same way, the right side of the main window can stick to the left side of the log window.  This allows them to move as a unit, mainly for long-time users </lit>
+                            </run>
+                            <run>
+                              <lit><cell href="http://code.google.com/p/mactlmgr/wiki/FAQ" name="who miss the split pane" type="link"/></lit>
+                            </run>
+                            <run>
+                              <lit> of older versions.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="fZqRuE4TpCb">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>You can easily select/copy the log output and paste it into a mail message when reporting a problem.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+              </children>
+            </item>
+            <item id="aLvRpQYwVsb" expanded="yes">
+              <style>
+                <inherited-style name="Destination" idref="oQxEDq66I5w"/>
+              </style>
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Preferences</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <children>
+                <item id="onJKkhI7AAZ">
+                  <style>
+                    <inherited-style name="Anchor" idref="aUm3924E6__"/>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>preferences</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="cvazngGEjvI">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>TeX Live Utility has very few preferences, in order to keep things as simple as possible.  However, a few global options can be set in the panel available via the </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Preferences</lit>
+                        </run>
+                        <run>
+                          <lit> item of the main menu:</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="k_fO8h6mGBS">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit><cell refid="att12" expanded="yes" name="Preferences"/></lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="mec3LTLeF40" expanded="yes">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>TeX programs</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                  <children>
+                    <item id="ltN_2UpUJG6">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>This is the path to the </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                              </style>
+                              <lit>tlmgr</lit>
+                            </run>
+                            <run>
+                              <lit> command-line tool that TeX Live Utility uses. For Mac OS X 10.11 and later, the correct path is /</lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                              </style>
+                              <lit>Library/TeX/texbin</lit>
+                            </run>
+                            <run>
+                              <lit> if you have MacTeX 2015 or later; if you have an earlier version of MacTeX on OS X 10.11, the note below on the standard UNIX installer applies. If you use MacTeX 2014 and earlier on Mac OS X 10.10 and earlier, the setting of </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                              </style>
+                              <lit>/usr/texbin</lit>
+                            </run>
+                            <run>
+                              <lit> is correct.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="lNaPuZYoCap">
+                      <style>
+                        <value key="font-italic">yes</value>
+                      </style>
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Note: /Library will be translated if you use a non-English language setting for your operating system, even if TeX Live Utility is not translated into your language.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="eFsoKakm9PV">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>For TeX Live 2014 installed via the standard UNIX installer with default options, </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                              </style>
+                              <lit>/usr/local/texlive/2014/bin/x86_64-darwin</lit>
+                            </run>
+                            <run>
+                              <lit> would be the correct path. You may have to type </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="UI" idref="a0as48_ttlo"/>
+                              </style>
+                              <lit>/</lit>
+                            </run>
+                            <run>
+                              <lit> (a single forward slash keystroke) when presented with the open panel, in order to navigate to this directory, since it&apos;s hidden.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="fd9PLf9J3vm">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Other distributions require you to change this using the </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="UI" idref="a0as48_ttlo"/>
+                              </style>
+                              <lit>Choose…</lit>
+                            </run>
+                            <run>
+                              <lit> button or by dropping a folder on the path control to the left of the button.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+                <item id="nj1N0eh16wQ" expanded="yes">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Automatically enable fonts in my home directory</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                  <children>
+                    <item id="ivt0Tk6rSkJ">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>When checked, TeX Live Utility&apos;s will run the </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                              </style>
+                              <lit>updmap</lit>
+                            </run>
+                            <run>
+                              <lit> command if it finds an </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                              </style>
+                              <lit>updmap.cfg</lit>
+                            </run>
+                            <run>
+                              <lit> file in your TeX Live home directory, indicating that you have installed some personal fonts.  If you have not manually installed fonts, as discussed </lit>
+                            </run>
+                            <run>
+                              <lit><cell href="http://www.tug.org/fonts/fontinstall-personal.html" name="here" type="link"/></lit>
+                            </run>
+                            <run>
+                              <lit>, you can leave this unchecked.  Note: this setting only applies to TeX Live 2012 and later.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+                <item id="lIkzoMjS6Y5" expanded="yes">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Show progress in system log</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                  <children>
+                    <item id="gg0KoVjGOIz">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>When checked, TeX Live Utility&apos;s log output will be written to the system log.  Now that logs are saved between sessions, this should generally be left unchecked.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+                <item id="dTvZa2OQh4C" expanded="yes">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Add new packages to match the server when updating</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                  <children>
+                    <item id="dvWVEWxjHS7">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>If packages were added to TeX Live after you installed it, this will bring you up to date.  You should almost never uncheck this box.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+                <item id="i31NY8LOAii" expanded="yes">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Remove packages to match the server when updating.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                  <children>
+                    <item id="mqYR6z-6mQT">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Sometimes packages are removed from the server, typically due to licensing problems.  If this box is checked, such packages will be removed from your system when you use the </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="UI" idref="a0as48_ttlo"/>
+                              </style>
+                              <lit>Update All</lit>
+                            </run>
+                            <run>
+                              <lit> action.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="kDH6qoxockx">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>This box can generally be unchecked safely, if you&apos;re concerned about losing packages.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+                <item id="iVuqdZqACic" expanded="yes">
+                  <style>
+                    <inherited-style name="Box" idref="mRPR-6uEuRb"/>
+                    <value key="font-weight">11</value>
+                  </style>
+                  <values>
+                    <null/>
+                  </values>
+                  <children>
+                    <item id="kg5lHa4snjm">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>List fonts can be changed by using the standard Font panel from the Edit menu (</lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="UI" idref="a0as48_ttlo"/>
+                              </style>
+                              <lit>Cmd-T</lit>
+                            </run>
+                            <run>
+                              <lit>).  Font settings will persist between launches.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+              </children>
+            </item>
+            <item id="c7F_mB7Iwc0" expanded="yes">
+              <style>
+                <inherited-style name="Destination" idref="oQxEDq66I5w"/>
+              </style>
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Installation</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <children>
+                <item id="nmTz-p8V31t">
+                  <style>
+                    <inherited-style name="Anchor" idref="aUm3924E6__"/>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>installation</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="oFP4nTHigc4">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>One might reasonbly think that installation of TeX Live should be the first item presented in the manual.  After all, TeX Live Utility is mostly uselesss until TeX Live is installed!  However, TeX Live Utility&apos;s installation feature is actually hidden, since most users should install via </lit>
+                        </run>
+                        <run>
+                          <lit><cell href="http://www.tug.org/mactex" name="MacTeX" type="link"/></lit>
+                        </run>
+                        <run>
+                          <lit>.  This feature is primarily intended for users who do not have administrative (root) access to their systems, so cannot install MacTeX.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="eYa_PLoHy3a" expanded="yes">
+                  <style>
+                    <value key="font-weight">11</value>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>Limitations</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                  <children>
+                    <item id="lwuOpk7bE8e">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>1.  Configuration options are somewhat arcane.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="pvZRg_5pTgJ">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>2.  You need a network connection for the duration of the installation (unless you install from a file: URL-based repository).</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="omcKpXZg3wL">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>3.  Most importantly, the TeX Distribution Preference Pane is not installed, and the </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                              </style>
+                              <lit>/usr/texbin</lit>
+                            </run>
+                            <run>
+                              <lit> symbolic link is not created.  This means that you will need to manually adjust path settings in your TeX-using programs.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+                <item id="lBL8JlzsOkk">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>If you are convinced that you need this feature, you need to activate it in Terminal.  Quit TeX Live Utility, then execute the following command in Terminal: `</lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                          </style>
+                          <lit>defaults write com.googlecode.mactlmgr.tlu TLMEnableNetInstall 1`</lit>
+                        </run>
+                        <run>
+                          <lit>.  When you relaunch TeX Live Utility, you will have a third tab in the main window, and a new </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Install TeX Live</lit>
+                        </run>
+                        <run>
+                          <lit> item in the </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Actions</lit>
+                        </run>
+                        <run>
+                          <lit> menu.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="aB3oIl5TghL">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit><cell refid="att7" expanded="yes" name="InstallTab"/></lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="myxF3iwiRC4">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>The primary value of interest for most users is </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                          </style>
+                          <lit>TEXDIR</lit>
+                        </run>
+                        <run>
+                          <lit>, which is the destination for installing TeX Live.  Change it to any location on the system for which you have write permission.  TeX Live Utility does not validate any of the variables here, so you&apos;re at the mercy of the TeX Live installer script (which works very well indeed).</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="gQX4NAMYZCa" expanded="yes">
+                  <style>
+                    <inherited-style name="Box" idref="mRPR-6uEuRb"/>
+                  </style>
+                  <values>
+                    <null/>
+                  </values>
+                  <children>
+                    <item id="cPavLGpxZFe">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>This is a fairly trivial GUI wrapper around the default UNIX® install script for TeX Live.  If you use a network repository (i.e., ftp: or http: URL), all of the content will be downloaded over the course of the install process.  For more details, see </lit>
+                            </run>
+                            <run>
+                              <lit><cell href="http://www.tug.org/texlive/quickinstall.html" name="www.tug.org—quickinstall.html" type="link"/></lit>
+                            </run>
+                            <run>
+                              <lit>.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="hFrAeIWlgwk">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>The primary advantage of using TeX Live Utility versus running the interactive script in Terminal is that TeX Live Utility defaults to the environment variables from MacTeX, so your installation will use </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                              </style>
+                              <lit>~/Library/texmf </lit>
+                            </run>
+                            <run>
+                              <lit>as your </lit>
+                            </run>
+                            <run>
+                              <style>
+                                <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                              </style>
+                              <lit>TEXMFHOME</lit>
+                            </run>
+                            <run>
+                              <lit> (place where you install custom packages).  This convention dates back to Gerben Wierda&apos;s </lit>
+                            </run>
+                            <run>
+                              <lit><cell href="http://www.tug.org/twg/mactex/award/2007/gerben/aboutgwtex.html" name="gwTeX" type="link"/></lit>
+                            </run>
+                            <run>
+                              <lit>, and is consistent with the extant documentation on TeX for Mac OS X.</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+              </children>
+            </item>
+            <item id="bOKL8x_NI9t" expanded="yes">
+              <style>
+                <inherited-style name="Destination" idref="oQxEDq66I5w"/>
+              </style>
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Beta Testing</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <children>
+                <item id="eZQwaKc7FnH">
+                  <style>
+                    <inherited-style name="Anchor" idref="aUm3924E6__"/>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>betatesting</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="n5xvA8hQLpV">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>If you hold down the option key (alt on some keyboards) while the </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Actions</lit>
+                        </run>
+                        <run>
+                          <lit> menu is active, you&apos;ll see an option to </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Install TeX Live Manager From Critical Repository</lit>
+                        </run>
+                        <run>
+                          <lit>. This peculiar-sounding item allows you to install the latest TeX Live Manager test version. If you do this, please report any problems encountered to the TeX Live team via the  </lit>
+                        </run>
+                        <run>
+                          <lit><cell href="http://lists.tug.org/tex-live" name="mailing list" type="link"/></lit>
+                        </run>
+                        <run>
+                          <lit>. In addition, you can revert to a non-beta version of tlmgr by using the </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="UI" idref="a0as48_ttlo"/>
+                          </style>
+                          <lit>Reinstall TeX Live Manager</lit>
+                        </run>
+                        <run>
+                          <lit> menu item.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="p-jQQMHd8SK">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>Beta versions of TeX Live Utility are occasionally available at the </lit>
+                        </run>
+                        <run>
+                          <lit><cell href="http://code.google.com/p/mactlmgr/downloads/list." name="download site" type="link"/></lit>
+                        </run>
+                        <run>
+                          <lit>.  Bugs should be reported using the </lit>
+                        </run>
+                        <run>
+                          <lit><cell href="http://code.google.com/p/mactlmgr/issues/list" name="issue tracker" type="link"/></lit>
+                        </run>
+                        <run>
+                          <lit>.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+              </children>
+            </item>
+          </children>
+        </item>
+        <item id="kar6WaIdFNU" expanded="yes">
+          <style>
+            <inherited-style name="Destination" idref="oQxEDq66I5w"/>
+          </style>
+          <values>
+            <text>
+              <p>
+                <run>
+                  <lit>Problems</lit>
+                </run>
+              </p>
+            </text>
+          </values>
+          <children>
+            <item id="iBQUjAssMXU">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Please report any problems using the </lit>
+                    </run>
+                    <run>
+                      <lit><cell href="https://github.com/amaxwell/tlutility/issues" name="bug tracker" type="link"/></lit>
+                    </run>
+                    <run>
+                      <lit>, or at a bare minimum, by e-mailing the maintainer at </lit>
+                    </run>
+                    <run>
+                      <lit><cell href="mailto:amaxwell@mac.com" name="amaxwell@mac.com" type="link"/></lit>
+                    </run>
+                    <run>
+                      <lit>.</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="i0TEy7CBfzc" expanded="yes">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>When reporting a bug, please include the following:</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <children>
+                <item id="l7RcY_b0NmD">
+                  <style>
+                    <value key="heading-lowercase(com.omnigroup.OmniOutliner)">yes</value>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>1.  All of TeX Live Utility&apos;s </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="Link" idref="mkRhzPcpm-u"/>
+                          </style>
+                          <lit>log output</lit>
+                        </run>
+                        <run>
+                          <lit> for the problematic session</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="cZ4IRnKQ48N">
+                  <style>
+                    <value key="heading-lowercase(com.omnigroup.OmniOutliner)">yes</value>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>2.  Exact steps to reproduce the problem</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="ay-36yaRH_D">
+                  <style>
+                    <value key="heading-lowercase(com.omnigroup.OmniOutliner)">yes</value>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>3.  Expected behavior</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="mq6MujqrPNy">
+                  <style>
+                    <value key="heading-lowercase(com.omnigroup.OmniOutliner)">yes</value>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>4.  Actual behavior</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+                <item id="d6M-K-D9Hq2">
+                  <style>
+                    <value key="heading-lowercase(com.omnigroup.OmniOutliner)">yes</value>
+                  </style>
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>5.  Crash logs from </lit>
+                        </run>
+                        <run>
+                          <style>
+                            <inherited-style name="Verbatim" idref="a-WJm12exYM"/>
+                          </style>
+                          <lit>~/Library/Logs/CrashReporter</lit>
+                        </run>
+                        <run>
+                          <lit> for any crashes.</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+              </children>
+            </item>
+            <item id="m13_4d3Itc9">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>If you are requesting a feature or asking a question, please check the </lit>
+                    </run>
+                    <run>
+                      <lit><cell href="http://amaxwell.github.io/tlutility/" name="FAQ" type="link"/></lit>
+                    </run>
+                    <run>
+                      <lit> first to see if it is already addressed.</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+          </children>
+        </item>
+        <item id="ftDBf-ySLe5" expanded="yes" children-are-sections="yes">
+          <style>
+            <inherited-style name="Variables" idref="fHdhEYH17Qf"/>
+          </style>
+          <values>
+            <text>
+              <p>
+                <run>
+                  <lit>Variables</lit>
+                </run>
+              </p>
+            </text>
+          </values>
+          <children>
+            <item id="gC8I5A7cfap" expanded="yes">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Image Path</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <note expanded="yes">
+                <text>
+                  <p>
+                    <run>
+                      <lit>The path to your image folder from the help book location</lit>
+                    </run>
+                  </p>
+                </text>
+              </note>
+              <children>
+                <item id="mxCB0TYlhaD">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>HelpImages/</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+              </children>
+            </item>
+            <item id="dJO9sBUL1qL" expanded="yes">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Company URL</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <note expanded="yes">
+                <text>
+                  <p>
+                    <run>
+                      <lit>For the link on the top page</lit>
+                    </run>
+                  </p>
+                </text>
+              </note>
+              <children>
+                <item id="ln_zdCoCWfN">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>amaxwell.github.io/tlutility</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+              </children>
+            </item>
+            <item id="moejLGjg54P" expanded="yes">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Help Indexer utility arguments</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <note expanded="yes">
+                <text>
+                  <p>
+                    <run>
+                      <lit>If you want to use different settings for the Snow Leopard command-line help indexing tool</lit>
+                    </run>
+                  </p>
+                </text>
+              </note>
+              <children>
+                <item id="gDJCQfxMef_">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>-s en -C -a -v -f</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                </item>
+              </children>
+            </item>
+          </children>
+        </item>
+      </children>
+    </item>
+  </root>
+</outline>

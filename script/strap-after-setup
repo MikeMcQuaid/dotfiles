@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 # Run by Strap after installing Brewfile dependencies
 
-cd "$(dirname "$0")/.." || exit
+cd "$(dirname "$0")/.."
 
 # Close terminal windows on successful exit code
 /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.Terminal.plist -c \
@@ -9,7 +9,7 @@ cd "$(dirname "$0")/.." || exit
 
 # Use ZSH as my default Shell
 if [ "$SHELL" != "/bin/zsh" ]; then
-  chsh -s /bin/zsh mike
+  chsh -s /bin/zsh pdss
 fi
 
 # Enable Touch ID for sudo

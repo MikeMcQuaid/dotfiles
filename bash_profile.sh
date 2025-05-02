@@ -58,3 +58,14 @@ if [ -n "$INTERACTIVE_BASH" ]; then
   bind '"^u" history-search-backward'
   bind '"^v" history-search-forward'
 fi
+
+if [ -n "${SSH_AUTH_SOCK_LOCAL}" ]; then
+  export SSH_AUTH_SOCK="${SSH_AUTH_SOCK_LOCAL}"
+fi
+
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/pdss/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+export GPG_TTY=$(tty)

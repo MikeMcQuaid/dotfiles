@@ -51,3 +51,11 @@ alias be="noglob bundle exec"
 
 # to avoid non-zero exit code
 true
+
+[ -f "/Users/pdss/.config/zshrc/.zshrc_local" ] && source /Users/pdss/.config/zshrc/.zshrc_local
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/pdss/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+export GPG_TTY=$(tty)

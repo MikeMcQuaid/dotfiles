@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.openssh.ssh-agent-local</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/bin/ssh-agent</string>
+		<string>-l</string>
+		<string>-t</string>
+		<string>14400</string>
+	</array>
+	<key>Sockets</key>
+	<dict>
+		<key>Listeners</key>
+		<dict>
+			<key>SecureSocketWithKey</key>
+			<string>SSH_AUTH_SOCK_LOCAL</string>
+		</dict>
+	</dict>
+	<key>EnableTransactions</key>
+	<true/>
+</dict>
+</plist>

@@ -1,13 +1,14 @@
 [user]
 	# Name used in commit messages.
-	name = Mike McQuaid
+	name = Chatpong Voranartaksorn
 	# Email used in commit messages.
-	email = mike@mikemcquaid.com
+	email = chatpong.dvm@gmail.com
+	signingkey = /Users/pdss/.ssh/id_ed25519.pub
 [include]
-	path = ~/.gitconfig.local
+	path = /Users/pdss/.gitconfig.local
 [github]
 	# GitHub username for command-line tools.
-	user = MikeMcQuaid
+	user = psychvc
 [color]
 	# Colour terminal command output when possible.
 	ui = auto
@@ -48,6 +49,8 @@
 	commitGraph = true
 	# Output unicode characters (e.g. emoji).
 	quotepath = on
+	autocrlf = false
+	eol = lf
 [help]
   # Autocorrect mistyped commands.
 	autocorrect = 1
@@ -197,15 +200,18 @@
 	autoStash = true
 	# Auto-add `--autosquash` to `git rebase`
 	autoSquash = true
+[url "https://github"]
+	insteadOf = git://github
 [url "git@github.com:"]
-	# Use SSH for GitHub instead of https://
+        insteadOf = git://github	
+        # Use SSH for GitHub instead of https://
 	# Enable this in networks where https:// has issues.
 	# insteadOf = https://github.com/
 [credential]
 	# Use my custom dotfiles credentials helper.
 	helper = dotfiles
 [credential "https://github.com"]
-	username = MikeMcQuaid
+	username = psychvc
 [hub]
 	# Use HTTPS rather than SSH protocol in Hub
 	protocol = https
@@ -218,12 +224,14 @@
 [commit]
 	# Show the diff as a comment in the commit message template.
 	verbose = true
+	gpgsign = true
 [branch]
 	# Sort branches by committer date.
 	sort = -committerdate
 [tag]
 	# Sort tags by newest first
 	sort = -version:refname
+	gpgSign = true
 [protocol]
 	# Use Git v2 protocol for better performance
 	version = 2
@@ -255,3 +263,12 @@
 	directory = /opt/homebrew/Library/Taps/workbrew/homebrew-tap
 	directory = /opt/homebrew/Library/Taps/workbrew/homebrew-private
 	directory = /home/linuxbrew/.linuxbrew/Homebrew
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-bundle
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-core
+	directory = /opt/homebrew/Library/Taps/danielbayley/homebrew-pipeline
+	directory = /Users/pdss/Sync/SCM/dotfiles
+	directory = /private/tmp
+	directory = /Users/pdss/Sync/SCM/dotfiles
+	directory = /Users/pdss/Sync/SCM/dotfiles
+[gpg "ssh"]
+	allowedSignersFile = /Users/pdss/.ssh/allowed_signers

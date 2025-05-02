@@ -1,4 +1,6 @@
-Host github.com gitlab.com
+Include /Users/pdss/.colima/ssh_config
+
+Host github.com gitlab.io
 	User git
 
 Host *
@@ -7,4 +9,11 @@ Host *
 	NoHostAuthenticationForLocalhost yes
  	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 	ControlMaster auto
+         AddKeysToAgent yes 
 	ControlPath /tmp/ssh-%r@%h:%p.socket
+
+Host github.com-dotfiles_local
+       Hostname github.com
+       IdentityFile=/Users/pdss/.ssh/Gitlab
+
+Include file "/Users/pdss/.ssh/1Password/config"
