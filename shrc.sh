@@ -60,7 +60,6 @@ elif [[ -n "${LINUX}" ]]; then
   add_to_path_start "/home/linuxbrew/.linuxbrew/bin"
 fi
 
-add_to_path_start "/opt/workbrew/bin"
 add_to_path_start "/usr/local/bin"
 add_to_path_end "${HOME}/.dotfiles/bin"
 
@@ -103,9 +102,6 @@ if quiet_which brew; then
   alias portableruby="${HOMEBREW_PREFIX}/Library/Homebrew/vendor/portable-ruby/current/bin/ruby"
   alias portablebundle="${HOMEBREW_PREFIX}/Library/Homebrew/vendor/portable-ruby/current/bin/bundle"
 
-  alias workbrew='/opt/workbrew/bin/brew'
-  alias workbrewdo='sudo --set-home --preserve-env --user=workbrew --'
-  alias workbrewpermissions='sudo chown -R workbrew /opt/homebrew; sudo chmod -R g+w /opt/homebrew; sudo chmod -R g-w /opt/homebrew/var'
   alias youtube-dl='yt-dlp'
   alias bbe="brew bundle exec --"
   alias ebbe='eval "$(brew bundle env)"'
@@ -157,7 +153,6 @@ export CLICOLOR=1
 if [[ -n "${MACOS}" ]]; then
   export GREP_OPTIONS="--color=auto"
   export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
-  export HOMEBREW_ENFORCE_SBOM=1
 
   alias locate="mdfind -name"
   alias finder-hide="setfile -a V"

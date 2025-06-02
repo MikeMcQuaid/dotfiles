@@ -95,7 +95,6 @@
     "editor.minimap.enabled": false,
     "debug.allowBreakpointsEverywhere": true,
     "debug.showBreakpointsInOverviewRuler": true,
-    "workbench.editor.enablePreview": false,
     "githubPullRequests.pullBranch": "never",
     "github.copilot.enable": {
         "*": false

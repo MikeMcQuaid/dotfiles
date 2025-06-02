@@ -1,13 +1,8 @@
-tap "homebrew/aliases"
-tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/command-not-found"
 tap "homebrew/core"
-tap "homebrew/formula-analytics"
 tap "homebrew/portable-ruby"
-tap "homebrew/services"
 tap "homebrew/test-bot"
-tap "workbrew/private"
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Static analysis and lint tool, for (ba)sh scripts
