@@ -119,5 +119,7 @@
         "editor.formatOnSave": false,
         "editor.formatOnPaste": false,
         "editor.formatOnType": false
-    }
+    },
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "docker.extension.enableComposeLanguageServer": false
 }
