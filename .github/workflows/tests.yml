@@ -1,7 +1,8 @@
 name: GitHub Actions CI
 on:
   push:
-    branches: main
+    branches:
+      - main
   pull_request:
 jobs:
   tests:
@@ -21,6 +22,8 @@ jobs:
 
     - name: Test script/setup
       run: bash script/setup
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Test bashrc
       run: bash -xc "source ~/.bashrc"

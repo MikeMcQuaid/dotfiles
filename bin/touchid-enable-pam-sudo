@@ -2,6 +2,11 @@
 # Enables sudo authentication using TouchID.
 
 pam_sudo_filename = "/etc/pam.d/sudo_local"
+unless File.exist?(pam_sudo_filename)
+  warn "Error: #{pam_sudo_filename} does not exist!"
+  abort
+end
+
 pam_sudo_contents = File.read(pam_sudo_filename)
 if pam_sudo_contents.include?("pam_tid.so")
   unless ARGV.include?("--quiet")
