@@ -1,23 +1,25 @@
 #!/bin/bash
 # Run by Strap after installing Brewfile dependencies
 
+set -eo pipefail
+
 cd "$(dirname "$0")/.." || exit
 
 # Close terminal windows on successful exit code
 /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.Terminal.plist -c \
-  "Set 'Window Settings':Basic:shellExitAction 1"
-
-# Use ZSH as my default Shell
-if [ "$SHELL" != "/bin/zsh" ]; then
-  chsh -s /bin/zsh mike
-fi
-
-# Enable Touch ID for sudo
-bin/touchid-enable-pam-sudo --quiet
+  "Set 'Window Settings':Basic:shellExitAction 1" || true
 
 # Add GitHub credentials if missing
 if command -v "gh" >/dev/null && ! gh auth token &>/dev/null; then
   gh auth login --git-protocol https --hostname github.com --web
+fi
+
+# Enable Touch ID for sudo
+bin/touchid-enable-pam-sudo --quiet || true
+
+# Use ZSH as my default Shell
+if [ "${SHELL}" != "/bin/zsh" ]; then
+  sudo chsh -s /bin/zsh "${USER}"
 fi
 
 # Ensure auto-update is always enabled

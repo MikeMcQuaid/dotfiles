@@ -1,6 +1,8 @@
 #!/bin/bash
 # Install all dotfiles into the home directory
 
+set -eo pipefail
+
 if [[ -L "$0" ]]; then
   SCRIPTSETUP="$(readlink "$0")"
 else
@@ -11,8 +13,8 @@ DOTFILESDIRREL=$(dirname "${SCRIPTSETUP}")
 cd "${DOTFILESDIRREL}"/.. || exit
 DOTFILESDIR=$(pwd -P)
 
-[[ "$(uname -s)" = "Darwin" ]] && export MACOS=1 && export UNIX=1
-[[ "$(uname -s)" = "Linux" ]] && export LINUX=1 && export UNIX=1
+[[ "$(uname -s)" = "Darwin" ]] && export MACOS=1
+[[ "$(uname -s)" = "Linux" ]] && export LINUX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
 [[ -n "$LINUX" ]] && grep -qEi "(Microsoft|WSL)" /proc/version && export WSL=1
 
@@ -25,6 +27,7 @@ elif [[ -n "${LINUX}" ]]; then
 elif [[ -n "${WINDOWS}" ]]; then
   VSCODE="${APPDATA}/Code/User"
   CURSOR="${APPDATA}/Cursor/User"
+  set -x
 fi
 ZED="${HOME}/.config/zed/settings.json"
 
@@ -38,8 +41,8 @@ for DOTFILE in *; do
     echo "${DOTFILE}" | grep -E -q '^ssh/' && continue
   fi
 
-  # Don't try to install documentation/script files
-  echo "${DOTFILE}" | grep -E -q '(^script/$|\.txt$|\.md$)' && continue
+  # Don't try to install some unneeded paths
+  echo "${DOTFILE}" | grep -E -q '(^bin/$|bundle/$|script/$|\.txt$|\.md$)' && continue
 
   # Only install gitconfig.local.macos on macOS
   if echo "${DOTFILE}" | grep -q 'gitconfig.local.macos'; then
@@ -82,22 +85,18 @@ for DOTFILE in *; do
     HOMEFILE="${HOMEOSS}/.rubocop.yml"
   fi
 
-  if [[ -n "${UNIX}" ]]; then
-    if ! [[ -d "${DOTFILE}" ]]; then
-      if [[ -L "${HOMEFILE}" ]]; then
-        ln -sf "${DIRFILE}" "${HOMEFILE}"
-      else
-        ln -svf "${DIRFILE}" "${HOMEFILE}"
-      fi
-    elif [[ -L "${HOMEFILE}" ]]; then
-      rm -r "${HOMEFILE}" 2>/dev/null
-      ln -s "${DIRFILE}" "${HOMEFILE}"
+  if ! [[ -d "${DOTFILE}" ]]; then
+    if [[ -L "${HOMEFILE}" ]]; then
+      ln -sf "${DIRFILE}" "${HOMEFILE}"
     else
-      rm -rv "${HOMEFILE}" 2>/dev/null
-      ln -sv "${DIRFILE}" "${HOMEFILE}"
+      ln -svf "${DIRFILE}" "${HOMEFILE}"
     fi
+  elif [[ -L "${HOMEFILE}" ]]; then
+    rm -r "${HOMEFILE}" 2>/dev/null
+    ln -s "${DIRFILE}" "${HOMEFILE}"
   else
-    cp -rv "${DIRFILE}" "${HOMEFILE}"
+    rm -rfv "${HOMEFILE}" 2>/dev/null
+    ln -sv "${DIRFILE}" "${HOMEFILE}"
   fi
 done
 
@@ -118,4 +117,6 @@ fi
 
 if [[ -n "${LINUX}" ]]; then
   exec script/linux-after-setup
+elif [[ -n "${CI}" && -n "${MACOS}" ]]; then
+  exec script/strap-after-setup
 fi
