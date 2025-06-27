@@ -16,7 +16,7 @@ DOTFILESDIR=$(pwd -P)
 [[ "$(uname -s)" = "Darwin" ]] && export MACOS=1
 [[ "$(uname -s)" = "Linux" ]] && export LINUX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
-[[ -n "$LINUX" ]] && grep -qEi "(Microsoft|WSL)" /proc/version && export WSL=1
+[[ -n "${LINUX}" ]] && grep -qEi "(Microsoft|WSL)" /proc/version && export WSL=1
 
 if [[ -n "${MACOS}" ]]; then
   VSCODE="${HOME}/Library/Application Support/Code/User"
@@ -76,7 +76,7 @@ for DOTFILE in *; do
 
   # Fixup RuboCop configuration (if possible)
   if echo "${DOTFILE}" | grep -q 'rubocop-work.yml'; then
-    HOMEWORK="${HOME}/Workbrew"
+    HOMEWORK="${HOME}/Work"
     [[ -d "${HOMEWORK}" ]] || continue
     HOMEFILE="${HOMEWORK}/.rubocop.yml"
   elif echo "${DOTFILE}" | grep -q 'rubocop-oss.yml'; then
@@ -107,7 +107,7 @@ if [[ "${DOTFILESDIR}" != "${HOMEDOTFILES}" ]]; then
 fi
 
 # Setup my home directory how I like it
-mkdir -pv ~/OSS ~/Workbrew
+mkdir -pv ~/OSS
 if command -v "brew" >/dev/null && ! [[ -d ~/OSS/Homebrew ]]; then
   ln -vsf "$(brew --repository)" ~/OSS/Homebrew
 fi
