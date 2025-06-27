@@ -103,7 +103,7 @@
     },
     "git.openRepositoryInParentFolders": "always",
     "[dockerfile]": {
-        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+        "editor.defaultFormatter": "ms-azuretools.vscode-containers"
     },
     "go.toolsManagement.autoUpdate": true,
     "terminal.integrated.tabs.enabled": false,
