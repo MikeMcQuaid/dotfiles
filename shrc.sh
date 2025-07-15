@@ -74,13 +74,12 @@ alias rm="rm -iv"
 alias mv="mv -iv"
 alias cp="cp -irv"
 alias du="du -sh"
-alias make="nice make"
 alias less="less --ignore-case --raw-control-chars"
 alias rsync="rsync --partial --progress --human-readable --compress"
 alias rg="rg --colors 'match:style:nobold' --colors 'path:style:nobold'"
 alias be="bundle exec"
 alias sha256="shasum -a 256"
-alias perlsed="perl -p -e"
+alias sedperl="perl -p -e"
 
 # Command-specific stuff
 if quiet_which brew; then
@@ -90,16 +89,14 @@ if quiet_which brew; then
   export HOMEBREW_BUNDLE_INSTALL_CLEANUP=1
   export HOMEBREW_BUNDLE_DUMP_DESCRIBE=1
   export HOMEBREW_NO_ENV_HINTS=1
-  export HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS=1
   export HOMEBREW_CLEANUP_MAX_AGE_DAYS=30
-  export HOMEBREW_UPGRADE_GREEDY_CASKS="cursor"
 
   add_to_path_end "${HOMEBREW_PREFIX}/Library/Homebrew/shims/gems"
 
   # Specifically want this to expand when defined, not when run.
   # shellcheck disable=SC2139
-  alias homebrew="${HOMEBREW_PREFIX}/bin/brew"
   alias portableruby="${HOMEBREW_PREFIX}/Library/Homebrew/vendor/portable-ruby/current/bin/ruby"
+  # shellcheck disable=SC2139
   alias portablebundle="${HOMEBREW_PREFIX}/Library/Homebrew/vendor/portable-ruby/current/bin/bundle"
 
   alias youtube-dl='yt-dlp'
