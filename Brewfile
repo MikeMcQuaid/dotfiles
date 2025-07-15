@@ -53,6 +53,8 @@ brew "ripgrep"
 brew "ruby"
 # Autoformat shell script source code
 brew "shfmt"
+# Human-friendly alternative to netstat for socket and port monitoring
+brew "somo"
 # Syntax-aware linter for prose
 brew "vale"
 # Internet file retriever
