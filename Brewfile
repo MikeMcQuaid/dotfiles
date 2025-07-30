@@ -11,8 +11,6 @@ brew "shellcheck"
 brew "actionlint"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Command-line tool for DigitalOcean
-brew "doctl"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # More intuitive version of du in rust
