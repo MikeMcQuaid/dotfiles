@@ -25,8 +25,8 @@ find -L "$CURRENT" \( -name .git -or -name .svn \) -print0 | while read -d '' -r
   elif [ -d .git ]; then
     echorun git fetch --all
     if [ -n "$(git remote -v)" ]; then
-      echorun git checkout --quiet master
-      echorun git merge --no-edit --ff-only origin/master
+      echorun git checkout --quiet master || echorun git checkout --quiet main || echorun git checkout --quiet trunk
+      echorun git merge --no-edit --ff-only origin/HEAD
       git branch --merged | grep -v '\*' | xargs -n 1 git branch -d
     fi
   elif [ -d .svn ]; then
