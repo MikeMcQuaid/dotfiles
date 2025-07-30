@@ -121,5 +121,6 @@
         "editor.formatOnType": false
     },
     "github.copilot.nextEditSuggestions.enabled": true,
-    "docker.extension.enableComposeLanguageServer": false
+    "docker.extension.enableComposeLanguageServer": false,
+    "redhat.telemetry.enabled": false
 }
