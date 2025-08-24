@@ -1,7 +1,6 @@
 tap "homebrew/cask"
 tap "homebrew/command-not-found"
 tap "homebrew/core"
-tap "homebrew/portable-ruby"
 tap "homebrew/test-bot"
 # Search tool like grep, but optimized for programmers
 brew "ack"
@@ -75,6 +74,8 @@ cask "appcleaner"
 cask "carbon-copy-cloner"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # Write, edit, and chat about your code with AI
 cask "cursor"
 # Elgato FACECAM configuration tool
@@ -89,6 +90,8 @@ cask "font-space-mono"
 cask "fork"
 # Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
+# Trims video and audio files losslessly
+cask "losslesscut"
 # Multi-platform web browser
 cask "microsoft-edge"
 # Audiobook manager for Audible users
