@@ -98,8 +98,8 @@ cask "microsoft-edge"
 cask "openaudible"
 # Automatically hides or quits apps after periods of inactivity
 cask "quitter"
-# Utility to resize and position application windows
-cask "sizeup"
+# Move and resize windows using keyboard shortcuts or snap areas
+cask "rectangle"
 # Open-source code editor
 cask "visual-studio-code"
 # Yet another monitor
