@@ -8,6 +8,7 @@ cd "$(dirname "$0")/.." || exit
 # Close terminal windows on successful exit code
 /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.Terminal.plist -c \
   "Set 'Window Settings':Basic:shellExitAction 1" || true
+defaults read com.apple.Terminal >/dev/null 2>&1 || true
 
 # Add GitHub credentials if missing
 if command -v "gh" >/dev/null && ! gh auth token &>/dev/null; then
@@ -26,3 +27,13 @@ fi
 if [ "$(defaults read /Library/Preferences/com.apple.commerce.plist AutoUpdate)" != "1" ]; then
   sudo defaults write /Library/Preferences/com.apple.commerce.plist AutoUpdate 1
 fi
+
+# macOS appearance: Auto (Light by day, Dark by night)
+defaults write -g AppleInterfaceStyleSwitchesAutomatically -bool true
+
+# Dock aligned to the left
+defaults write com.apple.dock orientation -string left
+killall Dock || true
+
+# Prefer tabs when opening documents: Always
+defaults write -g AppleWindowTabbingMode -string Always
