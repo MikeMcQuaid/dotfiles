@@ -10,11 +10,6 @@ cd "$(dirname "$0")/.." || exit
   "Set 'Window Settings':Basic:shellExitAction 1" || true
 defaults read com.apple.Terminal >/dev/null 2>&1 || true
 
-# Add GitHub credentials if missing
-if command -v "gh" >/dev/null && ! gh auth token &>/dev/null; then
-  gh auth login --git-protocol https --hostname github.com --web
-fi
-
 # Enable Touch ID for sudo
 bin/touchid-enable-pam-sudo --quiet || true
 
