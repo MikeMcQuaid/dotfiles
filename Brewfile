@@ -78,6 +78,8 @@ cask "chatgpt"
 cask "claude-code"
 # Write, edit, and chat about your code with AI
 cask "cursor"
+# App to build and share containerised applications and microservices
+cask "docker-desktop"
 # Elgato FACECAM configuration tool
 cask "elgato-camera-hub"
 # Control your Elgato key lights
@@ -122,6 +124,7 @@ mas "TouchDraw2", id: 1580322028
 mas "WhatsApp", id: 310633997
 vscode "anykeyh.simplecov-vscode"
 vscode "ban.spellright"
+vscode "charliermarsh.ruff"
 vscode "davidanson.vscode-markdownlint"
 vscode "davidbwaters.macos-modern-theme"
 vscode "editorconfig.editorconfig"
@@ -132,7 +135,11 @@ vscode "github.copilot-chat"
 vscode "github.vscode-github-actions"
 vscode "github.vscode-pull-request-github"
 vscode "ms-azuretools.vscode-containers"
-vscode "ms-vscode-remote.remote-wsl"
+vscode "ms-python.debugpy"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+vscode "ms-python.vscode-python-envs"
+vscode "ms-vscode-remote.remote-containers"
 vscode "redhat.vscode-yaml"
 vscode "shopify.ruby-lsp"
 vscode "sorbet.sorbet-vscode-extension"

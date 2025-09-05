@@ -70,11 +70,6 @@ for DOTFILE in *; do
     HOMEFILE="${ZED}/settings.json" &&
     mkdir -p "${ZED}"
 
-  # Fixup Rectangle plist path
-  echo "${DOTFILE}" | grep -q 'rectangle-settings' &&
-    HOMEFILE="${HOME}/Library/Preferences/com.knollsoft.Rectangle.plist" &&
-    mkdir -p "${HOME}/Library/Preferences"
-
   # Remove .sh extensions
   echo "${DOTFILE}" | grep -q '\.sh' &&
     HOMEFILE="${HOME}/.$(echo "${DOTFILE}" | sed -e 's/\.sh//')"
