@@ -268,11 +268,6 @@ github-packages-curl() {
   curl -H "Authorization: Bearer QQ==" -H "Accept: application/vnd.oci.image.index.v1+json" "$@" | jq .
 }
 
-# Spit out Okta keychain password
-okta-keychain() {
-  security find-generic-password -l device_trust '-w'
-}
-
 # Clear entire screen buffer
 clearer() {
   tput reset
