@@ -70,8 +70,6 @@ cask "1password"
 cask "1password-cli"
 # Application uninstaller
 cask "appcleaner"
-# Hard disk backup and cloning utility
-cask "carbon-copy-cloner"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
 # Terminal-based AI coding assistant
@@ -117,6 +115,7 @@ mas "InYourFace", id: 1476964367
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Parachute", id: 6748614170
 mas "Pixelmator Pro", id: 1289583905
 mas "Refined GitHub", id: 1519867270
 mas "Slack", id: 803453959
