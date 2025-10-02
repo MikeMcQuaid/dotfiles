@@ -1,7 +1,5 @@
 tap "homebrew/cask"
-tap "homebrew/command-not-found"
 tap "homebrew/core"
-tap "homebrew/test-bot"
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Static analysis and lint tool, for (ba)sh scripts
@@ -10,6 +8,10 @@ brew "shellcheck"
 brew "actionlint"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# OpenAI's coding agent that runs in your terminal
+brew "codex"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # More intuitive version of du in rust
@@ -18,6 +20,8 @@ brew "dust"
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -44,8 +48,6 @@ brew "mas"
 brew "pngcrush"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # Autoformat shell script source code
@@ -56,6 +58,8 @@ brew "somo"
 brew "vale"
 # Internet file retriever
 brew "wget"
+# Port of OpenAI's Whisper model in C/C++
+brew "whisper-cpp"
 # Linter for YAML files
 brew "yamllint"
 # Feature-rich command-line audio/video downloader
@@ -100,8 +104,8 @@ cask "openaudible"
 cask "quitter"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
-# Open-source code editor
-cask "visual-studio-code"
+# Instant messaging application focusing on security
+cask "signal"
 # Yet another monitor
 cask "yam-display"
 # Multiplayer code editor
@@ -122,8 +126,9 @@ mas "Slack", id: 803453959
 mas "TouchDraw2", id: 1580322028
 mas "WhatsApp", id: 310633997
 vscode "anykeyh.simplecov-vscode"
+vscode "anysphere.remote-containers"
+vscode "anysphere.remote-ssh"
 vscode "ban.spellright"
-vscode "charliermarsh.ruff"
 vscode "davidanson.vscode-markdownlint"
 vscode "davidbwaters.macos-modern-theme"
 vscode "editorconfig.editorconfig"
@@ -133,12 +138,9 @@ vscode "github.copilot"
 vscode "github.copilot-chat"
 vscode "github.vscode-github-actions"
 vscode "github.vscode-pull-request-github"
+vscode "koichisasada.vscode-rdbg"
 vscode "ms-azuretools.vscode-containers"
-vscode "ms-python.debugpy"
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-python.vscode-python-envs"
-vscode "ms-vscode-remote.remote-containers"
+vscode "ms-azuretools.vscode-docker"
 vscode "redhat.vscode-yaml"
 vscode "shopify.ruby-lsp"
 vscode "sorbet.sorbet-vscode-extension"
