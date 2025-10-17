@@ -101,8 +101,7 @@ if quiet_which brew; then
   alias portablebundle="${HOMEBREW_PREFIX}/Library/Homebrew/vendor/portable-ruby/current/bin/bundle"
 
   alias youtube-dl='yt-dlp'
-  alias bbe="brew bundle exec --"
-  alias ebbe='eval "$(brew bundle env)"'
+  alias bbe="brew bundle exec --check --install --"
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
 fi
@@ -279,4 +278,11 @@ desk_stand() {
 }
 desk_sit() {
   curl -X POST http://10.0.0.45/button/desk_preset_2/press
+}
+
+# Transcribe files
+whisper_transcribe() {
+  whisper-cli \
+    --model ~/OSS/mikemcquaid.com/tmp/models/ggml-large-v3-turbo.bin \
+    --language en "$@"
 }
