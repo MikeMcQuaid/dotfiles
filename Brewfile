@@ -28,6 +28,8 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Quickly rewrite git repository history
+brew "git-filter-repo"
 # Colorize logfiles and command output
 brew "grc"
 # Improved top (interactive process viewer)
@@ -76,8 +78,6 @@ cask "1password-cli"
 cask "appcleaner"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
-# Terminal-based AI coding assistant
-cask "claude-code"
 # Write, edit, and chat about your code with AI
 cask "cursor"
 # App to build and share containerised applications and microservices
@@ -104,8 +104,12 @@ cask "openaudible"
 cask "quitter"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
+# Podcast and video recorder
+cask "riverside-studio"
 # Instant messaging application focusing on security
 cask "signal"
+# Video game digital distribution service
+cask "steam"
 # Yet another monitor
 cask "yam-display"
 # Multiplayer code editor
@@ -141,6 +145,7 @@ vscode "github.vscode-pull-request-github"
 vscode "koichisasada.vscode-rdbg"
 vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
+vscode "openai.chatgpt"
 vscode "redhat.vscode-yaml"
 vscode "shopify.ruby-lsp"
 vscode "sorbet.sorbet-vscode-extension"
