@@ -17,7 +17,7 @@ POWER_TYPE="$(/usr/bin/pmset -g batt | grep -Eo '(Battery|AC) Power')"
 LID_UP="$(/usr/sbin/ioreg -r -k AppleClamshellState | grep AppleClamshellState | awk '{print $4}')"
 [[ "${LID_UP}" != "No" ]] && exit 0
 
-DESK_IP_ADDRESS="10.0.0.18"
+DESK_IP_ADDRESS="10.0.0.7"
 
 if [[ "${COMMAND}" == "up" ]]
 then
