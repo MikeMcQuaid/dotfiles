@@ -125,7 +125,7 @@
 	# List all files that are assumed to be unchanged
 	assumed = !git ls-files -v | grep '^[hsmrck?]' | cut -c 3-
 	# Delete all non-master/main branches
-	delete-merged = !git branch --merged | grep -v ' master' | grep -v ' main' | grep -v '*' | xargs -n 1 git branch -D
+	delete-merged = !git branch --merged | grep -v ' master' | grep -v ' main' | grep -v ' trunk' | grep -v '*' | xargs -n 1 git branch -D
 	# Get the merge-base compared to origin/HEAD
 	merge-base-head = merge-base origin/HEAD HEAD
 	# Diff against the current branch's merge-base
@@ -245,3 +245,6 @@
 [init]
 	# Use same default branch name as GitHub.
 	defaultBranch = main
+[advice]
+  # Don't warn about skipped cherry-picks.
+	skippedCherryPicks = false
