@@ -8,10 +8,6 @@ brew "shellcheck"
 brew "actionlint"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
-# OpenAI's coding agent that runs in your terminal
-brew "codex"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # More intuitive version of du in rust
@@ -36,11 +32,9 @@ brew "grc"
 brew "htop"
 # Command-line benchmarking tool
 brew "hyperfine"
-# Lightweight and flexible command-line JSON processor
-brew "jq"
 # YAML Parser
 brew "libyaml"
-# Platform built on V8 to build network applications
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # CLI for Node.js style checker and lint tool for Markdown files
 brew "markdownlint-cli"
@@ -50,6 +44,8 @@ brew "mas"
 brew "pngcrush"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # Autoformat shell script source code
@@ -78,6 +74,8 @@ cask "1password-cli"
 cask "appcleaner"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
 # Write, edit, and chat about your code with AI
 cask "cursor"
 # App to build and share containerised applications and microservices
