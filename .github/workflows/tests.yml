@@ -15,7 +15,7 @@ jobs:
           - macos-latest
     steps:
     - name: Set up Git repository
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: Validate syntax
       run: bash -n *.sh
