@@ -32,3 +32,6 @@ killall Dock || true
 
 # Prefer tabs when opening documents: Always
 defaults write -g AppleWindowTabbingMode -string Always
+
+# Unset default system-wide Git credential helper
+git config unset --system credential.helper
