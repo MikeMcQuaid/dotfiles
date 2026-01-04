@@ -282,3 +282,8 @@ whisper_transcribe() {
     --model ~/OSS/mikemcquaid.com/tmp/models/ggml-large-v3-turbo.bin \
     --language en "$@"
 }
+
+# New "Thought"
+new-thought() {
+  ~/OSS/mikemcquaid.com/bin/thought-link-metadata new
+}
