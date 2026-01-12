@@ -87,8 +87,6 @@ alias desk_sit="upsy-desky down"
 
 # Command-specific stuff
 if quiet_which brew; then
-  eval "$(brew shellenv)"
-
   export HOMEBREW_DEVELOPER=1
   export HOMEBREW_BUNDLE_INSTALL_CLEANUP=1
   export HOMEBREW_BUNDLE_DUMP_DESCRIBE=1

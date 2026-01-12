@@ -5,6 +5,14 @@ source ~/.shprofile
 [ "$0" = "-bash" ] && export LOGIN_BASH=1
 echo "$-" | grep -q "i" && export INTERACTIVE_BASH=1
 
+# Setup Homebrew
+if [ -z "$HOMEBREW_PREFIX" ]; then
+  PATH="/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+  if which brew &>/dev/null; then
+    eval "$(brew shellenv bash)"
+  fi
+fi
+
 # run bashrc if this is a login, interactive shell
 if [ -n "$LOGIN_BASH" ] && [ -n "$INTERACTIVE_BASH" ]; then
   source ~/.bashrc

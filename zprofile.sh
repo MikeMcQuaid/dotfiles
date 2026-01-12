@@ -5,6 +5,15 @@
 skip_global_compinit=1
 autoload -U compinit && compinit -u
 
+# Setup Homebrew
+if [ -z "$HOMEBREW_PREFIX" ]; then
+  PATH="/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+  if which brew &>/dev/null; then
+    eval "$(brew shellenv bash)"
+  fi
+fi
+
+# Add Homebrew completions to FPATH
 if [ -n "$HOMEBREW_PREFIX" ]; then
   FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
 fi
