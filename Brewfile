@@ -48,6 +48,8 @@ brew "prettyping"
 brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
+# Powerful, clean, object-oriented scripting language
+brew "ruby@3.4"
 # Autoformat shell script source code
 brew "shfmt"
 # Human-friendly alternative to netstat for socket and port monitoring
