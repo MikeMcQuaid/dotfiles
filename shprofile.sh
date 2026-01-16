@@ -16,10 +16,11 @@ uname -s | grep -q "_NT-" && export WINDOWS=1
 
 # Count CPUs for Make jobs
 if [ $MACOS ]; then
-  export CPUCOUNT="$(sysctl -n hw.ncpu)"
+  export CPUCOUNT="$(sysctl -n hw.ncpu 2>/dev/null)"
 elif [ $LINUX ]; then
   export CPUCOUNT="$(getconf _NPROCESSORS_ONLN)"
-else
+fi
+if [ -z "$CPUCOUNT" ]; then
   export CPUCOUNT=1
 fi
 
