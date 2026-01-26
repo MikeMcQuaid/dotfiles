@@ -16,7 +16,7 @@ brew "dust"
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Play, record, convert, and stream audio and video
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
 # GitHub command-line tool
 brew "gh"
@@ -50,6 +50,8 @@ brew "ripgrep"
 brew "ruby"
 # Powerful, clean, object-oriented scripting language
 brew "ruby@3.4"
+# Run AI agents isolated in a sandboxed macOS user account
+brew "sandvault"
 # Autoformat shell script source code
 brew "shfmt"
 # Human-friendly alternative to netstat for socket and port monitoring
@@ -98,6 +100,8 @@ cask "keepingyouawake"
 cask "losslesscut"
 # Multi-platform web browser
 cask "microsoft-edge"
+# App to write, plan, collaborate, and get organised
+cask "notion"
 # Audiobook manager for Audible users
 cask "openaudible"
 # Automatically hides or quits apps after periods of inactivity
@@ -112,12 +116,11 @@ cask "signal"
 cask "steam"
 # Yet another monitor
 cask "yam-display"
-# Multiplayer code editor
-cask "zed"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "1Blocker", id: 1365531024
 mas "1Password for Safari", id: 1569813296
+mas "Consent-O-Matic", id: 1606897889
 mas "GarageBand", id: 682658836
 mas "InYourFace", id: 1476964367
 mas "Keynote", id: 409183694
@@ -143,6 +146,7 @@ vscode "github.copilot-chat"
 vscode "github.vscode-github-actions"
 vscode "github.vscode-pull-request-github"
 vscode "koichisasada.vscode-rdbg"
+vscode "mechatroner.rainbow-csv"
 vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
 vscode "openai.chatgpt"
