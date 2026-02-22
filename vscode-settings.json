@@ -122,5 +122,6 @@
     },
     "github.copilot.nextEditSuggestions.enabled": true,
     "docker.extension.enableComposeLanguageServer": false,
-    "redhat.telemetry.enabled": false
+    "redhat.telemetry.enabled": false,
+    "git.autofetch": true
 }
