@@ -8,6 +8,10 @@ brew "shellcheck"
 brew "actionlint"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Cross-platform make
+brew "cmake"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # More intuitive version of du in rust
@@ -40,10 +44,14 @@ brew "node"
 brew "markdownlint-cli"
 # Mac App Store command-line interface
 brew "mas"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # Optimizer for PNG files
 brew "pngcrush"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.14"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
@@ -123,9 +131,10 @@ mas "1Password for Safari", id: 1569813296
 mas "Consent-O-Matic", id: 1606897889
 mas "GarageBand", id: 682658836
 mas "InYourFace", id: 1476964367
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
+mas "Keynote", id: 361285480
+mas "Microsoft Excel", id: 462058435
+mas "Numbers", id: 361304891
+mas "Pages", id: 361309726
 mas "Parachute", id: 6748614170
 mas "Pixelmator Pro", id: 1289583905
 mas "Refined GitHub", id: 1519867270
