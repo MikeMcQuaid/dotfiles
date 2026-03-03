@@ -181,7 +181,7 @@ if [[ -n "${MACOS}" ]]; then
   }
 
   # Only run this if it's not already running
-  pgrep -fq touchid-enable-pam-sudo || touchid-enable-pam-sudo --quiet
+  quiet_which touchid-enable-pam-sudo && ! pgrep -fq touchid-enable-pam-sudo && touchid-enable-pam-sudo --quiet
 elif [[ -n "${LINUX}" ]]; then
   quiet_which keychain && eval "$(keychain -q --eval --agents ssh id_rsa)"
 
@@ -202,7 +202,7 @@ fi
 
 # Load GITHUB_TOKEN from gh
 if quiet_which gh; then
-  export GITHUB_TOKEN="$(gh auth token)"
+  export GITHUB_TOKEN="$(gh auth token 2>/dev/null)"
   export GH_TOKEN="${GITHUB_TOKEN}"
   export HOMEBREW_GITHUB_API_TOKEN="${GITHUB_TOKEN}"
   export JEKYLL_GITHUB_TOKEN="${GITHUB_TOKEN}"

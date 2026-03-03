@@ -108,11 +108,30 @@ fi
 
 # Setup my home directory how I like it
 mkdir -pv ~/OSS
-if command -v "brew" >/dev/null && ! [[ -d ~/OSS/Homebrew ]]; then
-  ln -vsf "$(brew --repository)" ~/OSS/Homebrew
-fi
 if ! [[ -d ~/OSS/dotfiles ]]; then
   ln -vsf "${DOTFILESDIR}" ~/OSS/dotfiles
+fi
+
+# Helper function to calculate the sha256 hash of a file
+sha256sum_file() {
+  sha256sum "${1}" | awk '{ print $1 }'
+}
+
+if command -v "brew" >/dev/null; then
+  if ! [[ -d ~/OSS/Homebrew ]]; then
+    ln -vsf "$(brew --repository)" ~/OSS/Homebrew
+  fi
+
+  # Sync selected dotfiles into Sandvault guest home if that directory exists.
+  SANDVAULT_GUEST_HOME="$(brew --prefix)/etc/sandvault/guest_home_user"
+  for i in shrc shprofile logout zprofile zshrc zlogout; do
+    DOTFILE="${DOTFILESDIR}/${i}.sh"
+    SANDVAULT_GUEST_HOME_FILE="${SANDVAULT_GUEST_HOME}/.${i}"
+    if ! [[ -f "${SANDVAULT_GUEST_HOME_FILE}" ]] ||
+       [[ "$(sha256sum_file "${DOTFILE}")" != "$(sha256sum_file "${SANDVAULT_GUEST_HOME_FILE}")" ]]; then
+      cp -vf "${DOTFILE}" "${SANDVAULT_GUEST_HOME_FILE}"
+    fi
+  done
 fi
 
 if [[ -n "${LINUX}" ]]; then
