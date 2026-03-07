@@ -132,6 +132,15 @@ if command -v "brew" >/dev/null; then
       cp -vf "${DOTFILE}" "${SANDVAULT_GUEST_HOME_FILE}"
     fi
   done
+
+  for i in gitconfig gitignore; do
+    DOTFILE="${DOTFILESDIR}/${i}"
+    SANDVAULT_GUEST_HOME_FILE="${SANDVAULT_GUEST_HOME}/.${i}"
+    if ! [[ -f "${SANDVAULT_GUEST_HOME_FILE}" ]] ||
+       [[ "$(sha256sum_file "${DOTFILE}")" != "$(sha256sum_file "${SANDVAULT_GUEST_HOME_FILE}")" ]]; then
+      cp -vf "${DOTFILE}" "${SANDVAULT_GUEST_HOME_FILE}"
+    fi
+  done
 fi
 
 if [[ -n "${LINUX}" ]]; then
