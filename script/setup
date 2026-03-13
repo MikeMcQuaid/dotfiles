@@ -108,6 +108,12 @@ if [[ "${DOTFILESDIR}" != "${HOMEDOTFILES}" ]]; then
   ln -sf "${DOTFILESDIR}" "${HOMEDOTFILES}"
 fi
 
+AGENTS_GLOBAL="${DOTFILESDIR}/AGENTS-GLOBAL.md"
+for HOMEFILE in "${HOME}/.claude/CLAUDE.md" "${HOME}/.codex/AGENTS.md"; do
+  mkdir -p "$(dirname "${HOMEFILE}")"
+  ln -svf "${AGENTS_GLOBAL}" "${HOMEFILE}"
+done
+
 # Setup my home directory how I like it
 mkdir -pv ~/OSS
 if ! [[ -d ~/OSS/dotfiles ]]; then
@@ -141,6 +147,16 @@ if command -v "brew" >/dev/null; then
     if ! [[ -f "${SANDVAULT_GUEST_HOME_FILE}" ]] ||
        [[ "$(sha256sum_file "${DOTFILE}")" != "$(sha256sum_file "${SANDVAULT_GUEST_HOME_FILE}")" ]]; then
       cp -vf "${DOTFILE}" "${SANDVAULT_GUEST_HOME_FILE}"
+    fi
+  done
+
+  for SANDVAULT_GUEST_HOME_FILE in \
+    "${SANDVAULT_GUEST_HOME}/.claude/CLAUDE.md" \
+    "${SANDVAULT_GUEST_HOME}/.codex/AGENTS.md"; do
+    mkdir -p "$(dirname "${SANDVAULT_GUEST_HOME_FILE}")"
+    if ! [[ -f "${SANDVAULT_GUEST_HOME_FILE}" ]] ||
+       [[ "$(sha256sum_file "${AGENTS_GLOBAL}")" != "$(sha256sum_file "${SANDVAULT_GUEST_HOME_FILE}")" ]]; then
+      cp -vf "${AGENTS_GLOBAL}" "${SANDVAULT_GUEST_HOME_FILE}"
     fi
   done
 fi

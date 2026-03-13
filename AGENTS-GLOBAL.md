@@ -1,0 +1,6 @@
+- Inline new variables or methods/functions only used once.
+- Always remember YAGNI and DRY.
+- Check `git diff` and minimise the diff size.
+- When solving a bug, change as few lines as possible to fix the problem.
+- Never remove comments.
+- Reread files after new prompts and respect user edits.
