@@ -7,8 +7,15 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "features": {
-    "edit_prediction_provider": "zed"
+  "enable_language_server": false,
+  "edit_predictions": {
+    "provider": "zed",
+    "disabled_globs": [],
+  },
+  "use_system_window_tabs": true,
+  "title_bar": {
+    "show_menus": true,
+    "show_branch_icon": true,
   },
   "autosave": "on_focus_change",
   "buffer_font_family": "SF Mono",
@@ -16,37 +23,32 @@
   "buffer_font_size": 12,
   "current_line_highlight": "gutter",
   "cursor_blink": false,
-  "default_dock_anchor": "right",
   "languages": {
+    "Shell Script": {
+      "tab_size": 2,
+    },
     "Ruby": {
-      "language_servers": [
-        "ruby-lsp",
-        "rubocop",
-        "!solargraph",
-        "..."
-      ]
-    }
+      // "language_servers": ["ruby-lsp", "rubocop", "!solargraph", "..."]
+    },
   },
   "preferred_line_length": 118,
   "show_whitespaces": "boundary",
   "tab_bar": {
-    "show_nav_history_buttons": false
+    "show_nav_history_buttons": false,
   },
   "tabs": {
     "close_position": "left",
     "file_icons": true,
-    "git_status": true
+    "git_status": true,
   },
   "theme": {
     "mode": "system",
     "light": "macOS Classic Light",
-    "dark": "macOS Classic Dark"
+    "dark": "macOS Classic Dark",
   },
   "terminal": {
-    "dock": "right"
+    "dock": "right",
   },
-  "ui_font_size": 16,
-  "wrap_guides": [
-    118
-  ]
+  "ui_font_size": 15.0,
+  "wrap_guides": [80, 118],
 }

@@ -21,15 +21,17 @@ uname -s | grep -q "_NT-" && export WINDOWS=1
 if [[ -n "${MACOS}" ]]; then
   VSCODE="${HOME}/Library/Application Support/Code/User"
   CURSOR="${HOME}/Library/Application Support/Cursor/User"
+  ZED="${HOME}/.config/zed"
 elif [[ -n "${LINUX}" ]]; then
   VSCODE="${HOME}/.config/Code/User"
   CURSOR="${HOME}/.config/Cursor/User"
+  ZED="${HOME}/.config/zed"
 elif [[ -n "${WINDOWS}" ]]; then
   VSCODE="${APPDATA}/Code/User"
   CURSOR="${APPDATA}/Cursor/User"
+  ZED="${APPDATA}/Zed"
   set -x
 fi
-ZED="${HOME}/.config/zed/settings.json"
 
 for DOTFILE in *; do
   HOMEFILE="${HOME}/.${DOTFILE}"
