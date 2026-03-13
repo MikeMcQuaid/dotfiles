@@ -233,7 +233,6 @@
 # git-delta settings
 [delta]
 	features = line-numbers decorations
-	syntax-theme = GitHub
 	file-decoration-style = ''
 	hunk-header-decoration-style = ''
 [merge]
