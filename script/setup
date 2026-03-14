@@ -9,13 +9,15 @@ else
   SCRIPTSETUP="$0"
 fi
 
-DOTFILESDIRREL=$(dirname "${SCRIPTSETUP}")
+DOTFILESDIRREL="${SCRIPTSETUP%/*}"
+[[ "${DOTFILESDIRREL}" = "${SCRIPTSETUP}" ]] && DOTFILESDIRREL="."
 cd "${DOTFILESDIRREL}"/.. || exit
 DOTFILESDIR=$(pwd -P)
 
-[[ "$(uname -s)" = "Darwin" ]] && export MACOS=1
-[[ "$(uname -s)" = "Linux" ]] && export LINUX=1
-uname -s | grep -q "_NT-" && export WINDOWS=1
+UNAME_S="$(uname -s)"
+[[ "${UNAME_S}" = "Darwin" ]] && export MACOS=1
+[[ "${UNAME_S}" = "Linux" ]] && export LINUX=1
+[[ "${UNAME_S}" == *_NT-* ]] && export WINDOWS=1
 [[ -n "${LINUX}" ]] && grep -qEi "(Microsoft|WSL)" /proc/version && export WSL=1
 
 if [[ -n "${MACOS}" ]]; then
@@ -35,64 +37,76 @@ fi
 
 for DOTFILE in *; do
   HOMEFILE="${HOME}/.${DOTFILE}"
-  [[ -d "${DOTFILE}" ]] && DOTFILE="${DOTFILE}/"
+  if [[ -d "${DOTFILE}" ]]; then
+    DOTFILE="${DOTFILE}/"
+    IS_DIR=1
+  else
+    IS_DIR=
+  fi
   DIRFILE="${DOTFILESDIR}/${DOTFILE}"
 
   # Don't mess with Codespaces' default SSH setup.
-  if [[ -n "${CODESPACES}" ]]; then
-    echo "${DOTFILE}" | grep -E -q '^ssh/' && continue
+  if [[ -n "${CODESPACES}" && "${DOTFILE}" = "ssh/" ]]; then
+    continue
   fi
 
   # Don't try to install some unneeded paths
-  echo "${DOTFILE}" | grep -E -q '(^bin/$|bundle/$|script/$|\.txt$|\.md$)' && continue
+  case "${DOTFILE}" in
+    bin/|bundle/|script/|*.txt|*.md)
+      continue
+      ;;
+  esac
 
   # Only install gitconfig.local.macos on macOS
-  if echo "${DOTFILE}" | grep -q 'gitconfig.local.macos'; then
-    [[ -z "${MACOS}" ]] && continue
-    HOMEFILE="${HOME}/.gitconfig.local"
+  case "${DOTFILE}" in
+    gitconfig.local.macos)
+      [[ -z "${MACOS}" ]] && continue
+      HOMEFILE="${HOME}/.gitconfig.local"
+      ;;
+    *vscode-settings*)
+      HOMEFILE="${VSCODE}/settings.json"
+      [[ -d "${VSCODE}" ]] || mkdir -p "${VSCODE}"
+      ;;
+    *cursor-settings*)
+      HOMEFILE="${CURSOR}/settings.json"
+      [[ -d "${CURSOR}" ]] || mkdir -p "${CURSOR}"
+      ;;
+    *vscode-keybindings*)
+      HOMEFILE="${CURSOR}/keybindings.json"
+      [[ -d "${CURSOR}" ]] || mkdir -p "${CURSOR}"
+      ;;
+    *zed-settings*)
+      HOMEFILE="${ZED}/settings.json"
+      [[ -d "${ZED}" ]] || mkdir -p "${ZED}"
+      ;;
+  esac
+
+  if [[ "${DOTFILE}" = *.sh ]]; then
+    HOMEFILE="${HOME}/.${DOTFILE%.sh}"
   fi
 
-  # Fixup VSCode settings path
-  echo "${DOTFILE}" | grep -q 'vscode-settings' &&
-    HOMEFILE="${VSCODE}/settings.json" &&
-    mkdir -p "${VSCODE}"
+  case "${DOTFILE}" in
+    *rubocop-work.yml)
+      HOMEWORK="${HOME}/Work"
+      [[ -d "${HOMEWORK}" ]] || continue
+      HOMEFILE="${HOMEWORK}/.rubocop.yml"
+      ;;
+    *rubocop-oss.yml)
+      HOMEOSS="${HOME}/OSS"
+      [[ -d "${HOMEOSS}" ]] || continue
+      HOMEFILE="${HOMEOSS}/.rubocop.yml"
+      ;;
+  esac
 
-  # Fixup Cursor settings path
-  echo "${DOTFILE}" | grep -q 'cursor-settings' &&
-    HOMEFILE="${CURSOR}/settings.json" &&
-    mkdir -p "${CURSOR}"
-
-  # Fixup Cursor keybindings path
-  echo "${DOTFILE}" | grep -q 'vscode-keybindings' &&
-    HOMEFILE="${CURSOR}/keybindings.json" &&
-    mkdir -p "${CURSOR}"
-
-  # Fixup Zed settings path
-  echo "${DOTFILE}" | grep -q 'zed-settings' &&
-    HOMEFILE="${ZED}/settings.json" &&
-    mkdir -p "${ZED}"
-
-  # Remove .sh extensions
-  echo "${DOTFILE}" | grep -q '\.sh' &&
-    HOMEFILE="${HOME}/.$(echo "${DOTFILE}" | sed -e 's/\.sh//')"
-
-  # Fixup RuboCop configuration (if possible)
-  if echo "${DOTFILE}" | grep -q 'rubocop-work.yml'; then
-    HOMEWORK="${HOME}/Work"
-    [[ -d "${HOMEWORK}" ]] || continue
-    HOMEFILE="${HOMEWORK}/.rubocop.yml"
-  elif echo "${DOTFILE}" | grep -q 'rubocop-oss.yml'; then
-    HOMEOSS="${HOME}/OSS"
-    [[ -d "${HOMEOSS}" ]] || continue
-    HOMEFILE="${HOMEOSS}/.rubocop.yml"
-  fi
-
-  if ! [[ -d "${DOTFILE}" ]]; then
+  if [[ -z "${IS_DIR}" ]]; then
+    [[ "${HOMEFILE}" -ef "${DIRFILE}" ]] && continue
     if [[ -L "${HOMEFILE}" ]]; then
       ln -sf "${DIRFILE}" "${HOMEFILE}"
     else
       ln -svf "${DIRFILE}" "${HOMEFILE}"
     fi
+  elif [[ "${HOMEFILE}" -ef "${DIRFILE}" ]]; then
+    continue
   elif [[ -L "${HOMEFILE}" ]]; then
     rm -r "${HOMEFILE}" 2>/dev/null
     ln -s "${DIRFILE}" "${HOMEFILE}"
@@ -103,15 +117,17 @@ for DOTFILE in *; do
 done
 
 HOMEDOTFILES="${HOME}/.dotfiles"
-if [[ "${DOTFILESDIR}" != "${HOMEDOTFILES}" ]]; then
+if ! [[ "${HOMEDOTFILES}" -ef "${DOTFILESDIR}" ]]; then
   rm -f "${HOMEDOTFILES}"
   ln -sf "${DOTFILESDIR}" "${HOMEDOTFILES}"
 fi
 
 AGENTS_GLOBAL="${DOTFILESDIR}/AGENTS-GLOBAL.md"
 for HOMEFILE in "${HOME}/.claude/CLAUDE.md" "${HOME}/.codex/AGENTS.md"; do
-  mkdir -p "$(dirname "${HOMEFILE}")"
-  if [[ -L "${HOMEFILE}" ]]; then
+  [[ -d "${HOMEFILE%/*}" ]] || mkdir -p "${HOMEFILE%/*}"
+  if [[ "${HOMEFILE}" -ef "${AGENTS_GLOBAL}" ]]; then
+    continue
+  elif [[ -L "${HOMEFILE}" ]]; then
     ln -sf "${AGENTS_GLOBAL}" "${HOMEFILE}"
   else
     ln -svf "${AGENTS_GLOBAL}" "${HOMEFILE}"
@@ -119,16 +135,14 @@ for HOMEFILE in "${HOME}/.claude/CLAUDE.md" "${HOME}/.codex/AGENTS.md"; do
 done
 
 # Setup my home directory how I like it
-mkdir -pv ~/OSS
+[[ -d ~/OSS ]] || mkdir -pv ~/OSS
 if ! [[ -d ~/OSS/dotfiles ]]; then
   ln -vsf "${DOTFILESDIR}" ~/OSS/dotfiles
 fi
 
-# Helper function to copy a file only when its sha256 hash changes
+# Helper function to copy a file only when its contents change
 sync_if_changed() {
-  mkdir -p "$(dirname "${2}")"
-  if ! [[ -f "${2}" ]] ||
-     [[ "$(sha256sum "${1}" | awk '{ print $1 }')" != "$(sha256sum "${2}" | awk '{ print $1 }')" ]]; then
+  if ! [[ -f "${2}" ]] || ! cmp -s "${1}" "${2}"; then
     cp -vf "${1}" "${2}"
   fi
 }
@@ -149,6 +163,8 @@ if command -v "brew" >/dev/null; then
       sync_if_changed "${DOTFILESDIR}/${i}" "${SANDVAULT_GUEST_HOME}/.${i}"
     done
 
+    [[ -d "${SANDVAULT_GUEST_HOME}/.claude" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.claude"
+    [[ -d "${SANDVAULT_GUEST_HOME}/.codex" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.codex"
     for i in ".claude/CLAUDE.md" ".codex/AGENTS.md"; do
       sync_if_changed "${AGENTS_GLOBAL}" "${SANDVAULT_GUEST_HOME}/${i}"
     done
