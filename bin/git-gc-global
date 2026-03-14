@@ -13,9 +13,9 @@ echorun() {
 }
 
 find -L "$CURRENT" -name .git -print0 | while read -d '' -r SCM; do
-  DIRECTORY="$(dirname "$SCM")"
+  DIRECTORY="${SCM%/*}"
   cd "$DIRECTORY" || continue
-  echo "== Garbage collecting $(basename "$DIRECTORY")"
+  echo "== Garbage collecting ${DIRECTORY##*/}"
   if [ -d .git ]; then
     echorun git gc --aggressive
   fi

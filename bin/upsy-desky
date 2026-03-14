@@ -11,10 +11,15 @@ usage() {
 
 [[ -z "${COMMAND}" ]] && usage
 
-POWER_TYPE="$(/usr/bin/pmset -g batt | grep -Eo '(Battery|AC) Power')"
+POWER_TYPE="$(
+  /usr/bin/pmset -g batt | awk '/(Battery|AC) Power/ { print $1, $2; exit }'
+)"
 [[ "${POWER_TYPE}" != "AC Power" ]] && exit 0
 
-LID_UP="$(/usr/sbin/ioreg -r -k AppleClamshellState | grep AppleClamshellState | awk '{print $4}')"
+LID_UP="$(
+  /usr/sbin/ioreg -r -k AppleClamshellState |
+    awk '/AppleClamshellState/ { print $4; exit }'
+)"
 [[ "${LID_UP}" != "No" ]] && exit 0
 
 DESK_IP_ADDRESS="10.0.0.7"

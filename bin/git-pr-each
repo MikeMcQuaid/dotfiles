@@ -24,7 +24,7 @@ if [ -n "$ERROR" ]; then
   exit 1
 fi
 
-for FILENAME in $(git ls-files --modified --others); do
+git ls-files -z --modified --others --exclude-standard | while IFS= read -r -d '' FILENAME; do
   NAME="$(echo "$FILENAME" | sed -e 's|^Library/Homebrew/||' \
     -e 's|^Formula/||' \
     -e 's|^Casks/||' \

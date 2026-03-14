@@ -13,12 +13,12 @@ echorun() {
 }
 
 find -L "$CURRENT" \( -name .git -or -name .svn \) -print0 | while read -d '' -r SCM; do
-  DIRECTORY="$(dirname "$SCM")"
+  DIRECTORY="${SCM%/*}"
   cd "$DIRECTORY" || continue
-  if [ -d ../.svn ] || echo "$DIRECTORY" | grep -q "vendor/ruby"; then
+  if [ -d ../.svn ] || [[ "${DIRECTORY}" == *vendor/ruby* ]]; then
     continue
   fi
-  echo "== Updating $(basename "$DIRECTORY")"
+  echo "== Updating ${DIRECTORY##*/}"
   if [ -d .git/svn ]; then
     echorun git svn fetch
     echorun git svn rebase

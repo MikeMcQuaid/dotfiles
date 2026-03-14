@@ -8,7 +8,7 @@ cd "$(dirname "$0")/.." || exit
 # Close terminal windows on successful exit code
 /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.Terminal.plist -c \
   "Set 'Window Settings':Basic:shellExitAction 1" || true
-defaults read com.apple.Terminal >/dev/null 2>&1 || true
+defaults read com.apple.Terminal &>/dev/null || true
 
 # Enable Touch ID for sudo
 bin/touchid-enable-pam-sudo --quiet || true

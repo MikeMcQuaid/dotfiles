@@ -274,7 +274,7 @@ ruby-call-stack() {
 # Pretty-print JSON files
 json() {
   [[ -n "$1" ]] || return
-  cat "$1" | jq .
+  jq . "$1"
 }
 
 # Pretty-print Homebrew install receipts
