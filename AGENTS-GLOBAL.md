@@ -4,3 +4,5 @@
 - When solving a bug, change as few lines as possible to fix the problem.
 - Never remove comments.
 - Reread files after new prompts and respect user edits.
+- Do red-green TDD for bug fixes and regression testing.
+- Prefer self-documenting code over "why" comments over "what comments".
