@@ -179,9 +179,6 @@ if [[ -n "${MACOS}" ]]; then
 
     command find ${dot_arg} "$@"
   }
-
-  # Only run this if it's not already running
-  quiet_which touchid-enable-pam-sudo && ! pgrep -fq touchid-enable-pam-sudo && touchid-enable-pam-sudo --quiet
 elif [[ -n "${LINUX}" ]]; then
   quiet_which keychain && eval "$(keychain -q --eval --agents ssh id_rsa)"
 
@@ -200,13 +197,40 @@ elif [[ -n "${WINDOWS}" ]]; then
   }
 fi
 
-# Load GITHUB_TOKEN from gh
-if quiet_which gh; then
-  export GITHUB_TOKEN="$(gh auth token 2>/dev/null)"
-  export GH_TOKEN="${GITHUB_TOKEN}"
-  export HOMEBREW_GITHUB_API_TOKEN="${GITHUB_TOKEN}"
-  export JEKYLL_GITHUB_TOKEN="${GITHUB_TOKEN}"
-fi
+export_github_token() {
+  export \
+    GITHUB_TOKEN="${1}" \
+    GH_TOKEN="${1}" \
+    HOMEBREW_GITHUB_API_TOKEN="${1}" \
+    JEKYLL_GITHUB_TOKEN="${1}"
+}
+
+setup_github_token() {
+  local github_token
+
+  if [ -s "${GITHUB_TOKEN_CACHE}" ]; then
+    github_token="$(< "${GITHUB_TOKEN_CACHE}")"
+  fi
+  if [[ -n "${github_token}" ]] &&
+     ! shell_cache_older_than_week "${GITHUB_TOKEN_CACHE}"; then
+    export_github_token "${github_token}"
+    return
+  fi
+
+  quiet_which gh || return
+  ensure_shell_cache_dir
+  (
+    umask 077
+    command gh auth token >| "${GITHUB_TOKEN_CACHE}"
+  ) &>/dev/null || return
+
+  github_token="$(< "${GITHUB_TOKEN_CACHE}")"
+  [ -n "${github_token}" ] || return
+
+  export_github_token "${github_token}"
+}
+
+setup_github_token
 
 # Set up editor
 if quiet_which zed; then
@@ -237,8 +261,7 @@ fi
 # Save directory changes
 cd() {
   builtin cd "$@" || return
-  [[ -n "${TERMINALAPP}" ]] && command -v set_terminal_app_pwd >/dev/null &&
-    set_terminal_app_pwd
+  [[ -n "${TERMINALAPP}" ]] && set_terminal_app_pwd
   pwd >"${HOME}/.lastpwd"
   ls
 }

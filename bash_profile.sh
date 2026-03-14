@@ -3,15 +3,10 @@ source ~/.shprofile
 
 # check if this is a login and/or interactive shell
 [ "$0" = "-bash" ] && export LOGIN_BASH=1
-echo "$-" | grep -q "i" && export INTERACTIVE_BASH=1
+[[ "$-" == *i* ]] && export INTERACTIVE_BASH=1
 
 # Setup Homebrew
-if [ -z "$HOMEBREW_PREFIX" ]; then
-  PATH="/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
-  if which brew &>/dev/null; then
-    eval "$(brew shellenv bash)"
-  fi
-fi
+setup_homebrew
 
 # run bashrc if this is a login, interactive shell
 if [ -n "$LOGIN_BASH" ] && [ -n "$INTERACTIVE_BASH" ]; then
@@ -35,16 +30,19 @@ shopt -s cmdhist
 shopt -s cdspell
 
 # Remove broken bash completion
-/bin/rm -f "${HOMEBREW_PREFIX}/etc/bash_completion.d/ctest"
+[ -e "${HOMEBREW_PREFIX}/etc/bash_completion.d/ctest" ] &&
+  /bin/rm -f "${HOMEBREW_PREFIX}/etc/bash_completion.d/ctest"
 
 # Bash completion
-[ -f /etc/profile.d/bash-completion ] && source /etc/profile.d/bash-completion
-if type brew &>/dev/null; then
-  for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d"/*; do
-    [[ -f $COMPLETION ]] && source "$COMPLETION"
-  done
-  if [[ -f $(brew --prefix)/etc/profile.d/bash_completion.sh ]]; then
-    source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+[ -n "$INTERACTIVE_BASH" ] && [ -f /etc/profile.d/bash-completion ] &&
+  source /etc/profile.d/bash-completion
+if [ -n "$INTERACTIVE_BASH" ] && command -v brew >/dev/null; then
+  if [[ -f "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
+    source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+  else
+    for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d"/*; do
+      [[ -f $COMPLETION ]] && source "$COMPLETION"
+    done
   fi
 fi
 
