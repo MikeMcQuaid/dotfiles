@@ -111,7 +111,11 @@ fi
 AGENTS_GLOBAL="${DOTFILESDIR}/AGENTS-GLOBAL.md"
 for HOMEFILE in "${HOME}/.claude/CLAUDE.md" "${HOME}/.codex/AGENTS.md"; do
   mkdir -p "$(dirname "${HOMEFILE}")"
-  ln -svf "${AGENTS_GLOBAL}" "${HOMEFILE}"
+  if [[ -L "${HOMEFILE}" ]]; then
+    ln -sf "${AGENTS_GLOBAL}" "${HOMEFILE}"
+  else
+    ln -svf "${AGENTS_GLOBAL}" "${HOMEFILE}"
+  fi
 done
 
 # Setup my home directory how I like it
