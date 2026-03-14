@@ -6,3 +6,4 @@
 - Reread files after new prompts and respect user edits.
 - Do red-green TDD for bug fixes and regression testing.
 - Prefer self-documenting code over "why" comments over "what comments".
+- use `&>/dev/null` instead of `>/dev/null 2>&1`.
