@@ -39,6 +39,8 @@ git_branch() {
 
 if [ "$USER" = "root" ]; then
   export PROMPT='%{$fg_bold[magenta]%}%m %{$fg_bold[blue]%}# %b%f'
+elif [ "${USER:0:9}" = "sandvault" ]; then
+  export PROMPT='%{$fg_bold[yellow]%}%m %{$fg_bold[blue]%}# %b%f'
 elif [ -n "${SSH_CONNECTION}" ]; then
   export PROMPT='%{$fg_bold[cyan]%}%m %{$fg_bold[blue]%}# %b%f'
 else

@@ -49,6 +49,8 @@ fi
 # Colorful prompt
 if [ "$USER" = "root" ]; then
   PS1='\[\033[01;35m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
+elif [ "${USER:0:9}" = "sandvault" ]; then
+  PS1='\[\033[01;33m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
 elif [ -n "${SSH_CONNECTION}" ]; then
   PS1='\[\033[01;36m\]\h\[\033[01;34m\] \W #\[\033[00m\] '
 else
