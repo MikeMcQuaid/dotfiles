@@ -1,9 +1,10 @@
-- Inline new variables or methods/functions only used once.
-- Always remember YAGNI and DRY.
-- Check `git diff` and minimise the diff size.
-- When solving a bug, change as few lines as possible to fix the problem.
+- Inline new variables and functions used only once.
+- Follow YAGNI and DRY.
+- Check `git diff` and keep the diff small.
+- For bug fixes, change the fewest lines that solve the problem.
 - Never remove comments.
-- Reread files after new prompts and respect user edits.
-- Do red-green TDD for bug fixes and regression testing.
-- Prefer self-documenting code over "why" comments over "what comments".
-- use `&>/dev/null` instead of `>/dev/null 2>&1`.
+- Re-read files after each new prompt and keep user edits.
+- Use red-green TDD for bug fixes and regressions.
+- Prefer self-documenting code to explanatory comments.
+- Use `&>/dev/null` instead of `>/dev/null 2>&1`.
+- For git commits, use a multi-line subject/body message with a dash list in the body, a subject line of 50 characters or less, body lines of 72 characters or less, and real newlines instead of `\n`.
