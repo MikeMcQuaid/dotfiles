@@ -4,7 +4,8 @@
 	# Email used in commit messages.
 	email = mike@mikemcquaid.com
 [include]
-	path = ~/.gitconfig.local
+    # OS-specific (e.g. macOS) Git configuration
+	path = :optional:~/.gitconfig.local
 [github]
 	# GitHub username for command-line tools.
 	user = MikeMcQuaid
@@ -130,8 +131,8 @@
 	merge-base-head = merge-base origin/HEAD HEAD
 	# Diff against the current branch's merge-base
 	diff-merge-base = !git diff $(git merge-base-head)
-	# `brew style` changed files
-	brew-style-changed = !git diff origin/HEAD --name-only | xargs brew style --fix --display-cop-names
+	# Reset the current branch to the sandvault version
+	sandvault-reset = !git reset --hard $(git upstream)/$(git current-branch)
 
 	# Push the current branch upstream to MikeMcQuaid using the same
 	# branch name for the remote branch.
@@ -145,12 +146,15 @@
 	fahr = !git fetch --all && git hard-reset
 	rem = !git rebase-against-head
 	wip = !git work-in-progress
+	svr = !git sandvault-reset
+	fpf = !git fix-up-previous-commit && git push --force-with-lease
 	pr = !git upstream-and-pull-request
 	up = !git upstream-current-branch
 	fa = !git fetch --all
 	pf = !git push --force-with-lease
 	dm = !git diff-merge-base
 	mb = !git merge-base-head
+	sv = !sv --clone "$(pwd)" shell
 	w = !git word-diff
 	u = !git push-and-set-upstream
 	b = !git checkout-as-new-branch
@@ -245,5 +249,8 @@
 	# Use same default branch name as GitHub.
 	defaultBranch = main
 [advice]
-  # Don't warn about skipped cherry-picks.
+	# Don't warn about skipped cherry-picks.
 	skippedCherryPicks = false
+[safe]
+	# It's expected that sandvault directories are owned by another user.
+	directory = /Users/sandvault-mike/repositories/*
