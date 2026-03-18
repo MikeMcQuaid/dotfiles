@@ -78,10 +78,8 @@
 	# Merge a branch with a merge commit and resolve any conflicts
 	# always using that branch's version rather than the current branch.
 	theirs = !git noff -Xtheirs
-	# Fetch all branches and rebase the current branch against
-	# upstream/HEAD.
-	rebase-against-head = !git fetch --all \
-	                      && git rebase $(git upstream)/HEAD
+	# Rebase the current branch against upstream/HEAD.
+	rebase-against-head = !git rebase $(git upstream)/HEAD
 	# Push the current branch upstream to origin using the same branch
 	# name for the remote branch.
 	upstream-current-branch = !git push --set-upstream origin \
@@ -132,7 +130,7 @@
 	# Diff against the current branch's merge-base
 	diff-merge-base = !git diff $(git merge-base-head)
 	# Reset the current branch to the sandvault version
-	sandvault-reset = !git reset --hard $(git upstream)/$(git current-branch)
+	sandvault-reset = !git reset --hard sandvault/$(git current-branch)
 
 	# Push the current branch upstream to MikeMcQuaid using the same
 	# branch name for the remote branch.
@@ -144,9 +142,10 @@
 
 	## Shortened 'New' Commands
 	fahr = !git fetch --all && git hard-reset
-	rem = !git rebase-against-head
+	rah = !git rebase-against-head
 	wip = !git work-in-progress
-	svr = !git sandvault-reset
+	fsv = !git fetch sandvault && git sandvault-reset && git rebase-against-head && git fix-up-previous-commit
+	svr = !sv --clone "$(pwd)" shell -- "git checkout -B $(git current-branch) $(git rev-parse HEAD) && git log --pretty=oneline -n1"
 	fpf = !git fix-up-previous-commit && git push --force-with-lease
 	pr = !git upstream-and-pull-request
 	up = !git upstream-current-branch
