@@ -107,7 +107,7 @@
 	# Commit any changes to files, squash them into the last commit
 	# and update its date.
 	fix-up-previous-commit = !git commit --all --amend \
-	                              --reuse-message=HEAD --date=\"$(date)\" #"
+	                              --no-edit --date=\"$(date)\" #"
 	# Commit a work-in-progress commit (to use with
 	# fix-up-previous-commit)
 	work-in-progress = commit -a -m 'WIP'
