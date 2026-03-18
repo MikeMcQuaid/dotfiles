@@ -163,6 +163,9 @@ if command -v "brew" >/dev/null; then
       sync_if_changed "${DOTFILESDIR}/${i}" "${SANDVAULT_GUEST_HOME}/.${i}"
     done
 
+    [[ -d "${SANDVAULT_GUEST_HOME}/.bundle" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.bundle"
+    sync_if_changed "${DOTFILESDIR}/bundle/config" "${SANDVAULT_GUEST_HOME}/.bundle/config"
+
     [[ -d "${SANDVAULT_GUEST_HOME}/.claude" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.claude"
     [[ -d "${SANDVAULT_GUEST_HOME}/.codex" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.codex"
     for i in ".claude/CLAUDE.md" ".codex/AGENTS.md"; do
