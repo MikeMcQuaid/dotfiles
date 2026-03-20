@@ -94,7 +94,6 @@ if quiet_which brew; then
   export HOMEBREW_NO_ENV_HINTS=1
   export HOMEBREW_CLEANUP_MAX_AGE_DAYS=30
   export HOMEBREW_USE_INTERNAL_API=1
-  export HOMEBREW_REALLY_USE_INTERNAL_API=1
   export HOMEBREW_UPGRADE_GREEDY_CASKS="claude-code codex cursor zed"
 
   add_to_path_end "${HOMEBREW_PREFIX}/Library/Homebrew/shims/gems"
@@ -231,14 +230,16 @@ setup_github_token() {
 }
 
 setup_github_token
+if quiet_which code; then
+  alias vscode="$(which code)"
+fi
 
 # Set up editor
 if quiet_which zed; then
   export EDITOR="zed"
-  alias code="zed"
+  alias code="echo you like zed now, use that!"
 elif quiet_which cursor; then
   export EDITOR="cursor"
-  alias code="cursor"
 elif quiet_which code; then
   export EDITOR="code"
 fi
