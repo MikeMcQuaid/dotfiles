@@ -106,10 +106,6 @@ cask "openaudible"
 cask "quitter"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
-# Instant messaging application focusing on security
-cask "signal"
-# Video game digital distribution service
-cask "steam"
 # Open-source code editor
 cask "visual-studio-code"
 # Multiplayer code editor
