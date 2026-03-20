@@ -7,4 +7,4 @@
 - Use red-green TDD for bug fixes and regressions.
 - Prefer self-documenting code to explanatory comments.
 - Use `&>/dev/null` instead of `>/dev/null 2>&1`.
-- For git commits, use a multi-line subject/body message with a dash list in the body, a subject line of 50 characters or less, body lines of 72 characters or less, and real newlines instead of `\n`.
+- For git commits, use a multi-line subject/body message with a dash list in the body, a subject line of 50 characters or less, body lines of 72 characters or less, real newlines instead of `\n` and never add Claude/Codex/Agent Co-Authored-By.
