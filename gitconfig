@@ -145,6 +145,7 @@
 	rah = !git rebase-against-head
 	wip = !git work-in-progress
 	fsv = !git fetch sandvault && git sandvault-reset && git rebase-against-head && git fix-up-previous-commit
+	svf = fsv
 	svr = !sv --clone "$(pwd)" shell -- "git checkout -B $(git current-branch) $(git rev-parse HEAD) && git log --pretty=oneline -n1"
 	fpf = !git fix-up-previous-commit && git push --force-with-lease
 	pr = !git upstream-and-pull-request
