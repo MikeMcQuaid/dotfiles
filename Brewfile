@@ -8,10 +8,6 @@ brew "shellcheck"
 brew "actionlint"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Cross-platform make
-brew "cmake"
-# General-purpose data compression with high compression ratio
-brew "xz"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # More intuitive version of du in rust
@@ -28,16 +24,12 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
-# Quickly rewrite git repository history
-brew "git-filter-repo"
 # Colorize logfiles and command output
 brew "grc"
 # Improved top (interactive process viewer)
 brew "htop"
 # Command-line benchmarking tool
 brew "hyperfine"
-# YAML Parser
-brew "libyaml"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # CLI for Node.js style checker and lint tool for Markdown files
@@ -50,8 +42,6 @@ brew "pkgconf"
 brew "pngcrush"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.14"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
@@ -86,10 +76,10 @@ cask "1password-cli"
 cask "appcleaner"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
-# Write, edit, and chat about your code with AI
-cask "cursor"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
 # Elgato FACECAM configuration tool
@@ -116,14 +106,14 @@ cask "openaudible"
 cask "quitter"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
-# Podcast and video recorder
-cask "riverside-studio"
 # Instant messaging application focusing on security
 cask "signal"
 # Video game digital distribution service
 cask "steam"
-# Yet another monitor
-cask "yam-display"
+# Open-source code editor
+cask "visual-studio-code"
+# Multiplayer code editor
+cask "zed"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "1Blocker", id: 1365531024
@@ -142,23 +132,23 @@ mas "Slack", id: 803453959
 mas "TouchDraw2", id: 1580322028
 mas "WhatsApp", id: 310633997
 vscode "anykeyh.simplecov-vscode"
-vscode "anysphere.remote-containers"
-vscode "anysphere.remote-ssh"
 vscode "ban.spellright"
+vscode "charliermarsh.ruff"
 vscode "davidanson.vscode-markdownlint"
 vscode "davidbwaters.macos-modern-theme"
 vscode "editorconfig.editorconfig"
 vscode "foxundermoon.shell-format"
 vscode "github.codespaces"
-vscode "github.copilot"
 vscode "github.copilot-chat"
 vscode "github.vscode-github-actions"
 vscode "github.vscode-pull-request-github"
-vscode "koichisasada.vscode-rdbg"
-vscode "mechatroner.rainbow-csv"
 vscode "ms-azuretools.vscode-containers"
-vscode "ms-azuretools.vscode-docker"
-vscode "openai.chatgpt"
+vscode "ms-python.debugpy"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+vscode "ms-python.vscode-python-envs"
+vscode "ms-vscode-remote.remote-containers"
+vscode "ms-vsliveshare.vsliveshare"
 vscode "redhat.vscode-yaml"
 vscode "shopify.ruby-lsp"
 vscode "sorbet.sorbet-vscode-extension"
