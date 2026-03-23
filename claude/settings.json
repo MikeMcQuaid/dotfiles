@@ -1,0 +1,27 @@
+{
+  "defaultMode": "acceptEdits",
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git diff)",
+      "Bash(git diff *)",
+      "Bash(git fetch)",
+      "Bash(git fetch *)",
+      "Bash(git log)",
+      "Bash(git log *)",
+      "Bash(git pull)",
+      "Bash(git pull *)",
+      "Bash(git show)",
+      "Bash(git show *)",
+      "Bash(git status)",
+      "Bash(git status *)",
+      "Bash(git commit *)",
+      "Bash(git merge *)",
+      "Bash(git rebase *)"
+    ],
+    "deny": [
+      "Bash(git push)",
+      "Bash(git push *)"
+    ]
+  }
+}

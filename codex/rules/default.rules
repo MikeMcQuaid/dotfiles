@@ -1,0 +1,5 @@
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "prompt",
+    justification = "git push changes remote state and should always require approval",
+)

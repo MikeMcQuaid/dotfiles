@@ -1,10 +1,15 @@
-- Inline new variables and functions used only once.
-- Follow YAGNI and DRY.
-- Check `git diff` and keep the diff small.
-- For bug fixes, change the fewest lines that solve the problem.
-- Never remove comments.
-- Re-read files after each new prompt and keep user edits.
-- Use red-green TDD for bug fixes and regressions.
-- Prefer self-documenting code to explanatory comments.
-- Use `&>/dev/null` instead of `>/dev/null 2>&1`.
-- For git commits, use a multi-line subject/body message with a dash list in the body, a subject line of 50 characters or less, body lines of 72 characters or less, real newlines instead of `\n` and never add Claude/Codex/Agent Co-Authored-By.
+- Inline new variables and functions used only once
+- Follow YAGNI and DRY
+- Check `git diff` and keep the diff small
+- For bug fixes, change the fewest lines that solve the problem
+- Never remove comments
+- Re-read files after each new prompt and keep user edits
+- Use red-green TDD for bug fixes and regressions
+- Prefer self-documenting code to explanatory comments
+- Use `&>/dev/null` instead of `>/dev/null 2>&1`
+- For git commit messages:
+  - use a multi-line subject/body with a dash list body, a subject line of < 51 characters, body lines < 73 characters
+  - use real newlines in commit messages instead of `\n`
+  - never add Claude/Codex/Agent Co-Authored-By lines
+  - document "why" and "how" over "what"
+- Never commit to default branches (main/master/trunk). Instead branch with a relevant name off origin/HEAD.

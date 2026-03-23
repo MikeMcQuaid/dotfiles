@@ -52,7 +52,7 @@ for DOTFILE in *; do
 
   # Don't try to install some unneeded paths
   case "${DOTFILE}" in
-    bin/|bundle/|script/|*.txt|*.md)
+    bin/|bundle/|claude/|codex/|script/|*.txt|*.md)
       continue
       ;;
   esac
@@ -122,16 +122,30 @@ if ! [[ "${HOMEDOTFILES}" -ef "${DOTFILESDIR}" ]]; then
   ln -sf "${DOTFILESDIR}" "${HOMEDOTFILES}"
 fi
 
+link_if_needed() {
+  [[ -d "${1%/*}" ]] || mkdir -p "${1%/*}"
+  if [[ "${1}" -ef "${2}" ]]; then
+    return
+  elif [[ -L "${1}" ]]; then
+    ln -sf "${2}" "${1}"
+  else
+    ln -svf "${2}" "${1}"
+  fi
+}
+
+dotdir_files() {
+  find "${1}" -type f | sort
+}
+
 AGENTS_GLOBAL="${DOTFILESDIR}/AGENTS-GLOBAL.md"
 for HOMEFILE in "${HOME}/.claude/CLAUDE.md" "${HOME}/.codex/AGENTS.md"; do
-  [[ -d "${HOMEFILE%/*}" ]] || mkdir -p "${HOMEFILE%/*}"
-  if [[ "${HOMEFILE}" -ef "${AGENTS_GLOBAL}" ]]; then
-    continue
-  elif [[ -L "${HOMEFILE}" ]]; then
-    ln -sf "${AGENTS_GLOBAL}" "${HOMEFILE}"
-  else
-    ln -svf "${AGENTS_GLOBAL}" "${HOMEFILE}"
-  fi
+  link_if_needed "${HOMEFILE}" "${AGENTS_GLOBAL}"
+done
+
+for DOTDIR in claude codex; do
+  for DOTFILE in $(dotdir_files "${DOTDIR}"); do
+    link_if_needed "${HOME}/.${DOTFILE}" "${DOTFILESDIR}/${DOTFILE}"
+  done
 done
 
 # Setup my home directory how I like it
@@ -163,11 +177,13 @@ if command -v "brew" >/dev/null; then
       sync_if_changed "${DOTFILESDIR}/${i}" "${SANDVAULT_GUEST_HOME}/.${i}"
     done
 
-    [[ -d "${SANDVAULT_GUEST_HOME}/.bundle" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.bundle"
-    sync_if_changed "${DOTFILESDIR}/bundle/config" "${SANDVAULT_GUEST_HOME}/.bundle/config"
+    for DOTDIR in bundle claude codex; do
+      for DOTFILE in $(dotdir_files "${DOTDIR}"); do
+        [[ -d "${SANDVAULT_GUEST_HOME}/.${DOTFILE%/*}" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.${DOTFILE%/*}"
+        sync_if_changed "${DOTFILESDIR}/${DOTFILE}" "${SANDVAULT_GUEST_HOME}/.${DOTFILE}"
+      done
+    done
 
-    [[ -d "${SANDVAULT_GUEST_HOME}/.claude" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.claude"
-    [[ -d "${SANDVAULT_GUEST_HOME}/.codex" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.codex"
     for i in ".claude/CLAUDE.md" ".codex/AGENTS.md"; do
       sync_if_changed "${AGENTS_GLOBAL}" "${SANDVAULT_GUEST_HOME}/${i}"
     done

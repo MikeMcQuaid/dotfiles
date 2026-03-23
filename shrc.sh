@@ -63,6 +63,11 @@ fi
 add_to_path_start "/usr/local/bin"
 add_to_path_end "${HOME}/.dotfiles/bin"
 
+# Setup sandvault
+if [ "${USER:0:9}" = "sandvault" ]; then
+  add_to_path_start "${HOME}/bin"
+fi
+
 # Setup Go development
 export GOPATH="${HOME}/.gopath"
 add_to_path_end "${GOPATH}/bin"
