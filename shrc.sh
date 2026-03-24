@@ -64,7 +64,7 @@ add_to_path_start "/usr/local/bin"
 add_to_path_end "${HOME}/.dotfiles/bin"
 
 # Setup sandvault
-if [ "${USER:0:9}" = "sandvault" ]; then
+if [[ -n "${SANDVAULT}" ]]; then
   add_to_path_start "${HOME}/bin"
 fi
 
@@ -108,6 +108,13 @@ if quiet_which brew; then
   alias portableruby="${HOMEBREW_PREFIX}/Library/Homebrew/vendor/portable-ruby/current/bin/ruby"
   # shellcheck disable=SC2139
   alias portablebundle="${HOMEBREW_PREFIX}/Library/Homebrew/vendor/portable-ruby/current/bin/bundle"
+  if [[ -n "${SANDVAULT}" ]]; then
+    # shellcheck disable=SC2139
+    alias rustbrew="${HOME}/repositories/homebrew/Library/Homebrew/rust/brew-rs/run-brew-rs-experimental.sh"
+  else
+    # shellcheck disable=SC2139
+    alias rustbrew="${HOMEBREW_PREFIX}/Library/Homebrew/rust/brew-rs/run-brew-rs-experimental.sh"
+  fi
 
   alias youtube-dl='yt-dlp'
   alias bbe="brew bundle exec --check --install --"

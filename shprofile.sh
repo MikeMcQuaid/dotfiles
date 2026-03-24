@@ -17,6 +17,7 @@ fi
 
 # Fix systems missing $USER
 [ -z "$USER" ] && export USER="${LOGNAME:-$(id -un 2>/dev/null)}"
+[ "${USER:0:9}" = "sandvault" ] && export SANDVAULT=1
 
 # Count CPUs for Make jobs
 if [ -n "${MACOS}" ]; then
