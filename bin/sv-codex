@@ -1,0 +1,63 @@
+#!/bin/bash
+# Launch `codex` or `claude` inside sandvault without calling `sv`.
+set -euo pipefail
+
+# Dispatch from the symlink/script name so `sv-codex` and `sv-claude` can
+# share one implementation.
+agent="${0##*/}"
+agent="${agent#sv-}"
+
+case "${agent}" in
+  claude|codex) ;;
+  *)
+    echo "Usage: sv-{claude,codex} [path] [-- prompt]" >&2
+    exit 1
+    ;;
+esac
+
+# Match `sv` and treat the first directory argument as the target workspace.
+if [[ -d "${1:-}" ]]; then
+  workspace="$(cd "$1" 2>/dev/null && pwd -P || echo "$1")"
+  shift
+else
+  workspace="$(cd "${PWD}" 2>/dev/null && pwd -P || echo "${PWD}")"
+fi
+
+[[ "${1:-}" == "--" ]] && shift
+
+if [[ "${USER}" == sandvault-* ]]; then
+  host_user="${USER#sandvault-}"
+  sandvault_user="${USER}"
+else
+  host_user="${USER}"
+  sandvault_user="sandvault-${USER}"
+fi
+
+launch_command=(
+  /usr/bin/env -i
+  "HOME=/Users/${sandvault_user}"
+  "USER=${sandvault_user}"
+  "SHELL=/bin/zsh"
+  "TERM=${TERM:-}"
+  "INITIAL_DIR=${workspace}"
+  "SHARED_WORKSPACE=/Users/Shared/sv-${host_user}"
+  "SV_SESSION_ID=${SV_SESSION_ID:-$(/usr/bin/uuidgen)}"
+  "PATH=/usr/bin:/bin:/usr/sbin:/sbin"
+  /bin/zsh -i -l -c
+  'exec "$@"'
+  _
+  "${agent}"
+  "$@"
+)
+
+# Nested sandvault sessions cannot apply another macOS sandbox, but still need
+# the sandvault shell startup files so `configure` runs and `INITIAL_DIR` wins.
+if [[ "${USER}" == sandvault-* ]]; then
+  exec "${launch_command[@]}"
+fi
+
+# Switch to the sandvault user, apply the existing sandbox profile, then let
+# the sandvault shell startup files choose the working directory and agent PATH.
+exec sudo --login --set-home "--user=sandvault-${USER}" \
+  /usr/bin/sandbox-exec -f "/var/sandvault/sandbox-sandvault-${USER}.sb" \
+  "${launch_command[@]}"
