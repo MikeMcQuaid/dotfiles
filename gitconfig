@@ -85,7 +85,7 @@
 	upstream-current-branch = !git push --set-upstream origin \
 	                         $(git current-branch)
 	# Create a pull request on GitHub using the `gh` command.
-	pull-request = !rm -f .git/PULLREQ_EDITMSG && gh pr create --web
+	pull-request = !rm -f "$(git rev-parse --git-path PULLREQ_EDITMSG)" && gh pr create --web
 	# Upstream the current branch to origin and create a pull request
 	# on GitHub.
 	upstream-and-pull-request = !git upstream-current-branch \
@@ -254,3 +254,5 @@
 [safe]
 	# It's expected that sandvault directories are owned by another user.
 	directory = /Users/sandvault-mike/repositories/*
+	directory = /Users/sandvault-mike/repositories/platform/*
+	directory = /Users/sandvault-mike/repositories/homebrew/*

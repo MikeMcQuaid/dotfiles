@@ -99,7 +99,7 @@ if quiet_which brew; then
   export HOMEBREW_NO_ENV_HINTS=1
   export HOMEBREW_CLEANUP_MAX_AGE_DAYS=30
   export HOMEBREW_USE_INTERNAL_API=1
-  export HOMEBREW_UPGRADE_GREEDY_CASKS="claude-code codex cursor zed"
+  export HOMEBREW_UPGRADE_GREEDY_CASKS="claude-code codex cursor superset zed"
 
   add_to_path_end "${HOMEBREW_PREFIX}/Library/Homebrew/shims/gems"
 
@@ -275,7 +275,7 @@ fi
 cd() {
   builtin cd "$@" || return
   [[ -n "${TERMINALAPP}" ]] && set_terminal_app_pwd
-  pwd >"${HOME}/.lastpwd"
+  [[ "$PWD" != "/" ]] && pwd >"${HOME}/.lastpwd"
   ls
 }
 

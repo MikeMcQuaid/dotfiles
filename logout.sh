@@ -1,1 +1,1 @@
-pwd >~/.lastpwd
+[ "$PWD" != "/" ] && pwd >~/.lastpwd
