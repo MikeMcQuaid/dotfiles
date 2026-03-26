@@ -12,4 +12,5 @@
   - use real newlines in commit messages instead of `\n`
   - never add Claude/Codex/Agent Co-Authored-By lines
   - document "why" and "how" over "what"
+  - wrap filenames, code snippets, variables and identifiers in backticks
 - Never commit to default branches (main/master/trunk). Instead branch with a relevant name off origin/HEAD.
