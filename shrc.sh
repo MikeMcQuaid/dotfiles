@@ -116,7 +116,7 @@ if quiet_which brew; then
     alias rustbrew="${HOMEBREW_PREFIX}/Library/Homebrew/rust/brew-rs/run-brew-rs-experimental.sh"
   fi
 
-  alias youtube-dl='yt-dlp'
+  alias youtube-dl='yt-dlp -t mp4'
   alias bbe="brew bundle exec --check --install --"
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
