@@ -8,6 +8,8 @@ brew "shellcheck"
 brew "actionlint"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # More intuitive version of du in rust
@@ -18,42 +20,62 @@ brew "eza"
 brew "fd"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# Toolkit for image loading and pixel buffer manipulation
+brew "gdk-pixbuf"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Foreman clone written in Go
+brew "goreman"
 # Colorize logfiles and command output
 brew "grc"
 # Improved top (interactive process viewer)
 brew "htop"
 # Command-line benchmarking tool
 brew "hyperfine"
+# XML security library
+brew "libxmlsec1"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # CLI for Node.js style checker and lint tool for Markdown files
 brew "markdownlint-cli"
 # Mac App Store command-line interface
 brew "mas"
+# Open source relational database management system
+brew "mysql@8.4", restart_service: :changed
+# HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
+brew "nginx"
+# Framework for layout and rendering of i18n text
+brew "pango"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
 # Optimizer for PNG files
 brew "pngcrush"
+# Fast, disk space efficient package manager
+brew "pnpm"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
+# Persistent key-value database, with built-in net interface
+brew "redis", restart_service: :changed
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # Powerful, clean, object-oriented scripting language
 brew "ruby@3.4"
+# Safe, concurrent, practical language
+brew "rust"
 # Run AI agents isolated in a sandboxed macOS user account
 brew "sandvault"
 # Autoformat shell script source code
 brew "shfmt"
 # Human-friendly alternative to netstat for socket and port monitoring
 brew "somo"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Syntax-aware linter for prose
 brew "vale"
 # Internet file retriever
@@ -100,12 +122,14 @@ cask "losslesscut"
 cask "microsoft-edge"
 # App to write, plan, collaborate, and get organised
 cask "notion"
+# Get up and running with large language models locally
+cask "ollama-app"
 # Audiobook manager for Audible users
 cask "openaudible"
-# Automatically hides or quits apps after periods of inactivity
-cask "quitter"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
+# Terminal for orchestrating agents
+cask "superset"
 # Open-source code editor
 cask "visual-studio-code"
 # Multiplayer code editor
@@ -118,11 +142,11 @@ mas "Consent-O-Matic", id: 1606897889
 mas "GarageBand", id: 682658836
 mas "InYourFace", id: 1476964367
 mas "Keynote", id: 361285480
-mas "Microsoft Excel", id: 462058435
 mas "Numbers", id: 361304891
 mas "Pages", id: 361309726
 mas "Parachute", id: 6748614170
 mas "Pixelmator Pro", id: 1289583905
+mas "Reeder", id: 1529448980
 mas "Refined GitHub", id: 1519867270
 mas "Slack", id: 803453959
 mas "TouchDraw2", id: 1580322028
