@@ -14,3 +14,6 @@
   - document "why" and "how" over "what"
   - wrap filenames, code snippets, variables and identifiers in backticks
 - Never commit to default branches (main/master/trunk). Instead branch with a relevant name off origin/HEAD.
+- You may be running as `sandvault-<user>` inside a macOS sandbox. 
+  - In that case, the git worktree's `.git` file points to paths owned by the host user, so git operations (commit, log, diff, status) may fail with permission errors.
+  - When asked to commit instead output the full `git commit -am` command for the user to run as the host user.

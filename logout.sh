@@ -1,1 +1,1 @@
-[ "$PWD" != "/" ] && pwd >~/.lastpwd
+[ -z "${CODING_AGENT_SHELL}" ] && [ "$PWD" != "/" ] && pwd >~/.lastpwd

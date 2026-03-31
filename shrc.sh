@@ -275,7 +275,7 @@ fi
 cd() {
   builtin cd "$@" || return
   [[ -n "${TERMINALAPP}" ]] && set_terminal_app_pwd
-  [[ "$PWD" != "/" ]] && pwd >"${HOME}/.lastpwd"
+  [[ -z "${CODING_AGENT_SHELL}" && "$PWD" != "/" ]] && pwd >"${HOME}/.lastpwd"
   ls
 }
 

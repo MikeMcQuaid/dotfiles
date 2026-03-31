@@ -167,8 +167,10 @@ if command -v "brew" >/dev/null; then
   fi
 
   # Sync selected dotfiles into Sandvault guest home if that directory exists.
-  SANDVAULT_GUEST_HOME="$(brew --prefix)/etc/sandvault/guest_home_user"
-  if [[ -d "${SANDVAULT_GUEST_HOME}" ]]; then
+  if command -v "sv" >/dev/null; then
+    SANDVAULT_GUEST_HOME="/Users/Shared/sv-${USER}/user"
+    mkdir -p "${SANDVAULT_GUEST_HOME}"
+
     for i in shrc shprofile logout zprofile zshrc zlogout; do
       sync_if_changed "${DOTFILESDIR}/${i}.sh" "${SANDVAULT_GUEST_HOME}/.${i}"
     done
