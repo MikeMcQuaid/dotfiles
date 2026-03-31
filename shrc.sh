@@ -108,13 +108,7 @@ if quiet_which brew; then
   alias portableruby="${HOMEBREW_PREFIX}/Library/Homebrew/vendor/portable-ruby/current/bin/ruby"
   # shellcheck disable=SC2139
   alias portablebundle="${HOMEBREW_PREFIX}/Library/Homebrew/vendor/portable-ruby/current/bin/bundle"
-  if [[ -n "${SANDVAULT}" ]]; then
-    # shellcheck disable=SC2139
-    alias rustbrew="${HOME}/repositories/homebrew/Library/Homebrew/rust/brew-rs/run-brew-rs-experimental.sh"
-  else
-    # shellcheck disable=SC2139
-    alias rustbrew="${HOMEBREW_PREFIX}/Library/Homebrew/rust/brew-rs/run-brew-rs-experimental.sh"
-  fi
+  alias rustbrew="Library/Homebrew/rust/brew-rs/run-brew-rs-experimental.sh"
 
   alias youtube-dl='yt-dlp -t mp4'
   alias bbe="brew bundle exec --check --install --"
