@@ -1,0 +1,88 @@
+#!/bin/bash
+# Delete all clean Git worktrees whose `HEAD` is merged into the current
+# branch, except the current worktree.
+set -euo pipefail
+
+say() {
+  echo
+  echo "==> $*"
+}
+
+echorun() {
+  echo
+  echo + "$@"
+  "$@"
+}
+
+skip_worktree() {
+  say "Keeping $1 worktree because $2"
+  echo "==> Run manually: $3"
+}
+
+# Normalize `/var/...` and `/private/var/...` to the same path so
+# worktree paths and `lsof` cwd paths compare reliably on macOS.
+realpath_or_echo() {
+  cd "$1" &>/dev/null && pwd -P || echo "$1"
+}
+
+current_branch() {
+  git current-branch 2>/dev/null || echo HEAD
+}
+
+active_agent_cwds() {
+  local agent_name
+
+  for agent_name in codex claude; do
+    lsof -a -d cwd -c "${agent_name}" -Fn 2>/dev/null | sed -n 's/^n//p' || true
+  done
+}
+
+CURRENT_BRANCH="$(current_branch)"
+CURRENT_WORKTREE="$(realpath_or_echo "$(git rev-parse --show-toplevel)")"
+ACTIVE_CWDS="$(active_agent_cwds)"
+
+for WORKTREE_PATH in $(git worktree list --porcelain | sed -n 's/^worktree //p'); do
+  [ "$(realpath_or_echo "${WORKTREE_PATH}")" = "${CURRENT_WORKTREE}" ] && continue
+  [ -d "${WORKTREE_PATH}/.git" ] && continue
+
+  WORKTREE_HEAD="$(git -C "${WORKTREE_PATH}" rev-parse HEAD)"
+  WORKTREE_BRANCH="$(git -C "${WORKTREE_PATH}" symbolic-ref --quiet --short HEAD 2>/dev/null || true)"
+  WORKTREE_LABEL="${WORKTREE_BRANCH}"
+  [ -n "${WORKTREE_LABEL}" ] || WORKTREE_LABEL="detached ${WORKTREE_HEAD:0:12}"
+
+  if [ -n "$(git -C "${WORKTREE_PATH}" status --porcelain --untracked-files=normal)" ]; then
+    skip_worktree "${WORKTREE_LABEL}" \
+      "it has uncommitted or untracked files" \
+      "git -C \"${WORKTREE_PATH}\" status --short"
+    continue
+  fi
+
+  WORKTREE_PATH_REAL="$(realpath_or_echo "${WORKTREE_PATH}")"
+  for ACTIVE_CWD in ${ACTIVE_CWDS}; do
+    case "$(realpath_or_echo "${ACTIVE_CWD}")" in
+      "${WORKTREE_PATH_REAL}"|"${WORKTREE_PATH_REAL}"/*)
+        skip_worktree "${WORKTREE_LABEL}" \
+          "a Codex or Claude session is active inside it" \
+          "git worktree remove \"${WORKTREE_PATH}\""
+        continue 2
+        ;;
+    esac
+  done
+
+  if ! git merge-base --is-ancestor "${WORKTREE_HEAD}" HEAD; then
+    skip_worktree "${WORKTREE_LABEL}" \
+      "its HEAD is not merged into ${CURRENT_BRANCH}" \
+      "git log --oneline \"${CURRENT_BRANCH}..${WORKTREE_HEAD}\""
+    continue
+  fi
+
+  say "Deleting ${WORKTREE_LABEL} worktree because it is clean, has no active agent session and its HEAD is merged into ${CURRENT_BRANCH}"
+  echorun git worktree remove "${WORKTREE_PATH}"
+done
+
+if git config --get alias.delete-merged >/dev/null; then
+  say "Deleting merged branches with git delete-merged"
+  echorun git delete-merged
+else
+  say "Skipping git delete-merged because the alias is not configured"
+fi
