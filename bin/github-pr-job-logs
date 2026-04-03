@@ -1,0 +1,182 @@
+#!/bin/bash
+# Download GitHub Actions job logs for every visible check on a pull request.
+set -euo pipefail
+
+usage() {
+  echo "Usage: github-pr-job-logs [--prefix text] https://github.com/OWNER/REPO/pull/12345 [output-directory]" >&2
+  exit 1
+}
+
+require_command() {
+  command -v "$1" &>/dev/null || {
+    echo "Error: missing required command: $1" >&2
+    exit 1
+  }
+}
+
+sanitize_filename() {
+  echo "$1" | sed -E 's/[^A-Za-z0-9._-]+/-/g; s/^-+//; s/-+$//'
+}
+
+JOB_NAME_PREFIX=""
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --prefix)
+      JOB_NAME_PREFIX="${2:-}"
+      [ -n "${JOB_NAME_PREFIX}" ] || usage
+      shift 2
+      ;;
+    --help|-h)
+      usage
+      ;;
+    --)
+      shift
+      break
+      ;;
+    -*)
+      echo "Error: unknown option: $1" >&2
+      usage
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+[ -n "${1:-}" ] || usage
+
+require_command gh
+require_command jq
+
+PR_PARTS="$(echo "$1" | sed -En 's#^https://github\.com/([^/]+)/([^/]+)/pull/([0-9]+)(/.*)?(\?.*)?$#\1 \2 \3#p')"
+[ -n "${PR_PARTS}" ] || {
+  echo "Error: expected a GitHub pull request URL, got: $1" >&2
+  exit 1
+}
+
+read -r OWNER REPO PR_NUMBER <<<"${PR_PARTS}"
+REPO_SLUG="${OWNER}/${REPO}"
+OUTPUT_DIRECTORY="${2:-${REPO}-pr-${PR_NUMBER}-job-logs}"
+LOG_DIRECTORY="${OUTPUT_DIRECTORY}/logs"
+PR_JSON_PATH="${OUTPUT_DIRECTORY}/pr.json"
+CHECK_RUNS_JSON_PATH="${OUTPUT_DIRECTORY}/check-runs.json"
+JOBS_JSON_PATH="${OUTPUT_DIRECTORY}/jobs.json"
+SKIPPED_CHECKS_JSON_PATH="${OUTPUT_DIRECTORY}/skipped-check-runs.json"
+SUMMARY_PATH="${OUTPUT_DIRECTORY}/summary.txt"
+
+mkdir -p "${LOG_DIRECTORY}"
+
+echo "==> Fetching pull request metadata for ${REPO_SLUG}#${PR_NUMBER}"
+gh pr view "$1" --json number,title,headRefName,headRefOid,statusCheckRollup,url >"${PR_JSON_PATH}"
+
+# `statusCheckRollup` is the current set of checks visible on the PR page, which
+# is what we want to mirror locally for later Claude analysis.
+jq '
+  [
+    .statusCheckRollup[]?
+    | select(.__typename == "CheckRun")
+    | {
+        completedAt,
+        conclusion,
+        detailsUrl,
+        name,
+        startedAt,
+        status,
+        workflowName,
+        jobId: (
+          if (.detailsUrl | test("/actions/runs/[0-9]+/job/[0-9]+$")) then
+            (.detailsUrl | capture("/job/(?<job_id>[0-9]+)$").job_id)
+          else
+            null
+          end
+        )
+      }
+  ]
+' "${PR_JSON_PATH}" >"${CHECK_RUNS_JSON_PATH}"
+
+jq '[.[] | select(.jobId != null)] | unique_by(.jobId)' \
+  "${CHECK_RUNS_JSON_PATH}" >"${JOBS_JSON_PATH}"
+jq '[.[] | select(.jobId == null)]' \
+  "${CHECK_RUNS_JSON_PATH}" >"${SKIPPED_CHECKS_JSON_PATH}"
+
+if [ -n "${JOB_NAME_PREFIX}" ]; then
+  JOB_COUNT=0
+  while read -r JOB_JSON; do
+    JOB_NAME="$(jq -r '.name // "job"' <<<"${JOB_JSON}")"
+    [[ "${JOB_NAME}" == "${JOB_NAME_PREFIX}"* ]] && JOB_COUNT="$(( JOB_COUNT + 1 ))"
+  done < <(jq -c '.[]' "${JOBS_JSON_PATH}")
+else
+  JOB_COUNT="$(jq 'length' "${JOBS_JSON_PATH}")"
+fi
+
+[ "${JOB_COUNT}" -gt 0 ] || {
+  if [ -n "${JOB_NAME_PREFIX}" ]; then
+    echo "Error: no GitHub Actions jobs starting with ${JOB_NAME_PREFIX} were found for $1" >&2
+  else
+    echo "Error: no GitHub Actions jobs with downloadable logs were found for $1" >&2
+  fi
+  exit 1
+}
+
+if [ -n "${JOB_NAME_PREFIX}" ]; then
+  echo "==> Writing ${JOB_COUNT} filtered job logs into ${OUTPUT_DIRECTORY}"
+else
+  echo "==> Writing ${JOB_COUNT} job logs into ${OUTPUT_DIRECTORY}"
+fi
+{
+  echo "PR URL: $(jq -r '.url' "${PR_JSON_PATH}")"
+  echo "PR Title: $(jq -r '.title' "${PR_JSON_PATH}")"
+  echo "Head Branch: $(jq -r '.headRefName' "${PR_JSON_PATH}")"
+  echo "Head SHA: $(jq -r '.headRefOid' "${PR_JSON_PATH}")"
+  echo "Repository: ${REPO_SLUG}"
+  echo "Log Directory: ${LOG_DIRECTORY}"
+  echo "Job Count: ${JOB_COUNT}"
+  [ -n "${JOB_NAME_PREFIX}" ] && echo "Job Name Prefix: ${JOB_NAME_PREFIX}"
+  echo "Checks Without Job Logs: $(jq 'length' "${SKIPPED_CHECKS_JSON_PATH}")"
+  echo
+} >"${SUMMARY_PATH}"
+
+JOB_INDEX=0
+DOWNLOAD_FAILURES=0
+
+while read -r JOB_JSON; do
+  JOB_ID="$(jq -r '.jobId' <<<"${JOB_JSON}")"
+  WORKFLOW_NAME="$(jq -r '.workflowName // "workflow"' <<<"${JOB_JSON}")"
+  JOB_NAME="$(jq -r '.name // "job"' <<<"${JOB_JSON}")"
+  [ -n "${JOB_NAME_PREFIX}" ] && [[ "${JOB_NAME}" != "${JOB_NAME_PREFIX}"* ]] && continue
+
+  JOB_INDEX="$(( JOB_INDEX + 1 ))"
+  JOB_STATUS="$(jq -r '.status // "UNKNOWN"' <<<"${JOB_JSON}")"
+  JOB_CONCLUSION="$(jq -r '.conclusion // "UNKNOWN"' <<<"${JOB_JSON}")"
+  SAFE_WORKFLOW_NAME="$(sanitize_filename "${WORKFLOW_NAME}")"
+  SAFE_JOB_NAME="$(sanitize_filename "${JOB_NAME}")"
+  [ -n "${SAFE_WORKFLOW_NAME}" ] || SAFE_WORKFLOW_NAME="workflow"
+  [ -n "${SAFE_JOB_NAME}" ] || SAFE_JOB_NAME="job"
+  LOG_PATH="${LOG_DIRECTORY}/$(printf '%03d' "${JOB_INDEX}")-${SAFE_WORKFLOW_NAME}--${SAFE_JOB_NAME}.log"
+  ERROR_PATH="${LOG_PATH}.stderr"
+
+  echo "==> Downloading ${WORKFLOW_NAME} / ${JOB_NAME}"
+  if gh run view --repo "${REPO_SLUG}" --job "${JOB_ID}" --log >"${LOG_PATH}" 2>"${ERROR_PATH}"; then
+    printf '[ok] %s | %s | %s | %s | %s\n' \
+      "${JOB_ID}" "${JOB_STATUS}" "${JOB_CONCLUSION}" "${WORKFLOW_NAME}" "$(basename "${LOG_PATH}")" \
+      >>"${SUMMARY_PATH}"
+    [ -s "${ERROR_PATH}" ] || rm -f "${ERROR_PATH}"
+    continue
+  fi
+
+  DOWNLOAD_FAILURES="$(( DOWNLOAD_FAILURES + 1 ))"
+  printf '[error] %s | %s | %s | %s | %s.stderr\n' \
+    "${JOB_ID}" "${JOB_STATUS}" "${JOB_CONCLUSION}" "${WORKFLOW_NAME}" "$(basename "${LOG_PATH}")" \
+    >>"${SUMMARY_PATH}"
+done < <(jq -c '.[]' "${JOBS_JSON_PATH}")
+
+echo >>"${SUMMARY_PATH}"
+echo "Download Failures: ${DOWNLOAD_FAILURES}" >>"${SUMMARY_PATH}"
+
+if [ "${DOWNLOAD_FAILURES}" -gt 0 ]; then
+  echo "==> Finished with ${DOWNLOAD_FAILURES} failed log downloads. See ${SUMMARY_PATH}"
+  exit 1
+fi
+
+echo "==> Finished. See ${SUMMARY_PATH}"
