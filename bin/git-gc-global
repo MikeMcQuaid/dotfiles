@@ -3,16 +3,14 @@
 set -e
 
 CURRENT=$PWD
-# Set to newline to loop over find output correctly on spaced paths.
-IFS="
-"
+# `find -print0` with `IFS= read -r -d ''` keeps spaced paths safe here.
 
 echorun() {
   echo + "$@"
   "$@"
 }
 
-find -L "$CURRENT" -name .git -print0 | while read -d '' -r SCM; do
+find -L "$CURRENT" -name .git -print0 | while IFS= read -r -d '' SCM; do
   DIRECTORY="${SCM%/*}"
   cd "$DIRECTORY" || continue
   echo "== Garbage collecting ${DIRECTORY##*/}"

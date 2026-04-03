@@ -62,6 +62,7 @@ LOG_DIRECTORY="${OUTPUT_DIRECTORY}/logs"
 PR_JSON_PATH="${OUTPUT_DIRECTORY}/pr.json"
 CHECK_RUNS_JSON_PATH="${OUTPUT_DIRECTORY}/check-runs.json"
 JOBS_JSON_PATH="${OUTPUT_DIRECTORY}/jobs.json"
+MATCHING_JOBS_JSON_PATH="${OUTPUT_DIRECTORY}/matching-jobs.json"
 SKIPPED_CHECKS_JSON_PATH="${OUTPUT_DIRECTORY}/skipped-check-runs.json"
 SUMMARY_PATH="${OUTPUT_DIRECTORY}/summary.txt"
 
@@ -101,14 +102,14 @@ jq '[.[] | select(.jobId == null)]' \
   "${CHECK_RUNS_JSON_PATH}" >"${SKIPPED_CHECKS_JSON_PATH}"
 
 if [ -n "${JOB_NAME_PREFIX}" ]; then
-  JOB_COUNT=0
-  while read -r JOB_JSON; do
-    JOB_NAME="$(jq -r '.name // "job"' <<<"${JOB_JSON}")"
-    [[ "${JOB_NAME}" == "${JOB_NAME_PREFIX}"* ]] && JOB_COUNT="$(( JOB_COUNT + 1 ))"
-  done < <(jq -c '.[]' "${JOBS_JSON_PATH}")
+  jq --arg prefix "${JOB_NAME_PREFIX}" \
+    '[.[] | select((.name // "job") | startswith($prefix))]' \
+    "${JOBS_JSON_PATH}" >"${MATCHING_JOBS_JSON_PATH}"
 else
-  JOB_COUNT="$(jq 'length' "${JOBS_JSON_PATH}")"
+  cp "${JOBS_JSON_PATH}" "${MATCHING_JOBS_JSON_PATH}"
 fi
+
+JOB_COUNT="$(jq 'length' "${MATCHING_JOBS_JSON_PATH}")"
 
 [ "${JOB_COUNT}" -gt 0 ] || {
   if [ -n "${JOB_NAME_PREFIX}" ]; then
@@ -137,39 +138,31 @@ fi
   echo
 } >"${SUMMARY_PATH}"
 
-JOB_INDEX=0
-DOWNLOAD_FAILURES=0
+export LOG_DIRECTORY REPO_SLUG SUMMARY_PATH
 
-while read -r JOB_JSON; do
-  JOB_ID="$(jq -r '.jobId' <<<"${JOB_JSON}")"
-  WORKFLOW_NAME="$(jq -r '.workflowName // "workflow"' <<<"${JOB_JSON}")"
-  JOB_NAME="$(jq -r '.name // "job"' <<<"${JOB_JSON}")"
-  [ -n "${JOB_NAME_PREFIX}" ] && [[ "${JOB_NAME}" != "${JOB_NAME_PREFIX}"* ]] && continue
-
-  JOB_INDEX="$(( JOB_INDEX + 1 ))"
-  JOB_STATUS="$(jq -r '.status // "UNKNOWN"' <<<"${JOB_JSON}")"
-  JOB_CONCLUSION="$(jq -r '.conclusion // "UNKNOWN"' <<<"${JOB_JSON}")"
-  SAFE_WORKFLOW_NAME="$(sanitize_filename "${WORKFLOW_NAME}")"
-  SAFE_JOB_NAME="$(sanitize_filename "${JOB_NAME}")"
-  [ -n "${SAFE_WORKFLOW_NAME}" ] || SAFE_WORKFLOW_NAME="workflow"
-  [ -n "${SAFE_JOB_NAME}" ] || SAFE_JOB_NAME="job"
-  LOG_PATH="${LOG_DIRECTORY}/$(printf '%03d' "${JOB_INDEX}")-${SAFE_WORKFLOW_NAME}--${SAFE_JOB_NAME}.log"
+jq -rj '
+  to_entries[]
+  | (.key + 1 | tostring), "\u0000",
+    .value.jobId, "\u0000",
+    (.value.workflowName // "workflow"), "\u0000",
+    (.value.name // "job"), "\u0000",
+    (.value.status // "UNKNOWN"), "\u0000",
+    (.value.conclusion // "UNKNOWN"), "\u0000"
+' "${MATCHING_JOBS_JSON_PATH}" | xargs -0 -n 6 /bin/bash -c '
+  [ -n "${1:-}" ] || exit 0
+  LOG_PATH="${LOG_DIRECTORY}/$(printf "%03d" "$1")-$(echo "$3" | sed -E "s/[^A-Za-z0-9._-]+/-/g; s/^-+//; s/-+$//")--$(echo "$4" | sed -E "s/[^A-Za-z0-9._-]+/-/g; s/^-+//; s/-+$//").log"
   ERROR_PATH="${LOG_PATH}.stderr"
-
-  echo "==> Downloading ${WORKFLOW_NAME} / ${JOB_NAME}"
-  if gh run view --repo "${REPO_SLUG}" --job "${JOB_ID}" --log >"${LOG_PATH}" 2>"${ERROR_PATH}"; then
-    printf '[ok] %s | %s | %s | %s | %s\n' \
-      "${JOB_ID}" "${JOB_STATUS}" "${JOB_CONCLUSION}" "${WORKFLOW_NAME}" "$(basename "${LOG_PATH}")" \
-      >>"${SUMMARY_PATH}"
+  LOG_FILE_NAME="$(basename "${LOG_PATH}")"
+  echo "==> Downloading $3 / $4"
+  if gh run view --repo "${REPO_SLUG}" --job "$2" --log >"${LOG_PATH}" 2>"${ERROR_PATH}"; then
+    printf "[ok] %s | %s | %s | %s | %s\n" "$2" "$5" "$6" "$3" "${LOG_FILE_NAME}" >>"${SUMMARY_PATH}"
     [ -s "${ERROR_PATH}" ] || rm -f "${ERROR_PATH}"
-    continue
+    exit 0
   fi
+  printf "[error] %s | %s | %s | %s | %s.stderr\n" "$2" "$5" "$6" "$3" "${LOG_FILE_NAME}" >>"${SUMMARY_PATH}"
+' _
 
-  DOWNLOAD_FAILURES="$(( DOWNLOAD_FAILURES + 1 ))"
-  printf '[error] %s | %s | %s | %s | %s.stderr\n' \
-    "${JOB_ID}" "${JOB_STATUS}" "${JOB_CONCLUSION}" "${WORKFLOW_NAME}" "$(basename "${LOG_PATH}")" \
-    >>"${SUMMARY_PATH}"
-done < <(jq -c '.[]' "${JOBS_JSON_PATH}")
+DOWNLOAD_FAILURES="$(grep -c '^\[error\]' "${SUMMARY_PATH}" || true)"
 
 echo >>"${SUMMARY_PATH}"
 echo "Download Failures: ${DOWNLOAD_FAILURES}" >>"${SUMMARY_PATH}"
