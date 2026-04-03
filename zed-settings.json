@@ -7,11 +7,21 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "ui_font_family": ".SystemUIFont",
+  "icon_theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Frappé"
+  },
+  "restore_on_startup": "empty_tab",
   "session": {
     "restore_unsaved_buffers": false
   },
   "enable_language_server": false,
   "edit_predictions": {
+    "ollama": {
+      "model": "qwen3-coder:30b"
+    },
     "provider": "zed",
     "disabled_globs": [],
   },
