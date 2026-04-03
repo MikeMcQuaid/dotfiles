@@ -131,6 +131,8 @@
 	diff-merge-base = !git diff $(git merge-base-head)
 	# Reset the current branch to the sandvault version
 	sandvault-reset = !git reset --hard sandvault/$(git current-branch)
+	# Open a sandvault shell in the current repository or worktree.
+	sv = !sv shell "$(pwd)"
 
 	# Push the current branch upstream to MikeMcQuaid using the same
 	# branch name for the remote branch.
@@ -144,9 +146,6 @@
 	fahr = !git fetch --all && git hard-reset
 	rah = !git rebase-against-head
 	wip = !git work-in-progress
-	fsv = !git fetch sandvault && git sandvault-reset && git rebase-against-head && git fix-up-previous-commit
-	svf = fsv
-	svr = !sv --clone "$(pwd)" shell -- "git checkout -B $(git current-branch) $(git rev-parse HEAD) && git log --pretty=oneline -n1"
 	fpf = !git fix-up-previous-commit && git push --force-with-lease
 	pr = !git upstream-and-pull-request
 	up = !git upstream-current-branch
@@ -154,7 +153,6 @@
 	pf = !git push --force-with-lease
 	dm = !git diff-merge-base
 	mb = !git merge-base-head
-	sv = !sv --clone "$(pwd)" shell
 	w = !git word-diff
 	u = !git push-and-set-upstream
 	b = !git checkout-as-new-branch
@@ -253,6 +251,6 @@
 	skippedCherryPicks = false
 [safe]
 	# It's expected that sandvault directories are owned by another user.
-	directory = /Users/sandvault-mike/repositories/*
-	directory = /Users/sandvault-mike/repositories/platform/*
-	directory = /Users/sandvault-mike/repositories/homebrew/*
+	directory = /Users/Shared/sv-mike/repositories/*
+	directory = /Users/Shared/sv-mike/worktrees/brew/*
+	directory = /Users/Shared/sv-mike/worktrees/platform/*
