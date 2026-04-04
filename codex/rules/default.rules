@@ -3,3 +3,5 @@ prefix_rule(
     decision = "prompt",
     justification = "git push changes remote state and should always require approval",
 )
+prefix_rule(pattern=["bash", "bin/github-pr-job-logs"], decision="allow")
+prefix_rule(pattern=["bin/ruby", "lib/enrich_metadata_cli.rb", "update"], decision="allow")

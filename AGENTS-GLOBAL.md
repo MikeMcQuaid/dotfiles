@@ -7,13 +7,20 @@
 - Use red-green TDD for bug fixes and regressions
 - Prefer self-documenting code to explanatory comments
 - Use `&>/dev/null` instead of `>/dev/null 2>&1`
-- For git commit messages:
-  - use a multi-line subject/body with a dash list body, a subject line of < 51 characters, body lines < 73 characters
-  - use real newlines in commit messages instead of `\n`
-  - never add Claude/Codex/Agent Co-Authored-By lines
-  - document "why" and "how" over "what"
-  - wrap filenames, code snippets, variables and identifiers in backticks
+- You may be running as `sandvault-<user>` inside a macOS sandbox.
+
+## Git Commits
+
 - Never commit to default branches (main/master/trunk). Instead branch with a relevant name off origin/HEAD.
-- You may be running as `sandvault-<user>` inside a macOS sandbox. 
-  - In that case, the git worktree's `.git` file points to paths owned by the host user, so git operations (commit, log, diff, status) may fail with permission errors.
-  - When asked to commit instead output the full `git commit -am` command for the user to run as the host user.
+- For `git commit` and `git commit --amend` messages:
+  - use subject/body form with a dash-list body, a subject line of < 51 characters, and body lines < 73 characters
+  - use real newlines in commit messages instead of `\n`
+  - focus more on `why` than `how` or `what`
+  - wrap filenames, code snippets, variables, and identifiers in backticks
+  - never add Claude/Codex/Agent Co-Authored-By lines
+  - never embed literal `\n` in `-m` arguments
+  - when a body is needed, write the message with real newlines using `git commit -F - <<'EOF' ... EOF` or a temporary message file
+  - for multi-line commit messages, prefer `git commit -F - <<'EOF'` over shell-escaped `git commit -m` strings
+  - inside Codex or Claude, do not try to GPG-sign commits; use `git -c commit.gpgsign=false commit ...` and `git -c commit.gpgsign=false commit --amend ...`
+  - after creating or amending a commit, run `git log -1 --format=%B` and verify there are no literal `\n` sequences
+  - if committing fails unexpectedly, fail fast and ask for help with the exact command, exit status, and stderr instead of papering over it
