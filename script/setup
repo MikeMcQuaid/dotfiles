@@ -52,7 +52,7 @@ for DOTFILE in *; do
 
   # Don't try to install some unneeded paths
   case "${DOTFILE}" in
-    bin/|bundle/|claude/|codex/|script/|*.txt|*.md)
+    bin/|bundle/|claude/|codex/|script/|tmp/|*.txt|*.md)
       continue
       ;;
   esac
@@ -181,10 +181,23 @@ if command -v "brew" >/dev/null; then
 
     for DOTDIR in bundle claude codex; do
       for DOTFILE in $(dotdir_files "${DOTDIR}"); do
+        [[ "${DOTFILE}" = "codex/hooks.json" ]] && continue
         [[ -d "${SANDVAULT_GUEST_HOME}/.${DOTFILE%/*}" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.${DOTFILE%/*}"
         sync_if_changed "${DOTFILESDIR}/${DOTFILE}" "${SANDVAULT_GUEST_HOME}/.${DOTFILE}"
       done
     done
+
+    if [[ -f "${HOME}/.superset/hooks/notify.sh" ]]; then
+      [[ -d "${SANDVAULT_GUEST_HOME}/.superset/hooks" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.superset/hooks"
+      sync_if_changed "${HOME}/.superset/hooks/notify.sh" "${SANDVAULT_GUEST_HOME}/.superset/hooks/notify.sh"
+
+      [[ -d "${DOTFILESDIR}/tmp" ]] || mkdir -p "${DOTFILESDIR}/tmp"
+      sed \
+        -e "s|${HOME}/|/Users/sandvault-${USER}/|g" \
+        -e "s|/Users/${USER}/|/Users/sandvault-${USER}/|g" \
+        "${DOTFILESDIR}/codex/hooks.json" > "${DOTFILESDIR}/tmp/sandvault-codex-hooks.json"
+      sync_if_changed "${DOTFILESDIR}/tmp/sandvault-codex-hooks.json" "${SANDVAULT_GUEST_HOME}/.codex/hooks.json"
+    fi
 
     for i in ".claude/CLAUDE.md" ".codex/AGENTS.md"; do
       sync_if_changed "${AGENTS_GLOBAL}" "${SANDVAULT_GUEST_HOME}/${i}"

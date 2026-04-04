@@ -13,6 +13,7 @@
 /gnupg/gpg-agent.conf
 /gnupg/sshcontrol
 bundle/cache
+tmp/
 secrets
 rbenv/*/
 Brewfile.lock.json
