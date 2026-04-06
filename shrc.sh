@@ -117,7 +117,7 @@ if quiet_which brew; then
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
 fi
 
-if quiet_which delta; then
+if quiet_which delta && [ -z "${SUPERSET_HOME_DIR}" ]; then
   export GIT_PAGER='delta'
 else
   # shellcheck disable=SC2016
