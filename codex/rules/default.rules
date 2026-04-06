@@ -5,3 +5,4 @@ prefix_rule(
 )
 prefix_rule(pattern=["bash", "bin/github-pr-job-logs"], decision="allow")
 prefix_rule(pattern=["bin/ruby", "lib/enrich_metadata_cli.rb", "update"], decision="allow")
+prefix_rule(pattern=["./bin/brew", "lgtm"], decision="allow")
