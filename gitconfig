@@ -43,6 +43,8 @@
 	excludesfile = ~/.gitignore
 	# Set attributes on files. Used for general diff improvements.
 	attributesfile = ~/.gitattributes
+	# Run shared hooks for every repository.
+	hooksPath = ~/.git-hooks
 	# Don't prompt for commit messages for merge commits.
 	mergeoptions = --no-edit
 	# Speed up some repositories.

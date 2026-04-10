@@ -9,3 +9,5 @@
 [gpg "ssh"]
 	# Let 1Password act as GPG agent
 	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+	# Trust SSH signatures made with keys in this file.
+	allowedSignersFile = ~/.ssh/allowed_signers

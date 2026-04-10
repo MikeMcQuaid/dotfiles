@@ -1,0 +1,21 @@
+#!/bin/bash
+set -euo pipefail
+
+# Reject pushes that include unsigned or invalidly signed commits.
+# Skip deletions and refs that do not peel to a commit.
+while read -r local_ref local_oid _ _; do
+  status="$(git log -1 '--format=%G?' "${local_oid}^{commit}" 2>/dev/null)" || continue
+
+  case "${status}" in
+    G|U|X|Y)
+      ;;
+    N)
+      echo "Push rejected: ${local_ref} is not signed" >&2
+      exit 1
+      ;;
+    *)
+      echo "Push rejected: ${local_ref} signature is not valid" >&2
+      exit 1
+      ;;
+  esac
+done
