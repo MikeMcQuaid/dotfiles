@@ -129,6 +129,8 @@
 	merge-base-head = merge-base origin/HEAD HEAD
 	# Diff against the current branch's merge-base
 	diff-merge-base = !git diff $(git merge-base-head)
+	# Diff against the upstream branch
+	diff-upstream = !git diff $(git upstream)/$(git current-branch)
 	# Reset the current branch to the sandvault version
 	sandvault-reset = !git reset --hard sandvault/$(git current-branch)
 	# Open a sandvault shell in the current repository or worktree.
@@ -143,7 +145,7 @@
 	umpr = !git um && gh pr create --web --head MikeMcQuaid:$(git current-branch)
 
 	## Shortened 'New' Commands
-	fahr = !git fetch --all && git hard-reset
+	frb = !git fetch && git rebase-against-head
 	rah = !git rebase-against-head
 	wip = !git work-in-progress
 	fpf = !git fix-up-previous-commit && git push --force-with-lease
