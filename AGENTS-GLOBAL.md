@@ -12,6 +12,7 @@
 ## Git Commits
 
 - Never commit to default branches (main/master/trunk). Instead branch with a relevant name off origin/HEAD.
+- Generally prefer amending existing commits, especially for functionality fixes, and update the commit message to note the fix instead of creating follow-up fix commits.
 - For `git commit` and `git commit --amend` messages:
   - use subject/body form with a dash-list body, a subject line of < 51 characters, and body lines < 73 characters
   - use real newlines in commit messages instead of `\n`
