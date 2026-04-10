@@ -1,4 +1,5 @@
 {
+  "autoUpdatesChannel": "stable",
   "permissions": {
     "defaultMode": "acceptEdits",
     "allow": [
