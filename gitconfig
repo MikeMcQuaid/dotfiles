@@ -146,6 +146,23 @@
 	# Push the current branch to MikeMcQuaid and open a pull request.
 	umpr = !git um && gh pr create --web --head MikeMcQuaid:$(git current-branch)
 
+	## Codebase Audit Commands
+	# Show the 20 most-changed files in the last year.
+	churn = !git log --format=format: --name-only --since='1 year ago' \
+	      | sort | uniq -c | sort -nr | head -20
+	# Show contributors ranked by commit count.
+	bus-factor = shortlog -sn --no-merges
+	# Show files most associated with bug-fix commits.
+	bug-hotspots = !git log -i -E --grep='fix|bug|broken' \
+	             --name-only --format='' \
+	             | sort | uniq -c | sort -nr | head -20
+	# Show commit count by month for the entire history.
+	commit-velocity = !git log --format='%ad' --date=format:'%Y-%m' \
+	                | sort | uniq -c
+	# Show reverts, hotfixes, and emergency commits in the last year.
+	firefighting = !git log --oneline --since='1 year ago' \
+	             | grep -iE 'revert|hotfix|emergency|rollback'
+
 	## Shortened 'New' Commands
 	frb = !git fetch && git rebase-against-head
 	rah = !git rebase-against-head
