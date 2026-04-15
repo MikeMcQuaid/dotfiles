@@ -168,11 +168,13 @@
 	rah = !git rebase-against-head
 	wip = !git work-in-progress
 	fpf = !git fix-up-previous-commit && git push --force-with-lease
+	fs = !git fix-up-previous-commit --gpg-sign
 	pr = !git upstream-and-pull-request
 	up = !git upstream-current-branch
 	fa = !git fetch --all
 	pf = !git push --force-with-lease
 	dm = !git diff-merge-base
+	du = !git diff-upstream
 	mb = !git merge-base-head
 	w = !git word-diff
 	u = !git push-and-set-upstream
