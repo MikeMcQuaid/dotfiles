@@ -116,14 +116,14 @@ cask "font-space-mono"
 cask "fork"
 # Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
+# Discover, download, and run local LLMs
+cask "lm-studio"
 # Trims video and audio files losslessly
 cask "losslesscut"
 # Multi-platform web browser
 cask "microsoft-edge"
 # App to write, plan, collaborate, and get organised
 cask "notion"
-# Get up and running with large language models locally
-cask "ollama-app"
 # Audiobook manager for Audible users
 cask "openaudible"
 # Move and resize windows using keyboard shortcuts or snap areas
