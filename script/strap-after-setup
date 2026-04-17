@@ -35,3 +35,7 @@ defaults write -g AppleWindowTabbingMode -string Always
 
 # Unset default system-wide Git credential helper
 git config unset --system credential.helper
+
+# Make more room in the menu bar by reducing spacing between items
+defaults -currentHost write -globalDomain NSStatusItemSpacing -int 4
+defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 4
