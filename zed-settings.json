@@ -22,7 +22,7 @@
     "ollama": {
       "model": "qwen3-coder:30b"
     },
-    "provider": "zed",
+    "provider": "copilot",
     "disabled_globs": [],
   },
   "use_system_window_tabs": true,
