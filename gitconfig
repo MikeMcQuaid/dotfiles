@@ -164,10 +164,11 @@
 	             | grep -iE 'revert|hotfix|emergency|rollback'
 
 	## Shortened 'New' Commands
+	fspr = !git fix-up-previous-commit --gpg-sign && git upstream-and-pull-request
 	frb = !git fetch && git rebase-against-head
 	rah = !git rebase-against-head
 	wip = !git work-in-progress
-	fpf = !git fix-up-previous-commit && git push --force-with-lease
+	fpf = !git fix-up-previous-commit --gpg-sign && git push --force-with-lease
 	fs = !git fix-up-previous-commit --gpg-sign
 	pr = !git upstream-and-pull-request
 	up = !git upstream-current-branch
