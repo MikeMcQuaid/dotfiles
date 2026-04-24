@@ -36,4 +36,4 @@ else
   usage
 fi
 
-/usr/bin/curl -X POST "${DESK_PRESS_URL}" -d "" #&>/dev/null
+/usr/bin/curl -X POST "${DESK_PRESS_URL}" -d "" &>/dev/null
