@@ -2,7 +2,7 @@
 # Moves desk up or down.
 set -euo pipefail
 
-DESK_IP_ADDRESS="192.168.4.31"
+DESK_IP_ADDRESS="192.168.4.63"
 
 COMMAND="${1:-}"
 
