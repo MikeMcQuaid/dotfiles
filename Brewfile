@@ -1,5 +1,6 @@
 tap "homebrew/cask"
 tap "homebrew/core"
+tap "shivammathur/php"
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Static analysis and lint tool, for (ba)sh scripts
@@ -8,6 +9,8 @@ brew "shellcheck"
 brew "actionlint"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Cargo subcommand to easily use LLVM source-based code coverage
+brew "cargo-llvm-cov"
 # General-purpose data compression with high compression ratio
 brew "xz"
 # Disk Usage/Free Utility - a better 'df' alternative
@@ -28,16 +31,22 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# GNU Privacy Guard (OpenPGP)
+brew "gnupg"
 # Foreman clone written in Go
 brew "goreman"
 # Colorize logfiles and command output
 brew "grc"
+# Tool for glamorous shell scripts
+brew "gum"
 # Improved top (interactive process viewer)
 brew "htop"
 # Command-line benchmarking tool
 brew "hyperfine"
 # XML security library
 brew "libxmlsec1"
+# Next-gen compiler infrastructure
+brew "llvm"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # CLI for Node.js style checker and lint tool for Markdown files
@@ -45,9 +54,11 @@ brew "markdownlint-cli"
 # Mac App Store command-line interface
 brew "mas"
 # Open source relational database management system
-brew "mysql@8.4", restart_service: :changed
+brew "mysql@8.0", restart_service: :changed
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
 brew "nginx"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node@24"
 # Framework for layout and rendering of i18n text
 brew "pango"
 # Package compiler and linker metadata toolkit
@@ -56,6 +67,8 @@ brew "pkgconf"
 brew "pngcrush"
 # Fast, disk space efficient package manager
 brew "pnpm"
+# Fast, disk space efficient package manager
+brew "pnpm@10"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
 # Persistent key-value database, with built-in net interface
@@ -99,7 +112,7 @@ cask "appcleaner"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
 # Terminal-based AI coding assistant
-cask "claude-code"
+cask "claude-code@latest"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # App to build and share containerised applications and microservices
@@ -114,6 +127,8 @@ cask "font-skranji"
 cask "font-space-mono"
 # GIT client
 cask "fork"
+# Tool for downloading and authorising IK Multimedia software
+cask "ik-product-manager"
 # Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
 # Discover, download, and run local LLMs
