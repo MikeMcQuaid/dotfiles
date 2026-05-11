@@ -100,7 +100,7 @@ if quiet_which brew; then
   export HOMEBREW_NO_ENV_HINTS=1
   export HOMEBREW_CLEANUP_MAX_AGE_DAYS=30
   export HOMEBREW_USE_INTERNAL_API=1
-  export HOMEBREW_UPGRADE_GREEDY_CASKS="claude-code codex cursor superset zed"
+  export HOMEBREW_UPGRADE_GREEDY_CASKS="claude-code codex zed"
   export HOMEBREW_BUNDLE_JOBS=auto
 
   add_to_path_end "${HOMEBREW_PREFIX}/Library/Homebrew/shims/gems"
@@ -110,7 +110,7 @@ if quiet_which brew; then
   alias portableruby="${HOMEBREW_PREFIX}/Library/Homebrew/vendor/portable-ruby/current/bin/ruby"
   # shellcheck disable=SC2139
   alias portablebundle="${HOMEBREW_PREFIX}/Library/Homebrew/vendor/portable-ruby/current/bin/bundle"
-  alias rustbrew="Library/Homebrew/rust/brew-rs/run-brew-rs-experimental.sh"
+  alias rustbrew="HOMEBREW_DEVELOPER=1 HOMEBREW_EXPERIMENTAL_RUST_FRONTEND=1 brew"
 
   alias youtube-dl='yt-dlp -t mp4'
   alias bbe="brew bundle exec --check --install --"
