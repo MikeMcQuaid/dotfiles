@@ -7,28 +7,32 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "project_panel": {
+    "dock": "left",
+  },
+  "cli_default_open_behavior": "new_window",
   "ui_font_family": ".SystemUIFont",
   "icon_theme": {
     "mode": "system",
     "light": "Catppuccin Latte",
-    "dark": "Catppuccin Frappé"
+    "dark": "Catppuccin Frappé",
   },
   "restore_on_startup": "empty_tab",
   "session": {
-    "restore_unsaved_buffers": false
+    "restore_unsaved_buffers": false,
   },
   "enable_language_server": false,
   "edit_predictions": {
     "ollama": {
-      "model": "qwen3-coder:30b"
+      "model": "qwen3-coder:30b",
     },
     "provider": "copilot",
     "disabled_globs": [],
   },
   "use_system_window_tabs": true,
   "title_bar": {
+    "show_branch_status_icon": true,
     "show_menus": true,
-    "show_branch_icon": true,
   },
   "autosave": "on_focus_change",
   "buffer_font_family": "SF Mono",
