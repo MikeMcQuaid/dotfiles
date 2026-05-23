@@ -63,6 +63,8 @@ brew "node@24"
 brew "pango"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
+# CLI for Playwright: record/generate code, inspect selectors, take screenshots
+brew "playwright-cli"
 # Optimizer for PNG files
 brew "pngcrush"
 # Fast, disk space efficient package manager
@@ -105,8 +107,8 @@ brew "zizmor"
 brew "zsh-autosuggestions"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
-# Command-line interface for 1Password
-cask "1password-cli"
+# Browse, search and analyse your past AI coding sessions
+cask "agentsview"
 # Application uninstaller
 cask "appcleaner"
 # OpenAI's official ChatGPT desktop app
@@ -174,7 +176,6 @@ vscode "davidbwaters.macos-modern-theme"
 vscode "editorconfig.editorconfig"
 vscode "foxundermoon.shell-format"
 vscode "github.codespaces"
-vscode "github.copilot-chat"
 vscode "github.vscode-github-actions"
 vscode "github.vscode-pull-request-github"
 vscode "ms-azuretools.vscode-containers"
