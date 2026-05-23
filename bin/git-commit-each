@@ -2,7 +2,15 @@
 # Commit all modified files in commits with one modified file per commit
 set -e
 
-git ls-files -z --modified --others --exclude-standard | while IFS= read -r -d '' FILENAME; do
+FILES="$(mktemp)"
+trap 'rm -f "$FILES"' EXIT
+
+git ls-files -z --modified --others --exclude-standard >"$FILES"
+[ -s "$FILES" ] || exit 0
+
+git add --pathspec-from-file="$FILES" --pathspec-file-nul
+
+while IFS= read -r -d '' FILENAME <&3; do
   MESSAGE="$(echo "$FILENAME" | sed -e 's|^Library/Homebrew/||' \
     -e 's|^Formula/||' \
     -e 's|^Casks/||' \
@@ -11,6 +19,5 @@ git ls-files -z --modified --others --exclude-standard | while IFS= read -r -d '
     -e 's|^lib/||' \
     -e 's/\.rb//' \
     -e 's/$/: /')"
-  git add "$FILENAME"
-  git commit "$FILENAME" --message="${MESSAGE}${1}" --message="${2}"
-done
+  git -c core.hooksPath=/dev/null commit "$FILENAME" --message="${MESSAGE}${1}" --message="${2}"
+done 3<"$FILES"
