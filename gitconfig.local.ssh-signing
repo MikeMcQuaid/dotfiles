@@ -1,0 +1,6 @@
+[gpg]
+	# Use SSH keys for Git signatures.
+	format = ssh
+[gpg "ssh"]
+	# Trust SSH signatures made with keys in this file.
+	allowedSignersFile = ~/.ssh/allowed_signers

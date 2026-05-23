@@ -194,6 +194,8 @@ elif [[ -n "${LINUX}" ]]; then
 
   add_to_path_end "/data/github/shell/bin"
   add_to_path_start "/workspaces/github/bin"
+  [[ -n "${WSL}" ]] && add_to_path_end "/mnt/c/Users/${USER}/AppData/Local/Microsoft/WindowsApps"
+  [[ -n "${WSL}" ]] && alias winget="winget.exe"
 
   alias su="/bin/su -"
   alias open="xdg-open"

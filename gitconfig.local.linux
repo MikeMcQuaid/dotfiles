@@ -1,0 +1,3 @@
+[include]
+	path = ~/.gitconfig.local.ssh-signing
+	path = ~/.gitconfig.local.gh-credential

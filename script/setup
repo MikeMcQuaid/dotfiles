@@ -19,24 +19,35 @@ UNAME_S="$(uname -s)"
 [[ "${UNAME_S}" = "Linux" ]] && export LINUX=1
 [[ "${UNAME_S}" == *_NT-* ]] && export WINDOWS=1
 [[ -n "${LINUX}" ]] && grep -qEi "(Microsoft|WSL)" /proc/version && export WSL=1
+command -v "brew" &>/dev/null && brew list --cask superset &>/dev/null && export SUPERSET=1
+
+VSCODES=()
+CURSORS=()
+ZEDS=()
 
 if [[ -n "${MACOS}" ]]; then
-  VSCODE="${HOME}/Library/Application Support/Code/User"
-  CURSOR="${HOME}/Library/Application Support/Cursor/User"
-  ZED="${HOME}/.config/zed"
+  VSCODES=("${HOME}/Library/Application Support/Code/User")
+  CURSORS=("${HOME}/Library/Application Support/Cursor/User")
+  ZEDS=("${HOME}/.config/zed")
 elif [[ -n "${LINUX}" ]]; then
-  VSCODE="${HOME}/.config/Code/User"
-  CURSOR="${HOME}/.config/Cursor/User"
-  ZED="${HOME}/.config/zed"
+  VSCODES=("${HOME}/.config/Code/User")
+  CURSORS=("${HOME}/.config/Cursor/User")
+  ZEDS=("${HOME}/.config/zed")
+  if [[ -n "${WSL}" && -d "/mnt/c/Users/${USER}" ]]; then
+    VSCODES+=("/mnt/c/Users/${USER}/AppData/Roaming/Code/User")
+    CURSORS+=("/mnt/c/Users/${USER}/AppData/Roaming/Cursor/User")
+    ZEDS+=("/mnt/c/Users/${USER}/AppData/Roaming/Zed")
+  fi
 elif [[ -n "${WINDOWS}" ]]; then
-  VSCODE="${APPDATA}/Code/User"
-  CURSOR="${APPDATA}/Cursor/User"
-  ZED="${APPDATA}/Zed"
+  VSCODES=("${APPDATA}/Code/User")
+  CURSORS=("${APPDATA}/Cursor/User")
+  ZEDS=("${APPDATA}/Zed")
   set -x
 fi
 
 for DOTFILE in *; do
   HOMEFILE="${HOME}/.${DOTFILE}"
+  HOMEFILES=()
   if [[ -d "${DOTFILE}" ]]; then
     DOTFILE="${DOTFILE}/"
     IS_DIR=1
@@ -57,27 +68,45 @@ for DOTFILE in *; do
       ;;
   esac
 
-  # Only install gitconfig.local.macos on macOS
+  # Only install host-specific local gitconfig on matching hosts
   case "${DOTFILE}" in
-    gitconfig.local.macos)
-      [[ -z "${MACOS}" ]] && continue
+    gitconfig.local.macos|gitconfig.local.wsl|gitconfig.local.linux)
+      case "${DOTFILE}" in
+        gitconfig.local.macos)
+          [[ -z "${MACOS}" ]] && continue
+          ;;
+        gitconfig.local.wsl)
+          [[ -z "${WSL}" ]] && continue
+          ;;
+        gitconfig.local.linux)
+          [[ -z "${LINUX}" || -n "${CODESPACES}" || -n "${WSL}" ]] && continue
+          ;;
+      esac
       HOMEFILE="${HOME}/.gitconfig.local"
       ;;
     *vscode-settings*)
-      HOMEFILE="${VSCODE}/settings.json"
-      [[ -d "${VSCODE}" ]] || mkdir -p "${VSCODE}"
+      for VSCODE in "${VSCODES[@]}"; do
+        HOMEFILES+=("${VSCODE}/settings.json")
+        [[ -d "${VSCODE}" ]] || mkdir -p "${VSCODE}"
+      done
       ;;
     *cursor-settings*)
-      HOMEFILE="${CURSOR}/settings.json"
-      [[ -d "${CURSOR}" ]] || mkdir -p "${CURSOR}"
+      for CURSOR in "${CURSORS[@]}"; do
+        HOMEFILES+=("${CURSOR}/settings.json")
+        [[ -d "${CURSOR}" ]] || mkdir -p "${CURSOR}"
+      done
       ;;
-    *vscode-keybindings*)
-      HOMEFILE="${CURSOR}/keybindings.json"
-      [[ -d "${CURSOR}" ]] || mkdir -p "${CURSOR}"
+    *cursor-keybindings*)
+      for CURSOR in "${CURSORS[@]}"; do
+        HOMEFILES+=("${CURSOR}/keybindings.json")
+        [[ -d "${CURSOR}" ]] || mkdir -p "${CURSOR}"
+      done
       ;;
     *zed-settings*)
-      HOMEFILE="${ZED}/settings.json"
-      [[ -d "${ZED}" ]] || mkdir -p "${ZED}"
+      for ZED in "${ZEDS[@]}"; do
+        HOMEFILES+=("${ZED}/settings.json")
+        [[ -d "${ZED}" ]] || mkdir -p "${ZED}"
+      done
       ;;
   esac
 
@@ -98,23 +127,58 @@ for DOTFILE in *; do
       ;;
   esac
 
-  if [[ -z "${IS_DIR}" ]]; then
-    [[ "${HOMEFILE}" -ef "${DIRFILE}" ]] && continue
-    if [[ -L "${HOMEFILE}" ]]; then
-      ln -sf "${DIRFILE}" "${HOMEFILE}"
+  [[ "${#HOMEFILES[@]}" -gt 0 ]] || HOMEFILES=("${HOMEFILE}")
+
+  for HOMEFILE in "${HOMEFILES[@]}"; do
+    LINKFILE="${DIRFILE}"
+
+    if [[ -z "${IS_DIR}" ]]; then
+      if [[ -n "${WSL}" && "${HOMEFILE}" = /mnt/* ]]; then
+        cmp -s "${HOMEFILE}" "${DIRFILE}" && continue
+        if command -v cmd.exe &>/dev/null && command -v wslpath &>/dev/null; then
+          LINKFILE="$(wslpath -w "${DIRFILE}")"
+          HOMELINKFILE="${HOMEFILE}.dotfiles-link"
+          rm -rf "${HOMELINKFILE}" 2>/dev/null || true
+          if cmd.exe /D /C mklink "$(wslpath -w "${HOMELINKFILE}")" "${LINKFILE}" &>/dev/null; then
+            rm -rf "${HOMEFILE}" 2>/dev/null || true
+            mv "${HOMELINKFILE}" "${HOMEFILE}"
+            echo "'${HOMEFILE}' -> '${LINKFILE}'"
+            continue
+          fi
+          rm -rf "${HOMELINKFILE}" 2>/dev/null || true
+        fi
+        if ! cmp -s "${HOMEFILE}" "${DIRFILE}"; then
+          rm -rf "${HOMEFILE}" 2>/dev/null || true
+          cp -f "${DIRFILE}" "${HOMEFILE}"
+          echo "Warning: could not create Windows symlink for ${HOMEFILE}; copied ${DIRFILE} instead." >&2
+        fi
+        continue
+      fi
+      [[ "${HOMEFILE}" -ef "${DIRFILE}" ]] && continue
+      if [[ -L "${HOMEFILE}" ]]; then
+        ln -sf "${LINKFILE}" "${HOMEFILE}"
+      elif [[ -d "${HOMEFILE}" ]]; then
+        rm -rfv "${HOMEFILE}" 2>/dev/null
+        ln -sv "${LINKFILE}" "${HOMEFILE}"
+      else
+        ln -svf "${LINKFILE}" "${HOMEFILE}"
+      fi
+    elif [[ "${HOMEFILE}" -ef "${DIRFILE}" ]]; then
+      continue
+    elif [[ -L "${HOMEFILE}" ]]; then
+      rm -r "${HOMEFILE}" 2>/dev/null
+      ln -s "${LINKFILE}" "${HOMEFILE}"
     else
-      ln -svf "${DIRFILE}" "${HOMEFILE}"
+      rm -rfv "${HOMEFILE}" 2>/dev/null
+      ln -sv "${LINKFILE}" "${HOMEFILE}"
     fi
-  elif [[ "${HOMEFILE}" -ef "${DIRFILE}" ]]; then
-    continue
-  elif [[ -L "${HOMEFILE}" ]]; then
-    rm -r "${HOMEFILE}" 2>/dev/null
-    ln -s "${DIRFILE}" "${HOMEFILE}"
-  else
-    rm -rfv "${HOMEFILE}" 2>/dev/null
-    ln -sv "${DIRFILE}" "${HOMEFILE}"
-  fi
+  done
 done
+
+if [[ -L "${HOME}/.cursor-keybindings.json" &&
+      "$(readlink "${HOME}/.cursor-keybindings.json")" = "${DOTFILESDIR}/cursor-keybindings.json" ]]; then
+  rm -v "${HOME}/.cursor-keybindings.json"
+fi
 
 HOMEDOTFILES="${HOME}/.dotfiles"
 if ! [[ "${HOMEDOTFILES}" -ef "${DOTFILESDIR}" ]]; then
@@ -144,6 +208,12 @@ done
 
 for DOTDIR in claude codex; do
   for DOTFILE in $(dotdir_files "${DOTDIR}"); do
+    if [[ "${DOTFILE}" = "codex/hooks.json" && -z "${SUPERSET}" ]]; then
+      if [[ -L "${HOME}/.${DOTFILE}" && "$(readlink "${HOME}/.${DOTFILE}")" = "${DOTFILESDIR}/${DOTFILE}" ]]; then
+        rm -v "${HOME}/.${DOTFILE}"
+      fi
+      continue
+    fi
     link_if_needed "${HOME}/.${DOTFILE}" "${DOTFILESDIR}/${DOTFILE}"
   done
 done
@@ -187,7 +257,7 @@ if command -v "brew" >/dev/null; then
       done
     done
 
-    if [[ -f "${HOME}/.superset/hooks/notify.sh" ]]; then
+    if [[ -n "${SUPERSET}" && -f "${HOME}/.superset/hooks/notify.sh" ]]; then
       [[ -d "${SANDVAULT_GUEST_HOME}/.superset/hooks" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.superset/hooks"
       sync_if_changed "${HOME}/.superset/hooks/notify.sh" "${SANDVAULT_GUEST_HOME}/.superset/hooks/notify.sh"
 

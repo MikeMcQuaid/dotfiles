@@ -227,11 +227,6 @@
 	# Use SSH for GitHub instead of https://
 	# Enable this in networks where https:// has issues.
 	# insteadOf = https://github.com/
-[credential]
-	# Use my custom dotfiles credentials helper.
-	helper = dotfiles
-[credential "https://github.com"]
-	username = MikeMcQuaid
 [hub]
 	# Use HTTPS rather than SSH protocol in Hub
 	protocol = https

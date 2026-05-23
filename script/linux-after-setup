@@ -17,14 +17,16 @@ fi
 
 # Install stuff from apt-get if needed
 if command -v "apt-get" >/dev/null; then
-  echo "Updating apt-get..."
-  sudo apt-get update
+  APT_GET_PACKAGES=()
   if ! command -v "gh" >/dev/null; then
-    sudo apt-get install -y gh
+    APT_GET_PACKAGES+=(gh)
   fi
-  if [[ -n "${WSL}" ]]; then
-    if ! command -v "wslview" >/dev/null; then
-      sudo apt-get install -y wslu
-    fi
+  if [[ -n "${WSL}" ]] && ! command -v "wslview" >/dev/null; then
+    APT_GET_PACKAGES+=(wslu)
+  fi
+  if [[ "${#APT_GET_PACKAGES[@]}" -gt 0 ]]; then
+    echo "Updating apt-get..."
+    sudo apt-get update
+    sudo apt-get install -y "${APT_GET_PACKAGES[@]}"
   fi
 fi

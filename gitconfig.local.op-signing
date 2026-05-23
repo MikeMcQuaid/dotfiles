@@ -1,0 +1,7 @@
+[user]
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID3dbEVCqBzPGwz7v6vWfn4uM/of0Hpo8Ql9by+6q3nO
+[commit]
+	# Sign commits with SSH keys through 1Password.
+	gpgsign = true
+[include]
+	path = ~/.gitconfig.local.ssh-signing

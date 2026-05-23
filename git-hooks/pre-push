@@ -1,6 +1,15 @@
 #!/bin/bash
 set -euo pipefail
 
+if [[ "$(uname -s)" = "Linux" ]] &&
+   ! grep -qEi "(Microsoft|WSL)" /proc/version &&
+   [[ "$(git config --get gpg.format 2>/dev/null || true)" = "ssh" ]] &&
+   ! git config --get user.signingkey &>/dev/null &&
+   ! git config --get gpg.ssh.defaultKeyCommand &>/dev/null; then
+  echo "Warning: Git SSH signing is not set up; skipping push signature checks." >&2
+  exit 0
+fi
+
 # Reject pushes that include unsigned or invalidly signed commits.
 # Skip deletions and refs that do not peel to a commit.
 while read -r local_ref local_oid _ _; do
