@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Merge simple TOML table keys from a source file into a target file.
+
+require "fileutils"
+
+abort "Usage: toml-merge FILE SOURCE" if ARGV.length != 2
+
+TABLE_PATTERN = /\A\s*\[([A-Za-z0-9_.-]+)\]\s*(?:#.*)?\z/
+KEY_VALUE_PATTERN = /\A\s*([A-Za-z0-9_-]+)\s*=\s*(.*?)\s*\z/
+
+target = ARGV.fetch(0)
+table = nil
+entries = {}
+
+File.readlines(ARGV.fetch(1)).each do |line|
+  if (name = line[TABLE_PATTERN, 1])
+    break if table
+
+    table = name
+    next
+  end
+
+  key, value = line.match(KEY_VALUE_PATTERN)&.captures
+  entries[key] = value if table && key
+end
+
+FileUtils.mkdir_p(File.dirname(target))
+
+original = File.exist?(target) ? File.binread(target) : ""
+lines = original.lines
+
+if (range_start = lines.index { |line| line[TABLE_PATTERN, 1] == table })
+  range_start += 1
+  range_end = lines[range_start..].index { |line| line[TABLE_PATTERN, 1] }
+  range_end = range_end ? range_start + range_end : lines.length
+else
+  if lines.any?
+    lines[-1] = "#{lines[-1]}\n" unless lines[-1].end_with?("\n")
+    lines << "\n" unless lines[-1].strip.empty?
+  end
+  lines << "[#{table}]\n"
+end
+
+if range_start
+  remaining = entries.dup
+  range_start.upto(range_end - 1) do |index|
+    key, = lines.fetch(index).match(KEY_VALUE_PATTERN)&.captures
+    next if !key || !remaining.key?(key)
+
+    lines[index] = "#{key} = #{remaining.delete(key)}\n"
+  end
+
+  entries = remaining
+end
+
+lines.insert(range_end || lines.length, *entries.map { |key, value| "#{key} = #{value}\n" })
+updated = lines.join
+File.binwrite(target, updated) if updated != original

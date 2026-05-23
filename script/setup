@@ -201,6 +201,10 @@ dotdir_files() {
   find "${1}" -type f | sort
 }
 
+merge_codex_statusline_config() {
+  "${DOTFILESDIR}/bin/toml-merge" "${1}/.codex/config.toml" "${DOTFILESDIR}/codex/statusline.config.toml"
+}
+
 AGENTS_GLOBAL="${DOTFILESDIR}/AGENTS-GLOBAL.md"
 for HOMEFILE in "${HOME}/.claude/CLAUDE.md" "${HOME}/.codex/AGENTS.md"; do
   link_if_needed "${HOMEFILE}" "${AGENTS_GLOBAL}"
@@ -217,6 +221,8 @@ for DOTDIR in claude codex; do
     link_if_needed "${HOME}/.${DOTFILE}" "${DOTFILESDIR}/${DOTFILE}"
   done
 done
+
+merge_codex_statusline_config "${HOME}"
 
 # Setup my home directory how I like it
 [[ -d ~/OSS ]] || mkdir -pv ~/OSS
@@ -272,6 +278,8 @@ if command -v "brew" >/dev/null; then
     for i in ".claude/CLAUDE.md" ".codex/AGENTS.md"; do
       sync_if_changed "${AGENTS_GLOBAL}" "${SANDVAULT_GUEST_HOME}/${i}"
     done
+
+    merge_codex_statusline_config "${SANDVAULT_GUEST_HOME}"
   fi
 fi
 
