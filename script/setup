@@ -3,6 +3,12 @@
 
 set -eo pipefail
 
+SKIP_AFTER_SETUP=
+if [[ "${1:-}" = "--skip-after-setup" ]]; then
+  SKIP_AFTER_SETUP=1
+  shift
+fi
+
 if [[ -L "$0" ]]; then
   SCRIPTSETUP="$(readlink "$0")"
 else
@@ -135,23 +141,8 @@ for DOTFILE in *; do
     if [[ -z "${IS_DIR}" ]]; then
       if [[ -n "${WSL}" && "${HOMEFILE}" = /mnt/* ]]; then
         cmp -s "${HOMEFILE}" "${DIRFILE}" && continue
-        if command -v cmd.exe &>/dev/null && command -v wslpath &>/dev/null; then
-          LINKFILE="$(wslpath -w "${DIRFILE}")"
-          HOMELINKFILE="${HOMEFILE}.dotfiles-link"
-          rm -rf "${HOMELINKFILE}" 2>/dev/null || true
-          if cmd.exe /D /C mklink "$(wslpath -w "${HOMELINKFILE}")" "${LINKFILE}" &>/dev/null; then
-            rm -rf "${HOMEFILE}" 2>/dev/null || true
-            mv "${HOMELINKFILE}" "${HOMEFILE}"
-            echo "'${HOMEFILE}' -> '${LINKFILE}'"
-            continue
-          fi
-          rm -rf "${HOMELINKFILE}" 2>/dev/null || true
-        fi
-        if ! cmp -s "${HOMEFILE}" "${DIRFILE}"; then
-          rm -rf "${HOMEFILE}" 2>/dev/null || true
-          cp -f "${DIRFILE}" "${HOMEFILE}"
-          echo "Warning: could not create Windows symlink for ${HOMEFILE}; copied ${DIRFILE} instead." >&2
-        fi
+        rm -rf "${HOMEFILE}" 2>/dev/null || true
+        cp -fv "${DIRFILE}" "${HOMEFILE}"
         continue
       fi
       [[ "${HOMEFILE}" -ef "${DIRFILE}" ]] && continue
@@ -202,6 +193,7 @@ dotdir_files() {
 }
 
 merge_codex_statusline_config() {
+  command -v "ruby" &>/dev/null || return
   "${DOTFILESDIR}/bin/toml-merge" "${1}/.codex/config.toml" "${DOTFILESDIR}/codex/statusline.config.toml"
 }
 
@@ -283,7 +275,7 @@ if command -v "brew" >/dev/null; then
   fi
 fi
 
-if [[ -n "${LINUX}" ]]; then
+if [[ -n "${LINUX}" && -z "${SKIP_AFTER_SETUP}" ]]; then
   exec script/linux-after-setup
 elif [[ -n "${CI}" && -n "${MACOS}" ]]; then
   exec script/strap-after-setup

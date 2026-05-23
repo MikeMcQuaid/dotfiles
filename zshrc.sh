@@ -31,6 +31,12 @@ bindkey -e
 # fix delete key on macOS
 [ -n "$MACOS" ] && bindkey '\e[3~' delete-char
 
+# fix Alt-Left/Right in Windows Terminal under WSL
+if [ -n "$WSL" ]; then
+  bindkey '\e[1;3D' backward-word
+  bindkey '\e[1;3C' forward-word
+fi
+
 # alternate mappings for Ctrl-U/V to search the history
 bindkey "^u" history-beginning-search-backward
 bindkey "^v" history-beginning-search-forward

@@ -16,12 +16,17 @@ if [[ "${SHELL}" != "/usr/bin/zsh" ]]; then
 fi
 
 # Install stuff from apt-get if needed
-if command -v "apt-get" >/dev/null; then
+RERUN_SETUP=
+if command -v "apt-get" &>/dev/null; then
   APT_GET_PACKAGES=()
-  if ! command -v "gh" >/dev/null; then
+  if ! command -v "gh" &>/dev/null; then
     APT_GET_PACKAGES+=(gh)
   fi
-  if [[ -n "${WSL}" ]] && ! command -v "wslview" >/dev/null; then
+  if ! command -v "ruby" &>/dev/null; then
+    APT_GET_PACKAGES+=(ruby)
+    RERUN_SETUP=1
+  fi
+  if [[ -n "${WSL}" ]] && ! command -v "wslview" &>/dev/null; then
     APT_GET_PACKAGES+=(wslu)
   fi
   if [[ "${#APT_GET_PACKAGES[@]}" -gt 0 ]]; then
@@ -29,4 +34,8 @@ if command -v "apt-get" >/dev/null; then
     sudo apt-get update
     sudo apt-get install -y "${APT_GET_PACKAGES[@]}"
   fi
+fi
+
+if [[ -n "${RERUN_SETUP}" ]]; then
+  exec script/setup --skip-after-setup
 fi
