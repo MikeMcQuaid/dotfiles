@@ -1,0 +1,17 @@
+# Static checker for GitHub Actions workflow files
+brew "actionlint"
+# Autoformat shell script source code
+brew "shfmt"
+# Command-line interface for 1Password
+cask "1password-cli"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
+winget "1Password", id: "AgileBits.1Password"
+winget "Elgato Wave Link", id: "Elgato.WaveLink"
+winget "Hue Sync", id: "Philips.HueSync"
+winget "OBS Studio", id: "OBSProject.OBSStudio"
+winget "Steam", id: "Valve.Steam"
+winget "Ubuntu", id: "Canonical.Ubuntu"
+winget "Vortex", id: "NexusMods.Vortex"
+winget "Windows Terminal", id: "Microsoft.WindowsTerminal"
+winget "Discord", id: "XPDC2RH70K22MN", source: "msstore"
