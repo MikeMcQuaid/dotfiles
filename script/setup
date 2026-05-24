@@ -197,6 +197,13 @@ merge_codex_statusline_config() {
   "${DOTFILESDIR}/bin/toml-merge" "${1}/.codex/config.toml" "${DOTFILESDIR}/codex/statusline.config.toml"
 }
 
+chown_sandvault_if_needed() {
+  [[ -e "${1}" ]] || return
+  if [[ "$(/usr/bin/stat -f "%Su:%Sg" "${1}")" != "${SANDVAULT_USER}:${SANDVAULT_USER}" ]]; then
+    sudo /usr/sbin/chown "${SANDVAULT_USER}:${SANDVAULT_USER}" "${1}"
+  fi
+}
+
 AGENTS_GLOBAL="${DOTFILESDIR}/AGENTS-GLOBAL.md"
 for HOMEFILE in "${HOME}/.claude/CLAUDE.md" "${HOME}/.codex/AGENTS.md"; do
   link_if_needed "${HOMEFILE}" "${AGENTS_GLOBAL}"
@@ -236,7 +243,9 @@ if command -v "brew" >/dev/null; then
 
   # Sync selected dotfiles into Sandvault guest home if that directory exists.
   if command -v "sv" >/dev/null; then
+    SANDVAULT_USER="sandvault-${USER}"
     SANDVAULT_GUEST_HOME="/Users/Shared/sv-${USER}/user"
+    SANDVAULT_HOME="/Users/${SANDVAULT_USER}"
     mkdir -p "${SANDVAULT_GUEST_HOME}"
 
     for i in shrc shprofile logout zprofile zshrc zlogout; do
@@ -271,7 +280,23 @@ if command -v "brew" >/dev/null; then
       sync_if_changed "${AGENTS_GLOBAL}" "${SANDVAULT_GUEST_HOME}/${i}"
     done
 
+    if cmp -s "${SANDVAULT_GUEST_HOME}/.codex/config.toml" "${DOTFILESDIR}/codex/statusline.config.toml"; then
+      rm -v "${SANDVAULT_GUEST_HOME}/.codex/config.toml"
+    fi
+
     merge_codex_statusline_config "${SANDVAULT_GUEST_HOME}"
+
+    if [[ -d "${SANDVAULT_HOME}" ]]; then
+      for i in ".claude" ".codex" ".codex/rules" ".codex/config.toml" ".claude/CLAUDE.md" ".codex/AGENTS.md"; do
+        chown_sandvault_if_needed "${SANDVAULT_HOME}/${i}"
+      done
+
+      for DOTDIR in claude codex; do
+        for DOTFILE in $(dotdir_files "${DOTDIR}"); do
+          chown_sandvault_if_needed "${SANDVAULT_HOME}/.${DOTFILE}"
+        done
+      done
+    fi
   fi
 fi
 

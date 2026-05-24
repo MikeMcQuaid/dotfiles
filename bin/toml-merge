@@ -1,9 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Merge simple TOML table keys from a source file into a target file.
-
-require "fileutils"
+# Merge simple TOML table keys from a source file into an existing target file.
 
 abort "Usage: toml-merge FILE SOURCE" if ARGV.length != 2
 
@@ -11,6 +9,8 @@ TABLE_PATTERN = /\A\s*\[([A-Za-z0-9_.-]+)\]\s*(?:#.*)?\z/
 KEY_VALUE_PATTERN = /\A\s*([A-Za-z0-9_-]+)\s*=\s*(.*?)\s*\z/
 
 target = ARGV.fetch(0)
+exit unless File.exist?(target)
+
 table = nil
 entries = {}
 
@@ -26,9 +26,7 @@ File.readlines(ARGV.fetch(1)).each do |line|
   entries[key] = value if table && key
 end
 
-FileUtils.mkdir_p(File.dirname(target))
-
-original = File.exist?(target) ? File.binread(target) : ""
+original = File.binread(target)
 lines = original.lines
 
 if (range_start = lines.index { |line| line[TABLE_PATTERN, 1] == table })
