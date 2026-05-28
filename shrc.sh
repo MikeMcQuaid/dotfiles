@@ -299,6 +299,18 @@ trash() {
   mv "$@" "${HOME}/.Trash/"
 }
 
+# Force-cancel a GitHub Actions run from a run or job URL
+github-actions-force-cancel() {
+  local api_path
+
+  api_path="$(sed -En 's#^https://github\.com/([^/]+)/([^/]+)/actions/runs/([0-9]+)(/.*)?(\?.*)?$#/repos/\1/\2/actions/runs/\3/force-cancel#p' <<< "$1")"
+  [[ -n "${api_path}" ]] || return
+
+  gh api -X POST \
+    -H "X-GitHub-Api-Version: 2026-03-10" \
+    "${api_path}"
+}
+
 # GitHub API shortcut
 github-api-curl() {
   curl -H "Authorization: token ${GITHUB_TOKEN}" "https://api.github.com/$1" | jq .
