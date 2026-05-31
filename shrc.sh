@@ -102,6 +102,7 @@ if quiet_which brew; then
   export HOMEBREW_USE_INTERNAL_API=1
   export HOMEBREW_UPGRADE_GREEDY_CASKS="claude-code codex zed"
   export HOMEBREW_BUNDLE_JOBS=auto
+  export HOMEBREW_REQUIRE_TAP_TRUST=1
 
   add_to_path_end "${HOMEBREW_PREFIX}/Library/Homebrew/shims/gems"
 
