@@ -252,9 +252,10 @@ if command -v "brew" >/dev/null; then
       sync_if_changed "${DOTFILESDIR}/${i}.sh" "${SANDVAULT_GUEST_HOME}/.${i}"
     done
 
-    for i in gitconfig gitignore; do
+    for i in gitconfig gitconfig.local.gh-credential gitignore; do
       sync_if_changed "${DOTFILESDIR}/${i}" "${SANDVAULT_GUEST_HOME}/.${i}"
     done
+    sync_if_changed "${DOTFILESDIR}/gitconfig.local.sandvault" "${SANDVAULT_GUEST_HOME}/.gitconfig.local"
 
     for DOTDIR in bundle claude codex; do
       for DOTFILE in $(dotdir_files "${DOTDIR}"); do

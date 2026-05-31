@@ -246,7 +246,9 @@ if quiet_which code; then
 fi
 
 # Set up editor
-if quiet_which zed; then
+if [[ -n "${SANDVAULT}" ]]; then
+  export EDITOR="vim"
+elif quiet_which zed; then
   export EDITOR="zed"
   alias code="echo you like zed now, use that!"
 elif quiet_which cursor; then
@@ -255,7 +257,7 @@ elif quiet_which code; then
   export EDITOR="code"
 fi
 
-if quiet_which code; then
+if [[ "${EDITOR}" = "zed" || "${EDITOR}" = "cursor" || "${EDITOR}" = "code" ]]; then
   export GIT_EDITOR="${EDITOR} -w"
   export SVN_EDITOR="${GIT_EDITOR}"
 
@@ -267,7 +269,9 @@ if quiet_which code; then
     EDITOR="${EDITOR} -w" bundle exec rails credentials:edit --environment development
   }
 else
-  export EDITOR="vim"
+  export EDITOR="${EDITOR:-vim}"
+  export GIT_EDITOR="${EDITOR}"
+  export SVN_EDITOR="${GIT_EDITOR}"
 fi
 
 # Save directory changes
