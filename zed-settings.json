@@ -7,32 +7,43 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
+    },
+    "codex-acp": {
+      "type": "registry"
+    }
+  },
+  "search": {
+    "center_on_match": true
+  },
   "project_panel": {
-    "dock": "left",
+    "dock": "left"
   },
   "cli_default_open_behavior": "new_window",
   "ui_font_family": ".SystemUIFont",
   "icon_theme": {
     "mode": "system",
     "light": "Catppuccin Latte",
-    "dark": "Catppuccin Frappé",
+    "dark": "Catppuccin Frappé"
   },
   "restore_on_startup": "empty_tab",
   "session": {
-    "restore_unsaved_buffers": false,
+    "restore_unsaved_buffers": false
   },
   "enable_language_server": false,
   "edit_predictions": {
     "ollama": {
-      "model": "qwen3-coder:30b",
+      "model": "qwen3-coder:30b"
     },
     "provider": "copilot",
-    "disabled_globs": [],
+    "disabled_globs": []
   },
   "use_system_window_tabs": true,
   "title_bar": {
     "show_branch_status_icon": true,
-    "show_menus": true,
+    "show_menus": true
   },
   "autosave": "on_focus_change",
   "buffer_font_family": "SF Mono",
@@ -42,30 +53,30 @@
   "cursor_blink": false,
   "languages": {
     "Shell Script": {
-      "tab_size": 2,
+      "tab_size": 2
     },
     "Ruby": {
       // "language_servers": ["ruby-lsp", "rubocop", "!solargraph", "..."]
-    },
+    }
   },
   "preferred_line_length": 118,
   "show_whitespaces": "boundary",
   "tab_bar": {
-    "show_nav_history_buttons": false,
+    "show_nav_history_buttons": false
   },
   "tabs": {
     "close_position": "left",
     "file_icons": true,
-    "git_status": true,
+    "git_status": true
   },
   "theme": {
     "mode": "system",
     "light": "macOS Classic Light",
-    "dark": "macOS Classic Dark",
+    "dark": "macOS Classic Dark"
   },
   "terminal": {
-    "dock": "right",
+    "dock": "right"
   },
   "ui_font_size": 15.0,
-  "wrap_guides": [80, 118],
+  "wrap_guides": [80, 118]
 }
