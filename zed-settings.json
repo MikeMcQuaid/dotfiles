@@ -35,7 +35,7 @@
   "enable_language_server": false,
   "edit_predictions": {
     "ollama": {
-      "model": "qwen3-coder:30b"
+      "model": "qwen3-coder:30b-a3b-q4_K_M"
     },
     "provider": "copilot",
     "disabled_globs": []

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "ollama/qwen3-coder-next-32k",
+  "small_model": "ollama/qwen3-coder:30b-a3b-q4_K_M",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (local)",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3-coder:30b-a3b-q4_K_M": {
+          "name": "Qwen3 Coder (fast)"
+        },
+        "qwen3-coder-next-32k": {
+          "name": "Qwen3 Coder (smart)"
+        }
+      }
+    }
+  }
+}

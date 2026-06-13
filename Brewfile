@@ -59,6 +59,10 @@ brew "mysql@8.0", restart_service: :changed
 brew "nginx"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node@24"
+# Create, run, and share large language models
+brew "ollama", restart_service: :changed
+# AI coding agent, built for the terminal
+brew "opencode"
 # Framework for layout and rendering of i18n text
 brew "pango"
 # Package compiler and linker metadata toolkit
@@ -133,8 +137,6 @@ cask "fork"
 cask "ik-product-manager"
 # Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
-# Discover, download, and run local LLMs
-cask "lm-studio"
 # Trims video and audio files losslessly
 cask "losslesscut"
 # Multi-platform web browser

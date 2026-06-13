@@ -151,6 +151,56 @@ if quiet_which htop; then
   alias top="sudo htop"
 fi
 
+# Fast local coding model; optimal for day-to-day edits, test loops and Zed
+# edit predictions.
+export OLLAMA_CODING_FAST_MODEL="qwen3-coder:30b-a3b-q4_K_M"
+
+# Slower local coding model; optimal for harder planning and debugging.
+export OLLAMA_CODING_SMART_MODEL="qwen3-coder-next-32k"
+
+if quiet_which ollama; then
+  # Enable Ollama's faster Apple Silicon path; optimal for local coding
+  # models on unified-memory Macs.
+  export OLLAMA_FLASH_ATTENTION=1
+  export OLLAMA_KV_CACHE_TYPE=q8_0
+
+  # Pull the two local coding models and create the smart 32k variant once.
+  ollama-pull-coding-models() {
+    local modelfile
+    local ollama_status
+
+    if ! ollama list &>/dev/null; then
+      echo "ollama server is not running. Run 'brew services start ollama' or 'ollama serve'." >&2
+      return 1
+    fi
+
+    ollama pull "${OLLAMA_CODING_FAST_MODEL}"
+    ollama pull qwen3-coder-next:q4_K_M
+    ollama show "${OLLAMA_CODING_SMART_MODEL}" &>/dev/null && return
+
+    modelfile="$(mktemp "${TMPDIR:-/tmp}/qwen3-coder-next-32k.XXXXXX")"
+    printf '%s\n' \
+      "FROM qwen3-coder-next:q4_K_M" \
+      "PARAMETER num_ctx 32768" \
+      "PARAMETER temperature 1" \
+      "PARAMETER top_p 0.95" \
+      "PARAMETER top_k 40" > "${modelfile}"
+
+    ollama create "${OLLAMA_CODING_SMART_MODEL}" -f "${modelfile}"
+    ollama_status=$?
+    rm -f "${modelfile}"
+    return "${ollama_status}"
+  }
+fi
+
+if quiet_which opencode; then
+  # Override OpenCode to the fast model; optimal when the default smart model
+  # is slower than the task deserves.
+  opencode-fast() {
+    opencode -m "ollama/${OLLAMA_CODING_FAST_MODEL}" "$@"
+  }
+fi
+
 # Configure environment
 export CLICOLOR=1
 
