@@ -94,11 +94,9 @@ alias desk_sit="upsy-desky down"
 if quiet_which brew; then
   export HOMEBREW_DEVELOPER=1
   export HOMEBREW_BUNDLE_CHECK=1
-  export HOMEBREW_BUNDLE_NO_SECRETS=1
   export HOMEBREW_NO_ENV_HINTS=1
   export HOMEBREW_CLEANUP_MAX_AGE_DAYS=30
   export HOMEBREW_UPGRADE_GREEDY_CASKS="claude-code codex zed"
-  export HOMEBREW_BUNDLE_JOBS=auto
   export HOMEBREW_REQUIRE_TAP_TRUST=1
 
   add_to_path_end "${HOMEBREW_PREFIX}/Library/Homebrew/shims/gems"
