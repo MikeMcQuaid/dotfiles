@@ -151,11 +151,20 @@ if quiet_which htop; then
   alias top="sudo htop"
 fi
 
-# Fast local coding model; optimal for day-to-day edits, test loops and Zed
-# edit predictions.
-export OLLAMA_CODING_FAST_MODEL="qwen3-coder:30b-a3b-q4_K_M"
+# Base Ollama model for the fast local coding variant; optimal as the source
+# for the 64k build executor.
+export OLLAMA_CODING_FAST_BASE_MODEL="qwen3-coder:30b"
 
-# Slower local coding model; optimal for harder planning and debugging.
+# Fast local coding model; optimal for OpenCode build loops, Aider edits and
+# Zed edit predictions.
+export OLLAMA_CODING_FAST_MODEL="qwen3-coder-30b-64k"
+
+# Base Ollama model for the smart local coding variant; optimal as the source
+# for the 32k planning model.
+export OLLAMA_CODING_SMART_BASE_MODEL="qwen3-coder-next:q4_K_M"
+
+# Slower local coding model; optimal for OpenCode plan/review and harder
+# debugging.
 export OLLAMA_CODING_SMART_MODEL="qwen3-coder-next-32k"
 
 if quiet_which ollama; then
@@ -164,7 +173,8 @@ if quiet_which ollama; then
   export OLLAMA_FLASH_ATTENTION=1
   export OLLAMA_KV_CACHE_TYPE=q8_0
 
-  # Pull the two local coding models and create the smart 32k variant once.
+  # Pull the two local coding base models and create context-capped variants
+  # once.
   ollama-pull-coding-models() {
     local modelfile
     local ollama_status
@@ -174,17 +184,31 @@ if quiet_which ollama; then
       return 1
     fi
 
-    ollama pull "${OLLAMA_CODING_FAST_MODEL}"
-    ollama pull qwen3-coder-next:q4_K_M
+    ollama pull "${OLLAMA_CODING_FAST_BASE_MODEL}"
+    ollama pull "${OLLAMA_CODING_SMART_BASE_MODEL}"
+
+    if ! ollama show "${OLLAMA_CODING_FAST_MODEL}" &>/dev/null; then
+      modelfile="$(mktemp "${TMPDIR:-/tmp}/qwen3-coder-30b-64k.XXXXXX")"
+      printf '%s\n' \
+        "FROM ${OLLAMA_CODING_FAST_BASE_MODEL}" \
+        "PARAMETER num_ctx 65536" \
+        "PARAMETER temperature 0.1" \
+        "PARAMETER top_p 0.9" > "${modelfile}"
+
+      ollama create "${OLLAMA_CODING_FAST_MODEL}" -f "${modelfile}"
+      ollama_status=$?
+      rm -f "${modelfile}"
+      [[ "${ollama_status}" -eq 0 ]] || return "${ollama_status}"
+    fi
+
     ollama show "${OLLAMA_CODING_SMART_MODEL}" &>/dev/null && return
 
     modelfile="$(mktemp "${TMPDIR:-/tmp}/qwen3-coder-next-32k.XXXXXX")"
     printf '%s\n' \
-      "FROM qwen3-coder-next:q4_K_M" \
+      "FROM ${OLLAMA_CODING_SMART_BASE_MODEL}" \
       "PARAMETER num_ctx 32768" \
-      "PARAMETER temperature 1" \
-      "PARAMETER top_p 0.95" \
-      "PARAMETER top_k 40" > "${modelfile}"
+      "PARAMETER temperature 0.1" \
+      "PARAMETER top_p 0.9" > "${modelfile}"
 
     ollama create "${OLLAMA_CODING_SMART_MODEL}" -f "${modelfile}"
     ollama_status=$?
@@ -194,8 +218,8 @@ if quiet_which ollama; then
 fi
 
 if quiet_which opencode; then
-  # Override OpenCode to the fast model; optimal when the default smart model
-  # is slower than the task deserves.
+  # Force OpenCode to the fast build model; optimal when another project config
+  # selects a slower model.
   opencode-fast() {
     opencode -m "ollama/${OLLAMA_CODING_FAST_MODEL}" "$@"
   }
