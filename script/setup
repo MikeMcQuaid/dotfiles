@@ -69,7 +69,7 @@ for DOTFILE in *; do
 
   # Don't try to install some unneeded paths
   case "${DOTFILE}" in
-    bin/|bundle/|claude/|codex/|script/|tmp/|opencode.json|*.txt|*.md)
+    bin/|bundle/|claude/|codex/|homebrew/|script/|tmp/|opencode.json|*.txt|*.md)
       continue
       ;;
   esac
@@ -188,6 +188,7 @@ link_if_needed() {
   fi
 }
 
+link_if_needed "${HOME}/.homebrew/trust.json" "${DOTFILESDIR}/homebrew/trust.json"
 link_if_needed "${HOME}/.config/opencode/opencode.json" "${DOTFILESDIR}/opencode.json"
 if [[ -n "${SUPERSET}" ]]; then
   link_if_needed "${HOME}/.superset/hooks/opencode/opencode.json" "${DOTFILESDIR}/opencode.json"
@@ -263,6 +264,8 @@ if command -v "brew" >/dev/null; then
     sync_if_changed "${DOTFILESDIR}/gitconfig.local.sandvault" "${SANDVAULT_GUEST_HOME}/.gitconfig.local"
     [[ -d "${SANDVAULT_GUEST_HOME}/.config/opencode" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.config/opencode"
     sync_if_changed "${DOTFILESDIR}/opencode.json" "${SANDVAULT_GUEST_HOME}/.config/opencode/opencode.jsonc"
+    [[ -d "${SANDVAULT_GUEST_HOME}/.homebrew" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.homebrew"
+    sync_if_changed "${DOTFILESDIR}/homebrew/trust.json" "${SANDVAULT_GUEST_HOME}/.homebrew/trust.json"
 
     for DOTDIR in bundle claude codex; do
       for DOTFILE in $(dotdir_files "${DOTDIR}"); do
