@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+if [ -z "${SANDVAULT:-}${CODING_AGENT_SHELL:-}${CODEX_CI:-}${CODEX_THREAD_ID:-}${CODEX_TUI_SESSION_LOG_PATH:-}${CLAUDECODE:-}${CLAUDE_CODE_ENTRYPOINT:-}${CLAUDE_CODE_SESSION_ID:-}" ]; then
+  [[ "${USER:-${LOGNAME:-$(id -un 2>/dev/null)}}" == sandvault* ]] || exit 0
+fi
+
+echo "Error: refusing to run ${1:-script} under Codex, Claude or sandvault." >&2
+exit 1

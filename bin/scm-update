@@ -2,6 +2,8 @@
 # Update all Git and Subversion repositories under the current directory.
 set -e
 
+"$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/refuse-coding-agent" "${0##*/}"
+
 CURRENT=$PWD
 # `find -print0` with `IFS= read -r -d ''` keeps spaced paths safe here.
 

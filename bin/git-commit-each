@@ -2,6 +2,8 @@
 # Commit all modified files in commits with one modified file per commit
 set -e
 
+"$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/refuse-coding-agent" "${0##*/}"
+
 FILES="$(mktemp)"
 trap 'rm -f "$FILES"' EXIT
 

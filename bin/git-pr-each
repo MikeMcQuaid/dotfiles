@@ -2,6 +2,8 @@
 # Submit pull requests for all modified files with one modified file per PR
 set -e
 
+"$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/refuse-coding-agent" "${0##*/}"
+
 if [ -z "$1" ]; then
   echo "Error: missing branch suffix!" >&2
   ERROR="1"
