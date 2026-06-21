@@ -99,6 +99,10 @@ if quiet_which brew; then
   export HOMEBREW_UPGRADE_GREEDY_CASKS="claude-code codex zed"
   export HOMEBREW_REQUIRE_TAP_TRUST=1
 
+  if [[ -n "${SANDVAULT}" ]]; then
+    export HOMEBREW_AVOID_NESTED_SANDBOXING=1
+  fi
+
   add_to_path_end "${HOMEBREW_PREFIX}/Library/Homebrew/shims/gems"
 
   # Specifically want this to expand when defined, not when run.
@@ -106,9 +110,8 @@ if quiet_which brew; then
   alias portableruby="${HOMEBREW_PREFIX}/Library/Homebrew/vendor/portable-ruby/current/bin/ruby"
   # shellcheck disable=SC2139
   alias portablebundle="${HOMEBREW_PREFIX}/Library/Homebrew/vendor/portable-ruby/current/bin/bundle"
-  alias rustbrew="HOMEBREW_DEVELOPER=1 HOMEBREW_EXPERIMENTAL_RUST_FRONTEND=1 brew"
 
-  alias youtube-dl='yt-dlp -t mp4'
+  alias youtube-dl='noglob yt-dlp -t mp4'
   alias bbe="brew bundle exec --check --install --"
 
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
