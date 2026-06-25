@@ -59,8 +59,8 @@ brew "mysql@8.0", restart_service: :changed
 brew "nginx"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node@24"
-# Create, run, and share large language models
-brew "ollama", restart_service: :changed
+# Create, run, and share large language models (LLMs)
+brew "ollama"
 # AI coding agent, built for the terminal
 brew "opencode"
 # Framework for layout and rendering of i18n text
@@ -121,6 +121,8 @@ cask "chatgpt"
 cask "claude-code@latest"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
+# Voice and text chat software
+cask "discord"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
 # Elgato FACECAM configuration tool
@@ -133,6 +135,8 @@ cask "font-skranji"
 cask "font-space-mono"
 # GIT client
 cask "fork"
+# GIF recording and sharing
+cask "gifox"
 # Tool for downloading and authorising IK Multimedia software
 cask "ik-product-manager"
 # Tool to prevent the system from going into sleep mode
