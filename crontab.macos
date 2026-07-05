@@ -1,0 +1,5 @@
+# Raise desk at 08:00, 10:00, 12:00, 14:00, 16:00 (Mon-Fri)
+0 8-16/2 * * 1-5 /Users/mike/.dotfiles/bin/upsy-desky up >/dev/null
+
+# Lower desk at 09:00, 11:00, 13:00, 15:00, 17:00 (Mon-Fri)
+0 9-17/2 * * 1-5 /Users/mike/.dotfiles/bin/upsy-desky down >/dev/null
