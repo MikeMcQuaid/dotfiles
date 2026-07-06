@@ -10,6 +10,13 @@ if [[ "$(uname -s)" = "Linux" ]] &&
   exit 0
 fi
 
+# If git did not pipe a ref list on stdin (e.g. stdin is a terminal under a
+# sandboxed git wrapper), there is nothing to verify; exit rather than block
+# forever on `read`.
+if [ -t 0 ]; then
+  exit 0
+fi
+
 # Reject pushes that include unsigned or invalidly signed commits.
 # Skip deletions and refs that do not peel to a commit.
 while read -r local_ref local_oid _ _; do
