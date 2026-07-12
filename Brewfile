@@ -43,10 +43,12 @@ brew "gum"
 brew "htop"
 # Command-line benchmarking tool
 brew "hyperfine"
+# Tools and libraries to manipulate images in select formats
+brew "imagemagick"
+# Command-line tool to export and inspect local iMessage database
+brew "imessage-exporter"
 # XML security library
 brew "libxmlsec1"
-# Next-gen compiler infrastructure
-brew "llvm"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # CLI for Node.js style checker and lint tool for Markdown files
@@ -61,6 +63,8 @@ brew "nginx"
 brew "node@24"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # AI coding agent, built for the terminal
 brew "opencode"
 # Framework for layout and rendering of i18n text
@@ -79,14 +83,8 @@ brew "pnpm@10"
 brew "prettyping"
 # Persistent key-value database, with built-in net interface
 brew "redis", restart_service: :changed
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
-# Powerful, clean, object-oriented scripting language
-brew "ruby@3.4"
-# Safe, concurrent, practical language
-brew "rust"
 # Run AI agents isolated in a sandboxed macOS user account
 brew "sandvault"
 # Autoformat shell script source code
@@ -115,16 +113,14 @@ cask "1password"
 cask "agentsview"
 # Application uninstaller
 cask "appcleaner"
-# OpenAI's official ChatGPT desktop app
-cask "chatgpt"
+# OpenAI's previous ChatGPT desktop app
+cask "chatgpt-classic"
 # Terminal-based AI coding assistant
 cask "claude-code@latest"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # Voice and text chat software
 cask "discord"
-# App to build and share containerised applications and microservices
-cask "docker-desktop"
 # Elgato FACECAM configuration tool
 cask "elgato-camera-hub"
 # Control your Elgato key lights
