@@ -1,6 +1,6 @@
 tap "homebrew/cask"
 tap "homebrew/core"
-tap "shivammathur/php"
+tap "shivammathur/php", trusted: { formulae: ["php@7.2"] }
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Static analysis and lint tool, for (ba)sh scripts
@@ -147,6 +147,8 @@ cask "notion"
 cask "openaudible"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
+# Instant messaging application focusing on security
+cask "signal"
 # Terminal for orchestrating agents
 cask "superset"
 # Open-source code editor
