@@ -1,3 +1,6 @@
+[ -n "$ZPROFILE_LOADED" ] && return
+ZPROFILE_LOADED=1
+
 # load shared shell configuration
 [ -n "$SHPROFILE_LOADED" ] || source ~/.shprofile
 
@@ -11,7 +14,15 @@ fi
 
 # Enable completions
 skip_global_compinit=1
-autoload -U compinit && compinit -C
+autoload -Uz compinit
+if () {
+  setopt local_options extended_glob
+  [[ -n ~/.zcompdump(#qNmh-24) ]]
+}; then
+  compinit -C
+else
+  compinit
+fi
 
 # Enable regex moving
 autoload -U zmv
