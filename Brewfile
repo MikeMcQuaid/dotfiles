@@ -133,8 +133,6 @@ cask "font-space-mono"
 cask "fork"
 # GIF recording and sharing
 cask "gifox"
-# Tool for downloading and authorising IK Multimedia software
-cask "ik-product-manager"
 # Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
 # Trims video and audio files losslessly
