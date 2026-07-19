@@ -5,6 +5,7 @@
 - Use `&>/dev/null` instead of `>/dev/null 2>&1`.
 - You may be running as `sandvault-<user>` inside a Sandvault macOS sandbox.
 - Use UK spelling and punctuation; avoid em dashes and Oxford commas.
+- Before finishing, check your work, identify what the user may not have considered in relation to their goals and ask useful follow-up questions, including what they should have asked.
 
 ## Git
 
