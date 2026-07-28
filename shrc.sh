@@ -387,6 +387,7 @@ github-actions-force-cancel() {
     -H "X-GitHub-Api-Version: 2026-03-10" \
     "${api_path}"
 }
+alias "github-actions-force-cancel"="noglob github-actions-force-cancel"
 
 # GitHub API shortcut
 github-api-curl() {
