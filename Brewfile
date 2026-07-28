@@ -81,8 +81,6 @@ brew "pnpm"
 brew "pnpm@10"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
-# Persistent key-value database, with built-in net interface
-brew "redis", restart_service: :changed
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # Run AI agents isolated in a sandboxed macOS user account
@@ -95,6 +93,8 @@ brew "somo"
 brew "uv"
 # Syntax-aware linter for prose
 brew "vale"
+# High-performance data structure server that primarily serves key/value workloads
+brew "valkey", restart_service: :changed
 # Internet file retriever
 brew "wget"
 # Port of OpenAI's Whisper model in C/C++
@@ -113,8 +113,8 @@ cask "1password"
 cask "agentsview"
 # Application uninstaller
 cask "appcleaner"
-# OpenAI's previous ChatGPT desktop app
-cask "chatgpt-classic"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
 # Terminal-based AI coding assistant
 cask "claude-code@latest"
 # OpenAI's coding agent that runs in your terminal
