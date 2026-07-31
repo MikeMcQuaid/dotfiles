@@ -51,6 +51,11 @@ elif [[ -n "${WINDOWS}" ]]; then
   set -x
 fi
 
+if [[ -d "${HOME}/.bundle/cache" &&
+      ! "${HOME}/.bundle/cache" -ef "${DOTFILESDIR}/bundle/cache" ]]; then
+  mv -v "${HOME}/.bundle/cache" "${DOTFILESDIR}/bundle/cache"
+fi
+
 for DOTFILE in *; do
   HOMEFILE="${HOME}/.${DOTFILE}"
   HOMEFILES=()
@@ -69,7 +74,7 @@ for DOTFILE in *; do
 
   # Don't try to install some unneeded paths
   case "${DOTFILE}" in
-    bin/|bundle/|claude/|codex/|homebrew/|script/|tmp/|opencode.json|*.txt|*.md)
+    bin/|claude/|codex/|homebrew/|script/|tmp/|opencode.json|*.txt|*.md)
       continue
       ;;
   esac
@@ -202,7 +207,7 @@ if [[ -n "${MACOS}" ]]; then
 fi
 
 dotdir_files() {
-  find "${1}" -type f | sort
+  find "${1}" -type f ! -path "bundle/cache/*" | sort
 }
 
 merge_codex_statusline_config() {

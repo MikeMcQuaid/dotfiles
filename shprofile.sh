@@ -31,7 +31,6 @@ fi
 
 if [ "$CPUCOUNT" -gt 1 ]; then
   export MAKEFLAGS="-j$CPUCOUNT"
-  export BUNDLE_JOBS="$CPUCOUNT"
 fi
 NOW_EPOCH="${NOW_EPOCH:-$(date +%s)}"
 
