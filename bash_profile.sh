@@ -26,6 +26,9 @@ shopt -s histappend
 # Save multiline commands
 shopt -s cmdhist
 
+# Allow comments in interactive commands
+shopt -s interactive_comments
+
 # Correct minor directory changing spelling mistakes
 shopt -s cdspell
 

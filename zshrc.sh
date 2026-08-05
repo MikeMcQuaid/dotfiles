@@ -19,6 +19,9 @@ setopt share_history
 # Don't hang up background jobs
 setopt no_hup
 
+# Allow comments in interactive commands
+setopt interactivecomments
+
 # autocorrect command spelling
 setopt correct
 
