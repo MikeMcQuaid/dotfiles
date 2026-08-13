@@ -1,0 +1,40 @@
+#!/bin/bash
+
+GIT_ARGS=("$@")
+while [[ "$#" -gt 0 ]]; do
+  case "$1" in
+    -C|-c|--attr-source|--config-env|--git-dir|--namespace|--super-prefix|--work-tree)
+      [[ "$#" -gt 1 ]] || break
+      shift 2
+      ;;
+    -C*|-c*|--attr-source=*|--config-env=*|--git-dir=*|--namespace=*|--super-prefix=*|--work-tree=*)
+      shift
+      ;;
+    --)
+      shift
+      break
+      ;;
+    -*)
+      shift
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+case "${1:-}" in
+  fetch|pull|push)
+    SHOW_NOTICE=1
+    for ARGUMENT in "${GIT_ARGS[@]}"; do
+      case "${ARGUMENT}" in
+        -h|--help)
+          SHOW_NOTICE=
+          ;;
+      esac
+    done
+    [[ -z "${SHOW_NOTICE}" ]] || echo "${USER/sandvault-/sv-} deliberately has no GitHub token; ask admin ${USER#sandvault-} for private/write access." >&2
+    ;;
+esac
+
+PATH="${PATH#*:}" exec git "${GIT_ARGS[@]}"

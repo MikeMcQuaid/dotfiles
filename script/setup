@@ -274,6 +274,10 @@ if command -v "brew" >/dev/null; then
       sync_if_changed "${DOTFILESDIR}/${i}" "${SANDVAULT_GUEST_HOME}/.${i}"
     done
     sync_if_changed "${DOTFILESDIR}/gitconfig.local.sandvault" "${SANDVAULT_GUEST_HOME}/.gitconfig.local"
+    [[ -d "${SANDVAULT_GUEST_HOME}/bin" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/bin"
+    for i in git gh; do
+      sync_if_changed "${DOTFILESDIR}/bin/sandvault-${i}" "${SANDVAULT_GUEST_HOME}/bin/${i}"
+    done
     [[ -d "${SANDVAULT_GUEST_HOME}/.config/opencode" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.config/opencode"
     sync_if_changed "${DOTFILESDIR}/opencode.json" "${SANDVAULT_GUEST_HOME}/.config/opencode/opencode.jsonc"
     [[ -d "${SANDVAULT_GUEST_HOME}/.homebrew" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.homebrew"

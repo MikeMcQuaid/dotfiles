@@ -1,0 +1,25 @@
+#!/bin/bash
+
+SHOW_NOTICE=1
+case "${1:-}" in
+  ""|-h|--help|--version|alias|completion|config|help|licenses|version)
+    SHOW_NOTICE=
+    ;;
+  extension)
+    case "${2:-}" in
+      create|list|remove)
+        SHOW_NOTICE=
+        ;;
+    esac
+    ;;
+esac
+for ARGUMENT in "$@"; do
+  case "${ARGUMENT}" in
+    -h|--help)
+      SHOW_NOTICE=
+      ;;
+  esac
+done
+[[ -z "${SHOW_NOTICE}" ]] || echo "${USER/sandvault-/sv-} deliberately has no GitHub token; ask admin ${USER#sandvault-} for private/write access." >&2
+
+PATH="${PATH#*:}" exec gh "$@"
