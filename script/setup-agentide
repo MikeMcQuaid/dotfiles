@@ -1,0 +1,76 @@
+#!/bin/bash
+# Configure AgentIDE remote access for a Sandvault account
+
+set -eo pipefail
+
+SANDVAULT_USER="${1:?Sandvault user required}"
+SANDVAULT_HOME="${2:?Sandvault home required}"
+
+cd "$(dirname "$0")/.." || exit
+DOTFILESDIR="$(pwd -P)"
+
+AGENTIDE_TMPDIR="$(mktemp -d)"
+trap 'rm -rf "${AGENTIDE_TMPDIR}"' EXIT
+
+# Render the account-specific values before comparing with the system file.
+SSHD_CONFIG_SOURCE="${DOTFILESDIR}/etc/ssh/sshd_config.d/000-agentide.conf.in"
+SSHD_CONFIG="/etc/ssh/sshd_config.d/000-agentide.conf"
+sed \
+  -e "s|@SANDVAULT_USER@|${SANDVAULT_USER}|g" \
+  -e "s|@SANDVAULT_HOME@|${SANDVAULT_HOME}|g" \
+  "${SSHD_CONFIG_SOURCE}" \
+  > "${AGENTIDE_TMPDIR}/000-agentide.conf"
+if ! cmp -s "${AGENTIDE_TMPDIR}/000-agentide.conf" "${SSHD_CONFIG}"; then
+  sudo /usr/bin/install -m 644 "${AGENTIDE_TMPDIR}/000-agentide.conf" \
+    "${SSHD_CONFIG}"
+  printf '%s -> %s\n' "${SSHD_CONFIG_SOURCE}" "${SSHD_CONFIG}"
+fi
+
+# Preserve unrelated keys and replace this key when only its comment changed.
+AUTHORIZED_KEYS="${SANDVAULT_HOME}/.ssh/authorized_keys"
+AUTHORIZED_KEY_SOURCE="${DOTFILESDIR}/etc/ssh/authorized_keys.d/agentide"
+AUTHORIZED_KEY="$(<"${AUTHORIZED_KEY_SOURCE}")"
+# Avoid sudo on a no-op when the invoking user can read the existing keys.
+AUTHORIZED_KEY_IS_CURRENT=
+if [[ -r "${AUTHORIZED_KEYS}" ]] &&
+  grep -Fqx "${AUTHORIZED_KEY}" "${AUTHORIZED_KEYS}"; then
+  AUTHORIZED_KEY_IS_CURRENT=1
+elif [[ ! -r "${AUTHORIZED_KEYS}" ]] &&
+  sudo grep -Fqx "${AUTHORIZED_KEY}" "${AUTHORIZED_KEYS}" &>/dev/null; then
+  AUTHORIZED_KEY_IS_CURRENT=1
+fi
+if [[ -z "${AUTHORIZED_KEY_IS_CURRENT}" ]]; then
+  sudo /usr/bin/install -d -o "${SANDVAULT_USER}" -g "${SANDVAULT_USER}" -m 700 \
+    "${SANDVAULT_HOME}/.ssh"
+  AUTHORIZED_KEYS_SOURCE="/dev/null"
+  if sudo test -f "${AUTHORIZED_KEYS}"; then
+    AUTHORIZED_KEYS_SOURCE="${AUTHORIZED_KEYS}"
+  fi
+  sudo awk -v key="${AUTHORIZED_KEY}" '
+    BEGIN { split(key, fields) }
+    $1 == fields[1] && $2 == fields[2] {
+      if (!found) print key
+      found = 1
+      next
+    }
+    { print }
+    END { if (!found) print key }
+  ' "${AUTHORIZED_KEYS_SOURCE}" |
+    tee "${AGENTIDE_TMPDIR}/authorized_keys" &>/dev/null
+  sudo /usr/bin/install -o "${SANDVAULT_USER}" -g "${SANDVAULT_USER}" -m 600 \
+    "${AGENTIDE_TMPDIR}/authorized_keys" "${AUTHORIZED_KEYS}"
+  printf '%s -> %s\n' "${AUTHORIZED_KEY_SOURCE}" "${AUTHORIZED_KEYS}"
+fi
+
+# Keep the Sharing pane's SSH allow-list aligned with the generated config.
+if ! /usr/sbin/dseditgroup -o checkmember -m "${SANDVAULT_USER}" \
+  com.apple.access_ssh &>/dev/null; then
+  sudo /usr/sbin/dseditgroup -o edit -a "${SANDVAULT_USER}" -t user \
+    com.apple.access_ssh
+fi
+
+# Enable SSH last, after its restrictions and authorised key are in place.
+if ! /bin/launchctl print-disabled system |
+  grep '"com.openssh.sshd" => enabled' &>/dev/null; then
+  sudo /usr/sbin/systemsetup -setremotelogin on
+fi

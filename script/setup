@@ -73,7 +73,7 @@ for DOTFILE in *; do
 
   # Don't try to install some unneeded paths
   case "${DOTFILE}" in
-    bin/|claude/|codex/|homebrew/|script/|tmp/|opencode.json|*.txt|*.md)
+    bin/|claude/|codex/|etc/|homebrew/|script/|tmp/|opencode.json|*.txt|*.md)
       continue
       ;;
   esac
@@ -298,6 +298,8 @@ if command -v "brew" >/dev/null; then
     merge_codex_statusline_config "${SANDVAULT_GUEST_HOME}"
 
     if [[ -d "${SANDVAULT_HOME}" ]]; then
+      "${DOTFILESDIR}/script/setup-agentide" "${SANDVAULT_USER}" "${SANDVAULT_HOME}"
+
       for i in ".claude" ".codex" ".codex/rules" ".codex/config.toml" ".claude/CLAUDE.md" ".codex/AGENTS.md"; do
         chown_sandvault_if_needed "${SANDVAULT_HOME}/${i}"
       done

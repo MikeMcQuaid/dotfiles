@@ -1,0 +1,50 @@
+# AgentIDE remote access: the sandbox account only, keys only, so a
+# forwarded port reaches agents and nothing else on this Mac.
+
+# The account allowed in. Belt and braces with the Sharing pane's
+# com.apple.access_ssh group, and the half that does not depend on a
+# hidden account showing up in a menu.
+AllowUsers @SANDVAULT_USER@
+
+# Keys only. The account has a password hash, and an internet-facing
+# port must never accept it.
+PasswordAuthentication no
+
+# The other road to a password prompt, which PAM still offers on
+# macOS when only the line above is set.
+KbdInteractiveAuthentication no
+
+# Root has no business on this port; nothing here needs it.
+PermitRootLogin no
+
+# Three attempts per connection, so a client cannot walk a keyring
+# and a scanner gets disconnected quickly.
+MaxAuthTries 3
+
+# Twenty seconds to authenticate: generous for a phone waking up,
+# mean to a scanner holding connections open.
+LoginGraceTime 20
+
+# Ten unauthenticated connections at most, refused at random from
+# three upwards, so a scan cannot crowd out your own login.
+MaxStartups 3:50:10
+
+# This port exists to attach terminals. No forwarding of any kind,
+# so a stolen key cannot become a route into the home LAN.
+AllowTcpForwarding no
+AllowAgentForwarding no
+X11Forwarding no
+PermitTunnel no
+
+# Hang up on a client that has been silent for two minutes (three
+# probes, forty seconds apart), so a phone that loses signal does not
+# leave an attached tmux client behind for ever.
+ClientAliveInterval 40
+ClientAliveCountMax 3
+
+# The app's tmux server does not use the default socket directory, so
+# a client's own session picker looks in /tmp/tmux-<uid>, finds
+# nothing and reports no sessions. Match blocks own everything after
+# them, so this stays last in the file.
+Match User @SANDVAULT_USER@
+  SetEnv TMUX_TMPDIR=@SANDVAULT_HOME@/.agentide/tmux
