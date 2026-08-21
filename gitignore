@@ -49,5 +49,4 @@ build/
 test/js/functional/*.html
 
 # Ignore AI local configuration
-.superset/
 .claude/settings.local.json

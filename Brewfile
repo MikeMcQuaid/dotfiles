@@ -9,8 +9,6 @@ brew "shellcheck"
 brew "actionlint"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Cargo subcommand to easily use LLVM source-based code coverage
-brew "cargo-llvm-cov"
 # General-purpose data compression with high compression ratio
 brew "xz"
 # Disk Usage/Free Utility - a better 'df' alternative
@@ -61,8 +59,6 @@ brew "mysql@8.0", restart_service: :changed
 brew "nginx"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node@24"
-# Create, run, and share large language models (LLMs)
-brew "ollama"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # AI coding agent, built for the terminal
@@ -109,8 +105,6 @@ brew "zizmor"
 brew "zsh-autosuggestions"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
-# Browse, search and analyse your past AI coding sessions
-cask "agentsview"
 # Application uninstaller
 cask "appcleaner"
 # OpenAI's official ChatGPT desktop app
@@ -147,10 +141,6 @@ cask "openaudible"
 cask "rectangle"
 # Instant messaging application focusing on security
 cask "signal"
-# Terminal for orchestrating agents
-cask "superset"
-# Open-source code editor
-cask "visual-studio-code"
 # Multiplayer code editor
 cask "zed"
 # Video communication and virtual meeting platform
@@ -170,24 +160,3 @@ mas "Refined GitHub", id: 1519867270
 mas "Slack", id: 803453959
 mas "TouchDraw2", id: 1580322028
 mas "WhatsApp", id: 310633997
-vscode "anykeyh.simplecov-vscode"
-vscode "ban.spellright"
-vscode "charliermarsh.ruff"
-vscode "davidanson.vscode-markdownlint"
-vscode "davidbwaters.macos-modern-theme"
-vscode "editorconfig.editorconfig"
-vscode "foxundermoon.shell-format"
-vscode "github.codespaces"
-vscode "github.vscode-github-actions"
-vscode "github.vscode-pull-request-github"
-vscode "ms-azuretools.vscode-containers"
-vscode "ms-python.debugpy"
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-python.vscode-python-envs"
-vscode "ms-vscode-remote.remote-containers"
-vscode "ms-vsliveshare.vsliveshare"
-vscode "redhat.vscode-yaml"
-vscode "shopify.ruby-lsp"
-vscode "sorbet.sorbet-vscode-extension"
-vscode "timonwong.shellcheck"

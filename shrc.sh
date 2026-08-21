@@ -117,7 +117,7 @@ if quiet_which brew; then
   alias hbc='cd $HOMEBREW_REPOSITORY/Library/Taps/homebrew/homebrew-core'
 fi
 
-if quiet_which delta && [ -z "${SUPERSET_HOME_DIR}" ]; then
+if quiet_which delta; then
   export GIT_PAGER='delta'
 else
   # shellcheck disable=SC2016
@@ -320,16 +320,16 @@ fi
 # Set up editor
 if [[ -n "${SANDVAULT}" ]]; then
   export EDITOR="vim"
+elif [ -n "${AGENTIDE}" ]; then
+  export EDITOR="agentide"
 elif quiet_which zed; then
   export EDITOR="zed"
   alias code="echo you like zed now, use that!"
-elif quiet_which cursor; then
-  export EDITOR="cursor"
 elif quiet_which code; then
   export EDITOR="code"
 fi
 
-if [[ "${EDITOR}" = "zed" || "${EDITOR}" = "cursor" || "${EDITOR}" = "code" ]]; then
+if [[ "${EDITOR}" = "zed" || "${EDITOR}" = "agentide" || "${EDITOR}" = "code" ]]; then
   export GIT_EDITOR="${EDITOR} -w"
   export SVN_EDITOR="${GIT_EDITOR}"
 

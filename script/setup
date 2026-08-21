@@ -25,7 +25,6 @@ UNAME_S="$(uname -s)"
 [[ "${UNAME_S}" = "Linux" ]] && export LINUX=1
 [[ "${UNAME_S}" == *_NT-* ]] && export WINDOWS=1
 [[ -n "${LINUX}" ]] && grep -qEi "(Microsoft|WSL)" /proc/version && export WSL=1
-command -v "brew" &>/dev/null && brew list --cask superset &>/dev/null && export SUPERSET=1
 
 VSCODES=()
 CURSORS=()
@@ -199,9 +198,6 @@ link_if_needed() {
 
 link_if_needed "${HOME}/.homebrew/trust.json" "${DOTFILESDIR}/homebrew/trust.json"
 link_if_needed "${HOME}/.config/opencode/opencode.json" "${DOTFILESDIR}/opencode.json"
-if [[ -n "${SUPERSET}" ]]; then
-  link_if_needed "${HOME}/.superset/hooks/opencode/opencode.json" "${DOTFILESDIR}/opencode.json"
-fi
 if [[ -n "${MACOS}" ]]; then
   crontab "${DOTFILESDIR}/crontab.macos"
 fi
@@ -229,7 +225,7 @@ done
 
 for DOTDIR in claude codex; do
   for DOTFILE in $(dotdir_files "${DOTDIR}"); do
-    if [[ "${DOTFILE}" = "codex/hooks.json" && -z "${SUPERSET}" ]]; then
+    if [[ "${DOTFILE}" = "codex/hooks.json" ]]; then
       if [[ -L "${HOME}/.${DOTFILE}" && "$(readlink "${HOME}/.${DOTFILE}")" = "${DOTFILESDIR}/${DOTFILE}" ]]; then
         rm -v "${HOME}/.${DOTFILE}"
       fi
@@ -290,18 +286,6 @@ if command -v "brew" >/dev/null; then
         sync_if_changed "${DOTFILESDIR}/${DOTFILE}" "${SANDVAULT_GUEST_HOME}/.${DOTFILE}"
       done
     done
-
-    if [[ -n "${SUPERSET}" && -f "${HOME}/.superset/hooks/notify.sh" ]]; then
-      [[ -d "${SANDVAULT_GUEST_HOME}/.superset/hooks" ]] || mkdir -p "${SANDVAULT_GUEST_HOME}/.superset/hooks"
-      sync_if_changed "${HOME}/.superset/hooks/notify.sh" "${SANDVAULT_GUEST_HOME}/.superset/hooks/notify.sh"
-
-      [[ -d "${DOTFILESDIR}/tmp" ]] || mkdir -p "${DOTFILESDIR}/tmp"
-      sed \
-        -e "s|${HOME}/|/Users/sandvault-${USER}/|g" \
-        -e "s|/Users/${USER}/|/Users/sandvault-${USER}/|g" \
-        "${DOTFILESDIR}/codex/hooks.json" > "${DOTFILESDIR}/tmp/sandvault-codex-hooks.json"
-      sync_if_changed "${DOTFILESDIR}/tmp/sandvault-codex-hooks.json" "${SANDVAULT_GUEST_HOME}/.codex/hooks.json"
-    fi
 
     for i in ".claude/CLAUDE.md" ".codex/AGENTS.md"; do
       sync_if_changed "${AGENTS_GLOBAL}" "${SANDVAULT_GUEST_HOME}/${i}"

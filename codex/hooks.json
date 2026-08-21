@@ -1,34 +1,4 @@
 {
   "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "SUPERSET_AGENT_ID=codex \"/Users/mike/.superset/hooks/notify.sh\""
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "SUPERSET_AGENT_ID=codex \"/Users/mike/.superset/hooks/notify.sh\""
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "SUPERSET_AGENT_ID=codex \"/Users/mike/.superset/hooks/notify.sh\""
-          }
-        ]
-      }
-    ]
   }
 }
