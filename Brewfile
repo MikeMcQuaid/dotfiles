@@ -7,10 +7,12 @@ brew "ack"
 brew "shellcheck"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
 # General-purpose data compression with high compression ratio
 brew "xz"
+# Official Amazon AWS command-line interface
+brew "awscli"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # More intuitive version of du in rust
@@ -47,6 +49,8 @@ brew "imagemagick"
 brew "imessage-exporter"
 # XML security library
 brew "libxmlsec1"
+# Web and API based SMTP testing
+brew "mailpit"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # CLI for Node.js style checker and lint tool for Markdown files
@@ -65,6 +69,8 @@ brew "ripgrep"
 brew "opencode"
 # Framework for layout and rendering of i18n text
 brew "pango"
+# Identify unused code in Swift projects
+brew "periphery"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
 # CLI for Playwright: record/generate code, inspect selectors, take screenshots
@@ -81,10 +87,18 @@ brew "prettyping"
 brew "ruby"
 # Run AI agents isolated in a sandboxed macOS user account
 brew "sandvault"
+# Fast distributed storage system
+brew "seaweedfs"
 # Autoformat shell script source code
 brew "shfmt"
 # Human-friendly alternative to netstat for socket and port monitoring
 brew "somo"
+# Formatting tool for reformatting Swift code
+brew "swiftformat"
+# Tool to enforce Swift style and conventions
+brew "swiftlint"
+# Terminal multiplexer
+brew "tmux"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 # Syntax-aware linter for prose
@@ -95,6 +109,8 @@ brew "valkey", restart_service: :changed
 brew "wget"
 # Port of OpenAI's Whisper model in C/C++
 brew "whisper-cpp"
+# Generate your Xcode project from a spec file and your folder structure
+brew "xcodegen"
 # Linter for YAML files
 brew "yamllint"
 # Feature-rich command-line audio/video downloader
@@ -148,6 +164,7 @@ cask "zoom"
 mas "1Blocker", id: 1365531024
 mas "1Password for Safari", id: 1569813296
 mas "Consent-O-Matic", id: 1606897889
+mas "Fantastical", id: 975937182
 mas "GarageBand", id: 682658836
 mas "InYourFace", id: 1476964367
 mas "Keynote", id: 361285480
