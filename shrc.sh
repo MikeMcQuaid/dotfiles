@@ -399,6 +399,20 @@ github-packages-curl() {
   curl -H "Authorization: Bearer QQ==" -H "Accept: application/vnd.oci.image.index.v1+json" "$@" | jq .
 }
 
+github-standup() {
+  org="$1"
+  [[ -z "$org" ]] && echo "Need to specify GitHub organisation!" >&2 && return
+  gh search prs \
+    --owner "$org" \
+    --involves '@me' \
+    --updated ">=$(date -v-7d +%F)" \
+    --sort updated \
+    --order desc \
+    --limit 1000 \
+    --json repository,number,title,body,url \
+    --template '{{range .}}{{printf "## %s #%v: %s\n\n%s\n\n%s\n\n" .repository.nameWithOwner .number .title .body .url}}{{end}}'
+}
+
 # Clear entire screen buffer
 clearer() {
   tput reset
