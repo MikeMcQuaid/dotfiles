@@ -26,40 +26,25 @@ if ! cmp -s "${AGENTIDE_TMPDIR}/000-agentide.conf" "${SSHD_CONFIG}"; then
   printf '%s -> %s\n' "${SSHD_CONFIG_SOURCE}" "${SSHD_CONFIG}"
 fi
 
-# Preserve unrelated keys and replace this key when only its comment changed.
-AUTHORIZED_KEYS="${SANDVAULT_HOME}/.ssh/authorized_keys"
+# Preserve unrelated keys, like the one "sv" adds for itself, and replace this
+# key when only its comment changed. Edit the Homebrew guest home rather than
+# the account's own copy, which "sv" overwrites with it on every build.
 AUTHORIZED_KEY_SOURCE="${DOTFILESDIR}/etc/ssh/authorized_keys.d/agentide"
-AUTHORIZED_KEY="$(<"${AUTHORIZED_KEY_SOURCE}")"
-# Avoid sudo on a no-op when the invoking user can read the existing keys.
-AUTHORIZED_KEY_IS_CURRENT=
-if [[ -r "${AUTHORIZED_KEYS}" ]] &&
-  grep -Fqx "${AUTHORIZED_KEY}" "${AUTHORIZED_KEYS}"; then
-  AUTHORIZED_KEY_IS_CURRENT=1
-elif [[ ! -r "${AUTHORIZED_KEYS}" ]] &&
-  sudo grep -Fqx "${AUTHORIZED_KEY}" "${AUTHORIZED_KEYS}" &>/dev/null; then
-  AUTHORIZED_KEY_IS_CURRENT=1
-fi
-if [[ -z "${AUTHORIZED_KEY_IS_CURRENT}" ]]; then
-  sudo /usr/bin/install -d -o "${SANDVAULT_USER}" -g "${SANDVAULT_USER}" -m 700 \
-    "${SANDVAULT_HOME}/.ssh"
-  AUTHORIZED_KEYS_SOURCE="/dev/null"
-  if sudo test -f "${AUTHORIZED_KEYS}"; then
-    AUTHORIZED_KEYS_SOURCE="${AUTHORIZED_KEYS}"
-  fi
-  sudo awk -v key="${AUTHORIZED_KEY}" '
-    BEGIN { split(key, fields) }
-    $1 == fields[1] && $2 == fields[2] {
-      if (!found) print key
-      found = 1
-      next
-    }
-    { print }
-    END { if (!found) print key }
-  ' "${AUTHORIZED_KEYS_SOURCE}" |
-    tee "${AGENTIDE_TMPDIR}/authorized_keys" &>/dev/null
-  sudo /usr/bin/install -o "${SANDVAULT_USER}" -g "${SANDVAULT_USER}" -m 600 \
-    "${AGENTIDE_TMPDIR}/authorized_keys" "${AUTHORIZED_KEYS}"
-  printf '%s -> %s\n' "${AUTHORIZED_KEY_SOURCE}" "${AUTHORIZED_KEYS}"
+SANDVAULT_AUTHORIZED_KEYS="$(brew --prefix sandvault)/libexec/guest/home/.ssh/authorized_keys"
+awk -v key="$(<"${AUTHORIZED_KEY_SOURCE}")" '
+  BEGIN { split(key, fields) }
+  $1 == fields[1] && $2 == fields[2] {
+    if (!found) print key
+    found = 1
+    next
+  }
+  { print }
+  END { if (!found) print key }
+' "${SANDVAULT_AUTHORIZED_KEYS}" > "${AGENTIDE_TMPDIR}/sandvault_authorized_keys"
+if ! cmp -s "${AGENTIDE_TMPDIR}/sandvault_authorized_keys" "${SANDVAULT_AUTHORIZED_KEYS}"; then
+  /usr/bin/install -m 600 "${AGENTIDE_TMPDIR}/sandvault_authorized_keys" \
+    "${SANDVAULT_AUTHORIZED_KEYS}"
+  printf '%s -> %s\n' "${AUTHORIZED_KEY_SOURCE}" "${SANDVAULT_AUTHORIZED_KEYS}"
 fi
 
 # Keep the Sharing pane's SSH allow-list aligned with the generated config.
