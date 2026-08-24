@@ -39,6 +39,8 @@ brew "goreman"
 brew "grc"
 # Tool for glamorous shell scripts
 brew "gum"
+# Agent multiplexer that lives in your terminal
+brew "herdr"
 # Improved top (interactive process viewer)
 brew "htop"
 # Command-line benchmarking tool
@@ -57,6 +59,8 @@ brew "node"
 brew "markdownlint-cli"
 # Mac App Store command-line interface
 brew "mas"
+# Remote terminal application
+brew "mosh"
 # Open source relational database management system
 brew "mysql@8.0", restart_service: :changed
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
@@ -164,9 +168,7 @@ cask "zoom"
 mas "1Blocker", id: 1365531024
 mas "1Password for Safari", id: 1569813296
 mas "Consent-O-Matic", id: 1606897889
-mas "Fantastical", id: 975937182
 mas "GarageBand", id: 682658836
-mas "InYourFace", id: 1476964367
 mas "Keynote", id: 361285480
 mas "Numbers", id: 361304891
 mas "Pages", id: 361309726
