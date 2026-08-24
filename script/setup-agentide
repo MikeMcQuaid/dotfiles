@@ -26,25 +26,14 @@ if ! cmp -s "${AGENTIDE_TMPDIR}/000-agentide.conf" "${SSHD_CONFIG}"; then
   printf '%s -> %s\n' "${SSHD_CONFIG_SOURCE}" "${SSHD_CONFIG}"
 fi
 
-# Preserve unrelated keys, like the one "sv" adds for itself, and replace this
-# key when only its comment changed. Edit the Homebrew guest home rather than
-# the account's own copy, which "sv" overwrites with it on every build.
+# Let Sandvault generate authorized_keys from its host-owned key directory.
 AUTHORIZED_KEY_SOURCE="${DOTFILESDIR}/etc/ssh/authorized_keys.d/agentide"
-SANDVAULT_AUTHORIZED_KEYS="$(brew --prefix sandvault)/libexec/guest/home/.ssh/authorized_keys"
-awk -v key="$(<"${AUTHORIZED_KEY_SOURCE}")" '
-  BEGIN { split(key, fields) }
-  $1 == fields[1] && $2 == fields[2] {
-    if (!found) print key
-    found = 1
-    next
-  }
-  { print }
-  END { if (!found) print key }
-' "${SANDVAULT_AUTHORIZED_KEYS}" > "${AGENTIDE_TMPDIR}/sandvault_authorized_keys"
-if ! cmp -s "${AGENTIDE_TMPDIR}/sandvault_authorized_keys" "${SANDVAULT_AUTHORIZED_KEYS}"; then
-  /usr/bin/install -m 600 "${AGENTIDE_TMPDIR}/sandvault_authorized_keys" \
-    "${SANDVAULT_AUTHORIZED_KEYS}"
-  printf '%s -> %s\n' "${AUTHORIZED_KEY_SOURCE}" "${SANDVAULT_AUTHORIZED_KEYS}"
+SANDVAULT_AUTHORIZED_KEY="${HOME}/.config/codeofhonor/sandvault/authorized_keys.d/agentide"
+/usr/bin/install -d -m 700 "${SANDVAULT_AUTHORIZED_KEY%/*}"
+if ! cmp -s "${AUTHORIZED_KEY_SOURCE}" "${SANDVAULT_AUTHORIZED_KEY}"; then
+  /usr/bin/install -m 600 "${AUTHORIZED_KEY_SOURCE}" \
+    "${SANDVAULT_AUTHORIZED_KEY}"
+  printf '%s -> %s\n' "${AUTHORIZED_KEY_SOURCE}" "${SANDVAULT_AUTHORIZED_KEY}"
 fi
 
 # Keep the Sharing pane's SSH allow-list aligned with the generated config.
