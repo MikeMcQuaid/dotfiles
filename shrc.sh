@@ -236,6 +236,10 @@ if [[ -n "${MACOS}" ]]; then
   export GREP_OPTIONS="--color=auto"
   export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
 
+  add_to_path_end "/Applications/AgentIDE.app/Contents/Resources/bin"
+  quiet_which agentide && export HERDR_SESSION="agentide"
+  alias ain="agentide new"
+
   alias locate="mdfind -name"
   alias finder-hide="setfile -a V"
 
