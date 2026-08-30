@@ -38,13 +38,11 @@ PermitTunnel no
 
 # Hang up on a client that has been silent for two minutes (three
 # probes, forty seconds apart), so a phone that loses signal does not
-# leave an attached tmux client behind for ever.
+# leave an attached Herdr client behind for ever.
 ClientAliveInterval 40
 ClientAliveCountMax 3
 
-# The app's tmux server does not use the default socket directory, so
-# a client's own session picker looks in /tmp/tmux-<uid>, finds
-# nothing and reports no sessions. Match blocks own everything after
-# them, so this stays last in the file.
+# System SSH sessions do not inherit the app's shared workspace. Match blocks
+# own everything after them, so this stays last.
 Match User @SANDVAULT_USER@
-  SetEnv TMUX_TMPDIR=@SANDVAULT_HOME@/.agentide/tmux
+  SetEnv SHARED_WORKSPACE=@SANDVAULT_SHARED_WORKSPACE@

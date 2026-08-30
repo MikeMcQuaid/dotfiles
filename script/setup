@@ -298,7 +298,8 @@ if command -v "brew" >/dev/null; then
     merge_codex_statusline_config "${SANDVAULT_GUEST_HOME}"
 
     if [[ -d "${SANDVAULT_HOME}" ]]; then
-      "${DOTFILESDIR}/script/setup-agentide" "${SANDVAULT_USER}" "${SANDVAULT_HOME}"
+      "${DOTFILESDIR}/script/setup-agentide" \
+        "${SANDVAULT_USER}" "${SANDVAULT_GUEST_HOME%/user}"
 
       for i in ".claude" ".codex" ".codex/rules" ".codex/config.toml" ".claude/CLAUDE.md" ".codex/AGENTS.md"; do
         chown_sandvault_if_needed "${SANDVAULT_HOME}/${i}"

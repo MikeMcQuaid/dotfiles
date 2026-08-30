@@ -4,7 +4,7 @@
 set -eo pipefail
 
 SANDVAULT_USER="${1:?Sandvault user required}"
-SANDVAULT_HOME="${2:?Sandvault home required}"
+SANDVAULT_SHARED_WORKSPACE="${2:?Sandvault shared workspace required}"
 
 cd "$(dirname "$0")/.." || exit
 DOTFILESDIR="$(pwd -P)"
@@ -17,7 +17,7 @@ SSHD_CONFIG_SOURCE="${DOTFILESDIR}/etc/ssh/sshd_config.d/000-agentide.conf.in"
 SSHD_CONFIG="/etc/ssh/sshd_config.d/000-agentide.conf"
 sed \
   -e "s|@SANDVAULT_USER@|${SANDVAULT_USER}|g" \
-  -e "s|@SANDVAULT_HOME@|${SANDVAULT_HOME}|g" \
+  -e "s|@SANDVAULT_SHARED_WORKSPACE@|${SANDVAULT_SHARED_WORKSPACE}|g" \
   "${SSHD_CONFIG_SOURCE}" \
   > "${AGENTIDE_TMPDIR}/000-agentide.conf"
 if ! cmp -s "${AGENTIDE_TMPDIR}/000-agentide.conf" "${SSHD_CONFIG}"; then
@@ -27,14 +27,20 @@ if ! cmp -s "${AGENTIDE_TMPDIR}/000-agentide.conf" "${SSHD_CONFIG}"; then
 fi
 
 # Let Sandvault generate authorized_keys from its host-owned key directory.
-AUTHORIZED_KEY_SOURCE="${DOTFILESDIR}/etc/ssh/authorized_keys.d/agentide"
-SANDVAULT_AUTHORIZED_KEY="${HOME}/.config/codeofhonor/sandvault/authorized_keys.d/agentide"
-/usr/bin/install -d -m 700 "${SANDVAULT_AUTHORIZED_KEY%/*}"
-if ! cmp -s "${AUTHORIZED_KEY_SOURCE}" "${SANDVAULT_AUTHORIZED_KEY}"; then
-  /usr/bin/install -m 600 "${AUTHORIZED_KEY_SOURCE}" \
-    "${SANDVAULT_AUTHORIZED_KEY}"
-  printf '%s -> %s\n' "${AUTHORIZED_KEY_SOURCE}" "${SANDVAULT_AUTHORIZED_KEY}"
-fi
+AUTHORIZED_KEY_SOURCES=(
+  "${DOTFILESDIR}/ssh/id_ed25519.pub"
+  "${DOTFILESDIR}/etc/ssh/authorized_keys.d/agentide"
+)
+SANDVAULT_AUTHORIZED_KEYS_DIR="${HOME}/.config/codeofhonor/sandvault/authorized_keys.d"
+/usr/bin/install -d -m 700 "${SANDVAULT_AUTHORIZED_KEYS_DIR}"
+for AUTHORIZED_KEY_SOURCE in "${AUTHORIZED_KEY_SOURCES[@]}"; do
+  SANDVAULT_AUTHORIZED_KEY="${SANDVAULT_AUTHORIZED_KEYS_DIR}/${AUTHORIZED_KEY_SOURCE##*/}"
+  if ! cmp -s "${AUTHORIZED_KEY_SOURCE}" "${SANDVAULT_AUTHORIZED_KEY}"; then
+    /usr/bin/install -m 600 "${AUTHORIZED_KEY_SOURCE}" \
+      "${SANDVAULT_AUTHORIZED_KEY}"
+    printf '%s -> %s\n' "${AUTHORIZED_KEY_SOURCE}" "${SANDVAULT_AUTHORIZED_KEY}"
+  fi
+done
 
 # Keep the Sharing pane's SSH allow-list aligned with the generated config.
 if ! /usr/sbin/dseditgroup -o checkmember -m "${SANDVAULT_USER}" \
