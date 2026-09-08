@@ -97,7 +97,6 @@ if quiet_which brew; then
   export HOMEBREW_NO_ENV_HINTS=1
   export HOMEBREW_CLEANUP_MAX_AGE_DAYS=30
   export HOMEBREW_UPGRADE_GREEDY_CASKS="claude-code codex zed"
-  export HOMEBREW_REQUIRE_TAP_TRUST=1
 
   if [[ -n "${SANDVAULT}" ]]; then
     export HOMEBREW_AVOID_NESTED_SANDBOXING=1
@@ -237,7 +236,6 @@ if [[ -n "${MACOS}" ]]; then
   export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
 
   add_to_path_end "/Applications/AgentIDE.app/Contents/Resources/bin"
-  quiet_which agentide && export HERDR_SESSION="agentide"
   alias ain="agentide new"
 
   alias locate="mdfind -name"
@@ -324,11 +322,10 @@ fi
 # Set up editor
 if [[ -n "${SANDVAULT}" ]]; then
   export EDITOR="vim"
-elif [ -n "${AGENTIDE}" ]; then
+elif quiet_which agentide; then
   export EDITOR="agentide"
 elif quiet_which zed; then
   export EDITOR="zed"
-  alias code="echo you like zed now, use that!"
 elif quiet_which code; then
   export EDITOR="code"
 fi
