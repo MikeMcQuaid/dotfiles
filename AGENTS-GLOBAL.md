@@ -15,4 +15,5 @@
 - Prefer amending an existing commit for related fixes; update its message rather than adding a follow-up commit.
 - Use a subject under 51 characters. When a body is useful, use a dash list with lines under 73 characters focused on why; wrap filenames, code and identifiers in backticks.
 - Use real newlines, not literal `\n`; pass multiline messages through `git commit -F -` with a heredoc.
-- Do not add agent `Co-Authored-By` lines or GPG-sign agent commits; pass `-c commit.gpgsign=false` when committing.
+- Do not add agent attribution, including `Co-Authored-By` trailers or session links, to commits or PR descriptions.
+- Do not GPG-sign agent commits; pass `-c commit.gpgsign=false` when committing.
