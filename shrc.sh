@@ -347,6 +347,10 @@ else
   export SVN_EDITOR="${GIT_EDITOR}"
 fi
 
+# Administrate worktree configuration.
+export ADMINISTRATE_SUBREPOS_DIR=/Users/Shared/sv-mike/repositories
+export ADMINISTRATE_WORKTREES_DIR=/Users/Shared/sv-mike/worktrees
+
 # Save directory changes
 cd() {
   builtin cd "$@" || return
