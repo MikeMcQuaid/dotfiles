@@ -1,13 +1,14 @@
 #!/bin/bash
 set -euo pipefail
 
+check_signatures=true
 if [[ "$(uname -s)" = "Linux" ]] &&
    ! grep -qEi "(Microsoft|WSL)" /proc/version &&
    [[ "$(git config --get gpg.format 2>/dev/null || true)" = "ssh" ]] &&
    ! git config --get user.signingkey &>/dev/null &&
    ! git config --get gpg.ssh.defaultKeyCommand &>/dev/null; then
   echo "Warning: Git SSH signing is not set up; skipping push signature checks." >&2
-  exit 0
+  check_signatures=false
 fi
 
 # If git did not pipe a ref list on stdin (e.g. stdin is a terminal under a
@@ -17,21 +18,37 @@ if [ -t 0 ]; then
   exit 0
 fi
 
-# Reject pushes that include unsigned or invalidly signed commits.
-# Skip deletions and refs that do not peel to a commit.
-while read -r local_ref local_oid _ _; do
-  status="$(git log -1 '--format=%G?' "${local_oid}^{commit}" 2>/dev/null)" || continue
+author_email="$(git config --get user.email)"
 
-  case "${status}" in
-    G|U|X|Y)
-      ;;
-    N)
-      echo "Push rejected: ${local_ref} is not signed" >&2
-      exit 1
-      ;;
-    *)
-      echo "Push rejected: ${local_ref} signature is not valid" >&2
-      exit 1
-      ;;
-  esac
+reject() {
+  echo "Push rejected: ${local_ref} commit ${commit} $*" >&2
+  exit 1
+}
+
+# Check our outgoing commits for signatures and AI attribution.
+# Skip deletions and refs that do not peel to a commit.
+while read -r local_ref local_oid _ remote_oid; do
+  git rev-parse --verify "${local_oid}^{commit}" &>/dev/null || continue
+  revisions=("${local_oid}" --not "--remotes=$1")
+  if [[ ! "${remote_oid}" =~ ^0+$ ]]; then
+    revisions+=("${remote_oid}")
+  fi
+
+  git rev-list "${revisions[@]}" | while read -r commit; do
+    [[ "$(git show -s --format=%ae "${commit}")" = "${author_email}" ]] || continue
+
+    if "${check_signatures}" && [[ ! "$(git show -s '--format=%G?' "${commit}")" =~ ^[GUXY]$ ]]; then
+      reject "is not signed or has an invalid signature."
+    fi
+
+    trailers=$(git show -s --format=%B "${commit}" | git interpret-trailers --parse --no-divider) ||
+      reject "could not inspect trailers."
+
+    if grep -Eiq \
+      -e '^((ai-)?(assisted|generated)-by|co-developed-by|model(-used)?|llm|tool):' \
+      -e '(^|[^[:alnum:]_])(anthropic|chatgpt|claude|cline|codex|copilot|cursor|deepseek|devin|gemini|gpt-?[0-9]*|grok|llama|mistral|openai|perplexity|qwen|windsurf)([^[:alnum:]_]|$)' \
+      <<< "${trailers}"; then
+      reject "has AI attribution; remove it and disclose AI use in the PR description."
+    fi
+  done
 done
