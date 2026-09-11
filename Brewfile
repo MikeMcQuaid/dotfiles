@@ -13,6 +13,8 @@ brew "xz"
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Dependency Manager for PHP
+brew "composer"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # More intuitive version of du in rust
@@ -49,6 +51,8 @@ brew "hyperfine"
 brew "imagemagick"
 # Command-line tool to export and inspect local iMessage database
 brew "imessage-exporter"
+# C implementation of a Sass compiler
+brew "libsass"
 # XML security library
 brew "libxmlsec1"
 # Web and API based SMTP testing
@@ -71,6 +75,10 @@ brew "node@24"
 brew "ripgrep"
 # AI coding agent, built for the terminal
 brew "opencode"
+# Development kit for the Java programming language
+brew "openjdk"
+# Development kit for the Java programming language
+brew "openjdk@21"
 # Framework for layout and rendering of i18n text
 brew "pango"
 # Identify unused code in Swift projects
@@ -123,6 +131,8 @@ brew "yt-dlp"
 brew "zizmor"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
+# General-purpose scripting language
+brew "shivammathur/php/php@7.2", trusted: true
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Application uninstaller
@@ -135,6 +145,8 @@ cask "claude-code@latest"
 cask "codex"
 # Voice and text chat software
 cask "discord"
+# Development tool for DynamoDB
+cask "dynamodb-local"
 # Elgato FACECAM configuration tool
 cask "elgato-camera-hub"
 # Control your Elgato key lights
