@@ -94,12 +94,14 @@ setup_homebrew() {
   source "${HOMEBREW_SHELLENV_CACHE}"
 }
 
+# Detect LLM coding agents
+if [ -n "${CODEX_CI}${CODEX_THREAD_ID}${CODEX_TUI_SESSION_LOG_PATH}" ] ||
+   [ -n "${CLAUDECODE}${CLAUDE_CODE_ENTRYPOINT}${CLAUDE_CODE_SESSION_ID}" ]; then
+  export CODING_AGENT_SHELL=1
+fi
+
 # Enable Terminal.app folder icons
 [ "$TERM_PROGRAM" = "Apple_Terminal" ] && export TERMINALAPP=1
-[ -n "${CODEX_CI}${CODEX_THREAD_ID}${CODEX_TUI_SESSION_LOG_PATH}" ] &&
-  export CODING_AGENT_SHELL=1
-[ -n "${CLAUDECODE}${CLAUDE_CODE_ENTRYPOINT}${CLAUDE_CODE_SESSION_ID}" ] &&
-  export CODING_AGENT_SHELL=1
 if [ -n "${TERMINALAPP}" ]; then
   set_terminal_app_pwd() {
     local terminal_app_pwd="file://$HOST$PWD"

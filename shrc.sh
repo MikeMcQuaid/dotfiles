@@ -96,7 +96,9 @@ if quiet_which brew; then
   export HOMEBREW_BUNDLE_CHECK=1
   export HOMEBREW_NO_ENV_HINTS=1
   export HOMEBREW_CLEANUP_MAX_AGE_DAYS=30
-  export HOMEBREW_UPGRADE_GREEDY_CASKS="claude-code codex zed"
+  export HOMEBREW_UPGRADE_GREEDY_CASKS="claude-code codex"
+  export HOMEBREW_BUNDLE_BREW_SKIP="seaweedfs awscli mailpit"
+  export HOMEBREW_BUNDLE_CASK_SKIP=""
 
   if [[ -n "${SANDVAULT}" ]]; then
     export HOMEBREW_AVOID_NESTED_SANDBOXING=1
@@ -324,6 +326,7 @@ if [[ -n "${SANDVAULT}" ]]; then
   export EDITOR="vim"
 elif quiet_which agentide; then
   export EDITOR="agentide"
+  alias zed="echo you made agentide, use that!"
 elif quiet_which zed; then
   export EDITOR="zed"
 elif quiet_which code; then
@@ -354,8 +357,9 @@ export ADMINISTRATE_WORKTREES_DIR=/Users/Shared/sv-mike/worktrees
 # Save directory changes
 cd() {
   builtin cd "$@" || return
+  [[ -n "${CODING_AGENT_SHELL}" ]] && return
   [[ -n "${TERMINALAPP}" ]] && set_terminal_app_pwd
-  [[ -z "${CODING_AGENT_SHELL}" && "$PWD" != "/" ]] && pwd >"${HOME}/.lastpwd"
+  [[ "$PWD" != "/" ]] && pwd >"${HOME}/.lastpwd"
   ls
 }
 
