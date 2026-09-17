@@ -1,20 +1,15 @@
 tap "homebrew/cask"
 tap "homebrew/core"
-tap "shivammathur/php", trusted: { formulae: ["php@7.2"] }
 # Search tool like grep, but optimized for programmers
 brew "ack"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
-# General-purpose data compression with high compression ratio
-brew "xz"
-# Official Amazon AWS command-line interface
-brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Dependency Manager for PHP
-brew "composer"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # More intuitive version of du in rust
@@ -33,8 +28,6 @@ brew "gh"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
-# GNU Privacy Guard (OpenPGP)
-brew "gnupg"
 # Foreman clone written in Go
 brew "goreman"
 # Colorize logfiles and command output
@@ -51,12 +44,8 @@ brew "hyperfine"
 brew "imagemagick"
 # Command-line tool to export and inspect local iMessage database
 brew "imessage-exporter"
-# C implementation of a Sass compiler
-brew "libsass"
 # XML security library
 brew "libxmlsec1"
-# Web and API based SMTP testing
-brew "mailpit"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # CLI for Node.js style checker and lint tool for Markdown files
@@ -71,14 +60,6 @@ brew "mysql@8.0", restart_service: :changed
 brew "nginx"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node@24"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
-# AI coding agent, built for the terminal
-brew "opencode"
-# Development kit for the Java programming language
-brew "openjdk"
-# Development kit for the Java programming language
-brew "openjdk@21"
 # Framework for layout and rendering of i18n text
 brew "pango"
 # Identify unused code in Swift projects
@@ -91,16 +72,14 @@ brew "playwright-cli"
 brew "pngcrush"
 # Fast, disk space efficient package manager
 brew "pnpm"
-# Fast, disk space efficient package manager
-brew "pnpm@10"
 # Wrapper to colorize and simplify ping's output
 brew "prettyping"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
 # Run AI agents isolated in a sandboxed macOS user account
 brew "sandvault"
-# Fast distributed storage system
-brew "seaweedfs"
 # Autoformat shell script source code
 brew "shfmt"
 # Human-friendly alternative to netstat for socket and port monitoring
@@ -109,8 +88,6 @@ brew "somo"
 brew "swiftformat"
 # Tool to enforce Swift style and conventions
 brew "swiftlint"
-# Terminal multiplexer
-brew "tmux"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 # Syntax-aware linter for prose
@@ -120,7 +97,7 @@ brew "valkey", restart_service: :changed
 # Internet file retriever
 brew "wget"
 # Port of OpenAI's Whisper model in C/C++
-brew "whisper-cpp"
+brew "whisper.cpp"
 # Generate your Xcode project from a spec file and your folder structure
 brew "xcodegen"
 # Linter for YAML files
@@ -131,8 +108,6 @@ brew "yt-dlp"
 brew "zizmor"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
-# General-purpose scripting language
-brew "shivammathur/php/php@7.2", trusted: true
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Application uninstaller
@@ -145,8 +120,6 @@ cask "claude-code@latest"
 cask "codex"
 # Voice and text chat software
 cask "discord"
-# Development tool for DynamoDB
-cask "dynamodb-local"
 # Elgato FACECAM configuration tool
 cask "elgato-camera-hub"
 # Control your Elgato key lights
@@ -154,11 +127,12 @@ cask "elgato-control-center"
 cask "font-sf-mono"
 cask "font-signika"
 cask "font-skranji"
-cask "font-space-mono"
 # GIT client
 cask "fork"
 # GIF recording and sharing
 cask "gifox"
+# Homebrew's official GUI
+cask "homebrew-app"
 # Tool to prevent the system from going into sleep mode
 cask "keepingyouawake"
 # Trims video and audio files losslessly
@@ -173,6 +147,8 @@ cask "openaudible"
 cask "rectangle"
 # Instant messaging application focusing on security
 cask "signal"
+# Video game digital distribution service
+cask "steam"
 # Multiplayer code editor
 cask "zed"
 # Video communication and virtual meeting platform
