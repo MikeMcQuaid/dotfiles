@@ -2,6 +2,10 @@
 # Install all dotfiles into the home directory
 
 set -eo pipefail
+trap 'EXIT_CODE=$? EXIT_COMMAND=${BASH_COMMAND}
+  if [[ "${EXIT_CODE}" -ne 0 ]]; then
+    printf "Error: %s: %s (exit %s)\n" "${0}" "${EXIT_COMMAND}" "${EXIT_CODE}" >&2
+  fi' EXIT
 
 SKIP_AFTER_SETUP=
 if [[ "${1:-}" = "--skip-after-setup" ]]; then
@@ -157,7 +161,7 @@ for DOTFILE in *; do
       if [[ -L "${HOMEFILE}" ]]; then
         ln -sf "${LINKFILE}" "${HOMEFILE}"
       elif [[ -d "${HOMEFILE}" ]]; then
-        rm -rfv "${HOMEFILE}" 2>/dev/null
+        rm -rfv "${HOMEFILE}"
         ln -sv "${LINKFILE}" "${HOMEFILE}"
       else
         ln -svf "${LINKFILE}" "${HOMEFILE}"
@@ -165,10 +169,10 @@ for DOTFILE in *; do
     elif [[ "${HOMEFILE}" -ef "${DIRFILE}" ]]; then
       continue
     elif [[ -L "${HOMEFILE}" ]]; then
-      rm -r "${HOMEFILE}" 2>/dev/null
+      rm -r "${HOMEFILE}"
       ln -s "${LINKFILE}" "${HOMEFILE}"
     else
-      rm -rfv "${HOMEFILE}" 2>/dev/null
+      rm -rfv "${HOMEFILE}"
       ln -sv "${LINKFILE}" "${HOMEFILE}"
     fi
   done
@@ -186,6 +190,7 @@ if ! [[ "${HOMEDOTFILES}" -ef "${DOTFILESDIR}" ]]; then
 fi
 
 link_if_needed() {
+  [[ -e "${2}" ]] || return 0
   [[ -d "${1%/*}" ]] || mkdir -p "${1%/*}"
   if [[ "${1}" -ef "${2}" ]]; then
     return
@@ -207,12 +212,12 @@ dotdir_files() {
 }
 
 merge_codex_statusline_config() {
-  command -v "ruby" &>/dev/null || return
+  command -v "ruby" &>/dev/null || return 0
   "${DOTFILESDIR}/bin/toml-merge" "${1}/.codex/config.toml" "${DOTFILESDIR}/codex/statusline.config.toml"
 }
 
 chown_sandvault_if_needed() {
-  [[ -e "${1}" ]] || return
+  [[ -e "${1}" ]] || return 0
   if [[ "$(/usr/bin/stat -f "%Su:%Sg" "${1}")" != "${SANDVAULT_USER}:${SANDVAULT_USER}" ]]; then
     sudo /usr/sbin/chown "${SANDVAULT_USER}:${SANDVAULT_USER}" "${1}"
   fi
@@ -245,6 +250,7 @@ fi
 
 # Helper function to copy a file only when its contents change
 sync_if_changed() {
+  [[ -e "${1}" ]] || return 0
   if ! [[ -f "${2}" ]] || ! cmp -s "${1}" "${2}"; then
     cp -vf "${1}" "${2}"
   fi
@@ -315,7 +321,7 @@ if command -v "brew" >/dev/null; then
 fi
 
 if [[ -n "${LINUX}" && -z "${SKIP_AFTER_SETUP}" ]]; then
-  exec script/linux-after-setup
+  script/linux-after-setup
 elif [[ -n "${CI}" && -n "${MACOS}" ]]; then
-  exec script/strap-after-setup
+  script/strap-after-setup
 fi
