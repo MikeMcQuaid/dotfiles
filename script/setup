@@ -59,6 +59,12 @@ if [[ -d "${HOME}/.bundle/cache" &&
   mv -v "${HOME}/.bundle/cache" "${DOTFILESDIR}/bundle/cache"
 fi
 
+# Setup my home directory how I like it
+[[ -d ~/OSS ]] || mkdir -pv ~/OSS
+if ! [[ -d ~/OSS/dotfiles ]]; then
+  ln -vsf "${DOTFILESDIR}" ~/OSS/dotfiles
+fi
+
 for DOTFILE in *; do
   HOMEFILE="${HOME}/.${DOTFILE}"
   HOMEFILES=()
@@ -241,12 +247,6 @@ for DOTDIR in claude codex; do
 done
 
 merge_codex_statusline_config "${HOME}"
-
-# Setup my home directory how I like it
-[[ -d ~/OSS ]] || mkdir -pv ~/OSS
-if ! [[ -d ~/OSS/dotfiles ]]; then
-  ln -vsf "${DOTFILESDIR}" ~/OSS/dotfiles
-fi
 
 # Helper function to copy a file only when its contents change
 sync_if_changed() {

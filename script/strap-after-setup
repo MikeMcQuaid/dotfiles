@@ -2,13 +2,42 @@
 # Run by Strap after installing Brewfile dependencies
 
 set -eo pipefail
+trap 'EXIT_CODE=$? EXIT_COMMAND=${BASH_COMMAND}
+  if [[ "${EXIT_CODE}" -ne 0 ]]; then
+    printf "Error: %s: %s (exit %s)\n" "${0}" "${EXIT_COMMAND}" "${EXIT_CODE}" >&2
+  fi' EXIT
 
 cd "$(dirname "$0")/.." || exit
 
+defaults_write_if_needed() {
+  local DEFAULTS_COMMAND=(defaults) DEFAULTS_OPTIONS=()
+  if [[ "${1}" = sudo ]]; then
+    DEFAULTS_COMMAND=(sudo defaults)
+    shift
+  fi
+  if [[ "${1}" = -currentHost ]]; then
+    DEFAULTS_OPTIONS=(-currentHost)
+    shift
+  fi
+  local VALUE="${4}"
+  case "${3}:${VALUE}" in
+    -bool:true) VALUE=1 ;;
+    -bool:false) VALUE=0 ;;
+  esac
+  DEFAULTS_CHANGED=
+  if [[ "$(defaults "${DEFAULTS_OPTIONS[@]}" read "${1}" "${2}" 2>/dev/null)" != "${VALUE}" ]]; then
+    "${DEFAULTS_COMMAND[@]}" "${DEFAULTS_OPTIONS[@]}" write "$@"
+    DEFAULTS_CHANGED=1
+  fi
+}
+
 # Close terminal windows on successful exit code
-/usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.Terminal.plist -c \
-  "Set 'Window Settings':Basic:shellExitAction 1" || true
-defaults read com.apple.Terminal &>/dev/null || true
+if [[ "$(/usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.Terminal.plist -c \
+  "Print 'Window Settings':Basic:shellExitAction" 2>/dev/null)" != "1" ]]; then
+  /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.Terminal.plist -c \
+    "Set 'Window Settings':Basic:shellExitAction 1" || true
+  defaults read com.apple.Terminal &>/dev/null || true
+fi
 
 # Enable Touch ID for sudo
 bin/touchid-enable-pam-sudo --quiet || true
@@ -19,23 +48,26 @@ if [ "${SHELL}" != "/bin/zsh" ]; then
 fi
 
 # Ensure auto-update is always enabled
-if [ "$(defaults read /Library/Preferences/com.apple.commerce.plist AutoUpdate)" != "1" ]; then
-  sudo defaults write /Library/Preferences/com.apple.commerce.plist AutoUpdate 1
-fi
+defaults_write_if_needed sudo /Library/Preferences/com.apple.commerce.plist AutoUpdate -bool true
 
 # macOS appearance: Auto (Light by day, Dark by night)
-defaults write -g AppleInterfaceStyleSwitchesAutomatically -bool true
+defaults_write_if_needed -g AppleInterfaceStyleSwitchesAutomatically -bool true
 
 # Dock aligned to the left
-defaults write com.apple.dock orientation -string left
-killall Dock || true
+defaults_write_if_needed com.apple.dock orientation -string left
+if [[ -n "${DEFAULTS_CHANGED}" ]]; then
+  killall Dock || true
+fi
 
 # Prefer tabs when opening documents: Always
-defaults write -g AppleWindowTabbingMode -string Always
+defaults_write_if_needed -g AppleWindowTabbingMode -string Always
 
 # Unset default system-wide Git credential helper
-git config unset --system credential.helper
+git config unset --system --all credential.helper || {
+  EXIT_CODE=$?
+  [[ "${EXIT_CODE}" -eq 5 ]] || exit "${EXIT_CODE}"
+}
 
 # Make more room in the menu bar by reducing spacing between items
-defaults -currentHost write -globalDomain NSStatusItemSpacing -int 4
-defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 4
+defaults_write_if_needed -currentHost -globalDomain NSStatusItemSpacing -int 4
+defaults_write_if_needed -currentHost -globalDomain NSStatusItemSelectionPadding -int 4

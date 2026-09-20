@@ -20,8 +20,10 @@ jobs:
     - name: Validate syntax
       run: bash -n *.sh
 
-    - name: Test script/setup
-      run: bash script/setup
+    - name: Test repeated script/setup runs
+      run: |
+        bash script/setup
+        bash script/setup
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
