@@ -65,6 +65,16 @@ if ! [[ -d ~/OSS/dotfiles ]]; then
   ln -vsf "${DOTFILESDIR}" ~/OSS/dotfiles
 fi
 
+check_git_removal() {
+  if [[ ! -e "${1}/.git" ]] ||
+     ! git -C "${1}" status --porcelain --untracked-files=all --ignored | cmp -s /dev/null - ||
+     ! git -C "${1}" rev-list --all --not --remotes | cmp -s /dev/null -; then
+    printf 'Refusing to remove %s: uncommitted files, unpushed commits or unverifiable Git state.\n' \
+      "${1}" >&2
+    exit 1
+  fi
+}
+
 for DOTFILE in *; do
   HOMEFILE="${HOME}/.${DOTFILE}"
   HOMEFILES=()
@@ -156,6 +166,11 @@ for DOTFILE in *; do
   for HOMEFILE in "${HOMEFILES[@]}"; do
     LINKFILE="${DIRFILE}"
 
+    if [[ -e "${HOMEFILE}/.git" && ! -L "${HOMEFILE}" &&
+          ! "${HOMEFILE}" -ef "${DIRFILE}" ]]; then
+      check_git_removal "${HOMEFILE}"
+    fi
+
     if [[ -z "${IS_DIR}" ]]; then
       if [[ -n "${WSL}" && "${HOMEFILE}" = /mnt/* ]]; then
         cmp -s "${HOMEFILE}" "${DIRFILE}" && continue
@@ -191,7 +206,10 @@ fi
 
 HOMEDOTFILES="${HOME}/.dotfiles"
 if ! [[ "${HOMEDOTFILES}" -ef "${DOTFILESDIR}" ]]; then
-  rm -f "${HOMEDOTFILES}"
+  if [[ -d "${HOMEDOTFILES}" && ! -L "${HOMEDOTFILES}" ]]; then
+    check_git_removal "${HOMEDOTFILES}"
+  fi
+  rm -rf "${HOMEDOTFILES}"
   ln -sf "${DOTFILESDIR}" "${HOMEDOTFILES}"
 fi
 
