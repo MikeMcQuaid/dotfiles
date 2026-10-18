@@ -351,7 +351,8 @@ else
 fi
 
 # Administrate worktree configuration.
-export ADMINISTRATE_SUBREPOS_DIR=/Users/Shared/sv-mike/repositories
+SV_REPOS="/Users/Shared/sv-mike/repositories"
+export ADMINISTRATE_SUBREPOS_DIR="${SV_REPOS}"
 export ADMINISTRATE_WORKTREES_DIR=/Users/Shared/sv-mike/worktrees
 
 # Save directory changes
@@ -436,5 +437,5 @@ whisper_transcribe() {
 
 # New "Thought"
 new-thought() {
-  ~/OSS/mikemcquaid.com/bin/enrich-metadata new
+  "${SV_REPOS}"/mikemcquaid.com/bin/enrich-metadata new
 }
