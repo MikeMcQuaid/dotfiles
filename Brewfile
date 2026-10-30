@@ -55,7 +55,7 @@ brew "mas"
 # Remote terminal application
 brew "mosh"
 # Open source relational database management system
-brew "mysql@8.0", restart_service: :changed
+brew "mysql@8.4", restart_service: :changed
 # HTTP(S) server and reverse proxy, and IMAP/POP3 proxy server
 brew "nginx"
 # Open-source, cross-platform JavaScript runtime environment
@@ -112,14 +112,14 @@ brew "zsh-autosuggestions"
 cask "1password"
 # Application uninstaller
 cask "appcleaner"
+# Universal chat app powered by Matrix
+cask "beeper"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
 # Terminal-based AI coding assistant
 cask "claude-code@latest"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
-# Voice and text chat software
-cask "discord"
 # Elgato FACECAM configuration tool
 cask "elgato-camera-hub"
 # Control your Elgato key lights
@@ -145,8 +145,6 @@ cask "notion"
 cask "openaudible"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
-# Instant messaging application focusing on security
-cask "signal"
 # Video game digital distribution service
 cask "steam"
 # Multiplayer code editor
@@ -160,10 +158,11 @@ mas "GarageBand", id: 682658836
 mas "Keynote", id: 361285480
 mas "Numbers", id: 361304891
 mas "Pages", id: 361309726
-mas "Parachute", id: 6748614170
+mas "Parachute Backup", id: 6748614170
 mas "Pixelmator Pro", id: 1289583905
 mas "Reeder", id: 1529448980
 mas "Refined GitHub", id: 1519867270
 mas "Slack", id: 803453959
 mas "TouchDraw2", id: 1580322028
 mas "WhatsApp", id: 310633997
+mas "Xcode", id: 497799835
