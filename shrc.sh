@@ -237,8 +237,7 @@ if [[ -n "${MACOS}" ]]; then
   export GREP_OPTIONS="--color=auto"
   export VAGRANT_DEFAULT_PROVIDER="vmware_fusion"
 
-  add_to_path_end "/Applications/AgentIDE.app/Contents/Resources/bin"
-  alias ain="agentide new"
+  add_to_path_end "/Applications/Sanductor.app/Contents/Resources/bin"
 
   alias locate="mdfind -name"
   alias finder-hide="setfile -a V"
@@ -324,16 +323,16 @@ fi
 # Set up editor
 if [[ -n "${SANDVAULT}" ]]; then
   export EDITOR="vim"
-elif quiet_which agentide; then
-  export EDITOR="agentide"
-  alias zed="echo you made agentide, use that!"
+elif quiet_which sanductor; then
+  export EDITOR="sanductor"
+  alias zed="echo you made sanductor, use that!"
 elif quiet_which zed; then
   export EDITOR="zed"
 elif quiet_which code; then
   export EDITOR="code"
 fi
 
-if [[ "${EDITOR}" = "zed" || "${EDITOR}" = "agentide" || "${EDITOR}" = "code" ]]; then
+if [[ "${EDITOR}" = "zed" || "${EDITOR}" = "sanductor" || "${EDITOR}" = "code" ]]; then
   export GIT_EDITOR="${EDITOR} -w"
   export SVN_EDITOR="${GIT_EDITOR}"
 

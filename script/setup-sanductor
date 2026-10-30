@@ -1,5 +1,5 @@
 #!/bin/bash
-# Configure AgentIDE remote access for a Sandvault account
+# Configure Sanductor remote access for a Sandvault account
 
 set -eo pipefail
 
@@ -13,15 +13,15 @@ AGENTIDE_TMPDIR="$(mktemp -d)"
 trap 'rm -rf "${AGENTIDE_TMPDIR}"' EXIT
 
 # Render the account-specific values before comparing with the system file.
-SSHD_CONFIG_SOURCE="${DOTFILESDIR}/etc/ssh/sshd_config.d/000-agentide.conf.in"
-SSHD_CONFIG="/etc/ssh/sshd_config.d/000-agentide.conf"
+SSHD_CONFIG_SOURCE="${DOTFILESDIR}/etc/ssh/sshd_config.d/000-sanductor.conf.in"
+SSHD_CONFIG="/etc/ssh/sshd_config.d/000-sanductor.conf"
 sed \
   -e "s|@SANDVAULT_USER@|${SANDVAULT_USER}|g" \
   -e "s|@SANDVAULT_SHARED_WORKSPACE@|${SANDVAULT_SHARED_WORKSPACE}|g" \
   "${SSHD_CONFIG_SOURCE}" \
-  > "${AGENTIDE_TMPDIR}/000-agentide.conf"
-if ! cmp -s "${AGENTIDE_TMPDIR}/000-agentide.conf" "${SSHD_CONFIG}"; then
-  sudo /usr/bin/install -m 644 "${AGENTIDE_TMPDIR}/000-agentide.conf" \
+  > "${AGENTIDE_TMPDIR}/000-sanductor.conf"
+if ! cmp -s "${AGENTIDE_TMPDIR}/000-sanductor.conf" "${SSHD_CONFIG}"; then
+  sudo /usr/bin/install -m 644 "${AGENTIDE_TMPDIR}/000-sanductor.conf" \
     "${SSHD_CONFIG}"
   printf '%s -> %s\n' "${SSHD_CONFIG_SOURCE}" "${SSHD_CONFIG}"
 fi
@@ -29,7 +29,7 @@ fi
 # Let Sandvault generate authorized_keys from its host-owned key directory.
 AUTHORIZED_KEY_SOURCES=(
   "${DOTFILESDIR}/ssh/id_ed25519.pub"
-  "${DOTFILESDIR}/etc/ssh/authorized_keys.d/agentide"
+  "${DOTFILESDIR}/etc/ssh/authorized_keys.d/sanductor"
 )
 SANDVAULT_AUTHORIZED_KEYS_DIR="${HOME}/.config/codeofhonor/sandvault/authorized_keys.d"
 /usr/bin/install -d -m 700 "${SANDVAULT_AUTHORIZED_KEYS_DIR}"

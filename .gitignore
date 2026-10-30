@@ -1,7 +1,5 @@
 /ssh/1Password/
 /ssh/id_*
-/ssh/id_rsa
-/ssh/*_rsa*
 /ssh/known_hosts
 /gnupg/*.d/
 /gnupg/*.db

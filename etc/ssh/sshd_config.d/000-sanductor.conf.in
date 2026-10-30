@@ -1,4 +1,4 @@
-# AgentIDE remote access: the sandbox account only, keys only, so a
+# Sanductor remote access: the sandbox account only, keys only, so a
 # forwarded port reaches agents and nothing else on this Mac.
 
 # The account allowed in. Belt and braces with the Sharing pane's
