@@ -143,6 +143,8 @@ cask "microsoft-edge"
 cask "notion"
 # Audiobook manager for Audible users
 cask "openaudible"
+# Automatically hides or quits apps after periods of inactivity
+cask "quitter"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
 # Video game digital distribution service
@@ -164,5 +166,4 @@ mas "Reeder", id: 1529448980
 mas "Refined GitHub", id: 1519867270
 mas "Slack", id: 803453959
 mas "TouchDraw2", id: 1580322028
-mas "WhatsApp", id: 310633997
 mas "Xcode", id: 497799835
