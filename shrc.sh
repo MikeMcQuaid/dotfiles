@@ -282,40 +282,6 @@ elif [[ -n "${WINDOWS}" ]]; then
   }
 fi
 
-export_github_token() {
-  export \
-    GITHUB_TOKEN="${1}" \
-    GH_TOKEN="${1}" \
-    HOMEBREW_GITHUB_API_TOKEN="${1}" \
-    JEKYLL_GITHUB_TOKEN="${1}"
-}
-
-setup_github_token() {
-  local github_token
-
-  if [ -s "${GITHUB_TOKEN_CACHE}" ]; then
-    github_token="$(< "${GITHUB_TOKEN_CACHE}")"
-  fi
-  if [[ -n "${github_token}" ]] &&
-     ! shell_cache_older_than_week "${GITHUB_TOKEN_CACHE}"; then
-    export_github_token "${github_token}"
-    return
-  fi
-
-  quiet_which gh || return
-  ensure_shell_cache_dir
-  (
-    umask 077
-    command gh auth token >| "${GITHUB_TOKEN_CACHE}"
-  ) &>/dev/null || return
-
-  github_token="$(< "${GITHUB_TOKEN_CACHE}")"
-  [ -n "${github_token}" ] || return
-
-  export_github_token "${github_token}"
-}
-
-setup_github_token
 if quiet_which code; then
   alias vscode="$(which code)"
 fi
@@ -400,7 +366,7 @@ alias "github-actions-force-cancel"="noglob github-actions-force-cancel"
 
 # GitHub API shortcut
 github-api-curl() {
-  curl -H "Authorization: token ${GITHUB_TOKEN}" "https://api.github.com/$1" | jq .
+  gh api --hostname github.com "$1"
 }
 
 # GitHub Packages shortcut

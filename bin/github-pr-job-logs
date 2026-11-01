@@ -154,7 +154,7 @@ jq -rj '
   ERROR_PATH="${LOG_PATH}.stderr"
   LOG_FILE_NAME="$(basename "${LOG_PATH}")"
   echo "==> Downloading $3 / $4"
-  if gh run view --repo "${REPO_SLUG}" --job "$2" --log >"${LOG_PATH}" 2>"${ERROR_PATH}"; then
+  if gh api --hostname github.com "repos/${REPO_SLUG}/actions/jobs/$2/logs" >"${LOG_PATH}" 2>"${ERROR_PATH}"; then
     printf "[ok] %s | %s | %s | %s | %s\n" "$2" "$5" "$6" "$3" "${LOG_FILE_NAME}" >>"${SUMMARY_PATH}"
     [ -s "${ERROR_PATH}" ] || rm -f "${ERROR_PATH}"
     exit 0

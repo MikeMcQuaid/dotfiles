@@ -36,7 +36,6 @@ NOW_EPOCH="${NOW_EPOCH:-$(date +%s)}"
 
 SHELL_CACHE_DIR="${HOME}/.cache/shell"
 HOMEBREW_SHELLENV_CACHE="${SHELL_CACHE_DIR}/homebrew-shellenv.sh"
-GITHUB_TOKEN_CACHE="${SHELL_CACHE_DIR}/github-token"
 
 ensure_shell_cache_dir() {
   [ -d "${SHELL_CACHE_DIR}" ] || mkdir -p -m 700 "${SHELL_CACHE_DIR}"
