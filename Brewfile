@@ -42,6 +42,8 @@ brew "htop"
 brew "hyperfine"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# CLI for ImageOptim, ImageAlpha and JPEGmini
+brew "imageoptim-cli"
 # Command-line tool to export and inspect local iMessage database
 brew "imessage-exporter"
 # XML security library
@@ -68,8 +70,6 @@ brew "periphery"
 brew "pkgconf"
 # CLI for Playwright: record/generate code, inspect selectors, take screenshots
 brew "playwright-cli"
-# Optimizer for PNG files
-brew "pngcrush"
 # Fast, disk space efficient package manager
 brew "pnpm"
 # Wrapper to colorize and simplify ping's output
