@@ -93,7 +93,7 @@ for DOTFILE in *; do
 
   # Don't try to install some unneeded paths
   case "${DOTFILE}" in
-    bin/|claude/|codex/|etc/|homebrew/|script/|tmp/|opencode.json|*.txt|*.md)
+    bin/|claude/|codex/|etc/|homebrew/|script/|tmp/|opencode.json|sanductor-settings.plist|*.txt|*.md)
       continue
       ;;
   esac
@@ -228,6 +228,7 @@ link_if_needed() {
 link_if_needed "${HOME}/.homebrew/trust.json" "${DOTFILESDIR}/homebrew/trust.json"
 link_if_needed "${HOME}/.config/opencode/opencode.json" "${DOTFILESDIR}/opencode.json"
 if [[ -n "${MACOS}" ]]; then
+  link_if_needed "${HOME}/.sanductor/settings.plist" "${DOTFILESDIR}/sanductor-settings.plist"
   crontab "${DOTFILESDIR}/crontab.macos"
 fi
 

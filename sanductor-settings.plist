@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>agentEffort</key>
+	<string>xhigh</string>
+	<key>agentKind</key>
+	<string>codex</string>
+	<key>agentModel</key>
+	<string>gpt-6.2-astra</string>
+	<key>codeFontName</key>
+	<string>SFMono-Regular</string>
+	<key>codeFontSize</key>
+	<real>13</real>
+	<key>completionSound</key>
+	<string>/Users/mike/Documents/Sounds/Warcraft Orc Peon - Ready to Work.wav</string>
+	<key>externalEditorCommand</key>
+	<string>zed</string>
+	<key>nameFontSize</key>
+	<real>12</real>
+	<key>needsInputSound</key>
+	<string>/Users/mike/Documents/Sounds/Warcraft Orc Peon - Hmm.wav</string>
+	<key>notifyFinished</key>
+	<true/>
+	<key>pollIntervalSeconds</key>
+	<integer>5</integer>
+	<key>repositoryFontSize</key>
+	<real>11</real>
+	<key>requireSignedCommits</key>
+	<true/>
+	<key>reviewEffort.claude</key>
+	<string>high</string>
+	<key>reviewEffort.codex</key>
+	<string>medium</string>
+	<key>reviewModel.claude</key>
+	<string>fable</string>
+	<key>reviewModel.codex</key>
+	<string>gpt-6.1-sol</string>
+	<key>sendFinishedToPhone</key>
+	<true/>
+	<key>sendNeedsInputToPhone</key>
+	<true/>
+	<key>sidebarMode</key>
+	<string>Status</string>
+	<key>sidebarRepositorySort</key>
+	<string>Owner / repository</string>
+	<key>tabFontSize</key>
+	<real>12</real>
+</dict>
+</plist>
